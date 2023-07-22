@@ -8,6 +8,7 @@ use App\Controllers\Controller2; // Add the correct namespace for Controller2
 
 
 // Define your routes and include the necessary controllers
+// added comment
 $uri = $_SERVER['REQUEST_URI'];
 
 
