@@ -1,21 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Your Website Title</title>
-    <!-- Include Bootstrap CSS via CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <title>{% block title %} SkyCliff {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+    {% block stylesheets %}
+    {% endblock %}
+
+    {% block javascripts %}
+    {% endblock %}
+
 </head>
+
 <body>
-<!-- Navbar, Header, or other shared elements -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <!-- Navbar content here -->
+
+<nav class="navbar navbar-expand-md">
+    <a class="navbar-brand" href="#">Skycliff Center</a>
+    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main-navigation">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="careplans">Care Plans</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="participants">Participants</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
-<!-- Content from child templates will be placed here -->
-{% block content %}
-{% endblock %}
 
-<!-- Include Bootstrap JS via CDN -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+
+
+{% block body %}{% endblock %}
+
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                <h6 class="text-uppercase font-weight-bold">Personal Health Tome</h6>
+                <p>A place where you can keep your own records of visits, procdudres and tests</p>
+                <p>This site is not tied to any specific insurance providers nor any hospital systems, it is mananaged by you.  Your data may be downloaded from various locations and added here.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                <p>Castle Rock, Colorado
+                    <br/>philip.tome@tomefamily.com
+                    <br/>+ 01 303 xxx xxxx
+                </p>
+            </div>
+            <div>
+                <div class="footer-copyright text-center">© 2023 Copyright: tome.net</div>
+            </div>
+        </div>
+</footer>
+
+
+<script src="/js/main.js"></script>
+
+{% block modal %} {% endblock %}
+{% block modal2 %} {% endblock %}
+
 </body>
+
+
+
 </html>

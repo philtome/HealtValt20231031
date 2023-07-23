@@ -1,11 +1,24 @@
 {% extends 'base.twig' %}
 
-{% block content %}
-    <!-- Specific content for template1.twig -->
-    <div class="container">
-        <h1>Home Page</h1>
-        <p>Param1: {{ param1 }}</p>
-        <p>Param2: {{ param2 }}</p>
-        <p>Param3: {{ param3 }}</p>
+{% block body %}
+    <header class="page-header header container-fluid">
+        <div class="overlay"></div>
+        <div class="description">
+            <h1>Skycliff Center</h1>
+            <p>Maintian patient Care Plans here</p>.</p>
+
+            <button class="btn btn-outline-secondary btn-lg">Tell Me More!</button>
+        </div>
+    </header>
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1><?php echo strtoupper(strtolower($cleverWelcomeMessage)); ?></h1>
+
+            <p>Over <?php echo $visitCount ?>Participant Records</p>
+            <p><a href="careplans" class="btn btn-primary btn-lg">Care Plans</a></p>
+            <p><a href="participants" class="btn btn-primary btn-lg">Participant List</a></p>
+            <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        </div>
     </div>
 {% endblock %}
