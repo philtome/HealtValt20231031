@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Controllers;
-class Controller2
+
+use App\Models\Careplans_model;
+
+class careplans
 {
     public function action1($param1, $param2, $param3)
     {
@@ -12,4 +15,11 @@ class Controller2
             'param3' => $param3
         ]);
     }
+
+    public function getList() {
+        $careplans = new Careplans_Model();
+        $listItems = $careplans->getCareplanList();
+        return renderTemplate('template2.twig', ['param1' => $listItems]);
+    }
+
 }

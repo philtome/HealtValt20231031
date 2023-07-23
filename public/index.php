@@ -3,9 +3,10 @@
 require_once __DIR__ . '/../app/twig.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__. '/../app/render.php';
+//require_once __DIR__. '/../config/config.php';
 
 use App\Controllers\Controller1; // Add the correct namespace for Controller1
-use App\Controllers\Controller2; // Add the correct namespace for Controller2
+use App\Controllers\Careplans; // Add the correct namespace for Controller2
 
 
 // Define your routes and include the necessary controllers
@@ -37,9 +38,14 @@ switch ($route) {
                 'param3' => $param3
         ]);
         break;
-    case 'template2':
-        $controller2 = new Controller2();
-        $result = $controller2->action1($param1, $param2, $param3);
+    case 'careplans':
+        $careplans = new careplans();
+        if (is_null($param1)) {
+            $result = $careplans->getList();
+        }
+        else {
+            $result = $careplans->action1($param1, $param2, $param3);
+        }
         break;
     default:
         $errorMsg = '404 - Not Found';
