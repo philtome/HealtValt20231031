@@ -1,0 +1,7 @@
+# Ignore autoload.php
+autoload.php
+
+# Ignore vendor directlroy
+/vendor/
+
+# Ignore any other files or directories as needed
