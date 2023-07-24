@@ -5,3 +5,5 @@ autoload.php
 /vendor/
 
 # Ignore any other files or directories as needed
+/.idea
+/.idea/SkyCliffCare.iml
