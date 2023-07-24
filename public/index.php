@@ -14,14 +14,14 @@ $uri = $_SERVER['REQUEST_URI'];
 
 
 $uriParts = explode('/',  $_SERVER['REQUEST_URI']);
-$route = $uriParts[1];
+$controller = $uriParts[1];
 
 $param1 = $uriParts[2];
 $param2 = $uriParts[3];
 $param3 = $uriParts[4];
 
 
-switch ($route) {
+switch ($controller) {
     case '':
         //$controller = new Controller1();
         renderTemplate('homepage.twig', [
@@ -30,8 +30,8 @@ switch ($route) {
             'param3' => $param3
         ]);
         break;
-    case 'template1':
-        $controller = new Controller1();
+    case 'template1':  //this will be changed to 'contacts'
+        $contacts = new Controller1();
         renderTemplate('template1.twig', [
                 'param1' => $param1,
                 'param2' => $param2,
@@ -41,7 +41,7 @@ switch ($route) {
     case 'careplans':
         $careplans = new careplans();
         if (is_null($param1)) {
-            $result = $careplans->getList();
+            $result = $careplans->mainDisplay();
         }
         else {
             $result = $careplans->action1($param1, $param2, $param3);

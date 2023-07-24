@@ -16,6 +16,11 @@ class careplans
         ]);
     }
 
+    public function mainDisplay()
+    {
+        $careplans = new Careplans_Model();
+        return renderTemplate('careplans_main.twig',['careplans' => $careplans->getCareplanList()]);
+    }
     public function getList() {
         $careplans = new Careplans_Model();
         $listItems = $careplans->getCareplanList();

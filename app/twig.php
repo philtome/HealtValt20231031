@@ -6,4 +6,6 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 $loader = new FilesystemLoader(__DIR__ . '/Views');
-$twig = new Environment($loader);
+$twig = new Environment($loader, ['debug' => true,]);
+
+$twig->addExtension(new \Twig\Extension\DebugExtension());
