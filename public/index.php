@@ -21,6 +21,31 @@ $param2 = $uriParts[3];
 $param3 = $uriParts[4];
 
 
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    if (isset($_GET['action'])) {
+        $action = $_GET['action'];
+        switch ($action) {
+            case 'template1':
+                // Redirect to the appropriate controller and action
+                // For example, redirect to Controller2's action1 method
+                header('Content-Type: application/json');
+                echo json_encode(['redirect' => 'index.php?controller=Controller2&action=action1']);
+                exit;
+            // Add other cases for different actions if needed
+            // case 'someOtherAction':
+            //     header('Content-Type: application/json');
+            //     echo json_encode(['redirect' => 'index.php?controller=SomeController&action=someAction']);
+            //     exit;
+            default:
+                // Handle other actions or invalid requests as needed
+                break;
+        }
+    }
+}
+
+
+
+
 switch ($controller) {
     case '':
         //$controller = new Controller1();
