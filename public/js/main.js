@@ -6,6 +6,11 @@ ready(() => {
     document.querySelector(".header").style.height = window.innerHeight/4 + "px";
 })
 
+function displayAnotherPage() {
+    // Replace 'another-page.html' with the URL of the page you want to display
+    window.location.href = 'index.php/template1';
+}
+
 // setTimeout(function() {
 //     $('#demo-modal').modal();
 // }, 500);
