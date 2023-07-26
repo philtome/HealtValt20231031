@@ -1,0 +1,64 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+    <!-- Specific content for template1.twig -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1><?php echo strtoupper(strtolower($cleverWelcomeMessage)); ?></h1>
+            <p>Care Plan Details </p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+
+
+                <form action="/lib/visit_update.php" method="POST">
+
+                    <div class="form-group">
+                        <label for="visit-date" class="control-label">Visit Date</label>
+                        <input type="date" name="visitDate" id="visit-date"
+                               value="<?php echo $visit['visit_date'];?>" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="visit-time" class="control-label">Visit Time</label>
+                        <input type="time" name="visitTime" id="visit-time"
+                               value="<?php echo $visit['visit_time'];?>" class="form-control" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="visit-type" class="control-label">Visit Type</label>
+                        <input type="text" name="visitType" id="visit-type"
+                               value="<?php echo $visit['type'];?>" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="visit-with" class="control-label">Visit With</label>
+                        <input type="text" name="visitWith" id="visit-with"
+                               value="<?php echo $visit['visit_with'];?>" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="visit-id" class="control-label">Visit Id</label>
+                        <input type="hidden" name="visitId" id="visit-id"
+                               value="<?php echo $id;?>"  class="form-control" />
+                    </div>
+                    <!--                <div class="form-group">-->
+                    <!--                    <label for="pet-weight" class="control-label">Pet Weight</label>-->
+                    <!--                    <input type="number" name="weight" id="pet-weight" class="form-control" />-->
+                    <!--                </div>-->
+                    <div class="form-group">
+                        <label for="visit-notes" class="control-label">Notes</label>
+                        <textarea name="visitNotes" id="visit-notes"
+                                  class="form-control"><?php echo $visit['notes']; ?></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-heart"></span>
+                        Save
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

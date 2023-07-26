@@ -8,7 +8,7 @@
         <div class="container">
             <h1><?php echo strtoupper(strtolower($cleverWelcomeMessage)); ?></h1>
 
-            <p>Over <?php echo $visitCount ?> Participants List, need to fix sql call </p>
+            <p>Over <?php echo $visitCount ?> Contacts List, need to fix sql call </p>
             <button class="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#visit-modal">Add Visit</button>
             <button class="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#visit-modal2">Add Visit2</button>
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
@@ -21,36 +21,38 @@
         <tr>
             <th>Last Name</th>
             <th>First Name</th>
-            <th>Address1</th>
+            <th>Type</th>
+            <th>Practice</th>
             <th>Email</th>
             <th>Phone</th>
         </tr>
-        {% for participant in participants %}
+        {% for contact in contacts %}
         <tr>
-            <td>{{ participant.last_name }}
+            <td>{{ contact.last_name }}
             </td>
-            <td>{{ participant.first_name }}
+            <td>{{ contact.first_name }}
             </td>
             <td>
                 <a href="/show.php?id={{ participant.id }}">
-                    {{ participant.street_address_1}}
+                    {{ contact.contact_type}}
                 </a>
             </td>
-            <td>{{ participant.email }}
+            <td>{{ contact.company_practice }}
             </td>
+            <td>{{ contact.email }}
             </td>
-            <td>{{ participant.phone }}
+            <td>{{ contact.phone }}
             </td>
-            <td class="participant-delete">
-                <form action='/visit_display.php?id="{{ participant.id}}" ' method="post">
-                    <input type="hidden" name="id" value="{{ participant.id }}">
+            <td class="contact-delete">
+                <form action='/contact_delete/id="{{ contact.id}}" ' method="get">
+                    <input type="hidden" name="id" value="{{ contact.id }}">
                     <input type="submit" name="submit" value="Delete">
                 </form>
 
             </td>
-            <td class="participant-manage">
-                <form action='/participant_manage/id={{ participant.id}} ' method="get">
-                    <input type="hidden" name="id" value="{{ participant.id }}">
+            <td class="contact-manage">
+                <form action='/contact_manage/id={{ contact.id}} ' method="get">
+                    <input type="hidden" name="id" value="{{ contact.id }}">
                     <input type="submit" name="submit" value="Manage">
                 </form>
             </td>

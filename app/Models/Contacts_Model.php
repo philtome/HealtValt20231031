@@ -4,7 +4,7 @@
 
 namespace App\Models;
 
-class Participants_Model
+class Contacts_Model
 {
     private $pdo;
 
@@ -13,7 +13,7 @@ class Participants_Model
 //        $this->pdo = $pdo;
 //    }
 
-    public function getCareplanList2()
+    public function getContactsList2()
     {
         // Replace this with your actual database query to fetch the list of books
         // For this example, we'll use a static array as sample data
@@ -23,12 +23,12 @@ class Participants_Model
             ['title' => 'Book 3', 'author' => 'Author 3'],
         ];
     }
-    public function getParticipantsList($limit = null)
+    public function getContactssList($limit = null)
     {
 
         require __DIR__.'/../../config/config.php';
         $pdo = get_connection();
-        $query = 'SELECT * FROM participants';
+        $query = 'SELECT * FROM contacts';
         if ($limit)
         {
             $query = $query.' LIMIT :resultLimit';

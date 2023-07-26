@@ -8,6 +8,7 @@ require_once __DIR__. '/../app/render.php';
 use App\Controllers\Controller1; // Add the correct namespace for Controller1
 use App\Controllers\careplans; // Add the correct namespace for Controller2
 use App\Controllers\participants;
+use App\Controllers\contacts;
 
 
 // Define your routes and include the necessary controllers
@@ -48,6 +49,10 @@ switch ($controller) {
             'param3' => $param3
         ]);
         break;
+        case 'careplans_manage';
+        renderTemplate('careplanDetails.twig');
+        break;
+
     case 'template1':  //this will be changed to 'contacts'
         $contacts = new Controller1();
         renderTemplate('template1.twig', [
@@ -81,10 +86,25 @@ switch ($controller) {
             $result = $participants->action1($param1, $param2, $param3);
         }
         break;
+    case 'participant_manage';
+        renderTemplate('participantDetails.twig');
+        break;
     default:
         $errorMsg = '404 - Not Found';
         renderTemplate('errorMessage.twig', [
             'param1' => $errorMsg,
         ]);
+        break;
+    case 'contacts':
+        $contacts = new contacts();
+        if (is_null($param1)) {
+            $result = $contacts->mainDisplay();
+        }
+        elseif ($param1='display') {
+            $result = $contacts->mainDisplay();
+        }
+        else {
+            $result = $contacts->action1($param1, $param2, $param3);
+        }
         break;
 }
