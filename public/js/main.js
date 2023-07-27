@@ -2,9 +2,9 @@ var ready = (callback) => {
     if (document.readyState != "loading") callback();
     else document.addEventListener("DOMContentLoaded", callback);
 }
-ready(() => {
-    document.querySelector(".header").style.height = window.innerHeight/4 + "px";
-})
+// ready(() => {
+//     document.querySelector(".header").style.height = window.innerHeight/4 + "px";
+// })
 
 function displayAnotherPage() {
     // Make an AJAX request to your server (index.php) to handle the redirection
@@ -37,6 +37,21 @@ document.addEventListener('DOMContentLoaded', function () {
             displayitem(id);
         });
     });
+
+
+    var deleteButton = document.querySelector('.btn-primary');
+
+    deleteButton.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        // Load 'main.js' dynamically
+        var script = document.createElement('script');
+        script.src = 'path/to/your/main.js'; // Replace with the actual path to 'main.js'
+        document.body.appendChild(script);
+    });
+
+
+
 });
 
 function performAction(id) {

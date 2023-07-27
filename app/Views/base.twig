@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{% block title %} SkyCliff {% endblock %}</title>
+    <title>SkyCliff {% block title %}{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,7 +21,7 @@
 <body>
 
 <nav class="navbar navbar-expand-md">
-    <a class="navbar-brand" href="#">Skycliff Center</a>
+    <a class="navbar-brand" href="#">Skycliff Center {% block navtitle %}{% endblock %}</a>
     <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -75,7 +75,7 @@
 </footer>
 
 
-<script src="/js/main.js"></script>
+
 
 {% block modal %} {% endblock %}
 {% block modal2 %} {% endblock %}
@@ -83,5 +83,5 @@
 </body>
 
 
-
+<script src="/js/main.js"></script>
 </html>

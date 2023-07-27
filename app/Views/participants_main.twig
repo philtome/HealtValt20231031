@@ -22,7 +22,7 @@
             <th>Last Name</th>
             <th>First Name</th>
             <th>Address1</th>
-            <th>Email</th>
+            <th>Responsible Party</th>
             <th>Phone</th>
         </tr>
         {% for participant in participants %}
@@ -36,7 +36,7 @@
                     {{ participant.street_address_1}}
                 </a>
             </td>
-            <td>{{ participant.email }}
+            <td>{{ participant.responsible_party }}
             </td>
             </td>
             <td>{{ participant.phone }}
