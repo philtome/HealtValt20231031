@@ -41,16 +41,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 switch ($controller) {
+
+
     case '':
         //$controller = new Controller1();
-        renderTemplate('homepage.twig', [
+        renderTemplate('homePage.twig', [
             'param1' => $param1,
             'param2' => $param2,
             'param3' => $param3
         ]);
         break;
-        case 'careplans_manage';
-        renderTemplate('careplanDetails.twig');
+
+    case 'careplans_manageB': //****TESTING EXAMPLES - 'fetchbutton'
+                              // button on home: etchButton event - replace entire screen
+        renderTemplate('/bogustesting/careplanDetailsB.twig', [
+            'param1' => $param1,
+            'param2' => $param2,
+            'param3' => $param3
+        ]);
+        break;
+
+    case 'careplansB': // ****TESTING
+        renderTemplate('/bogustesting/careplans_mainB.twig', [
+            'param1' => $param1,
+            'param2' => $param2,
+            'param3' => $param3
+        ]);
+
+
+        $careplans = new careplans();
+        $dude = new careplans();
+        if (is_null($param1)) {
+            $result = $careplans->mainDisplay();
+        }
+        elseif ($param1='display') {
+            $result = $careplans->mainDisplay();
+        }
+        else {
+            $result = $careplans->action1($param1, $param2, $param3);
+        }
+        break;
+
+    case 'careplans_manage':
+        renderTemplate('careplanDetails.twig', [
+            'param1' => $param1,
+            'param2' => $param2,
+            'param3' => $param3
+        ]);
         break;
 
     case 'template1':  //this will be changed to 'contacts'
@@ -74,6 +111,7 @@ switch ($controller) {
             $result = $careplans->action1($param1, $param2, $param3);
         }
         break;
+
     case 'participants':
         $participants = new participants();
         if (is_null($param1)) {
@@ -89,12 +127,6 @@ switch ($controller) {
     case 'participant_manage';
         renderTemplate('participantDetails.twig');
         break;
-    default:
-        $errorMsg = '404 - Not Found';
-        renderTemplate('errorMessage.twig', [
-            'param1' => $errorMsg,
-        ]);
-        break;
     case 'contacts':
         $contacts = new contacts();
         if (is_null($param1)) {
@@ -107,4 +139,11 @@ switch ($controller) {
             $result = $contacts->action1($param1, $param2, $param3);
         }
         break;
+    default:
+        $errorMsg = '404 - Not Found';
+        renderTemplate('errorMessage.twig', [
+            'param1' => $errorMsg,
+        ]);
+        break;
+
 }
