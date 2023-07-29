@@ -62,6 +62,82 @@ manageButtons.forEach(function(button) {
 //             })
 //     });
 // });
+// 0729 trial of 2 button types:
+
+
+
+
+// AJAX Calls - give MVC info, return here to manage
+
+
+const btnPage1 = document.getElementById("btnPage1");
+if (btnPage1) {
+    btnPage1.addEventListener("click", function() {
+        loadNewPage(1);
+    });
+}
+
+
+// the above replaces this line which will give error if btnPage1 does not exist:
+//    (I may beable to do a for each like in manage buttons above)
+
+// document.getElementById("btnPage1").addEventListener("click", function() {
+//     loadNewPage(1);
+// });
+
+
+
+
+// document.getElementById("btnPage2").addEventListener("click", function() {
+//     loadNewPage(2);
+// });
+// document.getElementById("btnLoadContent").addEventListener("click", function() {
+//     loadContent();
+// });
+
+const manageButtonItems = document.querySelectorAll('.manageCpButton');
+manageButtonItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        const itemId = this.getAttribute('data-item-id');
+        handleManageItem(itemId);
+    });
+});
+
+// Attach click event listeners to the buttons
+function loadNewPage(pageNumber) {
+    fetch(`index.php/careplansB`)
+    //fetch(`index.php?page=${pageNumber}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.documentElement.innerHTML = data; // Replace the entire HTML content with the received data
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+}
+
+// Function to handle button click and load the content via fetch
+function loadContent() {
+    fetch('index.php?action=load_content')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById("contentContainer").innerHTML = data;
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+}
 
 
 // button type: .testButton does editButtons, then performAcdtion - send something to index.php, it will replace item on screen
@@ -88,8 +164,6 @@ document.addEventListener('DOMContentLoaded', function () {
             displayitem(id);
         });
     });
-
-
 });
 
 function performAction(id) {
@@ -186,28 +260,28 @@ function displayFullItem(id) {
 }
 
 // this wiil be used to pick up HTML from server and display on the screen:
-document.addEventListener('DOMContentLoaded', function () {
-    const fetchButton = document.getElementById('fetchButton');
-    const resultContainer = document.getElementById('resultContainer');
-
-    fetchButton.addEventListener('click', function () {
-        // Fetch the HTML content from the server using the Fetch API
-        fetch('index.php?controller=careplans_manageB&function=display')
-            .then(response => response.text())
-            .then(html => {
-                // Display the received HTML content in the resultContainer
-                // resultContainer.innerHTML = html;
-                // I replaced rusultContainer.innerHtml with code to reload entire page:
-                document.open();
-                document.write(html);
-                document.close();
-            })
-            .catch(error => {
-                console.error('Error fetching HTML:', error);
-                resultContainer.innerHTML = '<p>Error fetching HTML content.</p>';
-            });
-    });
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     const fetchButton = document.getElementById('fetchButton');
+//     const resultContainer = document.getElementById('resultContainer');
+//
+//     fetchButton.addEventListener('click', function () {
+//         // Fetch the HTML content from the server using the Fetch API
+//         fetch('index.php?controller=careplans_manageB&function=display')
+//             .then(response => response.text())
+//             .then(html => {
+//                 // Display the received HTML content in the resultContainer
+//                 // resultContainer.innerHTML = html;
+//                 // I replaced rusultContainer.innerHtml with code to reload entire page:
+//                 document.open();
+//                 document.write(html);
+//                 document.close();
+//             })
+//             .catch(error => {
+//                 console.error('Error fetching HTML:', error);
+//                 resultContainer.innerHTML = '<p>Error fetching HTML content.</p>';
+//             });
+//     });
+// });
 
 function performAJAXRequest(url, callback) {
     const xhr = new XMLHttpRequest();

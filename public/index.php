@@ -67,19 +67,6 @@ switch ($controller) {
             'param2' => $param2,
             'param3' => $param3
         ]);
-
-
-        $careplans = new careplans();
-        $dude = new careplans();
-        if (is_null($param1)) {
-            $result = $careplans->mainDisplay();
-        }
-        elseif ($param1='display') {
-            $result = $careplans->mainDisplay();
-        }
-        else {
-            $result = $careplans->action1($param1, $param2, $param3);
-        }
         break;
 
     case 'careplans_manage':

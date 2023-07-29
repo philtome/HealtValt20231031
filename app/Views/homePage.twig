@@ -15,6 +15,15 @@
         <div class="container">
             <h1><?php echo strtoupper(strtolower($cleverWelcomeMessage)); ?></h1>
 
+
+            <!-- Button 1 -->
+            <button id="btnPage1" class="action-button">Page 1</button>
+            <!-- Button 2 -->
+            <button id="btnPage2" class="action-button">Page 2</button>
+            <!-- Button 3 -->
+            <button id="btnLoadContent" class="action-button">Load Content</button>
+            <!-- Container to display the loaded content -->
+
             <p>Over <?php echo $visitCount ?>Participant Records</p>
             <p><a href="careplans" class="btn btn-primary btn-lg">Care Plans</a></p>
             <p><a href="participants" class="btn btn-primary btn-lg">Participant List</a></p>
@@ -25,4 +34,6 @@
             <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
         </div>
     </div>
+    <!-- Container to display the loaded content -->
+    <div id="contentContainer"></div>
 {% endblock %}
