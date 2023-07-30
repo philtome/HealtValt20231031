@@ -111,9 +111,11 @@ switch ($controller) {
             $result = $participants->action1($param1, $param2, $param3);
         }
         break;
-    case 'participant_manage';
+
+    case 'participant_manage':
         renderTemplate('participantDetails.twig');
         break;
+
     case 'contacts':
         $contacts = new contacts();
         if (is_null($param1)) {
@@ -126,6 +128,11 @@ switch ($controller) {
             $result = $contacts->action1($param1, $param2, $param3);
         }
         break;
+
+    case 'contact_manage':
+        renderTemplate('contactDetails.twig');
+        break;
+
     default:
         $errorMsg = '404 - Not Found';
         renderTemplate('errorMessage.twig', [

@@ -1,4 +1,5 @@
-// Function to handle the edit action when the button is clicked
+// After an event occurs
+// the event detecing programs end info here to execute
 
 
 // this sends URL to index.php to load new page
@@ -7,6 +8,19 @@ function handleManageItem(itemId) {
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
     window.location.href = "index.php/careplans_manage/1";
+}
+function handlePartManage(itemId) {
+    // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
+    // In this example, we will just log the item ID to the console
+    //console.log("Edit item with ID:", itemId);
+    window.location.href = "index.php/participant_manage/" + itemId;
+}
+
+function handleConManage(itemId) {
+    // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
+    // In this example, we will just log the item ID to the console
+    //console.log("Edit item with ID:", itemId);
+    window.location.href = "index.php/contact_manage/" + itemId;
 }
 
 function displayitem(id) {

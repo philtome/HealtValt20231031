@@ -1,11 +1,18 @@
 {% extends 'base.twig' %}
 
+{% block title %}
+    - Participant Details
+{% endblock %}
+{% block navtitle %}
+    - Participant Details
+{% endblock %}
+
 {% block body %}
     <!-- Specific content for template1.twig -->
     <div class="jumbotron">
         <div class="container">
             <h1><?php echo strtoupper(strtolower($cleverWelcomeMessage)); ?></h1>
-            <p>Carticipant Details </p>
+            <p>Participant Details </p>
         </div>
     </div>
     <div class="container">
@@ -16,7 +23,7 @@
                 <form action="/lib/visit_update.php" method="POST">
 
                     <div class="form-group">
-                        <label for="visit-date" class="control-label">Visit Date</label>
+                        <label for="visit-date" class="control-label">Last Name</label>
                         <input type="date" name="visitDate" id="visit-date"
                                value="<?php echo $visit['visit_date'];?>" class="form-control" />
                     </div>

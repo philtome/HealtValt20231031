@@ -1,5 +1,11 @@
 {% extends 'base.twig' %}
 
+{% block title %}
+    - List of Participants
+{% endblock %}
+{% block navtitle %}
+    - List of Participants
+{% endblock %}
 
 {% block body %}
       {#  {{ dump(careplan) }} #}
@@ -53,6 +59,9 @@
                     <input type="hidden" name="id" value="{{ participant.id }}">
                     <input type="submit" name="submit" value="Manage">
                 </form>
+            </td>
+            <td class="participant-manage">
+                <button class="manageParButton btn btn-primary" data-item-id="{{ participant.id }}">Manage</button>
             </td>
         </tr>
         {% endfor %}

@@ -1,0 +1,16 @@
+<tr id='Contactrow_{{ contact.id }}' data-sa-id="{{ contact.id }}" data-contact-id='{{ contact.id }}' class="newlyAdded">
+    {# 20191015 changed productrow to Productrow - was not working in delete product #}
+    <td id="contactlastname_{{ contact.id }}">{{ contact.last_name }}</td>
+    <td id="contactfistname_{{ contact.id }}">{{ contact.first_name }}</td>
+    <td id="contacttype_{{contact.id}}">{{ contact.contact_type }}</td>
+    <td id="contactpractice_{{ contact.id }}">{{ contact.company_practice }}</td>
+    <td id="contactemail_{{contact.id}}">{{ contact.email }}</td>
+    <td id="contactphone_{{ contact.id }}">{{ contact.phone }}</td>
+
+    <td  id="contactmanage_{{ contact.id }} class="contact-manage">
+        <button class="manageConButton btn btn-primary" data-item-id="{{ contact.id }}">Manage</button>
+    </td>
+    <td id="contactdelete_{{ contact.id }} class="contact-delete">
+        <button class="deleteConButton btn btn-primary" data-item-id="{{ contact.id }}">Delete</button>
+    </td>
+</tr>
