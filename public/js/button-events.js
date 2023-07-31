@@ -17,6 +17,16 @@ btnPage2Items.forEach(item => {
 //      loadNewPage(2);
 //  });
 
+var createButtonItems = document.querySelectorAll('.create');  //this is a class
+createButtonItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        var itemController = this.getAttribute('data-sa-object');
+        var itemAction = this.getAttribute('data-sa-action')
+        handleCreateItem(itemController,itemAction);   // this routine is in editFunctions
+    });
+});
+
 
 // manage button example (manage careplan button, take user to specific carplan when clicked on
 var manageButtonItems = document.querySelectorAll('.manageParButton');  //this is a class

@@ -19,6 +19,10 @@
             <button class="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#visit-modal2">Add Visit2</button>
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
 
+
+            <button class="btn btn-primary create" data-sa-object="contact" data-sa-action="create">Add new Contact</button>
+
+
         </div>
     </div>
     <!--<form method="post">-->
@@ -37,7 +41,7 @@
         <tbody id="contacts">
 
         {% for contact in contacts %}
-            {{ include('contacts_main_row.twig') }}
+            {{ include('contacts/contacts_main_row.twig') }}
         {% endfor %}
         </tbody>
 

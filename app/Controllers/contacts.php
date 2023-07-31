@@ -18,17 +18,23 @@ class contacts
 
     public function mainDisplay() {
         $contacts = new Contacts_Model();
-        return renderTemplate('contacts_main.twig',['contacts' => $contacts->getContactssList()]);
+        return renderTemplate('contacts\contacts_main.twig',['contacts' => $contacts->getContactssList()]);
     }
     public function getList() {
         $contacts = new Contacts_Model();
         $listItems = $contacts->getContactsList();
-        return renderTemplate('contacts_main.twig', ['param1' => $listItems]);
+        return renderTemplate('contacts\contacts_main.twig', ['param1' => $listItems]);
     }
     public function manageContact($id) {
         $contacts = new Contacts_Model();
         $contactDetails = $contacts->get_contact($id);
-        return renderTemplate('contactDetails.twig', ['contact' => $contactDetails]);
+        return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
 }
+    public function createContact()
+    {
+        $contacts = new Contacts_Model();
+        //$contactDetails = $contacts->get_contact();
+        return renderTemplate('contacts\contactDetails.twig');
+    }
 
 }

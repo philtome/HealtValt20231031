@@ -127,6 +127,9 @@ switch ($controller) {
         elseif ($param1 === 'manage') {
             $result = $contacts->manageContact($param2);
         }
+        elseif ($param1 === 'create') {
+            $result = $contacts->createContact();
+        }
         else {
             $result = $contacts->action1($param1, $param2, $param3);
         }
