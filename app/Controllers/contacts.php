@@ -16,8 +16,7 @@ class contacts
         ]);
     }
 
-    public function mainDisplay()
-    {
+    public function mainDisplay() {
         $contacts = new Contacts_Model();
         return renderTemplate('contacts_main.twig',['contacts' => $contacts->getContactssList()]);
     }
@@ -26,5 +25,10 @@ class contacts
         $listItems = $contacts->getContactsList();
         return renderTemplate('contacts_main.twig', ['param1' => $listItems]);
     }
+    public function manageContact($id) {
+        $contacts = new Contacts_Model();
+        $contactDetails = $contacts->get_contact($id);
+        return renderTemplate('contactDetails.twig', ['contact' => $contactDetails]);
+}
 
 }

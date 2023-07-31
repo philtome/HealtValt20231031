@@ -43,5 +43,16 @@ class Contacts_Model
 
         return $contactList;
     }
+    function get_contact($id) {
+
+        require __DIR__.'/../../config/config.php';
+        $pdo = get_connection();
+
+        $query = 'SELECT * FROM contacts WHERE id = :idVal';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('idVal', $id);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 
 }

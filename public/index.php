@@ -104,7 +104,7 @@ switch ($controller) {
         if (is_null($param1)) {
             $result = $participants->mainDisplay();
         }
-        elseif ($param1='display') {
+        elseif ($param1 === 'display') {
             $result = $participants->mainDisplay();
         }
         else {
@@ -121,8 +121,11 @@ switch ($controller) {
         if (is_null($param1)) {
             $result = $contacts->mainDisplay();
         }
-        elseif ($param1='display') {
+        elseif ($param1 === 'display') {
             $result = $contacts->mainDisplay();
+        }
+        elseif ($param1 === 'manage') {
+            $result = $contacts->manageContact($param2);
         }
         else {
             $result = $contacts->action1($param1, $param2, $param3);
