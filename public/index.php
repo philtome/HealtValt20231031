@@ -38,6 +38,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $param2 = $uriParts[3];
         $param3 = $uriParts[4];
     }
+    // I need to finish this else for the posting of data from contacts screen, my forst post of project
+} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //check if this is change on a page, if not then else does full url
+        if (isset($_GET['controller'])) {
+            $controller = $_GET['controller'];
+            if (isset($_GET['function'])) {
+                $function = $_GET['function'];
+            }
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+            }
+            $param1 = $function;
+            $param2 = $id;
+            $param3 = '3';
+        }
 }
 
 switch ($controller) {

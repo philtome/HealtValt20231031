@@ -29,6 +29,22 @@ function handleConManage(itemId) {
     window.location.href = "index.php/contacts/manage/" + itemId;
 }
 
+function handleSaveContact() {
+    const contactForm = document.getElementById('contact_details_form');
+    const contactFormData = new FormData(contactForm);
+    fetch('index.php/controller/contacts/create', {
+        method: 'POST',
+        body:contactFormData
+    })
+        .then(response => {
+            console.log('Data Saved successfully');
+        })
+        .catch(error => {
+            // Handle any errors that occurred during the request
+            console.error('Error saving data:', error);
+        });
+}
+
 function displayitem(id) {
     // Send the ID to your server using AJAX (e.g., XMLHttpRequest or Fetch API)
     // Example using Fetch API:

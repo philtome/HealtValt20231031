@@ -38,6 +38,25 @@ manageButtonItems.forEach(item => {
     });
 });
 
+
+// SAVE Contact button , start to gather up data and save **20230801**
+var btnSaveContact = document.getElementById("btn_contacts_save");  // this is an id
+if (btnSaveContact) {
+    btnSaveContact.addEventListener('click', function() {
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
+        handleSaveContact();   // add itemID when save is edit (handleSaveContact(itemID)
+                      // this routine is in editFunctions
+    });
+}
+
+if (btnPage1) {
+    btnPage1.addEventListener("click", function() {
+        loadNewPage(1);
+    });
+}
+
+
  // manage button example (manage careplan button, take user to specific carplan when clicked on
 var manageButtonItems = document.querySelectorAll('.manageCpButton');  //this is a class
 manageButtonItems.forEach(item => {
