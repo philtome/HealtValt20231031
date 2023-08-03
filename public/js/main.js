@@ -6,17 +6,18 @@ ready(() => {
     document.querySelector(".header").style.height = window.innerHeight/4 + "px";
 })
 
+//This will return to  the contact/plan/participant (main display) that you came from
 function returnUrlUpOne(currentUrl)
 {
-    const lastSlashIndex = currentUrl.lastIndexOf("/");
-    const newURL = currentUrl.substring(0, lastSlashIndex);
+    var urlSegments = currentUrl.split("/");
+    var baseURL = urlSegments.slice(0, 4).join("/");
+    window.location.href = baseURL;
 
-    window.location.href = newURL;
 }
 
 // Function to get the base URL
-function getBaseURL(url:String):String {
-    var urlSegments:Array = url.split("/");
-    var baseURL:String = urlSegments.slice(0, 4).join("/");
-    return baseURL;
-}
+// function getBaseURL(url:String):String {
+//     var urlSegments:Array = url.split("/");
+//     var baseURL:String = urlSegments.slice(0, 4).join("/");
+//     return baseURL;
+// }
