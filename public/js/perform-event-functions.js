@@ -2,6 +2,7 @@
 // the event detecing programs end info here to execute
 
 
+
 // this sends URL to index.php to load new page
 function handleCreateItem(itemController,itemAction) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
@@ -38,6 +39,22 @@ function handleSaveContact() {
     })
         .then(response => {
             console.log('Data Saved successfully');
+        })
+        .then(responseData => {
+            // Handle the AJAX response here
+            // The responseData should be the rendered HTML or JSON data from the server
+            // Update your page content or perform other actions based on the responseData
+            // temp remove this:document.getElementById('result-container').innerHTML = responseData;
+            //console.log('Data Saved successfully');
+            returnUrlUpOne(window.location.href);
+            //const currentUrl = window.location.href;
+                    //const newURL = currentUrl.replace("/create","");
+                    // - this will go "UP" one, if on index.php/contacts/create
+                    //            this will load index.php/contacts
+            // const lastSlashIndex = currentUrl.lastIndexOf("/");
+            // const newURL = currentUrl.substring(0, lastSlashIndex);
+            //
+            // window.location.href = newURL;
         })
         .catch(error => {
             // Handle any errors that occurred during the request

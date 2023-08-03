@@ -42,11 +42,21 @@ manageButtonItems.forEach(item => {
 // SAVE Contact button , start to gather up data and save **20230801**
 var btnSaveContact = document.getElementById("btn_contacts_save");  // this is an id
 if (btnSaveContact) {
-    btnSaveContact.addEventListener('click', function() {
+    btnSaveContact.addEventListener('click', function(event){
+        event.preventDefault();
         // Get the item ID from the "data-item-id" attribute of the clicked list item
         // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
         handleSaveContact();   // add itemID when save is edit (handleSaveContact(itemID)
                       // this routine is in editFunctions
+    });
+}
+
+// CANCEL Contact button , start to gather up data and save **20230801**
+var btnCancelContact = document.getElementById("btn_contacts_cancel");  // this is an id
+if (btnCancelContact) {
+    btnCancelContact.addEventListener('click', function(event){
+        event.preventDefault();
+        returnUrlUpOne(window.location.href);
     });
 }
 
