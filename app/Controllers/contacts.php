@@ -28,6 +28,7 @@ class contacts
     public function manageContact($id) {
         $contacts = new Contacts_Model();
         $contactDetails = $contacts->get_contact($id);
+        // want to do the save here
         return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
 }
     public function createContact()

@@ -30,10 +30,34 @@ function handleConManage(itemId) {
     window.location.href = "index.php/contacts/manage/" + itemId;
 }
 
-function handleSaveContact() {
+function handleSaveCareplan() {
+    const careplanForm = document.getElementById('careplan_details_form');
+    const careplanFormData = new FormData(careplanForm);
+    //fetch('index.php/controller/careplans/create'
+    fetch('index.php/controller/careplans/create', {
+        method: 'POST',
+        body:careplanFormData
+    })
+        .then(response => {
+            console.log('Data Saved successfully');
+        })
+        .then(responseData => {
+            returnUrlUpOne(window.location.href);
+        })
+        .catch(error => {
+            console.error('Error saving data:', error);
+        });
+}
+
+
+function handleSaveContact(id =null) {
     const contactForm = document.getElementById('contact_details_form');
     const contactFormData = new FormData(contactForm);
-    fetch('index.php/controller/contacts/create', {
+    var fetchUrl = 'create';
+    if (id) {
+        fetchUrl=id;
+    }
+    fetch(fetchUrl, {
         method: 'POST',
         body:contactFormData
     })

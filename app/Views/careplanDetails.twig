@@ -15,25 +15,25 @@
             <div class="col-xs-6">
 
 
-                <form action="/lib/visit_update.php" method="GET">
+                <form id="careplan_details_form">
 
                     <div class="form-group">
                         <label for="careplan-date" class="control-label">Careplan Date</label>
                         <input type="date" name="careplanDate" id="careplan-date"
-                               value="{{ careplane.careplan_date }}" class="form-control" />
+                               value="{{ careplane.careplan_date }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="careplan-present-health" class="control-label">Present Health</label>
                         <input type="text" name="careplanPHealth" id="careplan-present-health"
-                               value="{{ careplan.present_health }}" class="form-control" />
+                               value="{{ careplan.present_health }}" class="form-control">
                     </div>
 
 
                     <div class="form-group">
                         <label for="careplan-assistive-devices" class="control-label">Assistive Devices</label>
                         <input type="text" name="careplanAssDevices" id="careplan-assistive-devices"
-                               value="{{ careplan.assistive_devices }}" class="form-control" />
+                               value="{{ careplan.assistive_devices }}" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -41,10 +41,10 @@
                         <textarea name="careplanNotes" id="careplan-notes"
                                   class="form-control">{{  careplan.notes }}</textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-heart"></span>
-                        Save
-                    </button>
+
+                    <button id="btn_careplan_save" type="submit" class="btn btn-primary">Save</button>
+
+
                 </form>
             </div>
         </div>

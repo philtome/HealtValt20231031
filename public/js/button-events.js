@@ -38,15 +38,30 @@ manageButtonItems.forEach(item => {
     });
 });
 
+// SAVE CarePlan button , start to gather up data and save **20230805**
+var btnSaveCareplan = document.getElementById("btn_careplan_save");  // this is an id
+if (btnSaveCareplan) {
+    btnSaveCareplan.addEventListener('click', function(event){
+        event.preventDefault();
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
+        handleSaveCareplan();   // add itemID when save is edit (handleSaveContact(itemID)
+        // this routine is in editFunctions
+    });
+}
 
 // SAVE Contact button , start to gather up data and save **20230801**
 var btnSaveContact = document.getElementById("btn_contacts_save");  // this is an id
 if (btnSaveContact) {
     btnSaveContact.addEventListener('click', function(event){
         event.preventDefault();
+
+        const itemElement = btnSaveContact.closest('.saveButton');
+        const itemId = itemElement.dataset.itemId;
+
         // Get the item ID from the "data-item-id" attribute of the clicked list item
         // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
-        handleSaveContact();   // add itemID when save is edit (handleSaveContact(itemID)
+        handleSaveContact(itemId);   // add itemID when save is edit (handleSaveContact(itemID)
                       // this routine is in editFunctions
     });
 }
