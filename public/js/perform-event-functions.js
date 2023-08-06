@@ -55,7 +55,10 @@ function handleSaveContact(id =null) {
     const contactFormData = new FormData(contactForm);
     var fetchUrl = 'create';
     if (id) {
-        fetchUrl=id;
+        fetchUrl='update/'.concat(id);
+    }
+    else {
+        fetchUrl='manage/update/';
     }
     fetch(fetchUrl, {
         method: 'POST',

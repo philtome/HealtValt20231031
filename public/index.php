@@ -132,6 +132,8 @@ switch ($controller) {
         $contacts = new contacts();
         if (is_null($param1)) {
             $result = $contacts->mainDisplay();
+        } elseif ($param2 === 'update') {
+            $result = $contacts->saveContact($param3);
         } elseif ($param1 === 'display') {
             $result = $contacts->mainDisplay();
         } elseif ($param1 === 'manage') {

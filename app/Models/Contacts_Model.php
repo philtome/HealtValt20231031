@@ -54,5 +54,33 @@ class Contacts_Model
         $stmt->execute();
         return $stmt->fetch();
     }
+        function update_contact ($contactToSave,$id):string {
+
+            require __DIR__.'/../../config/config.php';
+            $pdo = get_connection();
+
+            $contactFirstN = $contactToSave['first_name'];
+            $contactLastN = $contactToSave['last_name'];
+            $contactType = $contactToSave['contact_type'];
+            $contactCompany = $contactToSave['company_practice'];
+            $contactEmail = $contactToSave['email'];
+            $contactPhone = $contactToSave['phone'];
+            if ($id) {
+                $query = 'UPDATE contacts SET last_name = ?, first_name = ?, contact_type = ?, company_practice =?, email = ?, phone = ? WHERE id = ?';
+                $stmt = $pdo->prepare($query);
+                $stmt->execute([$contactLastN, $contactFirstN, $contactType, $contactCompany, $contactEmail, $contactPhone, $id]);
+            }
+            else {
+                $query = 'INSERT INTO contacts (last_name, first_name, contact_type, company_practice, email, phone) VALUES (?,?,?,?,?,?)';
+                $stmt = $pdo->prepare($query);
+                $stmt->execute([$contactLastN, $contactFirstN, $contactType, $contactCompany, $contactEmail, $contactPhone]);
+            }
+            //$query = 'INSERT INTO visits (name, breed, weight, bio, image) VALUES ("namer", "breader", 99, "", "", "");'
+            $stmt = $pdo->prepare($query);
+            //$stmt->execute([$contactLastN, $contactFirstN, $contactType, $contactCompany, $contactEmail, $contactPhone, $id]);
+            //$stmt = $pdo->prepare($query);
+            //$stmt->execute();
+            return "Contact updated";
+        }
 
 }
