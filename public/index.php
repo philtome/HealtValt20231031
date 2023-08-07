@@ -134,6 +134,8 @@ switch ($controller) {
             $result = $contacts->mainDisplay();
         } elseif ($param2 === 'update') {
             $result = $contacts->saveContact($param3);
+        } elseif ($param1 === 'delete') {
+            $result = $contacts->deleteContact($param2);
         } elseif ($param1 === 'display') {
             $result = $contacts->mainDisplay();
         } elseif ($param1 === 'manage') {

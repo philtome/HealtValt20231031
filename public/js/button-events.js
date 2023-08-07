@@ -91,7 +91,7 @@ manageButtonItems.forEach(item => {
         handleManageItem(itemId);   // this routine is in editFunctions
     });
 });
-
+// MANAGE/DISPLAY contact button
 var manageButtonItems = document.querySelectorAll('.manageConButton');  //this is a class
 manageButtonItems.forEach(item => {
     item.addEventListener('click', function() {
@@ -101,6 +101,15 @@ manageButtonItems.forEach(item => {
     });
 });
 
+// DELETE contact button
+var manageButtonItems = document.querySelectorAll('.deleteConButton');  //this is a class
+manageButtonItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        const itemId = this.getAttribute('data-item-id');
+        handleConDelete(itemId);   // this routine is in editFunctions
+    });
+});
 
 // Get the button element by its ID
 const manageButtons = document.querySelectorAll('.manageButton');

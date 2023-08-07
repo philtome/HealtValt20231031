@@ -8,11 +8,6 @@ class Contacts_Model
 {
     private $pdo;
 
-//    public function __construct(PDO $pdo)
-//    {
-//        $this->pdo = $pdo;
-//    }
-
     public function getContactsList2()
     {
         // Replace this with your actual database query to fetch the list of books
@@ -25,17 +20,14 @@ class Contacts_Model
     }
     public function getContactssList($limit = null)
     {
-
-        require __DIR__.'/../../config/config.php';
+        require __DIR__ . '/../../config/config.php';
         $pdo = get_connection();
         $query = 'SELECT * FROM contacts';
-        if ($limit)
-        {
-            $query = $query.' LIMIT :resultLimit';
+        if ($limit) {
+            $query = $query . ' LIMIT :resultLimit';
         }
         $stmt = $pdo->prepare($query);
-        if ($limit)
-        {
+        if ($limit) {
             $stmt->bindParam('resultLimit', $limit, PDO::PARAM_INT); //added this line new
         }
         $stmt->execute();  //added this line new
@@ -43,44 +35,47 @@ class Contacts_Model
 
         return $contactList;
     }
-    function get_contact($id) {
 
-        require __DIR__.'/../../config/config.php';
+    function get_contact($id)
+    {
+        require __DIR__ . '/../../config/config.php';
         $pdo = get_connection();
-
         $query = 'SELECT * FROM contacts WHERE id = :idVal';
         $stmt = $pdo->prepare($query);
         $stmt->bindParam('idVal', $id);
         $stmt->execute();
         return $stmt->fetch();
     }
-        function update_contact ($contactToSave,$id):string {
+    function update_contact($contactToSave, $id): string
+    {
+        require __DIR__ . '/../../config/config.php';
+        $pdo = get_connection();
 
-            require __DIR__.'/../../config/config.php';
-            $pdo = get_connection();
-
-            $contactFirstN = $contactToSave['first_name'];
-            $contactLastN = $contactToSave['last_name'];
-            $contactType = $contactToSave['contact_type'];
-            $contactCompany = $contactToSave['company_practice'];
-            $contactEmail = $contactToSave['email'];
-            $contactPhone = $contactToSave['phone'];
-            if ($id) {
-                $query = 'UPDATE contacts SET last_name = ?, first_name = ?, contact_type = ?, company_practice =?, email = ?, phone = ? WHERE id = ?';
-                $stmt = $pdo->prepare($query);
-                $stmt->execute([$contactLastN, $contactFirstN, $contactType, $contactCompany, $contactEmail, $contactPhone, $id]);
-            }
-            else {
-                $query = 'INSERT INTO contacts (last_name, first_name, contact_type, company_practice, email, phone) VALUES (?,?,?,?,?,?)';
-                $stmt = $pdo->prepare($query);
-                $stmt->execute([$contactLastN, $contactFirstN, $contactType, $contactCompany, $contactEmail, $contactPhone]);
-            }
-            //$query = 'INSERT INTO visits (name, breed, weight, bio, image) VALUES ("namer", "breader", 99, "", "", "");'
+        $contactFirstN = $contactToSave['first_name'];
+        $contactLastN = $contactToSave['last_name'];
+        $contactType = $contactToSave['contact_type'];
+        $contactCompany = $contactToSave['company_practice'];
+        $contactEmail = $contactToSave['email'];
+        $contactPhone = $contactToSave['phone'];
+        if ($id) {
+            $query = 'UPDATE contacts SET last_name = ?, first_name = ?, contact_type = ?, company_practice =?, email = ?, phone = ? WHERE id = ?';
             $stmt = $pdo->prepare($query);
-            //$stmt->execute([$contactLastN, $contactFirstN, $contactType, $contactCompany, $contactEmail, $contactPhone, $id]);
-            //$stmt = $pdo->prepare($query);
-            //$stmt->execute();
-            return "Contact updated";
+            $stmt->execute([$contactLastN, $contactFirstN, $contactType, $contactCompany, $contactEmail, $contactPhone, $id]);
+        } else {
+            $query = 'INSERT INTO contacts (last_name, first_name, contact_type, company_practice, email, phone) VALUES (?,?,?,?,?,?)';
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$contactLastN, $contactFirstN, $contactType, $contactCompany, $contactEmail, $contactPhone]);
         }
-
+        //$stmt = $pdo->prepare($query);
+        return "Contact updated";
+    }
+    function delete_contact($id): string {
+        require __DIR__ . '/../../config/config.php';
+        $pdo = get_connection();
+        $query = 'DELETE FROM contacts WHERE id = ?';
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$id]);
+        //$stmt = $pdo->prepare($query);
+        return "Contact Deleted";
+    }
 }

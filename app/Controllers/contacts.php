@@ -51,6 +51,14 @@ class contacts
         return renderTemplate('contacts\contacts_main.twig', ['contacts' => $contacts->getContactssList()]);
         //return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
     }
+    public function deleteContact($id)
+    {
+        $contacts = new Contacts_Model();
+        $sucessful = $contacts->delete_contact($id);
+        return renderTemplate('contacts\contacts_main.twig', ['contacts' => $contacts->getContactssList()]);
+        //return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
+    }
+
 
     public function createContact()
     {
