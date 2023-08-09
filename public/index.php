@@ -142,6 +142,8 @@ switch ($controller) {
             $result = $contacts->manageContact($param2);
         } elseif ($param1 === 'create') {
             $result = $contacts->createContact();
+        } elseif ($param1 === 'copy') {
+            $result = $contacts->copyContact($param2);
         } else {
             $result = $contacts->action1($param1, $param2, $param3);
         }

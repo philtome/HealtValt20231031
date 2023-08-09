@@ -30,6 +30,23 @@ function handleConManage(itemId) {
     window.location.href = "index.php/contacts/manage/" + itemId;
 }
 
+function handleConCopy(id) {
+    var fetchUrl = 'contacts/copy/'.concat(id);
+    fetch(fetchUrl, {
+        method: 'POST',
+    })
+        .then(response => {
+            console.log('Data Copy set kup successfully');
+        })
+        .then(responseData => {
+            returnUrlUpOne(window.location.href);
+        })
+        .catch(error => {
+            // Handle any errors that occurred during the request
+            console.error('Error setting up copy data:', error);
+        });
+}
+
 function handleConDelete(id) {
     var fetchUrl = 'contacts/delete/'.concat(id);
     fetch(fetchUrl, {
@@ -58,11 +75,6 @@ function handleConDelete(id) {
             // Handle any errors that occurred during the request
             console.error('Error deleting data:', error);
         });
-
-
-
-
-
 }
 
 function handleSaveCareplan() {

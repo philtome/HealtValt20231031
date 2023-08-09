@@ -101,15 +101,37 @@ manageButtonItems.forEach(item => {
     });
 });
 
-// DELETE contact button
-var manageButtonItems = document.querySelectorAll('.deleteConButton');  //this is a class
-manageButtonItems.forEach(item => {
+// COPY contact button
+var copyButtonItems = document.querySelectorAll('.copyConButton');  //this is a class
+copyButtonItems.forEach(item => {
     item.addEventListener('click', function() {
         // Get the item ID from the "data-item-id" attribute of the clicked list item
         const itemId = this.getAttribute('data-item-id');
-        handleConDelete(itemId);   // this routine is in editFunctions
+        handleConCopy(itemId);   // this routine is in editFunctions
     });
 });
+
+// DELETE contact button
+let itemIdToDelete = null;
+var deleteButtonItems = document.querySelectorAll('.deleteConButton');  //this is a class
+deleteButtonItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        itemIdToDelete = this.getAttribute('data-item-id');
+        //handleConDelete(itemId);   // this routine is in editFunctions
+    });
+});
+
+// Modal DELETE contact button
+var modalDeleteConButton = document.getElementById('modalDeleteButton');  // this is id on model del
+modalDeleteButton.addEventListener('click', function() {
+    if (itemIdToDelete !== null) {
+        console.log("deleteing item with id:", itemIdToDelete);
+        handleConDelete(itemIdToDelete);
+        itemIdToDelete = null;
+    }
+})
+
 
 // Get the button element by its ID
 const manageButtons = document.querySelectorAll('.manageButton');

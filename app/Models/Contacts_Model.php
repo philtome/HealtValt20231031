@@ -38,7 +38,7 @@ class Contacts_Model
 
     function get_contact($id)
     {
-        require __DIR__ . '/../../config/config.php';
+        require_once __DIR__ . '/../../config/config.php';
         $pdo = get_connection();
         $query = 'SELECT * FROM contacts WHERE id = :idVal';
         $stmt = $pdo->prepare($query);
@@ -46,9 +46,9 @@ class Contacts_Model
         $stmt->execute();
         return $stmt->fetch();
     }
-    function update_contact($contactToSave, $id): string
+    function update_contact($contactToSave, $id = null): string
     {
-        require __DIR__ . '/../../config/config.php';
+        require_once __DIR__ . '/../../config/config.php';
         $pdo = get_connection();
 
         $contactFirstN = $contactToSave['first_name'];

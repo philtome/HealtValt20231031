@@ -59,12 +59,21 @@ class contacts
         //return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
     }
 
-
     public function createContact()
     {
         $contacts = new Contacts_Model();
         //$contactDetails = $contacts->get_contact();
         return renderTemplate('contacts\contactDetails.twig');
+    }
+
+    public function copyContact($id)
+    {
+        $contacts = new Contacts_Model();
+        $contactDetails = $contacts->get_contact($id);
+        $contactsSave = new Contacts_Model();
+        $temppor = $contactsSave->update_contact($contactDetails);
+        // want to do the save here
+        return renderTemplate('contacts\contacts_main.twig', ['contacts' => $contacts->getContactssList()]);
     }
 
     public function movePostDataToFields($contactDetails)
