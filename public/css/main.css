@@ -160,3 +160,8 @@ body {
         margin: 0;
     }
 }
+
+/* This CSS can be placed in a <style> block in your <head> or an external stylesheet */
+#contactTable {
+    /* Additional styles for the table */
+}
