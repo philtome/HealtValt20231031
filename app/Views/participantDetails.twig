@@ -9,63 +9,175 @@
 
 {% block body %}
     <!-- Specific content for template1.twig -->
-    <div class="jumbotron">
-        <div class="container">
-            <h1><?php echo strtoupper(strtolower($cleverWelcomeMessage)); ?></h1>
-            <p>Participant Details </p>
-        </div>
-    </div>
+{#    <div class="jumbotron">#}
+{#        <div class="container">#}
+{#            <h1><?php echo strtoupper(strtolower($cleverWelcomeMessage)); ?></h1>#}
+{#            <p>Participant Details </p>#}
+{#        </div>#}
+{#    </div>#}
+
     <div class="container">
-        <div class="row">
-            <div class="col-xs-6">
-
-
-                <form action="/lib/visit_update.php" method="POST">
-
-                    <div class="form-group">
-                        <label for="visit-date" class="control-label">Last Name</label>
-                        <input type="date" name="visitDate" id="visit-date"
-                               value="<?php echo $visit['visit_date'];?>" class="form-control" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="visit-time" class="control-label">Visit Time</label>
-                        <input type="time" name="visitTime" id="visit-time"
-                               value="<?php echo $visit['visit_time'];?>" class="form-control" />
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="visit-type" class="control-label">Visit Type</label>
-                        <input type="text" name="visitType" id="visit-type"
-                               value="<?php echo $visit['type'];?>" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label for="visit-with" class="control-label">Visit With</label>
-                        <input type="text" name="visitWith" id="visit-with"
-                               value="<?php echo $visit['visit_with'];?>" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label for="visit-id" class="control-label">Visit Id</label>
-                        <input type="hidden" name="visitId" id="visit-id"
-                               value="<?php echo $id;?>"  class="form-control" />
-                    </div>
-                    <!--                <div class="form-group">-->
-                    <!--                    <label for="pet-weight" class="control-label">Pet Weight</label>-->
-                    <!--                    <input type="number" name="weight" id="pet-weight" class="form-control" />-->
-                    <!--                </div>-->
-                    <div class="form-group">
-                        <label for="visit-notes" class="control-label">Notes</label>
-                        <textarea name="visitNotes" id="visit-notes"
-                                  class="form-control"><?php echo $visit['notes']; ?></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-heart"></span>
-                        Save
-                    </button>
-                </form>
+        <form>
+            <div class="row mb-3">
+                <!-- First Field -->
+                <div class="col-md-6">
+                    <label for="field1" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="field1">
+                </div>
+                <!-- Second Field -->
+                <div class="col-md-6">
+                    <label for="field2" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="field2">
+                </div>
             </div>
-        </div>
+
+            <div class="row"> {# removed mb-3 to make Address2 be close to Address #}
+                <!-- Column for Field 3 -->
+                <div class="col-md-6">
+                    <label for="field3" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="field3">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <!-- Column for Field 4 -->
+                <div class="col-md-6">
+                    {# <label for="field4" class="form-label">Field 4</label> #}
+                    <input type="text" class="form-control" id="field4">
+                </div>
+            </div>
+
+            <!-- Multiple Rows of 3 Columns -->
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="field9" class="form-label">City</label>
+                    <input type="text" class="form-control" id="field9">
+                </div>
+                <div class="col-md-4">
+                    <label for="field10" class="form-label">State</label>
+                    <input type="text" class="form-control" id="field10">
+                </div>
+                <div class="col-md-4">
+                    <label for="field11" class="form-label">Zip</label>
+                    <input type="text" class="form-control" id="field11">
+                </div>
+                <!-- Repeat for Fields 10-11 -->
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="field9" class="form-label">Responsible Party</label>
+                    <input type="text" class="form-control" id="field9">
+                </div>
+                <div class="col-md-4">
+                    <label for="field10" class="form-label">Cell Phone</label>
+                    <input type="text" class="form-control" id="field10">
+                </div><!-- Repeat for Fields 12-14 -->
+            </div>
+            <div class="row">
+                <div class="col-md-4 invisible">
+                    <label for="field9" class="form-label">Responsible Party</label>
+                    <input type="text" class="form-control" id="field9">
+                </div>
+                <div class="col-md-4">
+                    <label for="field10" class="form-label">Home Phone</label>
+                    <input type="text" class="form-control" id="field10">
+                </div><!-- Repeat for Fields 12-14 -->
+            </div>
+            <div class="row mb-3">
+                <!-- Column for Field 3 -->
+                <div class="col-md-6">
+                    <label for="field3" class="form-label">Diagnosis</label>
+                    <input type="text" class="form-control" id="field3">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <!-- Column for Field 4 -->
+                <div class="col-md-6">
+                    {# <label for="field4" class="form-label">Field 4</label> #}
+                    <input type="text" class="form-control" id="field4">
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Column for Field 3 -->
+                <div class="col-md-6">
+                    <label for="field3" class="form-label">Emergency Contact</label>
+                    <input type="text" class="form-control" id="field3">
+                </div>
+
+                <!-- Column for Field 4 -->
+                <div class="col-md-6">
+                    <label for="field4" class="form-label">Phone #</label>
+                    <input type="text" class="form-control" id="field4">
+                </div>
+            </div>
+
+            <!-- Repeat for additional rows as needed -->
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
+
+    <!-- Include Bootstrap JS (Optional) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script> -->
+
+    <!-- Include your custom JavaScript here if needed -->
+
+
+
+    {#    <div class="container">#}
+{#        <div class="row">#}
+{#            <div class="col-xs-6">#}
+
+
+{#                <form action="/lib/visit_update.php" method="POST">#}
+
+{#                    <div class="form-group">#}
+{#                        <label for="visit-date" class="control-label">Last Name</label>#}
+{#                        <input type="date" name="visitDate" id="visit-date"#}
+{#                               value="<?php echo $visit['visit_date'];?>" class="form-control" />#}
+{#                    </div>#}
+
+{#                    <div class="form-group">#}
+{#                        <label for="visit-time" class="control-label">Visit Time</label>#}
+{#                        <input type="time" name="visitTime" id="visit-time"#}
+{#                               value="<?php echo $visit['visit_time'];?>" class="form-control" />#}
+{#                    </div>#}
+
+
+{#                    <div class="form-group">#}
+{#                        <label for="visit-type" class="control-label">Visit Type</label>#}
+{#                        <input type="text" name="visitType" id="visit-type"#}
+{#                               value="<?php echo $visit['type'];?>" class="form-control" />#}
+{#                    </div>#}
+{#                    <div class="form-group">#}
+{#                        <label for="visit-with" class="control-label">Visit With</label>#}
+{#                        <input type="text" name="visitWith" id="visit-with"#}
+{#                               value="<?php echo $visit['visit_with'];?>" class="form-control" />#}
+{#                    </div>#}
+{#                    <div class="form-group">#}
+{#                        <label for="visit-id" class="control-label">Visit Id</label>#}
+{#                        <input type="hidden" name="visitId" id="visit-id"#}
+{#                               value="<?php echo $id;?>"  class="form-control" />#}
+{#                    </div>#}
+{#                    <!--                <div class="form-group">-->#}
+{#                    <!--                    <label for="pet-weight" class="control-label">Pet Weight</label>-->#}
+{#                    <!--                    <input type="number" name="weight" id="pet-weight" class="form-control" />-->#}
+{#                    <!--                </div>-->#}
+{#                    <div class="form-group">#}
+{#                        <label for="visit-notes" class="control-label">Notes</label>#}
+{#                        <textarea name="visitNotes" id="visit-notes"#}
+{#                                  class="form-control"><?php echo $visit['notes']; ?></textarea>#}
+{#                    </div>#}
+{#                    <button type="submit" class="btn btn-primary">#}
+{#                        <span class="glyphicon glyphicon-heart"></span>#}
+{#                        Save#}
+{#                    </button>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
 
 {% endblock %}
