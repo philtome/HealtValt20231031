@@ -119,6 +119,8 @@ switch ($controller) {
             $result = $participants->mainDisplay();
         } elseif ($param1 === 'display') {
             $result = $participants->mainDisplay();
+        } elseif ($param1 === 'manage') {
+            $result = $participants->manageParticipant($param2);
         } else {
             $result = $participants->action1($param1, $param2, $param3);
         }

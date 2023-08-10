@@ -16,15 +16,21 @@ class participants
         ]);
     }
 
+    public function manageParticipant($id)
+    {
+        $participants = new Participants_Model();
+        $participantDetails = $participants->get_participant($id);
+        return renderTemplate('participants\participantDetails.twig', ['participant' => $participantDetails]);
+    }
     public function mainDisplay()
     {
         $participants = new Participants_Model();
-        return renderTemplate('participants_main.twig',['participants' => $participants->getParticipantsList()]);
+        return renderTemplate('participants\participants_main.twig',['participants' => $participants->getParticipantsList()]);
     }
     public function getList() {
         $participants = new Participants_Model();
         $listItems = $participants->getParticipantsList();
-        return renderTemplate('participants_main.twig', ['param1' => $listItems]);
+        return renderTemplate('participants\participants_main.twig', ['param1' => $listItems]);
     }
 
 }

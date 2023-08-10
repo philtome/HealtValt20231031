@@ -44,4 +44,14 @@ class Participants_Model
         return $contactList;
     }
 
+    function get_participant($id)
+    {
+        require_once __DIR__ . '/../../config/config.php';
+        $pdo = get_connection();
+        $query = 'SELECT * FROM participants WHERE id = :idVal';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('idVal', $id);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 }
