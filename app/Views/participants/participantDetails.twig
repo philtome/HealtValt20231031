@@ -21,56 +21,65 @@
             <div class="row mb-3">
                 <!-- First Field -->
                 <div class="col-md-6">
-                    <label for="field1" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="field1">
+                    <label for="participantFirstName" class="form-label">First Name</label>
+                    <input type="text" name="participantFirstName" id="participantFirstName"
+                           value="{{ participant.first_name }}" class="form-control">
                 </div>
                 <!-- Second Field -->
                 <div class="col-md-6">
-                    <label for="field2" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="field2">
+                    <label for="participantLastName" class="form-label">Last Name</label>
+                    <input type="text" name="participantLastName" id="participantLastName"
+                    value="{{ participant.last_name }}" class="form-control">
                 </div>
             </div>
 
             <div class="row"> {# removed mb-3 to make Address2 be close to Address #}
                 <!-- Column for Field 3 -->
                 <div class="col-md-6">
-                    <label for="field3" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="field3">
+                    <label for="participantAddress" class="form-label">Address</label>
+                    <input type="text" name="participantAddress" id="participantAddress"
+                           value="{{ participant.street_address_1 }}" class="form-control">
                 </div>
             </div>
 
             <div class="row mb-3">
                 <!-- Column for Field 4 -->
                 <div class="col-md-6">
-                    {# <label for="field4" class="form-label">Field 4</label> #}
-                    <input type="text" class="form-control" id="field4">
+                    {#  <label for="participantAddress2" class="form-label">Address</label> #}
+                    <input type="text" name="participantAddress2" id="participantAddress2"
+                           value="{{ participant.street_address_2 }}" class="form-control">
                 </div>
             </div>
 
             <!-- Multiple Rows of 3 Columns -->
             <div class="row">
                 <div class="col-md-4">
-                    <label for="field9" class="form-label">City</label>
-                    <input type="text" class="form-control" id="field9">
+                    <label for="participantCity" class="form-label">CIty</label>
+                    <input type="text" name="participantCity" id="participantCity"
+                           value="{{ participant.city }}" class="form-control">
                 </div>
                 <div class="col-md-4">
-                    <label for="field10" class="form-label">State</label>
-                    <input type="text" class="form-control" id="field10">
+                    <label for="participantState" class="form-label">State</label>
+                    <input type="text" name="participantState" id="participantState"
+                           value="{{ participant.state }}" class="form-control">
                 </div>
                 <div class="col-md-4">
-                    <label for="field11" class="form-label">Zip</label>
-                    <input type="text" class="form-control" id="field11">
+                    <label for="participantZip" class="form-label">Zip</label>
+                    <input type="text" name="participantZip" id="participantZip"
+                           value="{{ participant.zip }}" class="form-control">
                 </div>
                 <!-- Repeat for Fields 10-11 -->
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="field9" class="form-label">Responsible Party</label>
-                    <input type="text" class="form-control" id="field9">
+                    <label for="participantRespnParty" class="form-label">Responsible Party</label>
+                    <input type="text" name="participantResponParty" id="participantRespondParty"
+                           value="{{ participant.responsible_party }}" class="form-control">
                 </div>
                 <div class="col-md-4">
-                    <label for="field10" class="form-label">Cell Phone</label>
-                    <input type="text" class="form-control" id="field10">
+                    <label for="participantPhone" class="form-label">Cell Phone</label>
+                    <input type="text" name="participantPhone" id="participantPhone"
+                           value="{{ participant.phone }}" class="form-control">
                 </div><!-- Repeat for Fields 12-14 -->
             </div>
             <div class="row">
