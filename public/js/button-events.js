@@ -39,7 +39,7 @@ manageButtonItems.forEach(item => {
 });
 
 // SAVE CarePlan button , start to gather up data and save **20230805**
-var btnSaveCareplan = document.getElementById("btn_careplan_save");  // this is an id
+const btnSaveCareplan = document.getElementById("btn_careplan_save");  // this is an id
 if (btnSaveCareplan) {
     btnSaveCareplan.addEventListener('click', function(event){
         event.preventDefault();
@@ -50,8 +50,24 @@ if (btnSaveCareplan) {
     });
 }
 
+// SAVE Participant button , start to gather up data and save
+const btnSavePart = document.querySelector("#btn_participant_save");  // this is an id
+if (btnSavePart) {
+    btnSavePart.addEventListener('click', function(event){
+        event.preventDefault();
+
+        const itemElement = btnSavePart.closest('.saveButton');
+        const itemId = itemElement.dataset.itemId;
+
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
+        handleSaveParticipant(itemId);   // add itemID when save is edit (handleSaveContact(itemID)
+        // this routine is in editFunctions
+    });
+}
+
 // SAVE Contact button , start to gather up data and save **20230801**
-var btnSaveContact = document.getElementById("btn_contacts_save");  // this is an id
+var btnSaveContact = document.querySelector("#btn_contacts_save");  // this is an id
 if (btnSaveContact) {
     btnSaveContact.addEventListener('click', function(event){
         event.preventDefault();

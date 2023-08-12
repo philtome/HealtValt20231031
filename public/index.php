@@ -117,6 +117,8 @@ switch ($controller) {
         $participants = new participants();
         if (is_null($param1)) {
             $result = $participants->mainDisplay();
+        } elseif ($param2 === 'update') {
+            $result = $participants->saveParticipant($param3);
         } elseif ($param1 === 'display') {
             $result = $participants->mainDisplay();
         } elseif ($param1 === 'manage') {
