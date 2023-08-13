@@ -29,12 +29,12 @@ class participants
         $dataToSave = $this->movePostDataToFields($_POST);
         $temppor = $participants->update_participant($dataToSave, $id);
         // want to do the save here
-        if ($id == null) {
-            $successful = $participants->update_participant($dataToSave);
-        }
-        else {
-            $successful = $participants->update_participant($dataToSave, $id);
-        }
+//        if ($id == null) {
+//            $successful = $participants->update_participant($dataToSave);
+//        }
+//        else {
+//            $successful = $participants->update_participant($dataToSave, $id);
+//        }
         return renderTemplate('participants\participants_main.twig', ['participants' => $participants->getParticipantsList()]);
         //return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
     }
@@ -64,7 +64,7 @@ class participants
 
         //$participantEmail = isset($_POST['participantemail']) ? filter_var($_POST['participantemail'], FILTER_VALIDATE_EMAIL) : null;
         //  CHECK OUT PHONE FIELD HERE COMPARED TO PARTICIPANT DETAILS TWIG
-        $participantPhone = isset($_POST['participantphone']) ? filter_var($_POST['participantphone'], FILTER_SANITIZE_NUMBER_INT) : null;
+        $participantPhone = isset($_POST['participantPhone']) ? filter_var($_POST['participantPhone'], FILTER_SANITIZE_NUMBER_INT) : null;
         // Add more fields as needed
 
         // Check if data is valid
@@ -73,10 +73,14 @@ class participants
             Return $dataToReturn = [
                 'first_name' => $participantFirstN,
                 'last_name' => $participantLastN,
-                'contact_type' => $participantType,
-                'company_practice' => $participantCompany,
+                'street_address_1' => $participantAddress,
+                'street_address_2' => $participantAddress2,
+                'city' => $participantCity,
+                'state' => $participantState,
+                'zip' => $participantZip,
+                'responsible_party' => $participantResponParty,
                 'phone' => $participantPhone,
-                'email' => $participantEmail,
+
                 // Add more fields as needed
             ];
         }

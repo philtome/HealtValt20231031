@@ -61,18 +61,21 @@ class Participants_Model
 
         $participantFirstN = $participantToSave['first_name'];
         $participantLastN = $participantToSave['last_name'];
-        $participantType = $participantToSave['contact_type'];
-        $participantCompany = $participantToSave['company_practice'];
-        $participantEmail = $participantToSave['email'];
+        $participantAddress = $participantToSave['street_address_1'];
+        $participantAddress2 = $participantToSave['street_address_2'];
+        $participantCity = $participantToSave['city'];
+        $participantState = $participantToSave['state'];
+        $participantZip = $participantToSave['zip'];
+        $participantResponParty = $participantToSave['responsible_party'];
         $participantPhone = $participantToSave['phone'];
         if ($id) {
-            $query = 'UPDATE contacts SET last_name = ?, first_name = ?, contact_type = ?, company_practice =?, email = ?, phone = ? WHERE id = ?';
+            $query = 'UPDATE participants SET last_name = ?, first_name = ?, street_address_1 = ?, street_address_2 =?, city = ?, state = ?, zip = ?, responsible_party =?, phone = ? WHERE id = ?';
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$participantLastN, $participantFirstN, $participantType, $participantCompany, $participantEmail, $participantPhone, $id]);
+            $stmt->execute([$participantLastN, $participantFirstN, $participantAddress, $participantAddress2, $participantCity, $participantState, $participantZip, $participantResponParty, $participantPhone, $id]);
         } else {
-            $query = 'INSERT INTO contacts (last_name, first_name, contact_type, company_practice, email, phone) VALUES (?,?,?,?,?,?)';
+            $query = 'INSERT INTO participants (last_name, first_name, street_address1, street_address_2, city, state, zip, responsible_party, phone) VALUES (?,?,?,?,?,?,?,?,?)';
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$participantLastN, $participantFirstN, $participantType, $participantCompany, $participantEmail, $participantPhone]);
+            $stmt->execute([$participantLastN, $participantFirstN, $participantAddress, $participantAddress2, $participantCity, $participantState, $participantZip, $participantResponParty, $participantPhone]);
         }
         //$stmt = $pdo->prepare($query);
         return "Participant updated";
