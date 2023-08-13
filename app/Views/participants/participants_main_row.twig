@@ -1,0 +1,18 @@
+<tr id='Participantrow_{{ participant.id }}' data-sa-id="{{ participant.id }}" data-contact-id='{{ participant.id }}' class="newlyAdded">
+    {# 20191015 changed productrow to Productrow - was not working in delete product #}
+    <td id="participantlastname_{{ participant.id }}">{{ participant.last_name }}</td>
+    <td id="participantfistname_{{ participant.id }}">{{ participant.first_name }}</td>
+    <td id="participanttype_{{participant.id}}">{{ participant.street_address_1 }}</td>
+    <td id="participantpractice_{{ participant.id }}">{{ participant.responsible_party }}</td>
+    <td id="participantemail_{{participant.id}}">{{ participant.phone }}</td>
+
+    <td id="participantcopy_{{ participant.id }}" class="participant-copy">
+        <button class="copyParticipantButton btn btn-primary" data-item-id="{{ participant.id }}">Copy</button>
+    </td>
+    <td class="participant-manage">
+        <button class="manageParticipantButton btn btn-primary" data-item-id="{{ participant.id }}">Manage</button>
+    </td>
+    <td id="participantdelete_{{ participant.id }}" class="participant-delete">
+        <button class="deleteParticipantButton btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-id="{{ participant.id }}">Delete</button>
+    </td>
+</tr>

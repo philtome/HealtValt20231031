@@ -29,12 +29,12 @@ createButtonItems.forEach(item => {
 
 
 // manage button example (manage careplan button, take user to specific carplan when clicked on
-var manageButtonItems = document.querySelectorAll('.manageParButton');  //this is a class
+var manageButtonItems = document.querySelectorAll('.manageParticipantButton');  //this is a class
 manageButtonItems.forEach(item => {
     item.addEventListener('click', function() {
         // Get the item ID from the "data-item-id" attribute of the clicked list item
         const itemId = this.getAttribute('data-item-id');
-        handlePartManage(itemId);   // this routine is in editFunctions
+        handleParticipantManage(itemId);   // this routine is in editFunctions
     });
 });
 
@@ -91,6 +91,15 @@ if (btnCancelContact) {
     });
 }
 
+// CANCEL Participant button
+var btnCancelParticipant = document.getElementById("btn_participant_cancel");  // this is an id
+if (btnCancelParticipant) {
+    btnCancelParticipant.addEventListener('click', function(event){
+        event.preventDefault();
+        returnUrlUpOne(window.location.href);
+    });
+}
+
 if (btnPage1) {
     btnPage1.addEventListener("click", function() {
         loadNewPage(1);
@@ -127,7 +136,18 @@ copyButtonItems.forEach(item => {
     });
 });
 
-// DELETE contact button
+
+// COPY Participant button  &&&&&&&&&&&&&  NEEED TO FINISH THIS ONE, only copied contact
+var copyButtonItems = document.querySelectorAll('.copyConButton');  //this is a class
+copyButtonItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        const itemId = this.getAttribute('data-item-id');
+        handleConCopy(itemId);   // this routine is in editFunctions
+    });
+});
+
+// DELETE contact button  ****doubt this one is used...chec, on it
 let itemIdToDelete = null;
 var deleteButtonItems = document.querySelectorAll('.deleteConButton');  //this is a class
 deleteButtonItems.forEach(item => {
@@ -140,6 +160,17 @@ deleteButtonItems.forEach(item => {
 
 // Modal DELETE contact button
 var modalDeleteConButton = document.getElementById('modalDeleteButton');  // this is id on model del
+modalDeleteButton.addEventListener('click', function() {
+    if (itemIdToDelete !== null) {
+        console.log("deleteing item with id:", itemIdToDelete);
+        handleConDelete(itemIdToDelete);
+        itemIdToDelete = null;
+    }
+})
+
+// Modal DELETE PARTICIPANT  button  &&&&&&&&&  FINISH THIS UP, AND THE MODEL
+//  I MAY WANT TO MAKE THAT MODAL A :DO YOU AENT TO DELETE: TWIG ALL ITS ON
+var modalDeletePrticipantButton = document.getElementById('modalDeleteButton');  // this is id on model del
 modalDeleteButton.addEventListener('click', function() {
     if (itemIdToDelete !== null) {
         console.log("deleteing item with id:", itemIdToDelete);
