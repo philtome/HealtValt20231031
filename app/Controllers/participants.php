@@ -39,6 +39,14 @@ class participants
         //return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
     }
 
+    public function deleteParticipant($id)
+    {
+        $participants = new Participants_Model();
+        $sucessful = $participants->delete_participant($id);
+        return renderTemplate('participants\participants_main.twig', ['participants' => $participants->getParticipantsList()]);
+    }
+
+
     public function mainDisplay()
     {
         $participants = new Participants_Model();

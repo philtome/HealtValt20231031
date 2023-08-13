@@ -10,9 +10,9 @@
         <button class="copyParticipantButton btn btn-primary" data-item-id="{{ participant.id }}">Copy</button>
     </td>
     <td class="participant-manage">
-        <button class="manageParticipantButton btn btn-primary" data-item-id="{{ participant.id }}">Manage</button>
+        <button class="manageParticipantButton btn btn-primary" data-item-type="participant" data-item-id="{{ participant.id }}">Manage</button>
     </td>
     <td id="participantdelete_{{ participant.id }}" class="participant-delete">
-        <button class="deleteParticipantButton btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-id="{{ participant.id }}">Delete</button>
+        <button class="deleteItemButton btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal"data-item-type="participant" data-item-id="{{ participant.id }}">Delete</button>
     </td>
 </tr>

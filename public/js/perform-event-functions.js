@@ -47,8 +47,10 @@ function handleConCopy(id) {
         });
 }
 
-function handleConDelete(id) {
-    var fetchUrl = 'contacts/delete/'.concat(id);
+function handleConDelete(id, type) {
+
+    var fetchUrl = type + 's/delete/' + id;
+    //"I use the s here because my contoller is looking for contacts or partacipants"
     fetch(fetchUrl, {
         method: 'POST',
     })

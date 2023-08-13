@@ -147,13 +147,15 @@ copyButtonItems.forEach(item => {
     });
 });
 
-// DELETE contact button  ****doubt this one is used...chec, on it
+// DELETE contact button it runs this then opens Confirm Delete Modal
 let itemIdToDelete = null;
-var deleteButtonItems = document.querySelectorAll('.deleteConButton');  //this is a class
+let typeToDelete = null;
+var deleteButtonItems = document.querySelectorAll('.deleteItemButton');  //this is a class
 deleteButtonItems.forEach(item => {
     item.addEventListener('click', function() {
         // Get the item ID from the "data-item-id" attribute of the clicked list item
         itemIdToDelete = this.getAttribute('data-item-id');
+        typeToDelete = this.getAttribute('data-item-type');
         //handleConDelete(itemId);   // this routine is in editFunctions
     });
 });
@@ -163,14 +165,14 @@ var modalDeleteConButton = document.getElementById('modalDeleteButton');  // thi
 modalDeleteButton.addEventListener('click', function() {
     if (itemIdToDelete !== null) {
         console.log("deleteing item with id:", itemIdToDelete);
-        handleConDelete(itemIdToDelete);
+        handleConDelete(itemIdToDelete, typeToDelete);
         itemIdToDelete = null;
     }
 })
 
 // Modal DELETE PARTICIPANT  button  &&&&&&&&&  FINISH THIS UP, AND THE MODEL
 //  I MAY WANT TO MAKE THAT MODAL A :DO YOU AENT TO DELETE: TWIG ALL ITS ON
-var modalDeletePrticipantButton = document.getElementById('modalDeleteButton');  // this is id on model del
+var modalDeletePrticipantButton = document.getElementById('modalDeleteButton2222');  // this is id on model del
 modalDeleteButton.addEventListener('click', function() {
     if (itemIdToDelete !== null) {
         console.log("deleteing item with id:", itemIdToDelete);

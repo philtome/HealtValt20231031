@@ -119,6 +119,8 @@ switch ($controller) {
             $result = $participants->mainDisplay();
         } elseif ($param2 === 'update') {
             $result = $participants->saveParticipant($param3);
+        } elseif ($param1 === 'delete') {
+            $result = $participants->deleteParticipant($param2);
         } elseif ($param1 === 'display') {
             $result = $participants->mainDisplay();
         } elseif ($param1 === 'manage') {

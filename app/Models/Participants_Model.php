@@ -80,4 +80,13 @@ class Participants_Model
         //$stmt = $pdo->prepare($query);
         return "Participant updated";
     }
+    function delete_participant($id): string {
+        require __DIR__ . '/../../config/config.php';
+        $pdo = get_connection();
+        $query = 'DELETE FROM participants WHERE id = ?';
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$id]);
+        //$stmt = $pdo->prepare($query);
+        return "Participant Deleted";
+    }
 }
