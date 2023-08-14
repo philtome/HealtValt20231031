@@ -124,6 +124,25 @@ function handleSaveContact(id =null) {
             console.error('Error saving data:', error);
         });
 }
+    function handleParticipantCopy(id) {
+        const fetchUrl = 'participants/copy/' + id;
+        fetch(fetchUrl, {
+            method: 'POST',
+        })
+            .then(response => {
+                console.log('Data Copy set kup successfully');
+            })
+            .then(responseData => {
+                returnUrlUpOne(window.location.href);
+            })
+            .catch(error => {
+                // Handle any errors that occurred during the request
+                console.error('Error setting up copy data:', error);
+            });
+    }
+
+
+
     function handleSaveParticipant(id =null) {
         const participantForm = document.getElementById('participant_details_form');
         const participantFormData = new FormData(participantForm);

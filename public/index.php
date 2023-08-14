@@ -127,6 +127,8 @@ switch ($controller) {
             $result = $participants->manageParticipant($param2);
         } elseif ($param1 === 'create') {
             $result = $participants->createParticipant();
+        } elseif ($param1 === 'copy') {
+            $result = $participants->copyParticipant($param2);
         } else {
             $result = $participants->action1($param1, $param2, $param3);
         }

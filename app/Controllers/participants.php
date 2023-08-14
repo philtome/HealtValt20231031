@@ -53,6 +53,16 @@ class participants
         return renderTemplate('participants\participantDetails.twig');
     }
 
+    public function copyParticipant($id)
+    {
+        $participants = new Participants_Model();
+        $participantDetails = $participants->get_participant($id);
+        $participantsSave = new Participants_Model();
+        $temppor = $participantsSave->update_participant($participantDetails);
+        // want to do the save here
+        return renderTemplate('participants\participants_main.twig', ['participant' => $participants->getParticipantsList()]);
+    }
+
 
     public function mainDisplay()
     {

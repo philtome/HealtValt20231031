@@ -138,12 +138,12 @@ copyButtonItems.forEach(item => {
 
 
 // COPY Participant button  &&&&&&&&&&&&&  NEEED TO FINISH THIS ONE, only copied contact
-var copyButtonItems = document.querySelectorAll('.copyConButton');  //this is a class
+var copyButtonItems = document.querySelectorAll('.copyParticipantButton');  //this is a class
 copyButtonItems.forEach(item => {
     item.addEventListener('click', function() {
         // Get the item ID from the "data-item-id" attribute of the clicked list item
         const itemId = this.getAttribute('data-item-id');
-        handleConCopy(itemId);   // this routine is in editFunctions
+        handleParticipantCopy(itemId);   // this routine is in editFunctions
     });
 });
 
