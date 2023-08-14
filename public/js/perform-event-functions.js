@@ -8,7 +8,8 @@ function handleCreateItem(itemController,itemAction) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
-    window.location.href = "index.php/contacts/create";
+    let fetchUrl = "index.php/" + itemController + "s/create"
+    window.location.href = fetchUrl;
 }
 function handleManageItem(itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page

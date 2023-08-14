@@ -13,6 +13,12 @@
         <button class="manageParticipantButton btn btn-primary" data-item-type="participant" data-item-id="{{ participant.id }}">Manage</button>
     </td>
     <td id="participantdelete_{{ participant.id }}" class="participant-delete">
-        <button class="deleteItemButton btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal"data-item-type="participant" data-item-id="{{ participant.id }}">Delete</button>
+        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal"data-item-type="participant" data-item-id="{{ participant.id }}">Delete</button>
+    </td>
+    <td>
+        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#visit-modal2">Contacts</button>
+    </td>
+    <td>
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Care Plans</button>
     </td>
 </tr>

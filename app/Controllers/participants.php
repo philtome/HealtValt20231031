@@ -46,6 +46,13 @@ class participants
         return renderTemplate('participants\participants_main.twig', ['participants' => $participants->getParticipantsList()]);
     }
 
+    public function createParticipant()
+    {
+        $contacts = new Participants_Model();
+        //$contactDetails = $contacts->get_contact();
+        return renderTemplate('participants\participantDetails.twig');
+    }
+
 
     public function mainDisplay()
     {

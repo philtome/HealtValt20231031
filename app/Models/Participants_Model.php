@@ -73,7 +73,7 @@ class Participants_Model
             $stmt = $pdo->prepare($query);
             $stmt->execute([$participantLastN, $participantFirstN, $participantAddress, $participantAddress2, $participantCity, $participantState, $participantZip, $participantResponParty, $participantPhone, $id]);
         } else {
-            $query = 'INSERT INTO participants (last_name, first_name, street_address1, street_address_2, city, state, zip, responsible_party, phone) VALUES (?,?,?,?,?,?,?,?,?)';
+            $query = 'INSERT INTO participants (last_name, first_name, street_address_1, street_address_2, city, state, zip, responsible_party, phone) VALUES (?,?,?,?,?,?,?,?,?)';
             $stmt = $pdo->prepare($query);
             $stmt->execute([$participantLastN, $participantFirstN, $participantAddress, $participantAddress2, $participantCity, $participantState, $participantZip, $participantResponParty, $participantPhone]);
         }
