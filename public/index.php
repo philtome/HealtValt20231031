@@ -68,6 +68,16 @@ switch ($controller) {
         ]);
         break;
 
+    case 'about': //****TESTING EXAMPLES - 'fetchbutton'
+        // button on home: etchButton event - replace entire screen
+        renderTemplate('/gridtest_main.twig', [
+            'param1' => $param1,
+            'param2' => $param2,
+            'param3' => $param3
+        ]);
+        break;
+
+
     case 'careplans_manageB': //****TESTING EXAMPLES - 'fetchbutton'
         // button on home: etchButton event - replace entire screen
         renderTemplate('/bogustesting/careplanDetailsB.twig', [
