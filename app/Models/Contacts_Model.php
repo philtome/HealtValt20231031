@@ -57,14 +57,19 @@ class Contacts_Model
         $contactCompany = $contactToSave['company_practice'];
         $contactEmail = $contactToSave['email'];
         $contactPhone = $contactToSave['phone'];
+        $contactDriver = $contactToSave['is_driver'];
+        $contactEmployee = $contactToSave['is_employee'];
+        $contactCaregiver = $contactToSave['is_caregiver'];
+        $contactCna = $contactToSave['is_cna'];
+        $contactRn = $contactToSave['is_rn'];
         if ($id) {
-            $query = 'UPDATE contacts SET last_name = ?, first_name = ?, contact_type = ?, company_practice =?, email = ?, phone = ? WHERE id = ?';
+            $query = 'UPDATE contacts SET last_name = ?, first_name = ?, contact_type = ?, company_practice =?, email = ?, phone = ?, is_driver = ?, is_employee = ?, is_caregiver = ?, is_cna = ?, is_rn = ? WHERE id = ?';
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$contactLastN, $contactFirstN, $contactType, $contactCompany, $contactEmail, $contactPhone, $id]);
+            $stmt->execute([$contactLastN, $contactFirstN, $contactType, $contactCompany, $contactEmail, $contactPhone, $contactDriver, $contactEmployee, $contactCaregiver, $contactCna, $contactRn, $id]);
         } else {
-            $query = 'INSERT INTO contacts (last_name, first_name, contact_type, company_practice, email, phone) VALUES (?,?,?,?,?,?)';
+            $query = 'INSERT INTO contacts (last_name, first_name, contact_type, company_practice, email, phone, is_driver) VALUES (?,?,?,?,?,?,?,?,?,?)';
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$contactLastN, $contactFirstN, $contactType, $contactCompany, $contactEmail, $contactPhone]);
+            $stmt->execute([$contactLastN, $contactFirstN, $contactType, $contactCompany, $contactEmail, $contactPhone, $contactDriver, $contactEmployee, $contactCaregiver, $contactCna, $contactRn]);
         }
         //$stmt = $pdo->prepare($query);
         return "Contact updated";

@@ -85,6 +85,11 @@ class contacts
         $contactEmail = isset($_POST['contactemail']) ? filter_var($_POST['contactemail'], FILTER_VALIDATE_EMAIL) : null;
         $contactPhone = isset($_POST['contactphone']) ? filter_var($_POST['contactphone'], FILTER_SANITIZE_NUMBER_INT) : null;
         $contactCompany = isset($_POST['companypractice']) ? filter_var($_POST['companypractice'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
+        $contactDriver = isset($_POST['isDriver']) && $_POST['isDriver'] === 'on' ? 1 : 0;
+        $contactEmployee = isset($_POST['isEmployee']) && $_POST['isEmployee'] === 'on' ? 1 : 0;
+        $contactCaregiver = isset($_POST['isCaregiver']) && $_POST['isCaregiver'] === 'on' ? 1 : 0;
+        $contactCna = isset($_POST['isCna']) && $_POST['isCna'] === 'on' ? 1 : 0;
+        $contactRn = isset($_POST['isRn']) && $_POST['isRn'] === 'on' ? 1 : 0;
         // Add more fields as needed
 
         // Check if data is valid
@@ -97,6 +102,11 @@ class contacts
                 'company_practice' => $contactCompany,
                 'phone' => $contactPhone,
                 'email' => $contactEmail,
+                'is_driver' => $contactDriver,
+                'is_employee' => $contactEmployee,
+                'is_caregiver' => $contactCaregiver,
+                'is_cna' => $contactCna,
+                'is_rn' => $contactRn,
                 // Add more fields as needed
             ];
         }
