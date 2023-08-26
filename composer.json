@@ -2,7 +2,9 @@
     "require": {
         "symfony/http-foundation": "^6.3",
         "twig/twig": "^3.6",
-        "twbs/bootstrap": "^5.3"
+        "twbs/bootstrap": "^5.3",
+        "doctrine/orm": "^2.16",
+        "doctrine/dbal": "^3.2"
     },
     "autoload": {
         "psr-4": {
