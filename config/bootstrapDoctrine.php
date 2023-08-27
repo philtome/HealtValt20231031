@@ -5,7 +5,7 @@ use Doctrine\ORM\Tools\ORMSetup;
 use Doctrine\ORM\EntityManager;
 
 // Customize the paths to your entity classes
-$entityPaths = [__DIR__."/../app/Entities"];
+$entityPaths = [__DIR__ . "/../app/Entities"];
 
 $config = Setup::createAnnotationMetadataConfiguration($entityPaths, true);
 

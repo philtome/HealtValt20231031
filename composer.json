@@ -4,7 +4,9 @@
         "twig/twig": "^3.6",
         "twbs/bootstrap": "^5.3",
         "doctrine/orm": "^2.16",
-        "doctrine/dbal": "^3.2"
+        "doctrine/dbal": "^3.2",
+        "symfony/cache": "*",
+        "doctrine/annotations": "*"
     },
     "autoload": {
         "psr-4": {
