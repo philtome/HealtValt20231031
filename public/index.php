@@ -4,10 +4,10 @@ require_once __DIR__ . '/../app/twig.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../app/render.php';
 
+require_once '../bootstrap.php';
 
 //require_once __DIR__. '/../config/config.php';
 
-use App\Models\Careplan;
 use App\Controllers\Controller1;
 
 // Add the correct namespace for Controller1
@@ -22,23 +22,6 @@ use Doctrine\ORM\ORMSetup;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 
-
-// Create a simple "default" Doctrine ORM configuration for Attributes
-$config = ORMSetup::createAttributeMetadataConfiguration([__DIR__ . '/../app/Models'],true);
-
-// configuring the database connection
-$connection = DriverManager::getConnection([
-    'driver' => 'pdo_mysql',
-    //'path' => __DIR__ . '/db.sqlite',
-
-    'host' => 'localhost:8889',
-    'dbname' => 'skycliff',
-    'user' => 'root',
-    'password' => 'root',
-], $config);
-
-// obtaining the entity manager
-$entityManager = new EntityManager($connection, $config);
 
 // Define your routes and include the necessary controllers
 

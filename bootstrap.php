@@ -3,10 +3,8 @@
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
-use Doctrine\ORM\Tools\Console\ConsoleRunner;
-use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
-
-
+//use Doctrine\ORM\Tools\Console\ConsoleRunner;
+//use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 
 // Create a simple "default" Doctrine ORM configuration for Attributes
 $config = ORMSetup::createAttributeMetadataConfiguration(
@@ -20,17 +18,14 @@ $connection = DriverManager::getConnection([
     //'path' => __DIR__ . '/db.sqlite',
 
     'host' => 'localhost:8889',
-    'dbname' => 'skycliff',
+    'dbname' => 'skycliff3',
     'user' => 'root',
     'password' => 'root',
 ], $config);
 
-$config = Setup::createAnnotationMetadataConfiguration('array(__DIR__."/app/Models")', true);
-$config->setAutoGenerateProxyClasses(true);
-
 // obtaining the entity manager
 $entityManager = new EntityManager($connection, $config);
 
-ConsoleRunner::run(
-    new SingleManagerProvider($entityManager)
-);
+//ConsoleRunner::run(
+//    new SingleManagerProvider($entityManager)
+//);
