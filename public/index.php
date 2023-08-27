@@ -25,6 +25,10 @@ use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 
 // Define your routes and include the necessary controllers
 
+$entityManager = GetEntityManger();
+
+
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     //check if this is change on a page, if not then else does full url
