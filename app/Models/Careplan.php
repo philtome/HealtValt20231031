@@ -85,18 +85,18 @@ class Careplan
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPresentHealth(): string
+    public function getPresentHealth(): ?string
     {
         return $this->present_health;
     }
 
     /**
-     * @param string $present_health
+     * @param string|null $present_health
      * @return Careplan
      */
-    public function setPresentHealth(string $present_health): Careplan
+    public function setPresentHealth(?string $present_health): Careplan
     {
         $this->present_health = $present_health;
         return $this;
@@ -136,7 +136,10 @@ class Careplan
     {
         $this->notes = $notes;
         return $this;
-    } //dont neeed name
+    }
+
+
+
 
 
 }

@@ -22,7 +22,7 @@ use Doctrine\ORM\ORMSetup;
         //'path' => __DIR__ . '/db.sqlite',
 
         'host' => 'localhost:8889',
-        'dbname' => 'skycliff3',
+        'dbname' => 'skycliff',
         'user' => 'root',
         'password' => 'root',
     ], $config);
