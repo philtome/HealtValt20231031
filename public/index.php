@@ -1,9 +1,9 @@
 <?php
 
+global $entityManager;
 require_once __DIR__ . '/../app/twig.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../app/render.php';
-
 require_once '../bootstrap.php';
 
 //require_once __DIR__. '/../config/config.php';
@@ -16,19 +16,8 @@ use App\Controllers\careplans;
 // Add the correct namespace for Controller2
 use App\Controllers\participants;
 use App\Controllers\contacts;
-use Doctrine\DBAL\DriverManager;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\ORMSetup;
-use Doctrine\ORM\Tools\Console\ConsoleRunner;
-use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
-
 
 // Define your routes and include the necessary controllers
-
-$entityManager = GetEntityManger();
-
-
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     //check if this is change on a page, if not then else does full url

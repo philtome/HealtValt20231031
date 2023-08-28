@@ -5,20 +5,15 @@ namespace App\Models;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
-
-/**
-* @ORM\Entity
-* @ORM\Table(name="care_plans")
-*/
+#[ORM\Table(name: 'care_plans')]
+#[ORM\Entity]
+#[ORM\HasLifecycleCallbacks]
 
 class Careplan
 {
-    /**
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(type= 'integer')
-     * @ORM\GeneratedValue(strategy='AUTO')
-     */
+    #[ORM\Id]
+    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
     public int $id;
 
     #[ORM\Column(name: 'careplan_date', type: 'datetime', nullable: false)] //may not be null, (required)
