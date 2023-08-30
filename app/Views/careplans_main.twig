@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-     {#  {{ dump(careplan) }} n#}
+        {{ dump(careplans) }} }
 
     <div class="jumbotron">
         <div class="container">
@@ -32,14 +32,14 @@
         </tr>
         {% for careplan in careplans %}
         <tr>
-            <td>{{ careplan.careplan_date }}
+            <td>{{ careplan.careplan_date|date('Y-m-d') }}
             </td>
-            <td>{{ careplan.present_health }}
+            <td>{{ careplan.present_health|raw }}
             </td>
 
             <td>
                 <a href="/show.php?id={{ careplan.id }}">
-                    {{ careplan.assistive_devices}}
+                    {{ careplan.assistive_devices }}
                 </a>
             </td>
 
@@ -55,7 +55,7 @@
             </td>
 
 
-
+            {{ dump(careplan) }}
         {% endfor %}
         </tbody>
 
