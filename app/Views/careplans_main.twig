@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-        {{ dump(careplans) }} }
+        {#{{ dump(careplans) }} #}
 
     <div class="jumbotron">
         <div class="container">
@@ -54,8 +54,6 @@
                 <button class="manageCpButton btn btn-primary" data-item-id="{{ careplan.id }}">Manage</button>
             </td>
 
-
-            {{ dump(careplan) }}
         {% endfor %}
         </tbody>
 

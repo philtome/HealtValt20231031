@@ -39,9 +39,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
         $controller = $uriParts[1];
 
-        $param1 = $uriParts[2];
-        $param2 = $uriParts[3];
-        $param3 = $uriParts[4];
+//        $param1 = $uriParts[2];
+//        $param2 = $uriParts[3];
+//        $param3 = $uriParts[4];
+
+        $paramCount = 3; // Number of parameters you want to extract
+        $params = array();
+
+        for ($i = 2; $i <= $paramCount + 1; $i++) {
+            if (isset($uriParts[$i])) {
+                $params[] = $uriParts[$i];
+            } else {
+                $params[] = ''; // or handle the default value in some other way
+            }
+        }
+
+        list($param1, $param2, $param3) = $params;
+
+
+
     }
     // I need to finish this else for the posting of data from contacts screen, my forst post of project
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {

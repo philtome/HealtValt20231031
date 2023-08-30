@@ -23,9 +23,9 @@ class Careplan
     public DateTime $careplan_edit_date;
 
     #[ORM\Column(type: 'string', length: 255)]
-    protected string|null $present_health; //dont neeed name,| allows it to be a null
+    public string|null $present_health; //dont neeed name,| allows it to be a null
     #[ORM\Column(type: 'string', length: 100)]
-    protected string $assistive_devices; //dont neeed name
+    public string $assistive_devices; //dont neeed name
 
     #[ORM\Column(type: 'text')]
     protected string $notes;
