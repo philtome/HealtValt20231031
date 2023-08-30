@@ -12,3 +12,4 @@ cache/*/*.php
 caches/
 /app/twig_cache/
 twig_cache/
+/twig_cache/
