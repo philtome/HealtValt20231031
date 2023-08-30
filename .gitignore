@@ -10,4 +10,5 @@ autoload.php
 
 cache/*/*.php
 caches/
-app/twig_cache/*
+/app/twig_cache/
+twig_cache/
