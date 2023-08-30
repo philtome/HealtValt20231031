@@ -67,6 +67,6 @@
     <option name="transferred" value="true" />
   </component>
   <component name="TwigDebugConfiguration">
-    <cachePath>$PROJECT_DIR$/app/Views</cachePath>
+    <cachePath>$PROJECT_DIR$/app/twig_cache</cachePath>
   </component>
 </project>

@@ -7,3 +7,6 @@ autoload.php
 # Ignore any other files or directories as needed
 /.idea
 /.idea/SkyCliffCare.iml
+
+cache/*/*.php
+caches/
