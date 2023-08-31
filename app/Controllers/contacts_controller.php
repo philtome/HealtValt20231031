@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Contacts_Model;
 
-class contacts
+class contacts_controller
 {
     public function action1($param1, $param2, $param3)
     {

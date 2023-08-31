@@ -21,7 +21,7 @@ function handleParticipantManage(itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
-    window.location.href = "index.php/participants/manage/" + itemId;
+    window.location.href = "index.php/participantsController/manage/" + itemId;
 }
 
 function handleConManage(itemId) {
@@ -125,7 +125,7 @@ function handleSaveContact(id =null) {
         });
 }
     function handleParticipantCopy(id) {
-        const fetchUrl = 'participants/copy/' + id;
+        const fetchUrl = 'participantsController/copy/' + id;
         fetch(fetchUrl, {
             method: 'POST',
         })

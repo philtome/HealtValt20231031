@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Participants_Model;
 
-class participants
+class participants_controller
 {
     public function action1($param1, $param2, $param3)
     {
@@ -30,12 +30,12 @@ class participants
         $temppor = $participants->update_participant($dataToSave, $id);
         // want to do the save here
 //        if ($id == null) {
-//            $successful = $participants->update_participant($dataToSave);
+//            $successful = $participantsController->update_participant($dataToSave);
 //        }
 //        else {
-//            $successful = $participants->update_participant($dataToSave, $id);
+//            $successful = $participantsController->update_participant($dataToSave, $id);
 //        }
-        return renderTemplate('participants\participants_main.twig', ['participants' => $participants->getParticipantsList()]);
+        return renderTemplate('participants\participants_main.twig', ['participantsController' => $participants->getParticipantsList()]);
         //return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
     }
 
@@ -43,7 +43,7 @@ class participants
     {
         $participants = new Participants_Model();
         $sucessful = $participants->delete_participant($id);
-        return renderTemplate('participants\participants_main.twig', ['participants' => $participants->getParticipantsList()]);
+        return renderTemplate('participants\participants_main.twig', ['participantsController' => $participants->getParticipantsList()]);
     }
 
     public function createParticipant()

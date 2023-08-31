@@ -7,7 +7,7 @@ use App\Models\Careplans_model;
 use Doctrine\Persistence\ObjectManager;
 
 
-class careplans
+class careplan_controller
 {
     private ObjectManager $em;
 

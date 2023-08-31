@@ -11,13 +11,15 @@ require_once '../bootstrap.php';
 use App\Controllers\Controller1;
 
 // Add the correct namespace for Controller1
-use App\Controllers\careplans;
+use App\Controllers\careplan_controller;
 
 // Add the correct namespace for Controller2
-use App\Controllers\participants;
-use App\Controllers\contacts;
+use App\Controllers\participants_controller;
+use App\Controllers\contacts_controller;
 
 // Define your routes and include the necessary controllers
+
+$controller = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     //check if this is change on a page, if not then else does full url
@@ -93,24 +95,6 @@ switch ($controller) {
         ]);
         break;
 
-
-    case 'careplans_manageB': //****TESTING EXAMPLES - 'fetchbutton'
-        // button on home: etchButton event - replace entire screen
-        renderTemplate('/bogustesting/careplanDetailsB.twig', [
-            'param1' => $param1,
-            'param2' => $param2,
-            'param3' => $param3
-        ]);
-        break;
-
-    case 'careplansB': // ****TESTING
-        renderTemplate('/bogustesting/careplans_mainB.twig', [
-            'param1' => $param1,
-            'param2' => $param2,
-            'param3' => $param3
-        ]);
-        break;
-
     case 'careplans_manage':
         renderTemplate('careplanDetails.twig', [
             'param1' => $param1,
@@ -119,16 +103,8 @@ switch ($controller) {
         ]);
         break;
 
-    case 'template1':  //this will be changed to 'contacts'
-        $contacts = new Controller1();
-        renderTemplate('template1.twig', [
-            'param1' => $param1,
-            'param2' => $param2,
-            'param3' => $param3
-        ]);
-        break;
     case 'careplans':
-        $careplans = new careplans($entityManager);
+        $careplans = new careplan_controller($entityManager);
         //$dude = new careplans();
         if (is_null($param1)) {
             $result = $careplans->mainDisplay();
@@ -140,8 +116,10 @@ switch ($controller) {
         break;
 
     case 'participants':
-        $participants = new participants();
+        $participants = new participants_controller();
         if (is_null($param1)) {
+            $result = $participants->mainDisplay();
+        } elseif ($param1==='') {
             $result = $participants->mainDisplay();
         } elseif ($param2 === 'update') {
             $result = $participants->saveParticipant($param3);
@@ -160,13 +138,11 @@ switch ($controller) {
         }
         break;
 
-    case 'participant_manage':
-        renderTemplate('participantDetails.twig');
-        break;
-
     case 'contacts':
-        $contacts = new contacts();
+        $contacts = new contacts_controller();
         if (is_null($param1)) {
+            $result = $contacts->mainDisplay();
+        } elseif ($param1==='') {
             $result = $contacts->mainDisplay();
         } elseif ($param2 === 'update') {
             $result = $contacts->saveContact($param3);
@@ -183,10 +159,6 @@ switch ($controller) {
         } else {
             $result = $contacts->action1($param1, $param2, $param3);
         }
-        break;
-
-    case 'contact_manage':
-        renderTemplate('contactDetails.twig');
         break;
 
     default:
