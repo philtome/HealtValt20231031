@@ -116,7 +116,7 @@ switch ($controller) {
         break;
 
     case 'participants':
-        $participants = new participants_controller();
+        $participants = new participants_controller($entityManager);
         if (is_null($param1)) {
             $result = $participants->mainDisplay();
         } elseif ($param1==='') {

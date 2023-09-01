@@ -24,6 +24,7 @@ class Careplan
 
     #[ORM\Column(type: 'string', length: 255)]
     public string|null $present_health; //dont neeed name,| allows it to be a null
+
     #[ORM\Column(type: 'string', length: 100)]
     public string $assistive_devices; //dont neeed name
 
