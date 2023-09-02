@@ -32,14 +32,14 @@
         </tr>
         {% for careplan in careplans %}
         <tr>
-            <td>{{ careplan.careplan_date|date('Y-m-d') }}
+            <td>{{ careplan.date|date('Y-m-d') }}
             </td>
-            <td>{{ careplan.present_health|raw }}
+            <td>{{ careplan.presenthealth }}
             </td>
 
             <td>
                 <a href="/show.php?id={{ careplan.id }}">
-                    {{ careplan.assistive_devices }}
+                    {{ careplan.assistivedevices }}
                 </a>
             </td>
 

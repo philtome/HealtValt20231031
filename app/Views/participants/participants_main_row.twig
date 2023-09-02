@@ -1,9 +1,9 @@
 <tr id='Participantrow_{{ participant.id }}' data-sa-id="{{ participant.id }}" data-contact-id='{{ participant.id }}' class="newlyAdded">
     {# 20191015 changed productrow to Productrow - was not working in delete product #}
-    <td id="participantlastname_{{ participant.id }}">{{ participant.last_name }}</td>
-    <td id="participantfistname_{{ participant.id }}">{{ participant.first_name }}</td>
-    <td id="participanttype_{{participant.id}}">{{ participant.street_address_1 }}</td>
-    <td id="participantpractice_{{ participant.id }}">{{ participant.responsible_party }}</td>
+    <td id="participantlastname_{{ participant.id }}">{{ participant.lastname }}</td>
+    <td id="participantfistname_{{ participant.id }}">{{ participant.firstname }}</td>
+    <td id="participanttype_{{participant.id}}">{{ participant.streetaddress1 }}</td>
+    <td id="participantpractice_{{ participant.id }}">{{ participant.responsibleparty }}</td>
     <td id="participantemail_{{participant.id}}">{{ participant.phone }}</td>
 
     <td id="participantcopy_{{ participant.id }}" class="participant-copy">

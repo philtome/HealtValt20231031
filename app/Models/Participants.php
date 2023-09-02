@@ -16,31 +16,31 @@ class Participants
     #[ORM\GeneratedValue(strategy: 'AUTO')]
     public int $id;
 
-    #[ORM\Column(name: 'last_name', type: 'string', nullable: false)] //may not be null, (required)
-    public string $last_name;
+    #[ORM\Column(name: 'lastName', type: 'string', nullable: false)] //may not be null, (required)
+    public string $lastName;
 
-    #[ORM\Column(name: 'first_name', type: 'string', nullable: false)]
-    public string $first_name;
+    #[ORM\Column(name: 'firstName', type: 'string', nullable: false)]
+    public string $firstName;
 
-    #[ORM\Column(type: 'string', length: 50)]
-    public string|null $street_address_1; //dont neeed name,| allows it to be a null
+    #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    public string|null $streetAddress1; //dont neeed name,| allows it to be a null
 
-    #[ORM\Column(type: 'string', length: 50)]
-    public string|null $street_address_2; //dont neeed name
+    #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    public string|null $streetAddress2; //dont neeed name
 
-    #[ORM\Column(type: 'string', length: 50)]
+    #[ORM\Column(type: 'string', length: 50, nullable: true)]
     public string|null $city;
 
-    #[ORM\Column(type: 'string', length: 25)]
+    #[ORM\Column(type: 'string', length: 25, nullable: true)]
     public string|null $state;
 
-    #[ORM\Column(type: 'string', length: 12)]
+    #[ORM\Column(type: 'string', length: 12, nullable: true)]
     public string|null $zip;
 
-    #[ORM\Column(type: 'string', length: 100)]
-    public string|null $responsible_party;
+    #[ORM\Column(type: 'string', length: 100, nullable: true)]
+    public string|null $responsibleParty;
 
-    #[ORM\Column(type: 'string', length: 11)]
+    #[ORM\Column(type: 'string', length: 11, nullable: true)]
     public string|null $phone;
 
     /**
@@ -66,34 +66,34 @@ class Participants
      */
     public function getLastName(): string
     {
-        return $this->last_name;
+        return $this->lastName;
     }
 
     /**
-     * @param string $last_name
+     * @param string $lastName
      * @return Participants
      */
-    public function setLastName(string $last_name): Participants
+    public function setLastName(string $lastName): Participants
     {
-        $this->last_name = $last_name;
+        $this->lastName = $lastName;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getFirstname(): string
+    public function getFirstName(): string
     {
-        return $this->first_name;
+        return $this->firstName;
     }
 
     /**
-     * @param string $first_name
+     * @param string $firstName
      * @return Participants
      */
-    public function setFirstname(string $first_name): Participants
+    public function setFirstName(string $firstName): Participants
     {
-        $this->first_name = $first_name;
+        $this->firstName = $firstName;
         return $this;
     }
 
@@ -102,16 +102,16 @@ class Participants
      */
     public function getStreetAddress1(): ?string
     {
-        return $this->street_address_1;
+        return $this->streetAddress1;
     }
 
     /**
-     * @param string|null $street_address_1
+     * @param string|null $streetAddress1
      * @return Participants
      */
-    public function setStreetAddress1(?string $street_address_1): Participants
+    public function setStreetAddress1(?string $streetAddress1): Participants
     {
-        $this->street_address_1 = $street_address_1;
+        $this->streetAddress1 = $streetAddress1;
         return $this;
     }
 
@@ -120,16 +120,16 @@ class Participants
      */
     public function getStreetAddress2(): ?string
     {
-        return $this->street_address_2;
+        return $this->streetAddress2;
     }
 
     /**
-     * @param string|null $street_address_2
+     * @param string|null $streetAddress2
      * @return Participants
      */
-    public function setStreetAddress2(?string $street_address_2): Participants
+    public function setStreetAddress2(?string $streetAddress2): Participants
     {
-        $this->street_address_2 = $street_address_2;
+        $this->streetAddress2 = $streetAddress2;
         return $this;
     }
 
@@ -192,16 +192,16 @@ class Participants
      */
     public function getResponsibleParty(): ?string
     {
-        return $this->responsible_party;
+        return $this->responsibleParty;
     }
 
     /**
-     * @param string|null $responsible_party
+     * @param string|null $responsibleParty
      * @return Participants
      */
-    public function setResponsibleParty(?string $responsible_party): Participants
+    public function setResponsibleParty(?string $responsibleParty): Participants
     {
-        $this->responsible_party = $responsible_party;
+        $this->responsibleParty = $responsibleParty;
         return $this;
     }
 

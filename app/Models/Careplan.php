@@ -16,19 +16,19 @@ class Careplan
     #[ORM\GeneratedValue(strategy: 'AUTO')]
     public int $id;
 
-    #[ORM\Column(name: 'careplan_date', type: 'datetime', nullable: false)] //may not be null, (required)
-    public DateTime $careplan_date;
+    #[ORM\Column(name: 'date', type: 'datetime', nullable: false)] //may not be null, (required)
+    public DateTime $date;
 
-    #[ORM\Column(name: 'careplan_edit_date', type: 'datetime')]
-    public DateTime $careplan_edit_date;
+    #[ORM\Column(name: 'editDate', type: 'datetime', nullable: false)]
+    public DateTime $editDate;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    public string|null $present_health; //dont neeed name,| allows it to be a null
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    protected string|null $presentHealth; //dont neeed name,| allows it to be a null
 
-    #[ORM\Column(type: 'string', length: 100)]
-    public string $assistive_devices; //dont neeed name
+    #[ORM\Column(type: 'string', length: 100, nullable: true)]
+    protected string $assistiveDevices; //dont neeed name
 
-    #[ORM\Column(type: 'text')]
+    #[ORM\Column(type: 'text', nullable: true)]
     protected string $notes;
 
     /**
@@ -52,36 +52,36 @@ class Careplan
     /**
      * @return DateTime
      */
-    public function getCareplanDate(): DateTime
+    public function getDate(): DateTime
     {
-        return $this->careplan_date;
+        return $this->date;
     }
 
     /**
-     * @param DateTime $careplan_date
+     * @param DateTime $date
      * @return Careplan
      */
-    public function setCareplanDate(DateTime $careplan_date): Careplan
+    public function setDate(DateTime $date): Careplan
     {
-        $this->careplan_date = $careplan_date;
+        $this->date = $date;
         return $this;
     }
 
     /**
      * @return DateTime
      */
-    public function getCareplanEditDate(): DateTime
+    public function getEditDate(): DateTime
     {
-        return $this->careplan_edit_date;
+        return $this->editDate;
     }
 
     /**
-     * @param DateTime $careplan_edit_date
+     * @param DateTime $editDate
      * @return Careplan
      */
-    public function setCareplanEditDate(DateTime $careplan_edit_date): Careplan
+    public function setEditDate(DateTime $editDate): Careplan
     {
-        $this->careplan_edit_date = $careplan_edit_date;
+        $this->editDate = $editDate;
         return $this;
     }
 
@@ -90,16 +90,16 @@ class Careplan
      */
     public function getPresentHealth(): ?string
     {
-        return $this->present_health;
+        return $this->presentHealth;
     }
 
     /**
-     * @param string|null $present_health
+     * @param string|null $presentHealth
      * @return Careplan
      */
-    public function setPresentHealth(?string $present_health): Careplan
+    public function setPresentHealth(?string $presentHealth): Careplan
     {
-        $this->present_health = $present_health;
+        $this->presentHealth = $presentHealth;
         return $this;
     }
 
@@ -108,16 +108,16 @@ class Careplan
      */
     public function getAssistiveDevices(): string
     {
-        return $this->assistive_devices;
+        return $this->assistiveDevices;
     }
 
     /**
-     * @param string $assistive_devices
+     * @param string $assistiveDevices
      * @return Careplan
      */
-    public function setAssistiveDevices(string $assistive_devices): Careplan
+    public function setAssistiveDevices(string $assistiveDevices): Careplan
     {
-        $this->assistive_devices = $assistive_devices;
+        $this->assistiveDevices = $assistiveDevices;
         return $this;
     }
 
@@ -138,9 +138,5 @@ class Careplan
         $this->notes = $notes;
         return $this;
     }
-
-
-
-
 
 }
