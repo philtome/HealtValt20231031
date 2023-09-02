@@ -28,7 +28,7 @@ class careplan_controller
     {
         $carePlans = $this->em->getRepository(Careplan::class)->findAll();
 
-        return renderTemplate('careplans_main.twig',['careplans' => $carePlans]);
+        return renderTemplate('careplans\careplans_main.twig',['careplans' => $carePlans]);
     }
     public function getList() {
         $careplans = new Careplans_Model();

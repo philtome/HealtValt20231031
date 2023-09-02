@@ -139,7 +139,7 @@ switch ($controller) {
         break;
 
     case 'contacts':
-        $contacts = new contacts_controller();
+        $contacts = new contacts_controller($entityManager);
         if (is_null($param1)) {
             $result = $contacts->mainDisplay();
         } elseif ($param1==='') {
