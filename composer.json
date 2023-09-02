@@ -1,13 +1,13 @@
 {
     "require": {
         "symfony/http-foundation": "^6.3",
-        "twig/twig": "^3.6",
+        "twig/twig": "3.5.*",
         "twig/html-extra": "3.5.*",
         "twbs/bootstrap": "^5.3",
-        "doctrine/orm": "^2.16",
-        "doctrine/dbal": "^3.2",
+        "doctrine/orm": "2.*",
+        "doctrine/dbal": "3.*",
         "symfony/cache": "*",
-        "doctrine/annotations": "*"
+        "doctrine/annotations": "2.*"
     },
     "autoload": {
         "psr-4": {
