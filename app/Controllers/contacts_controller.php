@@ -3,9 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\Contacts_Model;
+use App\Models\Contacts;
+use Doctrine\Persistence\ObjectManager;
 
-class contacts
+class contacts_controller
 {
+    private ObjectManager $em;
+
+    public function __construct($em)
+    {
+        $this->em = $em;
+    }
     public function action1($param1, $param2, $param3)
     {
         // Your controller logic here using $param1, $param2, $param3
@@ -18,8 +26,10 @@ class contacts
 
     public function mainDisplay()
     {
-        $contacts = new Contacts_Model();
-        return renderTemplate('contacts\contacts_main.twig', ['contacts' => $contacts->getContactssList()]);
+        $contacts = $this->em->getRepository(Contacts::class)->findAll();
+
+        return renderTemplate('contacts\contacts_main.twig',['contacts' => $contacts]);
+
     }
 
     public function getList()

@@ -81,7 +81,7 @@ INSERT INTO `contacts` (`id`, `last_name`, `first_name`, `contact_type`, `compan
 -- --------------------------------------------------------
 
 --
--- Table structure for table `participants`
+-- Table structure for table `participantsController`
 --
 
 CREATE TABLE `participants` (
@@ -94,7 +94,7 @@ CREATE TABLE `participants` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `participants`
+-- Dumping data for table `participantsController`
 --
 
 INSERT INTO `participants` (`id`, `last_name`, `first_name`, `street_address_1`, `email`, `phone`) VALUES
@@ -120,7 +120,7 @@ ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `participants`
+-- Indexes for table `participantsController`
 --
 ALTER TABLE `participants`
   ADD PRIMARY KEY (`id`);

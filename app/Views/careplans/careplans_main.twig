@@ -1,4 +1,4 @@
-{% extends 'base.twig' %}
+{% extends '../base.twig' %}
 
 {% block title %}
     - List of CarePlans
@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-      {#  {{ dump(careplan) }} #}
+        {#{{ dump(careplans) }} #}
 
     <div class="jumbotron">
         <div class="container">
@@ -32,14 +32,14 @@
         </tr>
         {% for careplan in careplans %}
         <tr>
-            <td>{{ careplan.careplan_date }}
+            <td>{{ careplan.date|date('Y-m-d') }}
             </td>
-            <td>{{ careplan.present_health }}
+            <td>{{ careplan.presenthealth }}
             </td>
 
             <td>
                 <a href="/show.php?id={{ careplan.id }}">
-                    {{ careplan.assistive_devices}}
+                    {{ careplan.assistivedevices }}
                 </a>
             </td>
 
@@ -53,8 +53,6 @@
             <td class="careplan-manage">
                 <button class="manageCpButton btn btn-primary" data-item-id="{{ careplan.id }}">Manage</button>
             </td>
-
-
 
         {% endfor %}
         </tbody>

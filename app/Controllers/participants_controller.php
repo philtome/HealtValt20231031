@@ -2,10 +2,24 @@
 
 namespace App\Controllers;
 
+use App\Models\Participants;
 use App\Models\Participants_Model;
+use Doctrine\Persistence\ObjectManager;
 
-class participants
+class participants_controller
 {
+    private ObjectManager $em;
+
+    public function __construct($em) {
+        $this->em=$em;
+    }
+
+    public function mainDisplay()
+    {
+        $participants = $this->em->getRepository(Participants::class)->findAll();
+
+        return renderTemplate('participants\participants_main.twig',['participants' => $participants]);    }
+
     public function action1($param1, $param2, $param3)
     {
         // Your controller logic here using $param1, $param2, $param3
@@ -30,12 +44,12 @@ class participants
         $temppor = $participants->update_participant($dataToSave, $id);
         // want to do the save here
 //        if ($id == null) {
-//            $successful = $participants->update_participant($dataToSave);
+//            $successful = $participantsController->update_participant($dataToSave);
 //        }
 //        else {
-//            $successful = $participants->update_participant($dataToSave, $id);
+//            $successful = $participantsController->update_participant($dataToSave, $id);
 //        }
-        return renderTemplate('participants\participants_main.twig', ['participants' => $participants->getParticipantsList()]);
+        return renderTemplate('participants\participants_main.twig', ['participantsController' => $participants->getParticipantsList()]);
         //return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
     }
 
@@ -43,7 +57,7 @@ class participants
     {
         $participants = new Participants_Model();
         $sucessful = $participants->delete_participant($id);
-        return renderTemplate('participants\participants_main.twig', ['participants' => $participants->getParticipantsList()]);
+        return renderTemplate('participants\participants_main.twig', ['participantsController' => $participants->getParticipantsList()]);
     }
 
     public function createParticipant()
@@ -63,12 +77,6 @@ class participants
         return renderTemplate('participants\participants_main.twig', ['participant' => $participants->getParticipantsList()]);
     }
 
-
-    public function mainDisplay()
-    {
-        $participants = new Participants_Model();
-        return renderTemplate('participants\participants_main.twig',['participants' => $participants->getParticipantsList()]);
-    }
     public function getList() {
         $participants = new Participants_Model();
         $listItems = $participants->getParticipantsList();
