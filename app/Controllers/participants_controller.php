@@ -32,9 +32,8 @@ class participants_controller
 
     public function manageParticipant($id)
     {
-        $participants = new Participants_Model();
-        $participantDetails = $participants->get_participant($id);
-        return renderTemplate('participants\participantDetails.twig', ['participant' => $participantDetails]);
+        $participant = $this->em->getRepository(Participants::class)->find($id);
+        return renderTemplate('participants\participantDetails.twig', ['participant' => $participant]);
     }
 
     public function saveParticipant($id)

@@ -1,4 +1,4 @@
-{% extends '../base.twig' %}
+{% extends 'base.twig' %}
 
 {% block title %}
     - Careplan Details
@@ -20,20 +20,20 @@
                     <div class="form-group">
                         <label for="careplan-date" class="control-label">Careplan Date</label>
                         <input type="date" name="careplanDate" id="careplan-date"
-                               value="{{ careplane.careplan_date }}" class="form-control">
+                               value="{{ careplane.careplandate }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="careplan-present-health" class="control-label">Present Health</label>
                         <input type="text" name="careplanPHealth" id="careplan-present-health"
-                               value="{{ careplan.present_health }}" class="form-control">
+                               value="{{ careplan.presenthealth }}" class="form-control">
                     </div>
 
 
                     <div class="form-group">
                         <label for="careplan-assistive-devices" class="control-label">Assistive Devices</label>
                         <input type="text" name="careplanAssDevices" id="careplan-assistive-devices"
-                               value="{{ careplan.assistive_devices }}" class="form-control">
+                               value="{{ careplan.assistivedevices }}" class="form-control">
                     </div>
 
                     <div class="form-group">
