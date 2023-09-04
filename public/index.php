@@ -122,9 +122,9 @@ switch ($controller) {
         } elseif ($param1==='') {
             $result = $participants->mainDisplay();
         } elseif ($param2 === 'update') {
-            $result = $participants->saveParticipant($param3);
+            $result = $participants->saveParticipant($entityManager,$param3);
         } elseif ($param1 === 'delete') {
-            $result = $participants->deleteParticipant($param2);
+            $result = $participants->deleteParticipant($entityManager,$param2);
         } elseif ($param1 === 'display') {
             $result = $participants->mainDisplay();
         } elseif ($param1 === 'manage') {
@@ -132,7 +132,7 @@ switch ($controller) {
         } elseif ($param1 === 'create') {
             $result = $participants->createParticipant();
         } elseif ($param1 === 'copy') {
-            $result = $participants->copyParticipant($param2);
+            $result = $participants->copyParticipant($entityManager,$param2);
         } else {
             $result = $participants->action1($param1, $param2, $param3);
         }

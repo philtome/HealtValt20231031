@@ -4,9 +4,10 @@ namespace App\Controllers;
 
 use App\Models\Participants;
 use App\Models\Participants_Model;
+use App\Models\DataSaver;
 use Doctrine\Persistence\ObjectManager;
 
-class participants_controller
+class participants_controller extends abstract_controller
 {
     private ObjectManager $em;
 
@@ -20,15 +21,6 @@ class participants_controller
 
         return renderTemplate('participants\participants_main.twig',['participants' => $participants]);    }
 
-    public function action1($param1, $param2, $param3)
-    {
-        // Your controller logic here using $param1, $param2, $param3
-        return renderTemplate('template2.twig', [
-            'param1' => $param1,
-            'param2' => $param2,
-            'param3' => $param3
-        ]);
-    }
 
     public function manageParticipant($id)
     {
@@ -36,44 +28,41 @@ class participants_controller
         return renderTemplate('participants\participantDetails.twig', ['participant' => $participant]);
     }
 
-    public function saveParticipant($id)
+    public function saveParticipant($em,$id = null)  //save new and existing
     {
-        $participants = new Participants_Model();
+        $dataSaver = new DataSaver($em);
+        $participants = new Participants();
         $dataToSave = $this->movePostDataToFields($_POST);
-        $temppor = $participants->update_participant($dataToSave, $id);
-        // want to do the save here
-//        if ($id == null) {
-//            $successful = $participantsController->update_participant($dataToSave);
-//        }
-//        else {
-//            $successful = $participantsController->update_participant($dataToSave, $id);
-//        }
+        if ($id !== null & $id !== "") {
+            $dataSaver->updateData('App\Models\Participants',$dataToSave, $id);
+        }
+        else {
+            $dataSaver->saveData('App\Models\Participants',$dataToSave);
+        }
         return renderTemplate('participants\participants_main.twig', ['participantsController' => $participants->getParticipantsList()]);
         //return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
     }
 
-    public function deleteParticipant($id)
-    {
-        $participants = new Participants_Model();
-        $sucessful = $participants->delete_participant($id);
-        return renderTemplate('participants\participants_main.twig', ['participantsController' => $participants->getParticipantsList()]);
-    }
-
     public function createParticipant()
     {
-        $contacts = new Participants_Model();
-        //$contactDetails = $contacts->get_contact();
+        $contacts = new Participants();
         return renderTemplate('participants\participantDetails.twig');
     }
 
-    public function copyParticipant($id)
+    public function copyParticipant($em,$id)
     {
-        $participants = new Participants_Model();
-        $participantDetails = $participants->get_participant($id);
-        $participantsSave = new Participants_Model();
-        $temppor = $participantsSave->update_participant($participantDetails);
-        // want to do the save here
+        $dataSaver = new DataSaver($em);
+        $CopyFromParticipant = $this->em->find('App\Models\Participants',$id);
+        $dataSaver->saveData('App\Models\Participants',$CopyFromParticipant);
         return renderTemplate('participants\participants_main.twig', ['participant' => $participants->getParticipantsList()]);
+    }
+
+    public function deleteParticipant($em,$id)
+    {
+        $dataSaver = new DataSaver($em);
+        $participants = new Participants();
+        $dataSaver->deleteData('App\Models\Participants',$id);
+        return renderTemplate('participants\participants_main.twig', ['participantsController' => $participants->getParticipantsList()]);
     }
 
     public function getList() {
@@ -103,14 +92,14 @@ class participants_controller
         if ($participantLastN !== null && $participantPhone !== null) {
             // Data is valid, proceed to update the database
             Return $dataToReturn = [
-                'first_name' => $participantFirstN,
-                'last_name' => $participantLastN,
-                'street_address_1' => $participantAddress,
-                'street_address_2' => $participantAddress2,
+                'firstName' => $participantFirstN,
+                'lastName' => $participantLastN,
+                'streetAddress1' => $participantAddress,
+                'streetAddress2' => $participantAddress2,
                 'city' => $participantCity,
                 'state' => $participantState,
                 'zip' => $participantZip,
-                'responsible_party' => $participantResponParty,
+                'responsibleParty' => $participantResponParty,
                 'phone' => $participantPhone,
 
                 // Add more fields as needed
