@@ -4,42 +4,50 @@ namespace App\Controllers;
 
 use App\Models\Participants;
 use App\Models\Participants_Model;
-use App\Models\DataSaver;
+use App\Utils\DataSaver;
 use Doctrine\Persistence\ObjectManager;
+
 
 class participants_controller extends abstract_controller
 {
+
     private ObjectManager $em;
 
     public function __construct($em) {
         $this->em=$em;
+
     }
 
     public function mainDisplay()
     {
         $participants = $this->em->getRepository(Participants::class)->findAll();
+        $namespace = $this->namespace;
 
         return renderTemplate('participants\participants_main.twig',['participants' => $participants]);    }
 
 
-    public function manageParticipant($id)
+    public function manageParticipant($id,$controller)
     {
         $participant = $this->em->getRepository(Participants::class)->find($id);
-        return renderTemplate('participants\participantDetails.twig', ['participant' => $participant]);
+        $templateToDisplay = $controller.'\\'.$controller.'Details.twig';
+        return renderTemplate($templateToDisplay, ['participant' => $participant]);
     }
 
-    public function saveParticipant($em,$id = null)  //save new and existing
+    public function saveParticipant($em,$controller,$id = null)  //save new and existing
     {
+        $namespace = $this->namespace;
+        $entityClassName = $namespace.'\\'.$controller;
         $dataSaver = new DataSaver($em);
         $participants = new Participants();
         $dataToSave = $this->movePostDataToFields($_POST);
+        $templateToDisplay = $controller.'\\'.$controller.'_main.twig';
         if ($id !== null & $id !== "") {
-            $dataSaver->updateData('App\Models\Participants',$dataToSave, $id);
+            $dataSaver->updateData($entityClassName,$dataToSave, $id);
         }
         else {
-            $dataSaver->saveData('App\Models\Participants',$dataToSave);
+            $dataSaver->saveData($entityClassName,$dataToSave);
         }
-        return renderTemplate('participants\participants_main.twig', ['participantsController' => $participants->getParticipantsList()]);
+        return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
         //return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
     }
 
@@ -49,20 +57,24 @@ class participants_controller extends abstract_controller
         return renderTemplate('participants\participantDetails.twig');
     }
 
-    public function copyParticipant($em,$id)
+    public function copyParticipant($em,$controller,$id)
     {
+        $namespace = $this->namespace;
+        $entityClassName = $namespace.'\\'.$controller;
         $dataSaver = new DataSaver($em);
-        $CopyFromParticipant = $this->em->find('App\Models\Participants',$id);
-        $dataSaver->saveData('App\Models\Participants',$CopyFromParticipant);
-        return renderTemplate('participants\participants_main.twig', ['participant' => $participants->getParticipantsList()]);
+        $CopyFromParticipant = $this->em->find($entityClassName,$id);
+        $dataSaver->saveData($entityClassName,$CopyFromParticipant);
     }
 
-    public function deleteParticipant($em,$id)
+    public function deleteParticipant($em,$controller,$id)
     {
+        $namespace = $this->namespace;
+        $entityClassName = $namespace.'\\'.$controller;
         $dataSaver = new DataSaver($em);
         $participants = new Participants();
-        $dataSaver->deleteData('App\Models\Participants',$id);
-        return renderTemplate('participants\participants_main.twig', ['participantsController' => $participants->getParticipantsList()]);
+        $dataSaver->deleteData($entityClassName,$id);
+        $templateToDisplay = $controller.'\\'.$controller.'_main.twig';
+        return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
     }
 
     public function getList() {
