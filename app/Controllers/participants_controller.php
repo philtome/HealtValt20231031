@@ -11,22 +11,30 @@ use Doctrine\Persistence\ObjectManager;
 class participants_controller extends abstract_controller
 {
 
-    private ObjectManager $em;
+    protected ObjectManager $em;
 
     public function __construct($em) {
         $this->em=$em;
 
     }
 
-    public function mainDisplay()
-    {
-        $participants = $this->em->getRepository(Participants::class)->findAll();
-        $namespace = $this->namespace;
+//    public function mainDisplay($controller)
+//    {
+//        $namespace = $this->namespace;
+//        $model = $namespace.'\\'.ucfirst($controller);
+//        $dataToDisplay = $this->em->getRepository($model)->findAll();
+//        $templateToDisplay = $controller.'\\'.$controller.'_main.twig';
+//
+//
+//        $key = $controller; // You can set this key dynamically
+//        $templateData = [$key => $dataToDisplay];
+//        return renderTemplate($templateToDisplay, $templateData);
+//
+//        //return renderTemplate($templateToDisplay,['participants' => $dataToDisplay]);
+//    }
 
-        return renderTemplate('participants\participants_main.twig',['participants' => $participants]);    }
 
-
-    public function manageParticipant($id,$controller)
+    public function manageEntity($id,$controller)
     {
         $participant = $this->em->getRepository(Participants::class)->find($id);
         $templateToDisplay = $controller.'\\'.$controller.'Details.twig';

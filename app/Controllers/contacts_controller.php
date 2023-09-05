@@ -4,33 +4,32 @@ namespace App\Controllers;
 
 use App\Models\Contacts_Model;
 use App\Models\Contacts;
+use App\Utils\DataSaver;
 use Doctrine\Persistence\ObjectManager;
 
-class contacts_controller
+class contacts_controller extends abstract_controller
 {
-    private ObjectManager $em;
+    protected ObjectManager $em;
 
     public function __construct($em)
     {
         $this->em = $em;
     }
-    public function action1($param1, $param2, $param3)
-    {
-        // Your controller logic here using $param1, $param2, $param3
-        return renderTemplate('template2.twig', [
-            'param1' => $param1,
-            'param2' => $param2,
-            'param3' => $param3
-        ]);
-    }
 
-    public function mainDisplay()
-    {
-        $contacts = $this->em->getRepository(Contacts::class)->findAll();
-
-        return renderTemplate('contacts\contacts_main.twig',['contacts' => $contacts]);
-
-    }
+//    public function mainDisplay($controller)
+//    {
+//        $namespace = $this->namespace;
+//        $model = $namespace.'\\'.ucfirst($controller);
+//        $dataToDisplay = $this->em->getRepository($model)->findAll();
+//        $templateToDisplay = $controller.'\\'.$controller.'_main.twig';
+//
+//
+//        $key = $controller; // You can set this key dynamically
+//        $templateData = [$key => $dataToDisplay];
+//        return renderTemplate($templateToDisplay, $templateData);
+//
+//        //return renderTemplate($templateToDisplay,['participants' => $dataToDisplay]);
+//    }
 
     public function getList()
     {

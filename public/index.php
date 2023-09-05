@@ -119,9 +119,9 @@ switch ($controller) {
         $participants = new participants_controller($entityManager);
         //$entityClassName = 'App\Models\Participants';
         if (is_null($param1)) {
-            $result = $participants->mainDisplay();
+            $result = $participants->mainDisplay($controller);
         } elseif ($param1==='') {
-            $result = $participants->mainDisplay();
+            $result = $participants->mainDisplay($controller);
         } elseif ($param2 === 'update') {
             $result = $participants->saveParticipant($entityManager,$controller,$param3);
         } elseif ($param1 === 'delete') {
@@ -129,7 +129,7 @@ switch ($controller) {
         } elseif ($param1 === 'display') {
             $result = $participants->mainDisplay();
         } elseif ($param1 === 'manage') {
-            $result = $participants->manageParticipant($param2,$controller);
+            $result = $participants->manageEntity($param2,$controller);
         } elseif ($param1 === 'create') {
             $result = $participants->createParticipant();
         } elseif ($param1 === 'copy') {
@@ -142,15 +142,15 @@ switch ($controller) {
     case 'contacts':
         $contacts = new contacts_controller($entityManager);
         if (is_null($param1)) {
-            $result = $contacts->mainDisplay();
+            $result = $contacts->mainDisplay($controller);
         } elseif ($param1==='') {
-            $result = $contacts->mainDisplay();
+            $result = $contacts->mainDisplay($controller);
         } elseif ($param2 === 'update') {
             $result = $contacts->saveContact($param3);
         } elseif ($param1 === 'delete') {
             $result = $contacts->deleteContact($param2);
         } elseif ($param1 === 'display') {
-            $result = $contacts->mainDisplay();
+            $result = $contacts->mainDisplay($controller);
         } elseif ($param1 === 'manage') {
             $result = $contacts->manageContact($param2);
         } elseif ($param1 === 'create') {
