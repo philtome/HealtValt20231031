@@ -34,17 +34,26 @@ abstract class abstract_controller
         $this->entityManager->flush();
     }
 
-    public function mainDisplay($controller)
+    public function mainDisplay($controllerClassName)
     {
-        $model = $this->namespace.'\\'.ucfirst($controller);
+        $modelClassName = $this->namespace.'\\'.ucfirst($controllerClassName);
             // namespace is from $namespace setting in abstract_controller
-        $dataToDisplay = $this->em->getRepository($model)->findAll();
-        $templateToDisplay = $controller.'\\'.$controller.'_main.twig';
+        $dataToDisplay = $this->em->getRepository($modelClassName)->findAll();
+        $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
 
-        $key = $controller; // You can set this key dynamically
-        $templateData = [$key => $dataToDisplay];
+        $arrayKey = $controllerClassName; // You can set this key dynamically
+        $templateData = [$arrayKey => $dataToDisplay];
             // example of this is: ['participants' => $dataToDisplay]
         return renderTemplate($templateToDisplay, $templateData);
     }
-
+    public function manageItem($id,$controller)
+    {
+        $namespace = $this->namespace;
+        $model = $namespace.'\\'.ucfirst($controller);
+        $dataToDisplay = $this->em->getRepository($model)->find($id);
+        $key = $controller; // You can set this key dynamically
+        $templateData = [$key => $dataToDisplay];
+        $templateToDisplay = $controller.'\\'.$controller.'Details.twig';
+        return renderTemplate($templateToDisplay, $templateData);
+    }
 }

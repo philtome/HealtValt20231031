@@ -23,13 +23,13 @@
                 <div class="col-md-6">
                     <label for="participantFirstName" class="form-label">First Name</label>
                     <input type="text" name="participantFirstName" id="participantFirstName"
-                           value="{{ participant.firstname }}" class="form-control">
+                           value="{{ participants.firstname }}" class="form-control">
                 </div>
                 <!-- Second Field -->
                 <div class="col-md-6">
                     <label for="participantLastName" class="form-label">Last Name</label>
                     <input type="text" name="participantLastName" id="participantLastName"
-                    value="{{ participant.lastname }}" class="form-control">
+                    value="{{ participants.lastname }}" class="form-control">
                 </div>
             </div>
 
@@ -38,7 +38,7 @@
                 <div class="col-md-6">
                     <label for="participantAddress" class="form-label">Address</label>
                     <input type="text" name="participantAddress" id="participantAddress"
-                           value="{{ participant.streetaddress1 }}" class="form-control">
+                           value="{{ participants.streetaddress1 }}" class="form-control">
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
                 <div class="col-md-6">
                     {#  <label for="participantAddress2" class="form-label">Address</label> #}
                     <input type="text" name="participantAddress2" id="participantAddress2"
-                           value="{{ participant.streetaddress2 }}" class="form-control">
+                           value="{{ participants.streetaddress2 }}" class="form-control">
                 </div>
             </div>
 
@@ -56,17 +56,17 @@
                 <div class="col-md-4">
                     <label for="participantCity" class="form-label">City</label>
                     <input type="text" name="participantCity" id="participantCity"
-                           value="{{ participant.city }}" class="form-control">
+                           value="{{ participants.city }}" class="form-control">
                 </div>
                 <div class="col-md-4">
                     <label for="participantState" class="form-label">State</label>
                     <input type="text" name="participantState" id="participantState"
-                           value="{{ participant.state }}" class="form-control">
+                           value="{{ participants.state }}" class="form-control">
                 </div>
                 <div class="col-md-4">
                     <label for="participantZip" class="form-label">Zip</label>
                     <input type="text" name="participantZip" id="participantZip"
-                           value="{{ participant.zip }}" class="form-control">
+                           value="{{ participants.zip }}" class="form-control">
                 </div>
                 <!-- Repeat for Fields 10-11 -->
             </div>
@@ -74,12 +74,12 @@
                 <div class="col-md-4">
                     <label for="participantRespnParty" class="form-label">Responsible Party</label>
                     <input type="text" name="participantResponParty" id="participantRespondParty"
-                           value="{{ participant.responsibleparty }}" class="form-control">
+                           value="{{ participants.responsibleparty }}" class="form-control">
                 </div>
                 <div class="col-md-4">
                     <label for="participantPhone" class="form-label">Cell Phone</label>
                     <input type="text" name="participantPhone" id="participantPhone"
-                           value="{{ participant.phone }}" class="form-control">
+                           value="{{ participants.phone }}" class="form-control">
                 </div><!-- Repeat for Fields 12-14 -->
             </div>
             <div class="row">
@@ -125,7 +125,7 @@
             <!-- Repeat for additional rows as needed -->
 
             <!-- Submit Button -->
-            <div class="form-group row mt-4 saveButton" data-item-id="{{ participant.id }}">
+            <div class="form-group row mt-4 saveButton" data-item-id="{{ participants.id }}">
                 <div class="col-sm-12 text-center">
                     <button id="btn_participant_save" type="submit" class="btn btn-primary">Save</button>
                     <button id="btn_participant_cancel" type="button" class="btn btn-secondary btnCancel">Cancel</button>

@@ -11,7 +11,7 @@ require_once '../bootstrap.php';
 use App\Controllers\Controller1;
 
 // Add the correct namespace for Controller1
-use App\Controllers\careplan_controller;
+use App\Controllers\careplans_controller;
 
 // Add the correct namespace for Controller2
 use App\Controllers\participants_controller;
@@ -104,12 +104,12 @@ switch ($controller) {
         break;
 
     case 'careplans':
-        $careplans = new careplan_controller($entityManager);
+        $careplans = new careplans_controller($entityManager);
         //$dude = new careplans();
         if (is_null($param1)) {
-            $result = $careplans->mainDisplay();
+            $result = $careplans->mainDisplay($controller);
         } elseif ($param1 = 'display') {
-            $result = $careplans->mainDisplay();
+            $result = $careplans->mainDisplay($controller);
         } else {
             $result = $careplans->action1($param1, $param2, $param3);
         }
@@ -129,7 +129,7 @@ switch ($controller) {
         } elseif ($param1 === 'display') {
             $result = $participants->mainDisplay();
         } elseif ($param1 === 'manage') {
-            $result = $participants->manageEntity($param2,$controller);
+            $result = $participants->manageItem($param2,$controller);
         } elseif ($param1 === 'create') {
             $result = $participants->createParticipant();
         } elseif ($param1 === 'copy') {
@@ -152,7 +152,7 @@ switch ($controller) {
         } elseif ($param1 === 'display') {
             $result = $contacts->mainDisplay($controller);
         } elseif ($param1 === 'manage') {
-            $result = $contacts->manageContact($param2);
+            $result = $contacts->manageItem($param2,$controller);
         } elseif ($param1 === 'create') {
             $result = $contacts->createContact();
         } elseif ($param1 === 'copy') {

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
 
-class Careplan
+class Careplans
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
@@ -41,9 +41,9 @@ class Careplan
 
     /**
      * @param int $id
-     * @return Careplan
+     * @return Careplans
      */
-    public function setId(int $id): Careplan
+    public function setId(int $id): Careplans
     {
         $this->id = $id;
         return $this;
@@ -59,9 +59,9 @@ class Careplan
 
     /**
      * @param DateTime $date
-     * @return Careplan
+     * @return Careplans
      */
-    public function setDate(DateTime $date): Careplan
+    public function setDate(DateTime $date): Careplans
     {
         $this->date = $date;
         return $this;
@@ -77,9 +77,9 @@ class Careplan
 
     /**
      * @param DateTime $editDate
-     * @return Careplan
+     * @return Careplans
      */
-    public function setEditDate(DateTime $editDate): Careplan
+    public function setEditDate(DateTime $editDate): Careplans
     {
         $this->editDate = $editDate;
         return $this;
@@ -95,9 +95,9 @@ class Careplan
 
     /**
      * @param string|null $presentHealth
-     * @return Careplan
+     * @return Careplans
      */
-    public function setPresentHealth(?string $presentHealth): Careplan
+    public function setPresentHealth(?string $presentHealth): Careplans
     {
         $this->presentHealth = $presentHealth;
         return $this;
@@ -113,9 +113,9 @@ class Careplan
 
     /**
      * @param string $assistiveDevices
-     * @return Careplan
+     * @return Careplans
      */
-    public function setAssistiveDevices(string $assistiveDevices): Careplan
+    public function setAssistiveDevices(string $assistiveDevices): Careplans
     {
         $this->assistiveDevices = $assistiveDevices;
         return $this;
@@ -131,9 +131,9 @@ class Careplan
 
     /**
      * @param string $notes
-     * @return Careplan
+     * @return Careplans
      */
-    public function setNotes(string $notes): Careplan
+    public function setNotes(string $notes): Careplans
     {
         $this->notes = $notes;
         return $this;

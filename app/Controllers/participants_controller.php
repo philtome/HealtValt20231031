@@ -34,12 +34,16 @@ class participants_controller extends abstract_controller
 //    }
 
 
-    public function manageEntity($id,$controller)
-    {
-        $participant = $this->em->getRepository(Participants::class)->find($id);
-        $templateToDisplay = $controller.'\\'.$controller.'Details.twig';
-        return renderTemplate($templateToDisplay, ['participant' => $participant]);
-    }
+//    public function manageItem($id,$controller)
+//    {
+//        $namespace = $this->namespace;
+//        $model = $namespace.'\\'.ucfirst($controller);
+//        $dataToDisplay = $this->em->getRepository($model)->find($id);
+//        $key = $controller; // You can set this key dynamically
+//        $templateData = [$key => $dataToDisplay];
+//        $templateToDisplay = $controller.'\\'.$controller.'Details.twig';
+//        return renderTemplate($templateToDisplay, $templateData);
+//    }
 
     public function saveParticipant($em,$controller,$id = null)  //save new and existing
     {
@@ -56,7 +60,7 @@ class participants_controller extends abstract_controller
             $dataSaver->saveData($entityClassName,$dataToSave);
         }
         return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
-        //return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
+        //return renderTemplate('contacts\contactsDetails.twig', ['contact' => $contactDetails]);
     }
 
     public function createParticipant()

@@ -19,21 +19,21 @@
                         <label class="col-sm-4 col-form-label text-end">Last Name:</label>
                         <div class="col-sm-8">
                             <input type="text" name="contactLastName" id="contactLastName"
-                                   value="{{ contact.last_name }}" class="form-control">
+                                   value="{{ contacts.lastname }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">First Name:</label>
                         <div class="col-sm-8">
                             <input type="text" name="contactFirstName" id="contactFirstName"
-                                   value="{{ contact.first_name }}" class="form-control">
+                                   value="{{ contacts.firstname }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">Contact Type:</label>
                         <div class="col-sm-8">
                             <input type="text" name="contacttype" id="contact-type"
-                                   value="{{ contact.contact_type }}" class="form-control">
+                                   value="{{ contacts.contacttype }}" class="form-control">
                         </div>
 
                     </div>
@@ -46,21 +46,21 @@
                         <label class="col-sm-4 col-form-label text-end">Email:</label>
                         <div class="col-sm-8">
                             <input type="text" name="contactemail" id="contact-email"
-                                   value="{{ contact.email }}" class="form-control">
+                                   value="{{ contacts.email }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">Phone:</label>
                         <div class="col-sm-8">
                             <input type="text" name="contactphone" id="contact-phone"
-                                   value="{{ contact.phone }}" class="form-control">
+                                   value="{{ contacts.phone }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">Company/Practice:</label>
                         <div class="col-sm-8">
                             <textarea name="companypractice" id="company-practice"
-                                      class="form-control">{{ contact.company_practice }}</textarea>
+                                      class="form-control">{{ contacts.companypractice }}</textarea>
                         </div>
                     </div>
 
@@ -78,25 +78,25 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="form-check">
-                                    <input type="checkbox" name="isDriver" id="isDriverCheckbox" {{ contact.is_driver ? 'checked' : '' }} class="mt-3">
+                                    <input type="checkbox" name="isDriver" id="isDriverCheckbox" {{ contacts.isdriver ? 'checked' : '' }} class="mt-3">
                                     <label class="form-check-label" for="isDriverCheckbox">Is Driver</label>
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-check">
-                                    <input type="checkbox" name="isEmployee" id="isEmployeeCheckbox" {{ contact.is_employee ? 'checked' : '' }} class="mt-3">
+                                    <input type="checkbox" name="isEmployee" id="isEmployeeCheckbox" {{ contacts.isemployee ? 'checked' : '' }} class="mt-3">
                                     <label class="form-check-label" for="isEmployeeCheckbox">Is Employee</label>
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-check">
-                                    <input type="checkbox" name="isCaregiver" id="isCaregiverCheckbox" {{ contact.is_caregiver ? 'checked' : '' }} class="mt-3">
+                                    <input type="checkbox" name="isCaregiver" id="isCaregiverCheckbox" {{ contacts.iscaregiver ? 'checked' : '' }} class="mt-3">
                                     <label class="form-check-label" for="isCaregiverCheckbox">is Caregiver</label>
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-check">
-                                    <input type="checkbox" name="isCna" id="isCnaCheckbox" {{ contact.is_cna ? 'checked' : '' }} class="mt-3">
+                                    <input type="checkbox" name="isCna" id="isCnaCheckbox" {{ contacts.iscna ? 'checked' : '' }} class="mt-3">
                                     <label class="form-check-label" for="isCnaCheckbox">is a CNA</label>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="form-check">
-                                    <input type="checkbox" name="isRn" id="isRnCheckbox" {{ contact.is_rn ? 'checked' : '' }} class="mt-3">
+                                    <input type="checkbox" name="isRn" id="isRnCheckbox" {{ contacts.isrn ? 'checked' : '' }} class="mt-3">
                                     <label class="form-check-label" for="isRnCheckbox">is a RN</label>
                                 </div>
                             </div>
@@ -141,35 +141,35 @@
                         <label class="col-sm-4 col-form-label text-end">Address 1</label>
                         <div class="col-sm-8">
                             <input type="text" name="contactLastName" id="contactLastName"
-                                   value="{{ contact.last_name }}" class="form-control">
+                                   value="{{ contacts.lastname }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">Address2</label>
                         <div class="col-sm-8">
                             <input type="text" name="contactFirstName" id="contactFirstName"
-                                   value="{{ contact.first_name }}" class="form-control">
+                                   value="{{ contacts.firstname }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">city</label>
                         <div class="col-sm-8">
                             <input type="text" name="contacttype" id="contact-type"
-                                   value="{{ contact.contact_type }}" class="form-control">
+                                   value="{{ contacts.contacttype }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">State</label>
                         <div class="col-sm-8">
                             <input type="text" name="contactFirstName" id="contactFirstName"
-                                   value="{{ contact.first_name }}" class="form-control">
+                                   value="{{ contacts.firstname }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">zip</label>
                         <div class="col-sm-8">
                             <input type="text" name="contacttype" id="contact-type"
-                                   value="{{ contact.contact_type }}" class="form-control">
+                                   value="{{ contacts.contacttype }}" class="form-control">
                         </div>
                     </div>
 
@@ -181,21 +181,21 @@
                         <label class="col-sm-4 col-form-label text-end">phone cell</label>
                         <div class="col-sm-8">
                             <input type="text" name="contactemail" id="contact-email"
-                                   value="{{ contact.email }}" class="form-control">
+                                   value="{{ contacts.email }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">phone home</label>
                         <div class="col-sm-8">
                             <input type="text" name="contactphone" id="contact-phone"
-                                   value="{{ contact.phone }}" class="form-control">
+                                   value="{{ contacts.phone }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">phone work</label>
                         <div class="col-sm-8">
                             <input type="text" name="companypractice" id="company-practice"
-                                   value="{{ contact.company_practice }}" class="form-control">
+                                   value="{{ contacts.company_practice }}" class="form-control">
                         </div>
                     </div>
 
@@ -207,21 +207,21 @@
                         <label class="col-sm-4 col-form-label text-end">ext</label>
                         <div class="col-sm-8">
                             <input type="text" name="contactemail" id="contact-email"
-                                   value="{{ contact.email }}" class="form-control">
+                                   value="{{ contacts.email }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">ext</label>
                         <div class="col-sm-8">
                             <input type="text" name="contactphone" id="contact-phone"
-                                   value="{{ contact.phone }}" class="form-control">
+                                   value="{{ contacts.phone }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">ext</label>
                         <div class="col-sm-8">
                             <input type="text" name="companypractice" id="company-practice"
-                                   value="{{ contact.company_practice }}" class="form-control">
+                                   value="{{ contacts.company_practice }}" class="form-control">
                         </div>
                     </div>
 
@@ -233,7 +233,7 @@
 
 
 
-            <div class="form-group row mt-4 saveButton" data-item-id="{{ contact.id }}">
+            <div class="form-group row mt-4 saveButton" data-item-id="{{ contacts.id }}">
                 <div class="col-sm-12 text-center">
                     <button id="btn_contacts_save" type="submit" class="btn btn-primary">Save</button>
                     <button id="btn_contacts_cancel" type="button" class="btn btn-secondary btnCancel">Cancel</button>

@@ -58,14 +58,14 @@ class contacts_controller extends abstract_controller
             $successful = $contacts->update_contact($dataToSave, $id);
         }
         return renderTemplate('contacts\contacts_main.twig', ['contacts' => $contacts->getContactssList()]);
-        //return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
+        //return renderTemplate('contacts\contactsDetails.twig', ['contact' => $contactDetails]);
     }
     public function deleteContact($id)
     {
         $contacts = new Contacts_Model();
         $sucessful = $contacts->delete_contact($id);
         return renderTemplate('contacts\contacts_main.twig', ['contacts' => $contacts->getContactssList()]);
-        //return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
+        //return renderTemplate('contacts\contactsDetails.twig', ['contact' => $contactDetails]);
     }
 
     public function createContact()
