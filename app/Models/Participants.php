@@ -26,7 +26,17 @@ class Participants
     public string|null $streetAddress1; //dont neeed name,| allows it to be a null
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
-    public string|null $streetAddress2; //dont neeed name
+    public string|null $streetAddress2;
+
+    public function getNotes(): ?string
+    {
+        return $this->notes;
+    }
+
+    public function setNotes(?string $notes): void
+    {
+        $this->notes = $notes;
+    } //dont neeed name
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     public string|null $city;
@@ -42,6 +52,28 @@ class Participants
 
     #[ORM\Column(type: 'string', length: 11, nullable: true)]
     public string|null $phone;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    public string|null $notes;
+
+    /**
+     * @ManyToOne(targetEntity="Contacts")
+     * @JoinColumn(name="responsible_party_id", referencedColumnName="id")
+     */
+    private $responsiblePartyKey;
+
+    // ...
+
+    public function getResponsiblePartyKey()
+    {
+        return $this->responsiblePartyKey;
+    }
+
+    public function setResponsiblePartyKey($responsiblePartyKey)
+    {
+        $this->responsiblePartyKey = $responsiblePartyKey;
+    }
+
 
     /**
      * @return int
