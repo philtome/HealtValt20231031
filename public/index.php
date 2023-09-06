@@ -123,7 +123,7 @@ switch ($controller) {
         } elseif ($param1==='') {
             $result = $participants->mainDisplay($controller);
         } elseif ($param2 === 'update') {
-            $result = $participants->saveParticipant($entityManager,$controller,$param3);
+            $result = $participants->saveItem($entityManager,$controller,$param3);
         } elseif ($param1 === 'delete') {
             $result = $participants->deleteParticipant($entityManager,$controller,$param2);
         } elseif ($param1 === 'display') {
@@ -146,7 +146,7 @@ switch ($controller) {
         } elseif ($param1==='') {
             $result = $contacts->mainDisplay($controller);
         } elseif ($param2 === 'update') {
-            $result = $contacts->saveContact($param3);
+            $result = $contacts->saveItem($entityManager,$controller,$param3);
         } elseif ($param1 === 'delete') {
             $result = $contacts->deleteContact($param2);
         } elseif ($param1 === 'display') {

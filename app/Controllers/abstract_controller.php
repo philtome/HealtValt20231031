@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\EntityManagerInterface;
+use App\Utils\DataSaver;
 use Doctrine\Persistence\ObjectManager;
 
 abstract class abstract_controller
@@ -46,14 +47,30 @@ abstract class abstract_controller
             // example of this is: ['participants' => $dataToDisplay]
         return renderTemplate($templateToDisplay, $templateData);
     }
-    public function manageItem($id,$controller)
+    public function manageItem($id,$controllerClassName)
     {
-        $namespace = $this->namespace;
-        $model = $namespace.'\\'.ucfirst($controller);
-        $dataToDisplay = $this->em->getRepository($model)->find($id);
-        $key = $controller; // You can set this key dynamically
-        $templateData = [$key => $dataToDisplay];
-        $templateToDisplay = $controller.'\\'.$controller.'Details.twig';
+        $modelClassName = $this->namespace.'\\'.ucfirst($controllerClassName);
+        $dataToDisplay = $this->em->getRepository($modelClassName)->find($id);
+        $arrayKey = $controllerClassName; // You can set this key dynamically
+        $templateData = [$arrayKey => $dataToDisplay];
+        $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'Details.twig';
         return renderTemplate($templateToDisplay, $templateData);
     }
+    public function saveItem($em,$controllerClassName, $id = null)  //save new and existing
+    {
+        $modelClassName = $this->namespace.'\\'.$controllerClassName;
+        $dataSaver = new DataSaver($em);
+        $dataToSave = $this->movePostDataToFields($_POST);
+        //$templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
+        if ($id !== null & $id !== "") {
+            $dataSaver->updateData($modelClassName,$dataToSave, $id);
+        }
+        else {
+            $dataSaver->saveData($modelClassName,$dataToSave);
+        }
+        //return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
+        //return renderTemplate('contacts\contactsDetails.twig', ['contact' => $contactDetails]);
+    }
+
+
 }

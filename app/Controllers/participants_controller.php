@@ -45,21 +45,20 @@ class participants_controller extends abstract_controller
 //        return renderTemplate($templateToDisplay, $templateData);
 //    }
 
-    public function saveParticipant($em,$controller,$id = null)  //save new and existing
+    public function saveParticipant($em,$controllerClassName, $id = null)  //save new and existing
     {
-        $namespace = $this->namespace;
-        $entityClassName = $namespace.'\\'.$controller;
+        $modelClassName = $this->namespace.'\\'.$controllerClassName;
+
         $dataSaver = new DataSaver($em);
-        $participants = new Participants();
         $dataToSave = $this->movePostDataToFields($_POST);
-        $templateToDisplay = $controller.'\\'.$controller.'_main.twig';
+        $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
         if ($id !== null & $id !== "") {
-            $dataSaver->updateData($entityClassName,$dataToSave, $id);
+            $dataSaver->updateData($modelClassName,$dataToSave, $id);
         }
         else {
-            $dataSaver->saveData($entityClassName,$dataToSave);
+            $dataSaver->saveData($modelClassName,$dataToSave);
         }
-        return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
+        //return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
         //return renderTemplate('contacts\contactsDetails.twig', ['contact' => $contactDetails]);
     }
 

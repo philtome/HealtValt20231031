@@ -38,28 +38,6 @@ class contacts_controller extends abstract_controller
         return renderTemplate('contacts\contacts_main.twig', ['param1' => $listItems]);
     }
 
-    public function manageContact($id)
-    {
-        $contacts = new Contacts_Model();
-        $contactDetails = $contacts->get_contact($id);
-        return renderTemplate('contacts\contactDetails.twig', ['contact' => $contactDetails]);
-    }
-
-    public function saveContact($id)
-    {
-        $contacts = new Contacts_Model();
-        $dataToSave = $this->movePostDataToFields($_POST);
-        $temppor = $contacts->update_contact($dataToSave, $id);
-        // want to do the save here
-        if ($id == null) {
-            $successful = $contacts->update_contact($dataToSave);
-        }
-        else {
-            $successful = $contacts->update_contact($dataToSave, $id);
-        }
-        return renderTemplate('contacts\contacts_main.twig', ['contacts' => $contacts->getContactssList()]);
-        //return renderTemplate('contacts\contactsDetails.twig', ['contact' => $contactDetails]);
-    }
     public function deleteContact($id)
     {
         $contacts = new Contacts_Model();
@@ -105,17 +83,17 @@ class contacts_controller extends abstract_controller
         if ($contactLastN !== null && $contactPhone !== null) {
             // Data is valid, proceed to update the database
             Return $dataToReturn = [
-                'first_name' => $contactFirstN,
-                'last_name' => $contactLastN,
-                'contact_type' => $contactType,
-                'company_practice' => $contactCompany,
+                'firstName' => $contactFirstN,
+                'lastName' => $contactLastN,
+                'contactType' => $contactType,
+                'companyPractice' => $contactCompany,
                 'phone' => $contactPhone,
                 'email' => $contactEmail,
-                'is_driver' => $contactDriver,
-                'is_employee' => $contactEmployee,
-                'is_caregiver' => $contactCaregiver,
-                'is_cna' => $contactCna,
-                'is_rn' => $contactRn,
+                'isDriver' => $contactDriver,
+                'isEmployee' => $contactEmployee,
+                'isCaregiver' => $contactCaregiver,
+                'isCna' => $contactCna,
+                'isRn' => $contactRn,
                 // Add more fields as needed
             ];
         }
