@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Controllers\EntityManagerInterface;
 use App\Utils\DataSaver;
 use Doctrine\Persistence\ObjectManager;
+use App\Controllers\participants_controller;
+
 
 abstract class abstract_controller
 {
@@ -47,12 +49,26 @@ abstract class abstract_controller
             // example of this is: ['participants' => $dataToDisplay]
         return renderTemplate($templateToDisplay, $templateData);
     }
-    public function manageItem($id,$controllerClassName)
+    public function manageItem($em,$id,$controllerClassName)
     {
         $modelClassName = $this->namespace.'\\'.ucfirst($controllerClassName);
         $dataToDisplay = $this->em->getRepository($modelClassName)->find($id);
         $arrayKey = $controllerClassName; // You can set this key dynamically
-        $templateData = [$arrayKey => $dataToDisplay];
+
+
+
+        //        $namespace = $this->namespace;
+        //        $model = $namespace.'\\'.ucfirst($controller);
+        //        $dataToDisplay = $this->em->getRepository($model)->findAll();
+
+        //$entityManager = $this->getDoctrine()->getManager();
+
+        $participantsController = new participants_controller($em);
+        $contactListDrop = $participantsController->getDropDowns();
+
+
+
+        $templateData = [$arrayKey => $dataToDisplay,'contactList' => $contactListDrop];
         $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'Details.twig';
         return renderTemplate($templateToDisplay, $templateData);
     }
@@ -60,7 +76,7 @@ abstract class abstract_controller
     {
         $modelClassName = $this->namespace.'\\'.$controllerClassName;
         $dataSaver = new DataSaver($em);
-        $dataToSave = $this->movePostDataToFields($_POST);
+        $dataToSave = $this->movePostDataToFields($_POST,$em);
         //$templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
         if ($id !== null & $id !== "") {
             $dataSaver->updateData($modelClassName,$dataToSave, $id);

@@ -1,5 +1,11 @@
 {% extends 'base.twig' %}
 
+{#  20230908 TOME
+    Note the select table here for responsible party
+    It points to and displays from the contacts table
+    Defautls to 'select contact', if if there is one, it displays it from the table
+    So, the contacts table has to be avaialble when template is called#}
+
 {% block title %}
     - Participant Details
 {% endblock %}
@@ -8,13 +14,6 @@
 {% endblock %}
 
 {% block body %}
-    <!-- Specific content for template1.twig -->
-{#    <div class="jumbotron">#}
-{#        <div class="container">#}
-{#            <h1><?php echo strtoupper(strtolower($cleverWelcomeMessage)); ?></h1>#}
-{#            <p>Participant Details </p>#}
-{#        </div>#}
-{#    </div>#}
 
     <div class="container">
         <form id="participant_details_form">
@@ -24,6 +23,11 @@
                     <label for="participantFirstName" class="form-label">First Name</label>
                     <input type="text" name="participantFirstName" id="participantFirstName"
                            value="{{ participants.firstname }}" class="form-control">
+                    {% for contact in contactList %}
+                        {{ contact.id }} - {{ contact.firstName }} {{ contact.lastName }}<br>
+                    {% endfor %}
+
+
                 </div>
                 <!-- Second Field -->
                 <div class="col-md-6">
@@ -72,9 +76,22 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="participantRespnParty" class="form-label">Responsible Party</label>
-                    <input type="text" name="participantResponParty" id="participantRespondParty"
-                           value="{{ participants.responsibleparty }}" class="form-control">
+                    <select name="responsibleParty" id="responsibleParty">
+                        {# Note in this dropdown list, responsible party linked to the contacts table, this displays it if valued #}
+                        <option value="">Select a responsible party</option>
+                        {% for contact in contactList %}
+                            <option value="{{ contact.id }}"
+                                    {% if participants.responsibleParty is not empty and participants.responsibleParty.id == contact.id %}
+                                        selected
+                                    {% endif %}
+                            >
+                                {{ contact.firstName }} {{ contact.lastName }}
+                            </option>
+                        {% endfor %}
+                    </select>
+{#                    <label for="participantRespnParty" class="form-label">Responsible Party</label>#}
+{#                    <input type="text" name="participantResponParty" id="participantRespondParty"#}
+{#                           value="{{ participants.responsibleparty }}" class="form-control">#}
                 </div>
                 <div class="col-md-4">
                     <label for="participantPhone" class="form-label">Cell Phone</label>

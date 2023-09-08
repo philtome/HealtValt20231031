@@ -88,12 +88,24 @@ class participants_controller extends abstract_controller
         return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
     }
 
+
+    Public function getDropDowns()
+    {
+        $contactsModelClassName = $this->namespace . '\\' . ucfirst('contacts');
+        $contactRepository = $this->em->getRepository($contactsModelClassName);
+        $contacts = $contactRepository->findAll();
+        return $contacts;
+    }
+
+
+
+
     public function getList() {
         $participants = new Participants_Model();
         $listItems = $participants->getParticipantsList();
         return renderTemplate('participants\participants_main.twig', ['param1' => $listItems]);
     }
-    public function movePostDataToFields($participantDetails)
+    public function movePostDataToFields($participantDetails,$em)
     {
 
         $participantLastN = isset($_POST['participantLastName']) ? filter_var($_POST['participantLastName'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
@@ -103,7 +115,13 @@ class participants_controller extends abstract_controller
         $participantCity = isset($_POST['participantCity']) ? filter_var($_POST['participantCity'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
         $participantState = isset($_POST['participantState']) ? filter_var($_POST['participantState'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
         $participantZip= isset($_POST['participantZip']) ? filter_var($_POST['participantZip'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
-        $participantResponParty = isset($_POST['participantResponParty']) ? filter_var($_POST['participantResponParty'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
+        $participantResponParty = isset($_POST['responsibleParty']) ? filter_var($_POST['responsibleParty'], FILTER_SANITIZE_NUMBER_INT) : null;
+
+
+        $modelClassName = $this->namespace.'\\Contacts';
+        $contactRepository = $em->getRepository($modelClassName); // Replace with your Contact entity class
+        $responsibleParty = $contactRepository->find($participantResponParty);
+
 
 
         //$participantEmail = isset($_POST['participantemail']) ? filter_var($_POST['participantemail'], FILTER_VALIDATE_EMAIL) : null;
@@ -122,7 +140,7 @@ class participants_controller extends abstract_controller
                 'city' => $participantCity,
                 'state' => $participantState,
                 'zip' => $participantZip,
-                'responsibleParty' => $participantResponParty,
+                'responsibleParty' => $responsibleParty,
                 'phone' => $participantPhone,
 
                 // Add more fields as needed

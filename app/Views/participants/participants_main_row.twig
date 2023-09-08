@@ -3,7 +3,7 @@
     <td id="participantlastname_{{ participant.id }}">{{ participant.lastname }}</td>
     <td id="participantfistname_{{ participant.id }}">{{ participant.firstname }}</td>
     <td id="participanttype_{{participant.id}}">{{ participant.streetaddress1 }}</td>
-    <td id="participantpractice_{{ participant.id }}">{{ participant.responsibleparty }}</td>
+    <td id="participantpractice_{{ participant.id }}">{{ participant.responsibleParty.firstname }} {{ participant.responsibleParty.lastname }}</td> {# was  participant.responsibleparty #}
     <td id="participantemail_{{participant.id}}">{{ participant.phone }}</td>
 
     <td id="participantcopy_{{ participant.id }}" class="participant-copy">

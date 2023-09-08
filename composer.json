@@ -7,7 +7,7 @@
         "doctrine/orm": "2.*",
         "doctrine/dbal": "3.*",
         "symfony/cache": "*",
-        "doctrine/annotations": "2.*"
+        "doctrine/annotations": "2.*",
     },
     "autoload": {
         "psr-4": {

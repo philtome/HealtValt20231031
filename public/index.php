@@ -129,7 +129,7 @@ switch ($controller) {
         } elseif ($param1 === 'display') {
             $result = $participants->mainDisplay();
         } elseif ($param1 === 'manage') {
-            $result = $participants->manageItem($param2,$controller);
+            $result = $participants->manageItem($entityManager,$param2,$controller);
         } elseif ($param1 === 'create') {
             $result = $participants->createParticipant();
         } elseif ($param1 === 'copy') {
@@ -152,7 +152,7 @@ switch ($controller) {
         } elseif ($param1 === 'display') {
             $result = $contacts->mainDisplay($controller);
         } elseif ($param1 === 'manage') {
-            $result = $contacts->manageItem($param2,$controller);
+            $result = $contacts->manageItem($entityManager,$param2,$controller);
         } elseif ($param1 === 'create') {
             $result = $contacts->createContact();
         } elseif ($param1 === 'copy') {
