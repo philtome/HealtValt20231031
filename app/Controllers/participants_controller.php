@@ -94,17 +94,11 @@ class participants_controller extends abstract_controller
         $contactsModelClassName = $this->namespace . '\\' . ucfirst('contacts');
         $contactRepository = $this->em->getRepository($contactsModelClassName);
         $contacts = $contactRepository->findAll();
-        return $contacts;
+        //return $contacts;
+        return ['contactList' => $contacts];
     }
 
 
-
-
-    public function getList() {
-        $participants = new Participants_Model();
-        $listItems = $participants->getParticipantsList();
-        return renderTemplate('participants\participants_main.twig', ['param1' => $listItems]);
-    }
     public function movePostDataToFields($participantDetails,$em)
     {
 

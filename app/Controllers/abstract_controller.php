@@ -52,23 +52,21 @@ abstract class abstract_controller
     public function manageItem($em,$id,$controllerClassName)
     {
         $modelClassName = $this->namespace.'\\'.ucfirst($controllerClassName);
+
+        // getting main model data to display, set up array for TWIG
         $dataToDisplay = $this->em->getRepository($modelClassName)->find($id);
         $arrayKey = $controllerClassName; // You can set this key dynamically
+        $templateData = [$arrayKey => $dataToDisplay,];
 
+        //This returns any drop down lists this model needs in ['contactList' => $contacts] format
+        // check out participants_controller example, it gets a list of contacts for responsible party
+        $dropDownLists = $this->getDropDowns();
 
+        //combine the models array with any drop down lists arrays
+        if ($dropDownLists !== null) {
+            $templateData = array_merge($templateData, $dropDownLists);
+        }
 
-        //        $namespace = $this->namespace;
-        //        $model = $namespace.'\\'.ucfirst($controller);
-        //        $dataToDisplay = $this->em->getRepository($model)->findAll();
-
-        //$entityManager = $this->getDoctrine()->getManager();
-
-        $participantsController = new participants_controller($em);
-        $contactListDrop = $participantsController->getDropDowns();
-
-
-
-        $templateData = [$arrayKey => $dataToDisplay,'contactList' => $contactListDrop];
         $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'Details.twig';
         return renderTemplate($templateToDisplay, $templateData);
     }

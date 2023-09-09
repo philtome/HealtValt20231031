@@ -63,6 +63,10 @@ class contacts_controller extends abstract_controller
         return renderTemplate('contacts\contacts_main.twig', ['contacts' => $contacts->getContactssList()]);
     }
 
+    Public function getDropDowns()
+    {
+        return null;
+    }
     public function movePostDataToFields($contactDetails)
     {
 
@@ -98,4 +102,5 @@ class contacts_controller extends abstract_controller
             ];
         }
     }
+
 }

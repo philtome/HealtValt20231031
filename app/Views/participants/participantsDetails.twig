@@ -23,11 +23,6 @@
                     <label for="participantFirstName" class="form-label">First Name</label>
                     <input type="text" name="participantFirstName" id="participantFirstName"
                            value="{{ participants.firstname }}" class="form-control">
-                    {% for contact in contactList %}
-                        {{ contact.id }} - {{ contact.firstName }} {{ contact.lastName }}<br>
-                    {% endfor %}
-
-
                 </div>
                 <!-- Second Field -->
                 <div class="col-md-6">
