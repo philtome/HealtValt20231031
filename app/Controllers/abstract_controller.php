@@ -73,8 +73,9 @@ abstract class abstract_controller
     public function saveItem($em,$controllerClassName, $id = null)  //save new and existing
     {
         $modelClassName = $this->namespace.'\\'.$controllerClassName;
+        $dataToSave = new $modelClassName;
         $dataSaver = new DataSaver($em);
-        $dataToSave = $this->movePostDataToFields($_POST,$em);
+        $dataToSave = $this->movePostDataToFields($dataToSave,$em);
         //$templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
         if ($id !== null & $id !== "") {
             $dataSaver->updateData($modelClassName,$dataToSave, $id);
@@ -82,8 +83,16 @@ abstract class abstract_controller
         else {
             $dataSaver->saveData($modelClassName,$dataToSave);
         }
-        //return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
-        //return renderTemplate('contacts\contactsDetails.twig', ['contact' => $contactDetails]);
+    }
+    public function copyItem($em,$controller,$id)
+    {
+        $namespace = $this->namespace;
+        $entityClassName = $namespace.'\\'.$controller;
+        $dataSaver = new DataSaver($em);
+        $CopyFromItem = $this->em->find($entityClassName,$id);
+        $testVariable = $CopyFromItem::class;
+        //above - getting fully qalified class name FQCN
+        $dataSaver->saveData($entityClassName,$CopyFromItem);
     }
 
 

@@ -133,7 +133,7 @@ switch ($controller) {
         } elseif ($param1 === 'create') {
             $result = $participants->createParticipant();
         } elseif ($param1 === 'copy') {
-            $result = $participants->copyParticipant($entityManager,$controller,$param2);
+            $result = $participants->copyItem($entityManager,$controller,$param2);
         } else {
             $result = $participants->action1($param1, $param2, $param3);
         }
@@ -156,7 +156,7 @@ switch ($controller) {
         } elseif ($param1 === 'create') {
             $result = $contacts->createContact();
         } elseif ($param1 === 'copy') {
-            $result = $contacts->copyContact($param2);
+            $result = $contacts->copyItem($entityManager, $controller,$param2);
         } else {
             $result = $contacts->action1($param1, $param2, $param3);
         }

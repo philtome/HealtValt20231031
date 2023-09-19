@@ -50,7 +50,7 @@ class contacts_controller extends abstract_controller
     {
         $contacts = new Contacts_Model();
         //$contactDetails = $contacts->get_contact();
-        return renderTemplate('contacts\contactDetails.twig');
+        return renderTemplate('contacts\contactsDetails.twig');
     }
 
     public function copyContact($id)
@@ -67,40 +67,35 @@ class contacts_controller extends abstract_controller
     {
         return null;
     }
-    public function movePostDataToFields($contactDetails)
+    public function movePostDataToFields($dataToSave,$em = null)
     {
 
-        $contactLastN = isset($_POST['contactLastName']) ? filter_var($_POST['contactLastName'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
-        $contactFirstN = isset($_POST['contactFirstName']) ? filter_var($_POST['contactFirstName'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
-        $contactType = isset($_POST['contacttype']) ? filter_var($_POST['contacttype'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
-        $contactEmail = isset($_POST['contactemail']) ? filter_var($_POST['contactemail'], FILTER_VALIDATE_EMAIL) : null;
-        $contactPhone = isset($_POST['contactphone']) ? filter_var($_POST['contactphone'], FILTER_SANITIZE_NUMBER_INT) : null;
-        $contactCompany = isset($_POST['companypractice']) ? filter_var($_POST['companypractice'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
-        $contactDriver = isset($_POST['isDriver']) && $_POST['isDriver'] === 'on' ? 1 : 0;
-        $contactEmployee = isset($_POST['isEmployee']) && $_POST['isEmployee'] === 'on' ? 1 : 0;
-        $contactCaregiver = isset($_POST['isCaregiver']) && $_POST['isCaregiver'] === 'on' ? 1 : 0;
-        $contactCna = isset($_POST['isCna']) && $_POST['isCna'] === 'on' ? 1 : 0;
-        $contactRn = isset($_POST['isRn']) && $_POST['isRn'] === 'on' ? 1 : 0;
-        // Add more fields as needed
+        $dataToSave->setId(1);
+        $dataToSave->setlastName(isset($_POST['contactLastName']) ? filter_var($_POST['contactLastName'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setfirstName(isset($_POST['contactFirstName']) ? filter_var($_POST['contactFirstName'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setcontactType(isset($_POST['contacttype']) ? filter_var($_POST['contacttype'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setemail(isset($_POST['contactemail']) ? filter_var($_POST['contactemail'], FILTER_VALIDATE_EMAIL) : null);
+        $dataToSave->setphone(isset($_POST['contactphone']) ? filter_var($_POST['contactphone'], FILTER_SANITIZE_NUMBER_INT) : null);
+        $dataToSave->setcompanyPractice(isset($_POST['companypractice']) ? filter_var($_POST['companypractice'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setisDriver(isset($_POST['isDriver']) && $_POST['isDriver'] === 'on' ? 1 : 0);
+        $dataToSave->setisEmployee(isset($_POST['isEmployee']) && $_POST['isEmployee'] === 'on' ? 1 : 0);
+        $dataToSave->setisCaregiver(isset($_POST['isCaregiver']) && $_POST['isCaregiver'] === 'on' ? 1 : 0);
+        $dataToSave->setisCna(isset($_POST['isCna']) && $_POST['isCna'] === 'on' ? 1 : 0);
+        $dataToSave->setisRn(isset($_POST['isRn']) && $_POST['isRn'] === 'on' ? 1 : 0);
+        $dataToSave->setaddress1(isset($_POST['contactaddress1']) ? filter_var($_POST['contactaddress1'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setaddress2(isset($_POST['contactaddress2']) ? filter_var($_POST['contactaddress2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setcity(isset($_POST['contactcity']) ? filter_var($_POST['contactcity'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setstate(isset($_POST['contactstate']) ? filter_var($_POST['contactstate'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setzip(isset($_POST['contactzip']) ? filter_var($_POST['contactzip'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone1(isset($_POST['contactphone1']) ? filter_var($_POST['contactphon31'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone1x(isset($_POST['contactphone1x']) ? filter_var($_POST['contactphone1x'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone2(isset($_POST['contactphone2']) ? filter_var($_POST['contactphone2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone2x(isset($_POST['contactphon2x']) ? filter_var($_POST['contacphone2x'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone3(isset($_POST['contactphone3']) ? filter_var($_POST['contactphone3'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone3x(isset($_POST['contactphone3x']) ? filter_var($_POST['contactphone3x'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
 
-        // Check if data is valid
-        if ($contactLastN !== null && $contactPhone !== null) {
-            // Data is valid, proceed to update the database
-            Return $dataToReturn = [
-                'firstName' => $contactFirstN,
-                'lastName' => $contactLastN,
-                'contactType' => $contactType,
-                'companyPractice' => $contactCompany,
-                'phone' => $contactPhone,
-                'email' => $contactEmail,
-                'isDriver' => $contactDriver,
-                'isEmployee' => $contactEmployee,
-                'isCaregiver' => $contactCaregiver,
-                'isCna' => $contactCna,
-                'isRn' => $contactRn,
-                // Add more fields as needed
-            ];
-        }
+
+        Return $dataToSave;
     }
 
 }

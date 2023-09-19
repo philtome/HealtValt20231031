@@ -65,17 +65,17 @@ class participants_controller extends abstract_controller
     public function createParticipant()
     {
         $contacts = new Participants();
-        return renderTemplate('participants\participantDetails.twig');
+        return renderTemplate('participants\participantsDetails.twig');
     }
 
-    public function copyParticipant($em,$controller,$id)
-    {
-        $namespace = $this->namespace;
-        $entityClassName = $namespace.'\\'.$controller;
-        $dataSaver = new DataSaver($em);
-        $CopyFromParticipant = $this->em->find($entityClassName,$id);
-        $dataSaver->saveData($entityClassName,$CopyFromParticipant);
-    }
+//    public function copyParticipant($em,$controller,$id)
+//    {
+//        $namespace = $this->namespace;
+//        $entityClassName = $namespace.'\\'.$controller;
+//        $dataSaver = new DataSaver($em);
+//        $CopyFromParticipant = $this->em->find($entityClassName,$id);
+//        $dataSaver->saveData($entityClassName,$CopyFromParticipant);
+//    }
 
     public function deleteParticipant($em,$controller,$id)
     {
@@ -99,46 +99,26 @@ class participants_controller extends abstract_controller
     }
 
 
-    public function movePostDataToFields($participantDetails,$em)
+    public function movePostDataToFields($dataToSave,$em)
     {
 
-        $participantLastN = isset($_POST['participantLastName']) ? filter_var($_POST['participantLastName'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
-        $participantFirstN = isset($_POST['participantFirstName']) ? filter_var($_POST['participantFirstName'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
-        $participantAddress = isset($_POST['participantAddress']) ? filter_var($_POST['participantAddress'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
-        $participantAddress2 = isset($_POST['participantAddress2']) ? filter_var($_POST['participantAddress2'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
-        $participantCity = isset($_POST['participantCity']) ? filter_var($_POST['participantCity'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
-        $participantState = isset($_POST['participantState']) ? filter_var($_POST['participantState'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
-        $participantZip= isset($_POST['participantZip']) ? filter_var($_POST['participantZip'], FILTER_SANITIZE_SPECIAL_CHARS) : null;
+        $dataToSave->setId(1);
+        $dataToSave->setlastName(isset($_POST['participantLastName']) ? filter_var($_POST['participantLastName'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->SetFirstName(isset($_POST['participantFirstName']) ? filter_var($_POST['participantFirstName'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setstreetAddress1(isset($_POST['participantAddress']) ? filter_var($_POST['participantAddress'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setstreetAddress2(isset($_POST['participantAddress2']) ? filter_var($_POST['participantAddress2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setcity(isset($_POST['participantCity']) ? filter_var($_POST['participantCity'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setstate(isset($_POST['participantState']) ? filter_var($_POST['participantState'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setzip(isset($_POST['participantZip']) ? filter_var($_POST['participantZip'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone(isset($_POST['participantPhone']) ? filter_var($_POST['participantPhone'], FILTER_SANITIZE_NUMBER_INT) : null);
+        $dataToSave->setnotes(null);
+
         $participantResponParty = isset($_POST['responsibleParty']) ? filter_var($_POST['responsibleParty'], FILTER_SANITIZE_NUMBER_INT) : null;
-
-
         $modelClassName = $this->namespace.'\\Contacts';
         $contactRepository = $em->getRepository($modelClassName); // Replace with your Contact entity class
-        $responsibleParty = $contactRepository->find($participantResponParty);
+        $dataToSave->setresponsibleParty($contactRepository->find($participantResponParty));
 
+        Return $dataToSave;
 
-
-        //$participantEmail = isset($_POST['participantemail']) ? filter_var($_POST['participantemail'], FILTER_VALIDATE_EMAIL) : null;
-        //  CHECK OUT PHONE FIELD HERE COMPARED TO PARTICIPANT DETAILS TWIG
-        $participantPhone = isset($_POST['participantPhone']) ? filter_var($_POST['participantPhone'], FILTER_SANITIZE_NUMBER_INT) : null;
-        // Add more fields as needed
-
-        // Check if data is valid
-        if ($participantLastN !== null && $participantPhone !== null) {
-            // Data is valid, proceed to update the database
-            Return $dataToReturn = [
-                'firstName' => $participantFirstN,
-                'lastName' => $participantLastN,
-                'streetAddress1' => $participantAddress,
-                'streetAddress2' => $participantAddress2,
-                'city' => $participantCity,
-                'state' => $participantState,
-                'zip' => $participantZip,
-                'responsibleParty' => $responsibleParty,
-                'phone' => $participantPhone,
-
-                // Add more fields as needed
-            ];
-        }
     }
 }

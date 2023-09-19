@@ -71,28 +71,29 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <select name="responsibleParty" id="responsibleParty">
-                        {# Note in this dropdown list, responsible party linked to the contacts table, this displays it if valued #}
-                        <option value="">Select a responsible party</option>
-                        {% for contact in contactList %}
-                            <option value="{{ contact.id }}"
-                                    {% if participants.responsibleParty is not empty and participants.responsibleParty.id == contact.id %}
-                                        selected
-                                    {% endif %}
-                            >
-                                {{ contact.firstName }} {{ contact.lastName }}
-                            </option>
-                        {% endfor %}
-                    </select>
-{#                    <label for="participantRespnParty" class="form-label">Responsible Party</label>#}
-{#                    <input type="text" name="participantResponParty" id="participantRespondParty"#}
-{#                           value="{{ participants.responsibleparty }}" class="form-control">#}
+                    <div class="form-group">
+                        <label for="responsibleParty" class="form-label">Responsible Party</label>
+                        <select name="responsibleParty" id="responsibleParty" class="form-control">
+                            <option value="">Select a responsible party</option>
+                            {% for contact in contactList %}
+                                <option value="{{ contact.id }}"
+                                        {% if participants.responsibleParty is not empty and participants.responsibleParty.id == contact.id %}
+                                            selected
+                                        {% endif %}
+                                >
+                                    {{ contact.firstName }} {{ contact.lastName }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <label for="participantPhone" class="form-label">Cell Phone</label>
-                    <input type="text" name="participantPhone" id="participantPhone"
-                           value="{{ participants.phone }}" class="form-control">
-                </div><!-- Repeat for Fields 12-14 -->
+                    <div class="form-group">
+                        <label for="participantPhone" class="form-label">Cell Phone</label>
+                        <input type="text" name="participantPhone" id="participantPhone"
+                               value="{{ participants.phone }}" class="form-control">
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-4 invisible">

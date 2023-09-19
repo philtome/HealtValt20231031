@@ -14,13 +14,13 @@ class Contacts
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
-    public int $id;
+    protected int $id;
 
     #[ORM\Column(name: 'lastName', type: 'string', nullable: true)] //may not be null, (required)
     protected string|null $lastName;
 
     #[ORM\Column(name: 'firstName', type: 'string', nullable: true)]
-    public string|null $firstName;
+    protected string|null $firstName;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     protected string|null $contactType; //dont neeed name,| allows it to be a null
@@ -56,16 +56,31 @@ class Contacts
     protected string|null $address2; //dont neeed name
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
-    public string|null $city;
+    protected string|null $city;
 
     #[ORM\Column(type: 'string', length: 25, nullable: true)]
-    public string|null $state;
+    protected string|null $state;
 
     #[ORM\Column(type: 'string', length: 12, nullable: true)]
-    public string|null $zip;
+    protected string|null $zip;
 
     #[ORM\Column(type: 'string', length: 11, nullable: true)]
     protected string|null $phone1;
+
+    #[ORM\Column(type: 'string', length: 6, nullable: true)]
+    protected string|null $phone1x; //dont neeed name
+
+    #[ORM\Column(type: 'string', length: 11, nullable: true)]
+    protected string|null $phone2; //dont neeed name
+
+    #[ORM\Column(type: 'string', length: 6, nullable: true)]
+    protected string|null $phone2x; //dont neeed name
+
+    #[ORM\Column(type: 'string', length: 11, nullable: true)]
+    protected string|null $phone3; //dont neeed name
+
+    #[ORM\Column(type: 'string', length: 6, nullable: true)]
+    protected string|null $phone3x; //dont neeed name
 
     public function getId(): int
     {
@@ -77,12 +92,12 @@ class Contacts
         $this->id = $id;
     }
 
-    public function getLastName(): ?string
+    public function getlastName(): ?string
     {
         return $this->lastName;
     }
 
-    public function setLastName(?string $lastName): void
+    public function setlastName(?string $lastName): void
     {
         $this->lastName = $lastName;
     }
@@ -137,7 +152,7 @@ class Contacts
         $this->phone = $phone;
     }
 
-    public function isDriver(): bool
+    public function getIsDriver(): bool
     {
         return $this->isDriver;
     }
@@ -147,7 +162,7 @@ class Contacts
         $this->isDriver = $isDriver;
     }
 
-    public function isEmployee(): bool
+    public function getIsEmployee(): bool
     {
         return $this->isEmployee;
     }
@@ -157,7 +172,7 @@ class Contacts
         $this->isEmployee = $isEmployee;
     }
 
-    public function isCaregiver(): bool
+    public function getIsCaregiver(): bool
     {
         return $this->isCaregiver;
     }
@@ -167,7 +182,7 @@ class Contacts
         $this->isCaregiver = $isCaregiver;
     }
 
-    public function isCna(): bool
+    public function getIsCna(): bool
     {
         return $this->isCna;
     }
@@ -177,7 +192,7 @@ class Contacts
         $this->isCna = $isCna;
     }
 
-    public function isRn(): bool
+    public function getIsRn(): bool
     {
         return $this->isRn;
     }
@@ -296,20 +311,5 @@ class Contacts
     {
         $this->phone3x = $phone3x;
     } //dont neeed name
-
-    #[ORM\Column(type: 'string', length: 6, nullable: true)]
-    protected string|null $phone1x; //dont neeed name
-
-    #[ORM\Column(type: 'string', length: 11, nullable: true)]
-    protected string|null $phone2; //dont neeed name
-
-    #[ORM\Column(type: 'string', length: 6, nullable: true)]
-    protected string|null $phone2x; //dont neeed name
-
-    #[ORM\Column(type: 'string', length: 11, nullable: true)]
-    protected string|null $phone3; //dont neeed name
-
-    #[ORM\Column(type: 'string', length: 6, nullable: true)]
-    protected string|null $phone3x; //dont neeed name
 
 }

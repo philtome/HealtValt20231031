@@ -24,20 +24,15 @@ class DataSaver
 
         // Create a new instance of the entity
         $entity = new $entityClassName();
-
-        // Set entity properties based on the provided data
-        foreach ($data as $property => $value) {
-            // Make sure the property exists in the entity
-            if (property_exists($entity, $property)) {
-                $setterMethod = 'set' . ucfirst($property);
-                // Check if the setter method exists before calling it
-                if (method_exists($entity, $setterMethod)) {
-                    $entity->$setterMethod($value);
-                }
+        // loop through the getters, not properties, get it then set it
+        // Set entity properties based on the public getter methods
+        $methods = get_class_methods($data);
+        foreach($methods as $getterMethod) {
+            if (str_starts_with($getterMethod,"get")) {
+                $setterMethod = 's' . substr($getterMethod,1);
+                $entity->$setterMethod($data->$getterMethod());
             }
         }
-
-        // Persist and flush the entity
 
         $this->persistIt($entity);
     }
@@ -48,18 +43,14 @@ class DataSaver
         if (!class_exists($entityClassName)) {
             throw new \InvalidArgumentException("Entity class '$entityClassName' does not exist.");
         }
-
         $entity = $this->em->getRepository($entityClassName)->find($id);
-
-        // Set entity properties based on the provided data
-        foreach ($data as $property => $value) {
-            // Make sure the property exists in the entity
-            if (property_exists($entity, $property)) {
-                $setterMethod = 'set' . ucfirst($property);
-                // Check if the setter method exists before calling it
-                if (method_exists($entity, $setterMethod)) {
-                    $entity->$setterMethod($value);
-                }
+        // loop through the getters, not properties, get it then set it
+        // Set entity properties based on the public getter methods
+        $methods = get_class_methods($data);
+        foreach($methods as $getterMethod) {
+            if (str_starts_with($getterMethod,"get")) {
+                $setterMethod = 's' . substr($getterMethod,1);
+                $entity->$setterMethod($data->$getterMethod());
             }
         }
 

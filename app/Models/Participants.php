@@ -17,45 +17,35 @@ class Participants
     public int $id;
 
     #[ORM\Column(name: 'lastName', type: 'string', nullable: false)] //may not be null, (required)
-    public string $lastName;
+    protected string $lastName;
 
     #[ORM\Column(name: 'firstName', type: 'string', nullable: false)]
-    public string $firstName;
+    protected string $firstName;
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
-    public string|null $streetAddress1; //dont neeed name,| allows it to be a null
+    protected string|null $streetAddress1; //dont neeed name,| allows it to be a null
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
-    public string|null $streetAddress2;
-
-    public function getNotes(): ?string
-    {
-        return $this->notes;
-    }
-
-    public function setNotes(?string $notes): void
-    {
-        $this->notes = $notes;
-    } //dont neeed name
+    protected string|null $streetAddress2;
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
-    public string|null $city;
+    protected string|null $city;
 
     #[ORM\Column(type: 'string', length: 25, nullable: true)]
-    public string|null $state;
+    protected string|null $state;
 
     #[ORM\Column(type: 'string', length: 12, nullable: true)]
-    public string|null $zip;
+    protected string|null $zip;
 
 
     #[ORM\Column(type: 'string', length: 11, nullable: true)]
-    public string|null $phone;
+    protected string|null $phone;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    public string|null $notes;
+    protected string|null $notes;
 
     #[ORM\ManyToOne(targetEntity: 'Contacts', fetch: 'EAGER')]
-    private $responsibleParty;
+    public $responsibleParty;
 
     // ...
 
@@ -203,24 +193,6 @@ class Participants
         return $this;
     }
 
-//    /**
-//     * @return string|null
-//     */
-//    public function getResponsibleParty(): ?string
-//    {
-//        return $this->responsibleParty;
-//    }
-
-//    /**
-//     * @param string|null $responsibleParty
-//     * @return Participants
-//     */
-//    public function setResponsibleParty(?string $responsibleParty): Participants
-//    {
-//        $this->responsibleParty = $responsibleParty;
-//        return $this;
-//    }
-
     /**
      * @return string|null
      */
@@ -238,6 +210,16 @@ class Participants
         $this->phone = $phone;
         return $this;
     }
+
+    public function getNotes(): ?string
+    {
+        return $this->notes;
+    }
+
+    public function setNotes(?string $notes): void
+    {
+        $this->notes = $notes;
+    } //dont neeed name
 
     public function getResponsibleParty()
     {
