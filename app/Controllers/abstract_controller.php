@@ -95,5 +95,15 @@ abstract class abstract_controller
         $dataSaver->saveData($entityClassName,$CopyFromItem);
     }
 
+    public function deleteItem($em,$controller,$id)
+    {
+        $namespace = $this->namespace;
+        $entityClassName = $namespace.'\\'.$controller;
+        $dataSaver = new DataSaver($em);
+        //$deleteItem = $this->em->find($entityClassName,$id);
+        $dataSaver->deleteData($entityClassName,$id);
+        $templateToDisplay = $controller.'\\'.$controller.'_main.twig';
+        return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
+    }
 
 }

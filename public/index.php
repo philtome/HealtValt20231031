@@ -148,7 +148,7 @@ switch ($controller) {
         } elseif ($param2 === 'update') {
             $result = $contacts->saveItem($entityManager,$controller,$param3);
         } elseif ($param1 === 'delete') {
-            $result = $contacts->deleteContact($param2);
+            $result = $contacts->deleteItem($entityManager, $controller, $param2);
         } elseif ($param1 === 'display') {
             $result = $contacts->mainDisplay($controller);
         } elseif ($param1 === 'manage') {
