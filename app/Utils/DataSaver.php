@@ -72,11 +72,38 @@ class DataSaver
             throw new \InvalidArgumentException("Entity with ID $id not found.");
         }
 
+        if ($entityClassName === 'App\Models\contacts') {
+            // Check if the contact is linked to a participant
+            $isLinkedToParticipant = $this->isContactLinkedToParticipant($entity);
+
+            //if ($isLinkedToParticipant) {
+                // Handle the case where the contact is linked to a participant
+                throw new \RuntimeException("Cannot delete the contact. It is linked to a participant.");
+            }
+
+
         // Remove the entity
         $this->em->remove($entity);
         $this->em->flush();
     }
 
+    private function isContactLinkedToParticipant($contact)
+    {
+        // Assuming you have a $entityManager instance available in your class
+        $entityManager = $this->em;
+
+        // Check if the entity is a Contact
+        if ($contact instanceof Your\Contact\Entity\ClassName) {
+            // Get the associated Participant (if any)
+            $participant = $contact->getResponsibleParty();
+
+            // If $participant is not null, it means the contact is linked to a participant
+            return $participant !== null;
+        }
+
+        // If it's not a Contact entity, return false
+        return false;
+    }
 
     public function persistIt($entity) {
         $this->em->persist($entity);
