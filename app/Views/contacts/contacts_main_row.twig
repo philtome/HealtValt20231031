@@ -7,14 +7,19 @@
     <td id="contactemail_{{contact.id}}">{{ contact.email }}</td>
     <td id="contactphone_{{ contact.id }}">{{ contact.phone }}</td>
 
-    <td id="contactcopy_{{ contact.id }}" class="contact-copy">
-        <button class="copyConButton btn btn-primary" data-item-id="{{ contact.id }}">Copy</button>
-    </td>
     <td  id="contactmanage_{{ contact.id }}" class="contact-manage">
-        <button class="manageConButton btn btn-primary" data-item-id="{{ contact.id }}">Manage</button>
+        <button class="manageConButton btn btn-primary" data-item-id="{{ contact.id }}">
+            <i class="fa-solid fa-pencil"></i> Edit</button>
     </td>
+
+    <td id="contactcopy_{{ contact.id }}" class="contact-copy">
+        <button class="copyConButton btn btn-primary" data-item-id="{{ contact.id }}">
+            <i class="fa-solid fa-copy"></i> Copy</button>
+    </td>
+
     <td id="contactdelete_{{ contact.id }}" class="contact-delete">
-        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="contact" data-item-id="{{ contact.id }}">Delete</button>
+        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="contact" data-item-id="{{ contact.id }}">
+            <i class="fa-solid fa-trash-can"></i> Delete </button>
     </td>
 {#    <td>#}
 {#    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Contacts</button>#}
