@@ -78,7 +78,15 @@ class DataSaver
 
             if ($isLinkedToParticipant) {
                 // Handle the case where the contact is linked to a participant
-                throw new \RuntimeException("Cannot delete the contact. It is linked to a participant.");
+                // WAS: throw new \RuntimeException("Cannot delete the contact. It is linked to a participant.");
+                // Assuming there's an error
+                $errorMessage = "There was an error processing your request.";
+
+                // Send the error message as a JSON response
+                header('Content-Type: application/json');
+                http_response_code(500); // Set an appropriate status code
+                echo json_encode(['error' => $errorMessage]);
+                exit;
                 }
             }
 

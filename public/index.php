@@ -71,7 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $param1 = $uriParts[2];
     $param2 = $uriParts[3];
-    $param3 = $uriParts[4];
+    if (isset($uriParts[4])) {
+        $param3 = $uriParts[4];
+    } else {
+        $param3 = null;
+    }
 }
 //$entityNameSpace = 'App\models\\';
 switch ($controller) {

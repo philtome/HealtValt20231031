@@ -55,28 +55,21 @@ function handleConDelete(id, type) {
     fetch(fetchUrl, {
         method: 'POST',
     })
-        .then(response => {
-            console.log('Data Deleted successfully');
-        })
-        .then(responseData => {
-            // Handle the AJAX response here
-            // The responseData should be the rendered HTML or JSON data from the server
-            // Update your page content or perform other actions based on the responseData
-            // temp remove this:document.getElementById('result-container').innerHTML = responseData;
-            //console.log('Data Saved successfully');
-            returnUrlUpOne(window.location.href);
-            //const currentUrl = window.location.href;
-            //const newURL = currentUrl.replace("/create","");
-            // - this will go "UP" one, if on index.php/contacts/create
-            //            this will load index.php/contacts
-            // const lastSlashIndex = currentUrl.lastIndexOf("/");
-            // const newURL = currentUrl.substring(0, lastSlashIndex);
-            //
-            // window.location.href = newURL;
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                setErrorMessage(data.error);
+                openModal();
+            }
         })
         .catch(error => {
             // Handle any errors that occurred during the request
             console.error('Error deleting data:', error);
+
+            // Display an error message to the user
+            letMessage = error;
+            setErrorMessage('An error occurred while deleting data.');
+            openModal();
         });
 }
 
