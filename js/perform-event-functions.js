@@ -15,7 +15,7 @@ function handleManageItem(itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
-    window.location.href = "index.php/careplans_manage/1";
+    window.location.href = "../index.php/careplans_manage/1";
 }
 function handleParticipantManage(itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
@@ -51,28 +51,84 @@ function handleConCopy(id) {
 function handleConDelete(id, type) {
 
     var fetchUrl = type + 's/delete/' + id;
-    //"I use the s here because my contoller is looking for contacts or partacipants"
+//"I use the s here because my controller is looking for contacts or participants"
     fetch(fetchUrl, {
         method: 'POST',
     })
         .then(response => response.json())
         .then(data => {
             if (data.error) {
+                // Handle server-side error
+                console.error('Server Error:', data.error);
+                // Display the error message to the user, e.g., in an alert or on the webpage
                 setErrorMessage(data.error);
-                openModal();
+                var modal = new bootstrap.Modal(document.getElementById('display-error-modal'));
+                modal.show();
+            } else {
+                // Handle successful response, if needed
+                // for example purposes, I am leaving 'response' and 'messagge' here as examples
+                // in the future I may want to pop up a message, others I may want to act on response
+                //    like adding/removing or changing a line
+                if (data.response) {
+                    //console.log('Received response:', data.response); - for trouble shooting
+                    returnUrlUpOne(window.location.href);
+                    //I eventually want to just remove the line of code here
+                }
+                else if (data.message) {
+                    //console.log('Received response:', data.message);  - for trouble shooting
+                    returnUrlUpOne(window.location.href);
+                }
             }
         })
         .catch(error => {
-            // Handle any errors that occurred during the request
+            // Handle other errors (e.g., network errors or request issues)
             console.error('Error deleting data:', error);
 
             // Display an error message to the user
-            letMessage = error;
             setErrorMessage('An error occurred while deleting data.');
-            openModal();
+            var modal = new bootstrap.Modal(document.getElementById('display-error-modal'));
+            modal.show();
         });
 }
 
+// function handleConDelete(id, type) {
+//
+//     var fetchUrl = type + 's/delete/' + id;
+//     //"I use the s here because my contoller is looking for contacts or partacipants"
+//     fetch(fetchUrl, {
+//         method: 'POST',
+//     })
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.error) {
+//                 setErrorMessage(data.error);
+//                 var modal = new bootstrap.Modal(document.getElementById('display-error-modal'));
+//                 modal.show();
+//                 //openModal();
+//             }
+//         })
+//         .catch(error => {
+//             // Handle any errors that occurred during the request
+//             console.error('Error deleting data:', error);
+//
+//             // Display an error message to the user
+//             letMessage = error;
+//             setErrorMessage(data.error);
+//             //openModal();
+//             var modal = new bootstrap.Modal(document.getElementById('confirm-delete-modal'));
+//             modal.show();
+//         });
+//
+// }
+
+function setErrorMessage(message) {
+    // Assuming you have an HTML element with the id "error-message" to display the error
+    var errorMessageElement = document.getElementById('error-message');
+
+    if (errorMessageElement) {
+        errorMessageElement.textContent = message;
+    }
+}
 function handleSaveCareplan() {
     const careplanForm = document.getElementById('careplan_details_form');
     const careplanFormData = new FormData(careplanForm);

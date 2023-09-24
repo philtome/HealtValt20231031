@@ -2,9 +2,10 @@
 
 global $entityManager;
 //require_once __DIR__ . '/../app/twig.php';
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../app/render.php';
-require_once '../bootstrap.php';
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/app/render.php';
+require_once 'bootstrap.php';
+//$vendorPath = __DIR__ . '/vendor/';
 
 //require_once __DIR__. '/../config/config.php';
 

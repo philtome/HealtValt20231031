@@ -103,7 +103,7 @@ abstract class abstract_controller
         //$deleteItem = $this->em->find($entityClassName,$id);
         $dataSaver->deleteData($entityClassName,$id);
         $templateToDisplay = $controller.'\\'.$controller.'_main.twig';
-        return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
+        //return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
     }
 
 }

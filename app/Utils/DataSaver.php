@@ -80,7 +80,7 @@ class DataSaver
                 // Handle the case where the contact is linked to a participant
                 // WAS: throw new \RuntimeException("Cannot delete the contact. It is linked to a participant.");
                 // Assuming there's an error
-                $errorMessage = "There was an error processing your request.";
+                $errorMessage = "Cannot delete contact, it is in use.";
 
                 // Send the error message as a JSON response
                 header('Content-Type: application/json');
@@ -94,6 +94,11 @@ class DataSaver
         // Remove the entity
         $this->em->remove($entity);
         $this->em->flush();
+
+        header('Content-Type: application/json');
+        //echo json_encode(['response' => 'Entity deleted successfully']);
+        echo json_encode(['message' => 'Entity deleted successfully']);
+        // I can use message as well later
     }
 
     private function isContactLinkedToParticipant($contact)
