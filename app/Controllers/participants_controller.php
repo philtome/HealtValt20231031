@@ -85,7 +85,7 @@ class participants_controller extends abstract_controller
         $participants = new Participants();
         $dataSaver->deleteData($entityClassName,$id);
         $templateToDisplay = $controller.'\\'.$controller.'_main.twig';
-        return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
+        //return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
     }
 
 
