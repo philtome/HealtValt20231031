@@ -2,6 +2,7 @@
 
 namespace App\Utils;
 
+use App\Models\Participants;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 
@@ -71,14 +72,14 @@ class DataSaver
         if (!$entity) {
             throw new \InvalidArgumentException("Entity with ID $id not found.");
         }
-
         if ($entityClassName === 'App\Models\contacts') {
             // Check if the contact is linked to a participant
             $isLinkedToParticipant = $this->isContactLinkedToParticipant($entity);
 
-            //if ($isLinkedToParticipant) {
+            if ($isLinkedToParticipant) {
                 // Handle the case where the contact is linked to a participant
                 throw new \RuntimeException("Cannot delete the contact. It is linked to a participant.");
+                }
             }
 
 
@@ -91,18 +92,16 @@ class DataSaver
     {
         // Assuming you have a $entityManager instance available in your class
         $entityManager = $this->em;
-
-        // Check if the entity is a Contact
-        if ($contact instanceof Your\Contact\Entity\ClassName) {
-            // Get the associated Participant (if any)
-            $participant = $contact->getResponsibleParty();
-
+        $participantRepository = $entityManager->getRepository(Participants::class);
+        $participantCount = $participantRepository->count(['responsibleParty' => $contact]);
             // If $participant is not null, it means the contact is linked to a participant
-            return $participant !== null;
-        }
+          if ($participantCount == 0) {
+              return false; //$participant !== null;
+              //}
+          }
 
         // If it's not a Contact entity, return false
-        return false;
+        return true;
     }
 
     public function persistIt($entity) {
