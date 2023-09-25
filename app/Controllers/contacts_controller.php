@@ -82,17 +82,17 @@ class contacts_controller extends abstract_controller
         $dataToSave->setisCaregiver(isset($_POST['isCaregiver']) && $_POST['isCaregiver'] === 'on' ? 1 : 0);
         $dataToSave->setisCna(isset($_POST['isCna']) && $_POST['isCna'] === 'on' ? 1 : 0);
         $dataToSave->setisRn(isset($_POST['isRn']) && $_POST['isRn'] === 'on' ? 1 : 0);
-        $dataToSave->setaddress1(isset($_POST['contactaddress1']) ? filter_var($_POST['contactaddress1'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setaddress2(isset($_POST['contactaddress2']) ? filter_var($_POST['contactaddress2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setcity(isset($_POST['contactcity']) ? filter_var($_POST['contactcity'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setstate(isset($_POST['contactstate']) ? filter_var($_POST['contactstate'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setzip(isset($_POST['contactzip']) ? filter_var($_POST['contactzip'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setphone1(isset($_POST['contactphone1']) ? filter_var($_POST['contactphon31'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setphone1x(isset($_POST['contactphone1x']) ? filter_var($_POST['contactphone1x'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setphone2(isset($_POST['contactphone2']) ? filter_var($_POST['contactphone2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setphone2x(isset($_POST['contactphon2x']) ? filter_var($_POST['contacphone2x'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setphone3(isset($_POST['contactphone3']) ? filter_var($_POST['contactphone3'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setphone3x(isset($_POST['contactphone3x']) ? filter_var($_POST['contactphone3x'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setaddress1(isset($_POST['contactAddress1']) ? filter_var($_POST['contactAddress1'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setaddress2(isset($_POST['contactAddress2']) ? filter_var($_POST['contactAddress2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setcity(isset($_POST['contactCity']) ? filter_var($_POST['contactCity'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setstate(isset($_POST['contactState']) ? filter_var($_POST['contactState'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setzip(isset($_POST['contactZip']) ? filter_var($_POST['contactZip'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone1(isset($_POST['contactPhone1']) ? filter_var($_POST['contactPhone1'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone1x(isset($_POST['contactPhone1x']) ? filter_var($_POST['contactPhone1x'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone2(isset($_POST['contactPhone2']) ? filter_var($_POST['contactPhone2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone2x(isset($_POST['contactPhone2x']) ? filter_var($_POST['contactPhone2x'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone3(isset($_POST['contactPhone3']) ? filter_var($_POST['contactPhone3'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setphone3x(isset($_POST['contactPhone3x']) ? filter_var($_POST['contactPhone3x'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
 
 
         Return $dataToSave;

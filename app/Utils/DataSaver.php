@@ -65,7 +65,6 @@ class DataSaver
         if (!class_exists($entityClassName)) {
             throw new \InvalidArgumentException("Entity class '$entityClassName' does not exist.");
         }
-
         // Fetch the entity to delete by ID
         $entity = $this->em->find($entityClassName, $id);
 
@@ -80,8 +79,7 @@ class DataSaver
                 // Handle the case where the contact is linked to a participant
                 // WAS: throw new \RuntimeException("Cannot delete the contact. It is linked to a participant.");
                 // Assuming there's an error
-                $errorMessage = "Cannot delete contact, it is in use.";
-
+                $errorMessage = "Cannot delete contact, it is connected to a Participant.";
                 // Send the error message as a JSON response
                 header('Content-Type: application/json');
                 http_response_code(500); // Set an appropriate status code
@@ -89,8 +87,6 @@ class DataSaver
                 exit;
                 }
             }
-
-
         // Remove the entity
         $this->em->remove($entity);
         $this->em->flush();
