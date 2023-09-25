@@ -1,10 +1,10 @@
 {% extends 'base.twig' %}
 
 {% block title %}
-    - List of Participants
+    - List of Assessments
 {% endblock %}
 {% block navtitle %}
-    - List of Participants
+    - List of Assessments
 {% endblock %}
 
 {% block body %}
@@ -16,11 +16,11 @@
                 &nbsp; <!-- Use a non-breaking space to create the spacing -->
             </div>
             <div class="col-md-12"> <!-- Content column -->
-                <button class="btn btn-primary create" data-sa-object="participant" data-sa-action="create" data-sa-object="participant">Add new
-                    Participant
+                <button class="btn btn-primary create" data-sa-object="assessment" data-sa-action="create" data-sa-object="assessment">Add new
+                    Assessment
                 </button>
                 <div style="height: calc(100vh - 200px); overflow-y: auto;">
-                    <table id="contactTable" class="table table-striped table-hover" style="width:100%">
+                    <table id="assessmentTable" class="table table-striped table-hover" style="width:100%">
                         <thead class="thead-dark">
                         <tr>
                             <th>Last Name</th>
@@ -31,10 +31,10 @@
                         </tr>
                         </thead>
 
-                        <tbody id="participants"></tbody>
+                        <tbody id="assessments"></tbody>
 
-                        {% for participant in participants %}
-                            {{ include('participants/assessments_main_row.twig') }}
+                        {% for assessment in assessments %}
+                            {{ include('assessments/assessments_main_row.twig') }}
                         {% endfor %}
 
                         </tbody>

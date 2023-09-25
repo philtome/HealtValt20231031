@@ -17,6 +17,7 @@ use App\Controllers\careplans_controller;
 // Add the correct namespace for Controller2
 use App\Controllers\participants_controller;
 use App\Controllers\contacts_controller;
+use App\Controllers\assessments_controller;
 
 // Define your routes and include the necessary controllers
 
@@ -144,26 +145,27 @@ switch ($controller) {
         }
         break;
 
-    case 'contacts':
-        $contacts = new contacts_controller($entityManager);
+
+    case 'assessments':
+        $assessments = new assessments_controller($entityManager);
         if (is_null($param1)) {
-            $result = $contacts->mainDisplay($controller);
+            $result = $assessments->mainDisplay($controller);
         } elseif ($param1==='') {
-            $result = $contacts->mainDisplay($controller);
+            $result = $assessments->mainDisplay($controller);
         } elseif ($param2 === 'update') {
-            $result = $contacts->saveItem($entityManager,$controller,$param3);
+            $result = $assessments->saveItem($entityManager,$controller,$param3);
         } elseif ($param1 === 'delete') {
-            $result = $contacts->deleteItem($entityManager, $controller, $param2);
+            $result = $assessments->deleteItem($entityManager, $controller, $param2);
         } elseif ($param1 === 'display') {
-            $result = $contacts->mainDisplay($controller);
+            $result = $assessments->mainDisplay($controller);
         } elseif ($param1 === 'manage') {
-            $result = $contacts->manageItem($entityManager,$param2,$controller);
+            $result = $assessments->manageItem($entityManager,$param2,$controller);
         } elseif ($param1 === 'create') {
-            $result = $contacts->createContact();
+            $result = $assessments->createAssessment();
         } elseif ($param1 === 'copy') {
-            $result = $contacts->copyItem($entityManager, $controller,$param2);
+            $result = $assessments->copyItem($entityManager, $controller,$param2);
         } else {
-            $result = $contacts->action1($param1, $param2, $param3);
+            $result = $assessments->action1($param1, $param2, $param3);
         }
         break;
 
