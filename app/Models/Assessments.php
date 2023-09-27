@@ -18,18 +18,22 @@ class Assessments
     #[ORM\Column(name: 'date', type:'datetime', nullable: false)]
     protected $date;
 
-    #[ORM\Column(name: 'seniorAdult', type: 'string', length: 10, nullable: true)]
+    #[ORM\Column(name: 'seniorAdult', type: 'string', length: 20, nullable: true)]
     protected string|null $seniorAdult;
 
     #[ORM\Column(name: 'absent', type: 'string', length: 10, nullable: true)]
     protected string|null $absent;
     // No (oif unvalued on screen), Ill, Persaonal, vacation
 
-    #[ORM\Column(name: 'outting', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'outing', type: 'string', length: 20, nullable: true)]
     protected string|null $outing;
 
     #[ORM\Column(name: 'inHouseAct', type: 'string', length: 20, nullable: true)]
     protected string|null $inHouseAct;
+
+    #[ORM\Column(name: 'indySkillsDevelop', type: 'string', length: 20, nullable: true)]
+    protected string|null $indyskilsdev;
+
 
     #[ORM\Column(name: 'volunteer', type: 'string', length: 20, nullable: true)]
     protected string|null $volunteer;
@@ -132,6 +136,24 @@ class Assessments
     {
         $this->inHouseAct = $inHouseAct;
     }
+
+
+    /**
+     * @return string|null
+     */
+    public function getIndyskilsdev(): ?string
+    {
+        return $this->indyskilsdev;
+    }
+
+    /**
+     * @param string|null $indyskilsdev
+     */
+    public function setIndyskilsdev(?string $indyskilsdev): void
+    {
+        $this->indyskilsdev = $indyskilsdev;
+    }
+
 
     public function getVolunteer(): ?string
     {

@@ -82,6 +82,23 @@ if (btnSaveContact) {
     });
 }
 
+// SAVE Assessment button , start to gather up data and save **20230926**
+var btnSaveAssessment = document.querySelector("#btn_assessments_save");  // this is an id
+if (btnSaveAssessment) {
+    btnSaveAssessment.addEventListener('click', function(event){
+        event.preventDefault();
+
+        const itemElement = btnSaveAssessment.closest('.saveButton');
+        const itemId = itemElement.dataset.itemId;
+
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
+        handleSaveAssessment(itemId);   // add itemID when save is edit (handleSaveContact(itemID)
+        // this routine is in editFunctions
+    });
+}
+
+
 // CANCEL Contact button , start to gather up data and save **20230801**
 var btnCancelContact = document.getElementById("btn_contacts_cancel");  // this is an id
 if (btnCancelContact) {
@@ -99,6 +116,16 @@ if (btnCancelParticipant) {
         returnUrlUpOne(window.location.href);
     });
 }
+
+// CANCEL Assessments button
+var btnCancelAssessment = document.getElementById("btn_assessments_cancel");  // this is an id
+if (btnCancelAssessment) {
+    btnCancelAssessment.addEventListener('click', function(event){
+        event.preventDefault();
+        returnUrlUpOne(window.location.href);
+    });
+}
+
 
 if (btnPage1) {
     btnPage1.addEventListener("click", function() {

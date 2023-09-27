@@ -145,6 +145,28 @@ switch ($controller) {
         }
         break;
 
+    case 'contacts':
+        $contacts = new contacts_controller($entityManager);
+        if (is_null($param1)) {
+            $result = $contacts->mainDisplay($controller);
+        } elseif ($param1==='') {
+            $result = $contacts->mainDisplay($controller);
+        } elseif ($param2 === 'update') {
+            $result = $contacts->saveItem($entityManager,$controller,$param3);
+        } elseif ($param1 === 'delete') {
+            $result = $contacts->deleteItem($entityManager, $controller, $param2);
+        } elseif ($param1 === 'display') {
+            $result = $contacts->mainDisplay($controller);
+        } elseif ($param1 === 'manage') {
+            $result = $contacts->manageItem($entityManager,$param2,$controller);
+        } elseif ($param1 === 'create') {
+            $result = $contacts->createContact();
+        } elseif ($param1 === 'copy') {
+            $result = $contacts->copyItem($entityManager, $controller,$param2);
+        } else {
+            $result = $contacts->action1($param1, $param2, $param3);
+        }
+        break;
 
     case 'assessments':
         $assessments = new assessments_controller($entityManager);
