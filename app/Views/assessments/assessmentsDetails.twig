@@ -94,31 +94,36 @@
                         <div class="form-group">
                             <label>Independent Skill Development</label>
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="group3" value="option1"
-                                       {% if assessments.inHouseAct == 'Actively Participants' %}checked{% endif %}> Actively
+                                <input type="radio" class="form-check-input" name="assessmentIndySkilsDev" value="Actively Participates"
+                                       {% if assessments.indySkillsDevelop == 'Actively Participants' %}checked{% endif %}> Actively
                                 Participates
                             </div>
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="group3" value="option2"> Partially
+                                <input type="radio" class="form-check-input" name="assessmentIndySkilsDev" value="Partially Participates"
+                                       {% if assessments.indySkillsDevelop == 'Partially Participants' %}checked{% endif %}> Partially
                                 Participates
                             </div>
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="group3" value="option3"> No
+                                <input type="radio" class="form-check-input" name="assessmentIndySkilsDev" value="No Participation/Refused"
+                                       {% if assessments.indySkillsDevelop == 'No Participation/Refused' %}checked{% endif %}> No
                                 Participation/Refused
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Volunteer</label>
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="group4" value="option1"> Actively
+                                <input type="radio" class="form-check-input" name="assessmentVolunteer" value="Actively Participates"
+                                       {% if assessments.volunteer == 'Actively Participants' %}checked{% endif %}> Actively
                                 Participates
                             </div>
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="group4" value="option2"> Partially
+                                <input type="radio" class="form-check-input" name="assessmentVolunteer" value="Partially Participates"
+                                       {% if assessments.volunteer == 'Partially Participants' %}checked{% endif %}> Partially
                                 Participates
                             </div>
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="group4" value="option3"> No
+                                <input type="radio" class="form-check-input" name="assessmentVolunteer" value="No Participation/Refused"
+                                       {% if assessments.volunteer == 'No Participation/Refused' %}checked{% endif %}> No
                                 Participation/Refused
                             </div>
                         </div>
@@ -130,68 +135,78 @@
                     <div class="form-group">
                         <label>Reading</label>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group1" value="option1"> Actively
+                            <input type="radio" class="form-check-input" name="assessmentReading" value="Actively Participates"
+                                   {% if assessments.reading == 'Actively Participants' %}checked{% endif %}> Actively
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="assessmentReading" value="Partially Participates"
+                                   {% if assessments.reading == 'Partially Participants' %}checked{% endif %}> Partially
                             Participates
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group1" value="option2"> Partially
-                            Participates
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group1" value="option3"> No
+                            <input type="radio" class="form-check-input" name="assessmentReading" value="No Participation/Refused"
+                                   {% if assessments.reading == 'No Participation/Refused' %}checked{% endif %}> No
                             Participation/Refused
                         </div>
                         <label>Writing</label>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group2" value="option1"> Actively
+                            <input type="radio" class="form-check-input" name="assessmentWriting" value="Actively Participates"
+                                   {% if assessments.writing == 'Actively Participants' %}checked{% endif %}> Actively
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="assessmentWriting" value="Partially Participates"
+                                   {% if assessments.writing == 'Partially Participants' %}checked{% endif %}> Partially
                             Participates
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group2" value="option2"> Partially
-                            Participates
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group2" value="option3"> No
+                            <input type="radio" class="form-check-input" name="assessmentWriting" value="No Participation/Refused"
+                                   {% if assessments.writing == 'No Participation/Refused' %}checked{% endif %}> No
                             Participation/Refused
                         </div>
                         <label>Education & Development Skills</label>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group3" value="option1"> Actively
+                            <input type="radio" class="form-check-input" name="assessmentEddevelopment" value="Actively Participates"
+                                   {% if assessments.eddevelopment == 'Actively Participants' %}checked{% endif %}> Actively
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="assessmentEddevelopment" value="Partially Participates"
+                                   {% if assessments.eddevelopment == 'Partially Participants' %}checked{% endif %}> Partially
                             Participates
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group3" value="option2"> Partially
-                            Participates
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group3" value="option3"> No
+                            <input type="radio" class="form-check-input" name="assessmentEddevelopment" value="No Participation/Refused"
+                                   {% if assessments.eddevelopment == 'No Participation/Refused' %}checked{% endif %}> No
                             Participation/Refused
                         </div>
 
                         <label>Art</label>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group4" value="option1"> Actively
+                            <input type="radio" class="form-check-input" name="assessmentArt" value="Actively Participates"
+                                   {% if assessments.art == 'Actively Participants' %}checked{% endif %}> Actively
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="assessmentArt" value="Partially Participates"
+                                   {% if assessments.art == 'Partially Participants' %}checked{% endif %}> Partially
                             Participates
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group4" value="option2"> Partially
-                            Participates
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group4" value="option3"> No
+                            <input type="radio" class="form-check-input" name="assessmentCrafts" value="No Participation/Refused"
+                                   {% if assessments.art == 'No Participation/Refused' %}checked{% endif %}> No
                             Participation/Refused
                         </div>
                         <label>Crafts</label>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group5" value="option1"> Actively
+                            <input type="radio" class="form-check-input" name="assessmentCrafts" value="Actively Participates"
+                                   {% if assessments.crafts == 'Actively Participants' %}checked{% endif %}> Actively
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="assessmentCrafts" value="Partially Participates"
+                                   {% if assessments.crafts == 'Partially Participants' %}checked{% endif %}> Partially
                             Participates
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group5" value="option2"> Partially
-                            Participates
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group5" value="option3"> No
+                            <input type="radio" class="form-check-input" name="assessmentCrafts" value="No Participation/Refused"
+                                   {% if assessments.crafts == 'No Participation/Refused' %}checked{% endif %}> No
                             Participation/Refused
                         </div>
 

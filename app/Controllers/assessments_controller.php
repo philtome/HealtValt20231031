@@ -47,7 +47,6 @@ class assessments_controller extends abstract_controller
     {
 
         $dataToSave->setId(1);
-
         if (isset($_POST['assessmentDate'])) {
             $datetimeValue = $_POST['assessmentDate'];
             $datetime = \DateTime::createFromFormat('Y-m-d\TH:i', $datetimeValue);
@@ -64,8 +63,28 @@ class assessments_controller extends abstract_controller
         $dataToSave->setOuting(isset($_POST['assessmentOuting']) ? filter_var($_POST['assessmentOuting'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
 //        $dataToSave->SetParticipant(isset($_POST['assessmentParticipant']) ? filter_var($_POST['assessmentParticipant'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setInHouseAct(isset($_POST['assessmentInHouseAct']) ? filter_var($_POST['assessmentInHouseAct'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-
-
+        $dataToSave->setIndyskilsdev(isset($_POST['assessmentIndySkilsDev']) ? filter_var($_POST['assessmentIndySkilsDev'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setVolunteer(isset($_POST['assessmentVolunteer']) ? filter_var($_POST['assessmentVolunteer'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setReading(isset($_POST['assessmentReading']) ? filter_var($_POST['assessmentReading'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setWriting(isset($_POST['assessmentWriting']) ? filter_var($_POST['assessmentWriting'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setEddevelopment(isset($_POST['assessmentEddevelopment']) ? filter_var($_POST['assessmentEddevelopment'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setArt(isset($_POST['assessmentArt']) ? filter_var($_POST['assessmentArt'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setCrafts(isset($_POST['assessmentCrafts']) ? filter_var($_POST['assessmentCrafts'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        //    art*
+//            crafts*
+//            dance
+//            music
+//            exercise
+//            toliet
+//            grooming
+//            writing*
+//            eddevelopment*
+//            socializing
+//            currentEvents
+//            lunch
+//            snack
+//            notes
+//
 //        $dataToSave->setstreetAddress1(isset($_POST['participantAddress']) ? filter_var($_POST['participantAddress'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
 //        $dataToSave->setstreetAddress2(isset($_POST['participantAddress2']) ? filter_var($_POST['participantAddress2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
 //        $dataToSave->setcity(isset($_POST['participantCity']) ? filter_var($_POST['participantCity'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
