@@ -1,29 +1,24 @@
-<tr id='Participantrow_{{ participant.id }}' data-sa-id="{{ participant.id }}" data-contact-id='{{ participant.id }}' class="newlyAdded">
+<tr id='Assessmentrow_{{ assessment.id }}' data-sa-id="{{ assessment.id }}" data-contact-id='{{ assessment.id }}' class="newlyAdded">
     {# 20191015 changed productrow to Productrow - was not working in delete product #}
-    <td id="participantlastname_{{ participant.id }}">{{ participant.lastname }}</td>
-    <td id="participantfistname_{{ participant.id }}">{{ participant.firstname }}</td>
-    <td id="participanttype_{{participant.id}}">{{ participant.streetaddress1 }}</td>
-    <td id="participantpractice_{{ participant.id }}">{{ participant.responsibleParty.firstname }} {{ participant.responsibleParty.lastname }}</td> {# was  participant.responsibleparty #}
-    <td id="participantemail_{{participant.id}}">{{ participant.phone }}</td>
-
-    <td class="participant-manage">
-        <button class="manageParticipantButton btn btn-primary" data-item-type="participant" data-item-id="{{ participant.id }}">
+    <td id="assessmentdate_{{ assessment.id }}">{{ assessment.dated|date('Y-m-d H:i') }}</td>
+    <td id="assessmentdailyactivities_{{ assessment.id }}">{{ assessment.outing }}</td>
+{#     <td id="participanttype_{{assessments.id}}">{{ assessments.streetaddress1 }}</td>
+    <td id="participantpractice_{{ assessments.id }}">{{ assessments.responsibleParty.firstname }} {{ assessments.responsibleParty.lastname }}</td> {# was  assessments.responsibleparty #}
+    <td id="participantemail_{{assessments.id}}">{{ assessments.phone }}</td>
+#}
+    <td class="assessment-manage">
+        <button class="manageAssessmentButton btn btn-primary" data-item-type="assesssment" data-item-id="{{ assessments.id }}">
             <i class="fa-solid fa-pencil"></i> Edit</button>
     </td>
 
-    <td id="participantcopy_{{ participant.id }}" class="participant-copy">
-        <button class="copyParticipantButton btn btn-primary" data-item-id="{{ participant.id }}">
+    <td id="assessmentcopy_{{ assessment.id }}" class="assessment-copy">
+        <button class="copyAssessmentButton btn btn-primary" data-item-id="{{ assessment.id }}">
             <i class="fa-solid fa-copy"></i> Copy</button>
     </td>
 
-    <td id="participantdelete_{{ participant.id }}" class="participant-delete">
-        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal"data-item-type="participant" data-item-id="{{ participant.id }}">
+    <td id="assessmentdelete_{{ assessment.id }}" class="assessment-delete">
+        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal"data-item-type="assessment" data-item-id="{{ assessment.id }}">
             <i class="fa-solid fa-trash-can"></i> Delete</button>
     </td>
-    <td>
-        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#visit-modal2">Contacts</button>
-    </td>
-    <td>
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Care Plans</button>
-    </td>
+
 </tr>

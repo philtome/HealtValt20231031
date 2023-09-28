@@ -1,6 +1,7 @@
 <tr id='Contactrow_{{ contact.id }}' data-sa-id="{{ contact.id }}" data-contact-id='{{ contact.id }}' class="newlyAdded">
     {# 20191015 changed productrow to Productrow - was not working in delete product #}
     <td id="contactlastname_{{ contact.id }}">{{ contact.lastName }}</td>
+ {{ dump(contact) }}
     <td id="contactfistname_{{ contact.id }}">{{ contact.firstName }}</td>
     <td id="contacttype_{{contact.id}}">{{ contact.contactType }}</td>
     <td id="contactpractice_{{ contact.id }}">{{ contact.companyPractice }}</td>
