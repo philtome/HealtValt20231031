@@ -220,50 +220,55 @@
 
                         <label>Socializing</label>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group1" value="option1"> Actively
+                            <input type="radio" class="form-check-input" name="assessmentSocializing" value="Actively Participates"
+                                   {% if assessments.socializing == 'Actively Participants' %}checked{% endif %}> Actively
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="assessmentSocializing" value="Partially Participates"
+                                   {% if assessments.socializing == 'Partially Participants' %}checked{% endif %}> Partially
                             Participates
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group1" value="option2"> Partially
-                            Participates
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group1" value="option3"> No
+                            <input type="radio" class="form-check-input" name="assessmentSocializing" value="No Participation/Refused"
+                                   {% if assessments.socializing == 'No Participation/Refused' %}checked{% endif %}> No
                             Participation/Refused
                         </div>
 
                         <label>Current Events</label>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group2" value="option1"> Actively
+                            <input type="radio" class="form-check-input" name="assessmentCurrentEvents" value="Actively Participates"
+                                   {% if assessments.currentEvents == 'Actively Participants' %}checked{% endif %}> Actively
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="assessmentCurrentEvents" value="Partially Participates"
+                                   {% if assessments.currentEvents == 'Partially Participants' %}checked{% endif %}> Partially
                             Participates
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group2" value="option2"> Partially
-                            Participates
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group2" value="option3"> No
+                            <input type="radio" class="form-check-input" name="assessmentCurrentEvents" value="No Participation/Refused"
+                                   {% if assessments.currentEvents == 'No Participation/Refused' %}checked{% endif %}> No
                             Participation/Refused
                         </div>
 
                         <label>Lunch</label>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group3" value="option1"> Ate
+                            <input type="radio" class="form-check-input" name="assessmentLunch" value="Ate"
+                                   {% if assessments.lunch == 'Ate' %}checked{% endif %}> Ate
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="group3" value="option2"> Refused
+                            <input type="radio" class="form-check-input" name="assessmentLunch" value="Refused"
+                                   {% if assessments.lunch == 'Refused' %}checked{% endif %}> Refused
                         </div>
 
                         <div class="form-group">
                             <label>Snack</label>
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="group4" value="option1"> Ate
+                                <input type="radio" class="form-check-input" name="assessmentSnack" value="Ate"
+                                       {% if assessments.snack == 'Ate' %}checked{% endif %}> Ate
                             </div>
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="group4" value="option2"> Refused
-                            </div>
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input" name="group4" value="option3"> Option 3
+                                <input type="radio" class="form-check-input" name="assessmentSnack" value="Refused"
+                                       {% if assessments.snack == 'Refused' %}checked{% endif %}> Refused
                             </div>
                         </div>
                     </div>
@@ -279,17 +284,17 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="form-check">
-                                    <input type="checkbox" name="isDriver"
-                                           id="isDriverCheckbox" {{ contacts.isdriver ? 'checked' : '' }} class="mt-3">
-                                    <label class="form-check-label" for="isDriverCheckbox">Toileting</label>
+                                    <input type="checkbox" name="assessmentToilet"
+                                           id="toiletCheckbox" {{ contacts.toilet ? 'checked' : '' }} class="mt-3">
+                                    <label class="form-check-label" for="toiletCheckbox">Toileting</label>
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-check">
-                                    <input type="checkbox" name="isEmployee"
-                                           id="isEmployeeCheckbox" {{ contacts.isemployee ? 'checked' : '' }}
+                                    <input type="checkbox" name="assessmentGrooming"
+                                           id="groomingCheckbox" {{ contacts.grooming ? 'checked' : '' }}
                                            class="mt-3">
-                                    <label class="form-check-label" for="isEmployeeCheckbox">Grooming</label>
+                                    <label class="form-check-label" for="groomingCheckbox">Grooming</label>
                                 </div>
                             </div>
 

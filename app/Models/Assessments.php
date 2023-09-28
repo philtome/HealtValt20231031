@@ -18,57 +18,57 @@ class Assessments
     #[ORM\Column(name: 'date', type:'datetime', nullable: false)]
     protected $date;
 
-    #[ORM\Column(name: 'seniorAdult', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'seniorAdult', type: 'string', length: 50, nullable: true)]
     protected string|null $seniorAdult;
 
     #[ORM\Column(name: 'absent', type: 'string', length: 10, nullable: true)]
     protected string|null $absent;
     // No (oif unvalued on screen), Ill, Persaonal, vacation
 
-    #[ORM\Column(name: 'outing', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'outing', type: 'string', length: 50, nullable: true)]
     protected string|null $outing;
 
-    #[ORM\Column(name: 'inHouseAct', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'inHouseAct', type: 'string', length: 50, nullable: true)]
     protected string|null $inHouseAct;
 
-    #[ORM\Column(name: 'indySkillsDevelop', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'indySkillsDevelop', type: 'string', length: 50, nullable: true)]
     protected string|null $indyskilsdev;
 
 
-    #[ORM\Column(name: 'volunteer', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'volunteer', type: 'string', length: 50, nullable: true)]
     protected string|null $volunteer;
 
-    #[ORM\Column(name: 'art', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'art', type: 'string', length: 50, nullable: true)]
     protected string|null $art;
 
-    #[ORM\Column(name: 'crafts', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'crafts', type: 'string', length: 50, nullable: true)]
     protected string|null $crafts;
 
-    #[ORM\Column(name: 'dance', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'dance', type: 'string', length: 50, nullable: true)]
     protected string|null $dance;
 
-    #[ORM\Column(name: 'music', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'music', type: 'string', length: 50, nullable: true)]
     protected string|null $music;
 
-    #[ORM\Column(name: 'exercise', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'exercise', type: 'string', length: 50, nullable: true)]
     protected string|null $exercise;
 
-    #[ORM\Column(name: 'toliet', type: 'string', length: 20, nullable: true)]
-    protected string|null $toliet;
+    #[ORM\Column(name: 'toilet', type: 'string', length: 50, nullable: true)]
+    protected string|null $toilet;
 
-    #[ORM\Column(name: 'grooming', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'grooming', type: 'string', length: 50, nullable: true)]
     protected string|null $grooming;
 
-    #[ORM\Column(name: 'reading', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'reading', type: 'string', length: 50, nullable: true)]
     protected string|null $reading;
 
-    #[ORM\Column(name: 'writing', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'writing', type: 'string', length: 50, nullable: true)]
     protected string|null $writing;
 
-    #[ORM\Column(name: 'eddevelopment', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'eddevelopment', type: 'string', length: 50, nullable: true)]
     protected string|null $eddevelopment;
 
-    #[ORM\Column(name: 'socializing', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'socializing', type: 'string', length: 50, nullable: true)]
     protected string|null $socializing;
 
     public function getId(): int
@@ -215,14 +215,14 @@ class Assessments
         $this->exercise = $exercise;
     }
 
-    public function getToliet(): ?string
+    public function getToilet(): ?string
     {
-        return $this->toliet;
+        return $this->toilet;
     }
 
-    public function setToliet(?string $toliet): void
+    public function setToilet(?string $toilet): void
     {
-        $this->toliet = $toliet;
+        $this->toilet = $toilet;
     }
 
     public function getGrooming(): ?string
@@ -315,13 +315,13 @@ class Assessments
         $this->notes = $notes;
     }
 
-    #[ORM\Column(name: 'currentEvents', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'currentEvents', type: 'string', length: 50, nullable: true)]
     protected string|null $currentEvents;
 
-    #[ORM\Column(name: 'lunch', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'lunch', type: 'string', length: 50, nullable: true)]
     protected string|null $lunch;
 
-    #[ORM\Column(name: 'snack', type: 'string', length: 20, nullable: true)]
+    #[ORM\Column(name: 'snack', type: 'string', length: 50, nullable: true)]
     protected string|null $snack;
 
 

@@ -70,20 +70,29 @@ class assessments_controller extends abstract_controller
         $dataToSave->setEddevelopment(isset($_POST['assessmentEddevelopment']) ? filter_var($_POST['assessmentEddevelopment'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setArt(isset($_POST['assessmentArt']) ? filter_var($_POST['assessmentArt'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setCrafts(isset($_POST['assessmentCrafts']) ? filter_var($_POST['assessmentCrafts'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        //    art*
+        $dataToSave->setSocializing(isset($_POST['assessmentSocializing']) ? filter_var($_POST['assessmentSocializing'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setCurrentEvents(isset($_POST['assessmentCurrentEvents']) ? filter_var($_POST['assessmentCurrentEvents'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setLunch(isset($_POST['assessmentLunch']) ? filter_var($_POST['assessmentLunch'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setSnack(isset($_POST['assessmentSnack']) ? filter_var($_POST['assessmentSnack'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setToilet(isset($_POST['assessmentToilet']) ? filter_var($_POST['assessmentToilet'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setGrooming(isset($_POST['assessmentGrooming']) ? filter_var($_POST['assessmentGrooming'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setDance(isset($_POST['assessmentDance']) ? filter_var($_POST['assessmentDance'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setMusic(isset($_POST['assessmentMusic']) ? filter_var($_POST['assessmentMusic'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setExercise(isset($_POST['assessmentExercise']) ? filter_var($_POST['assessmentExercise'], FILTER_SANITIZE_SPECIAL_CHARS) : null);        //    art*
+        $dataToSave->setNotes(isset($_POST['assessmentNotes']) ? filter_var($_POST['assessmentNotes'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
 //            crafts*
-//            dance
-//            music
-//            exercise
-//            toliet
-//            grooming
+//            dance*
+//            music*
+//            exercise*
+//            toliet*
+//            grooming*
 //            writing*
 //            eddevelopment*
-//            socializing
-//            currentEvents
-//            lunch
-//            snack
-//            notes
+//            socializing*
+//            currentEvents*
+//            lunch*
+//            snack*
+//            notes*
 //
 //        $dataToSave->setstreetAddress1(isset($_POST['participantAddress']) ? filter_var($_POST['participantAddress'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
 //        $dataToSave->setstreetAddress2(isset($_POST['participantAddress2']) ? filter_var($_POST['participantAddress2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
