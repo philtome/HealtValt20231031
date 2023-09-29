@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Sep 09, 2023 at 05:50 PM
+-- Generation Time: Sep 29, 2023 at 05:11 PM
 -- Server version: 5.7.39
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,45 @@ SET time_zone = "+00:00";
 --
 -- Database: `skycliff`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assessments`
+--
+
+CREATE TABLE `assessments` (
+  `id` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `seniorAdult` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `absent` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `outing` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `inHouseAct` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `volunteer` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `art` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `crafts` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dance` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `music` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `exercise` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `toilet` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `grooming` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `reading` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `writing` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `eddevelopment` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `socializing` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `currentEvents` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lunch` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `snack` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `notes` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `indySkillsDevelop` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `assessments`
+--
+
+INSERT INTO `assessments` (`id`, `date`, `seniorAdult`, `absent`, `outing`, `inHouseAct`, `volunteer`, `art`, `crafts`, `dance`, `music`, `exercise`, `toilet`, `grooming`, `reading`, `writing`, `eddevelopment`, `socializing`, `currentEvents`, `lunch`, `snack`, `notes`, `indySkillsDevelop`) VALUES
+(1, '2023-09-27 21:34:00', 'Adult Day', NULL, 'Actively Participates', 'Actively Participates', 'Actively Participates', 'Actively Participates', 'Actively Participates', NULL, NULL, NULL, 'on', 'on', 'Actively Participates', 'Actively Participates', 'Actively Participates', 'Actively Participates', 'Actively Participates', 'Ate', NULL, NULL, 'Actively Participates');
 
 -- --------------------------------------------------------
 
@@ -83,16 +122,16 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `lastName`, `firstName`, `contactType`, `companyPractice`, `email`, `phone`, `isDriver`, `isEmployee`, `isCaregiver`, `isCna`, `isRn`, `address1`, `address2`, `city`, `state`, `zip`, `phone1`, `phone1x`, `phone2`, `phone2x`, `phone3`, `phone3x`) VALUES
-(1, 'Tome', 'Philip', 'Family', '', 'phil@tome.net', '3038591164', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 'Tome', 'Philip', 'Family', 'Rocky', 'phil@tome.com', '99888888', 0, 0, 0, 0, 1, '', '', '', '', '', '', '', '', '', '', ''),
 (9, 'Fosdic', 'Marie', 'some type', '', 'email@email.com', '878787', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14, 'Fahmy', 'Anthony', 'kksdks', '', 'phil@tome.net', '878888', 1, 1, 1, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15, 'Gunter', 'Pat', 'some time', '', '007@tomel.net', '888', 0, 0, 1, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16, 'Heinz', 'Thomas', 'kksdks', '', 'phil@tome.net', '878888', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, 'Driver', 'John', 'kksdks', 'Driver John', 'phil@tome.net', '878888', 1, 1, 0, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 'Driver', 'John', 'kksdks', '', 'phil@tome.net', '878888', 1, 1, 0, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18, 'Someother', 'contact', 'some time', '', '007@tomel.net', '888', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20, 'Yetanother', 'contact', 'some time', '', '007@tomel.net', '888', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(22, 'AnotherButter', 'contact', 'some time', '', '007@tomel.net', '888', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(23, 'Smith', 'Philipppppppp', 'Family', 'Self', 'phil@gmail.com', '3038591164', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(30, 'Tam Sing', 'John', 'physician Neuro', '', '', '', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 'Schiels', 'Jamess', '', '', 'jim@sierra.com', '55544434334', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, 'ForResponsible', 'Party', 'family', 'family member', 'jim@sierra.com', '55544434334', 1, 1, 1, 1, 1, '1234 2nd Ave', 'Apt2', 'Akron', 'OH', '88888', '444', '4', '55555', '5', '6666', '6');
 
 -- --------------------------------------------------------
 
@@ -119,16 +158,27 @@ CREATE TABLE `participants` (
 --
 
 INSERT INTO `participants` (`id`, `lastName`, `firstName`, `streetAddress1`, `streetAddress2`, `city`, `state`, `zip`, `phone`, `notes`, `responsibleParty_id`) VALUES
-(1, 'Tome', 'Philip', '123 Street', 'Unit 10', 'Castle Rock', 'CO', '80108', '3038591164', NULL, NULL),
-(2, 'Boekes', 'Chad', '456 Street', 'Secondline', 'Larkspur', 'CO', '', '99999999', NULL, 16),
-(3, 'tome', 'Leah', '789 Street', '', '', '', '', '3038591000', NULL, 1),
+(1, 'Tome', 'Philip', '123 Street', 'Unit 10', 'Castle Rock', 'CO', '80108', '3038591164', NULL, 30),
+(3, 'tome', 'Leah', '789 Street', '', '', '', '', '3038591000', NULL, 31),
 (6, 'Boekes', 'Chad', '456 Street', '', '', '', '', '99999999', NULL, NULL),
-(9, 'tome8', 'Leah8', '789 Street', '', '', '', '', '3038591000', NULL, NULL),
-(20, 'Wayne', 'John', '1 John Wayne Place', '1 Mansion', 'Santa Anna', 'CA', '77777', '', NULL, NULL);
+(9, 'tome8', 'Leah8', '789 Street', '', '', '', '', '3038591000', NULL, 9),
+(20, 'Wayne', 'John', '1 John Wayne Place', '1 Mansion', 'Santa Anna', 'CA', '77777', '', NULL, 34),
+(23, 'Boekes', 'Chad', '456 Street', '', 'Larkspur', 'CO', '80108', '99999999', NULL, 14),
+(35, 'Wayne', 'John', '1 John Wayne Place', '1 Mansion', 'Santa Anna', 'CA', '77777', '', NULL, 1),
+(43, 'Tome', 'Philip', '123 Street', 'Unit 10', 'Castle Rock', 'CO', '80108', '3038591164', NULL, 1),
+(49, 'Smith', 'William', '661 N Big Oak Rd', '', 'Malta', 'OH', '43758', '7409622256', NULL, 16),
+(50, 'Tome', 'Philip', '123 Street', 'Unit 10', 'Castle Rock', 'CO', '80108', '3038591164', NULL, 1),
+(51, 'Wayne', 'John', '1 John Wayne Place', '1 Mansion', 'Santa Anna', 'CA', '77777', '', NULL, 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `assessments`
+--
+ALTER TABLE `assessments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `care_plans`
@@ -154,6 +204,12 @@ ALTER TABLE `participants`
 --
 
 --
+-- AUTO_INCREMENT for table `assessments`
+--
+ALTER TABLE `assessments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `care_plans`
 --
 ALTER TABLE `care_plans`
@@ -163,13 +219,13 @@ ALTER TABLE `care_plans`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `participants`
 --
 ALTER TABLE `participants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- Constraints for dumped tables
