@@ -43,6 +43,10 @@ class assessments_controller extends abstract_controller
         return renderTemplate('assessments\assessmentsDetails.twig');
     }
 
+    Public function getDropDowns()
+    {
+        return null;
+    }
     public function movePostDataToFields($dataToSave,$em)
     {
 

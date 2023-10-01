@@ -28,7 +28,7 @@ createButtonItems.forEach(item => {
 });
 
 
-// manage button example (manage careplan button, take user to specific carplan when clicked on
+// manage Participant button example
 var manageButtonItems = document.querySelectorAll('.manageParticipantButton');  //this is a class
 manageButtonItems.forEach(item => {
     item.addEventListener('click', function() {
@@ -81,6 +81,17 @@ if (btnSaveContact) {
                       // this routine is in editFunctions
     });
 }
+
+// MANAGE/DISPLAY contact button
+var manageButtonItems = document.querySelectorAll('.manageAssessmentButton');  //this is a class
+manageButtonItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        const itemId = this.getAttribute('data-item-id');
+        handleAssessmentManage(itemId);   // this routine is in editFunctions
+    });
+});
+
 
 // SAVE Assessment button , start to gather up data and save **20230926**
 var btnSaveAssessment = document.querySelector("#btn_assessments_save");  // this is an id
