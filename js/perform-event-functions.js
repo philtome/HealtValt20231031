@@ -8,36 +8,23 @@ function handleCreateItem(itemController,itemAction) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
-    let fetchUrl = "index.php/" + itemController + "s/create"
+    let fetchUrl = "index.php/" + itemController + "s/create";
     window.location.href = fetchUrl;
 }
-function handleManageItem(itemId) {
+function handleManageEditItem(itemController,itemId) {
+    // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
+    // In this example, we will just log the item ID to the console
+    //console.log("Edit item with ID:", itemId);
+    let fetchUrl = "index.php/" + itemController + "s/manage/" + itemId;
+    window.location.href = fetchUrl;
+}
+function handleXXXXXManageItem(itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
     window.location.href = "../index.php/careplans_manage/1";
 }
-function handleAssessmentManage(itemId) {
-    // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
-    // In this example, we will just log the item ID to the console
-    //console.log("Edit item with ID:", itemId);
-    window.location.href = "index.php/assessments/manage/" + itemId;
-}
 
-
-function handleParticipantManage(itemId) {
-    // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
-    // In this example, we will just log the item ID to the console
-    //console.log("Edit item with ID:", itemId);
-    window.location.href = "index.php/participants/manage/" + itemId;
-}
-
-function handleConManage(itemId) {
-    // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
-    // In this example, we will just log the item ID to the console
-    //console.log("Edit item with ID:", itemId);
-    window.location.href = "index.php/contacts/manage/" + itemId;
-}
 
 function handleConCopy(id) {
     var fetchUrl = 'contacts/copy/'.concat(id);
@@ -99,36 +86,6 @@ function handleConDelete(id, type) {
         });
 }
 
-// function handleConDelete(id, type) {
-//
-//     var fetchUrl = type + 's/delete/' + id;
-//     //"I use the s here because my contoller is looking for contacts or partacipants"
-//     fetch(fetchUrl, {
-//         method: 'POST',
-//     })
-//         .then(response => response.json())
-//         .then(data => {
-//             if (data.error) {
-//                 setErrorMessage(data.error);
-//                 var modal = new bootstrap.Modal(document.getElementById('display-error-modal'));
-//                 modal.show();
-//                 //openModal();
-//             }
-//         })
-//         .catch(error => {
-//             // Handle any errors that occurred during the request
-//             console.error('Error deleting data:', error);
-//
-//             // Display an error message to the user
-//             letMessage = error;
-//             setErrorMessage(data.error);
-//             //openModal();
-//             var modal = new bootstrap.Modal(document.getElementById('confirm-delete-modal'));
-//             modal.show();
-//         });
-//
-// }
-
 function setErrorMessage(message) {
     // Assuming you have an HTML element with the id "error-message" to display the error
     var errorMessageElement = document.getElementById('error-message');
@@ -137,67 +94,10 @@ function setErrorMessage(message) {
         errorMessageElement.textContent = message;
     }
 }
-function handleSaveCareplan() {
-    const careplanForm = document.getElementById('careplan_details_form');
-    const careplanFormData = new FormData(careplanForm);
-    //fetch('index.php/controller/careplans/create'
-    fetch('index.php/controller/careplans/create', {
-        method: 'POST',
-        body:careplanFormData
-    })
-        .then(response => {
-            console.log('Data Saved successfully');
-        })
-        .then(responseData => {
-            returnUrlUpOne(window.location.href);
-        })
-        .catch(error => {
-            console.error('Error saving data:', error);
-        });
-}
 
-function handleSaveParticipant(id =null) {
-    const participantForm = document.getElementById('participant_details_form');
-    const participantFormData = new FormData(participantForm);
-    var fetchUrl = 'create';
-    if (id) {
-        fetchUrl='update/'.concat(id);
-    }
-    else {
-        fetchUrl='manage/update/';
-    }
-    fetch(fetchUrl, {
-        method: 'POST',
-        body:participantFormData
-    })
-        .then(response => {
-            console.log('Data Saved successfully');
-        })
-        .then(responseData => {
-            // Handle the AJAX response here
-            // The responseData should be the rendered HTML or JSON data from the server
-            // Update your page content or perform other actions based on the responseData
-            // temp remove this:document.getElementById('result-container').innerHTML = responseData;
-            //console.log('Data Saved successfully');
-            returnUrlUpOne(window.location.href);
-            //const currentUrl = window.location.href;
-            //const newURL = currentUrl.replace("/create","");
-            // - this will go "UP" one, if on index.php/contacts/create
-            //            this will load index.php/contacts
-            // const lastSlashIndex = currentUrl.lastIndexOf("/");
-            // const newURL = currentUrl.substring(0, lastSlashIndex);
-            //
-            // window.location.href = newURL;
-        })
-        .catch(error => {
-            // Handle any errors that occurred during the request
-            console.error('Error saving data:', error);
-        });
-
-}
-function handleSaveContact(id =null) {
-    const contactForm = document.getElementById('contact_details_form');
-    const contactFormData = new FormData(contactForm);
+function handleSaveItem(itemController,id =null) {
+    const itemForm = document.getElementById(itemController + "_details_form");
+    const itemFormData = new FormData(itemForm);
     var fetchUrl = 'create';
     if (id) {
         fetchUrl = 'update/'.concat(id);
@@ -206,7 +106,7 @@ function handleSaveContact(id =null) {
     }
     fetch(fetchUrl, {
         method: 'POST',
-        body: contactFormData
+        body: itemFormData
     })
         .then(response => {
             console.log('Data Saved successfully');
@@ -220,30 +120,7 @@ function handleSaveContact(id =null) {
         });
 }
 
-function handleSaveAssessment(id =null) {
-    const assessmentForm = document.getElementById('assessment_details_form');
-    const assessmentFormData = new FormData(assessmentForm);
-    var fetchUrl = 'create';
-    if (id) {
-        fetchUrl = 'update/'.concat(id);
-    } else {
-        fetchUrl = 'manage/update/';
-    }
-    fetch(fetchUrl, {
-        method: 'POST',
-        body: assessmentFormData
-    })
-        .then(response => {
-            console.log('Data Saved successfully');
-        })
-        .then(responseData => {
-            returnUrlUpOne(window.location.href);
-        })
-        .catch(error => {
-            // Handle any errors that occurred during the request
-            console.error('Error saving data:', error);
-        });
-}
+
 
     function handleParticipantCopy(id) {
         const fetchUrl = 'participants/copy/' + id;

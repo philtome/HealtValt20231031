@@ -42,7 +42,12 @@
                                   class="form-control">{{  careplan.notes }}</textarea>
                     </div>
 
-                    <button id="btn_careplan_save" type="submit" class="btn btn-primary">Save</button>
+                    <div class="form-group row mt-4 saveButton" data-item-id="{{ careplan.id }}">
+                        <div class="col-sm-12 text-center">
+                            <button id="btn_save" data-sa-object="careplan" type="submit" class="btn btn-primary">Save</button>
+                            <button id="btn_cancel" type="button" class="btn btn-secondary btnCancel">Cancel</button>
+                        </div>
+                    </div>
 
 
                 </form>

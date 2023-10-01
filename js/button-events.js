@@ -27,87 +27,36 @@ createButtonItems.forEach(item => {
     });
 });
 
-
-// manage Participant button example
-var manageButtonItems = document.querySelectorAll('.manageParticipantButton');  //this is a class
+// MANAGE or EDIT Buttons
+var manageButtonItems = document.querySelectorAll('.manageEdit');  //this is a class
 manageButtonItems.forEach(item => {
     item.addEventListener('click', function() {
         // Get the item ID from the "data-item-id" attribute of the clicked list item
         const itemId = this.getAttribute('data-item-id');
-        handleParticipantManage(itemId);   // this routine is in editFunctions
-    });
-});
-
-// SAVE CarePlan button , start to gather up data and save **20230805**
-const btnSaveCareplan = document.getElementById("btn_careplan_save");  // this is an id
-if (btnSaveCareplan) {
-    btnSaveCareplan.addEventListener('click', function(event){
-        event.preventDefault();
-        // Get the item ID from the "data-item-id" attribute of the clicked list item
-        // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
-        handleSaveCareplan();   // add itemID when save is edit (handleSaveContact(itemID)
-        // this routine is in editFunctions
-    });
-}
-
-// SAVE Participant button , start to gather up data and save
-const btnSavePart = document.querySelector("#btn_participant_save");  // this is an id
-if (btnSavePart) {
-    btnSavePart.addEventListener('click', function(event){
-        event.preventDefault();
-
-        const itemElement = btnSavePart.closest('.saveButton');
-        const itemId = itemElement.dataset.itemId;
-
-        // Get the item ID from the "data-item-id" attribute of the clicked list item
-        // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
-        handleSaveParticipant(itemId);   // add itemID when save is edit (handleSaveContact(itemID)
-        // this routine is in editFunctions
-    });
-}
-
-// SAVE Contact button , start to gather up data and save **20230801**
-var btnSaveContact = document.querySelector("#btn_contacts_save");  // this is an id
-if (btnSaveContact) {
-    btnSaveContact.addEventListener('click', function(event){
-        event.preventDefault();
-
-        const itemElement = btnSaveContact.closest('.saveButton');
-        const itemId = itemElement.dataset.itemId;
-
-        // Get the item ID from the "data-item-id" attribute of the clicked list item
-        // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
-        handleSaveContact(itemId);   // add itemID when save is edit (handleSaveContact(itemID)
-                      // this routine is in editFunctions
-    });
-}
-
-// MANAGE/DISPLAY contact button
-var manageButtonItems = document.querySelectorAll('.manageAssessmentButton');  //this is a class
-manageButtonItems.forEach(item => {
-    item.addEventListener('click', function() {
-        // Get the item ID from the "data-item-id" attribute of the clicked list item
-        const itemId = this.getAttribute('data-item-id');
-        handleAssessmentManage(itemId);   // this routine is in editFunctions
+        const itemController = this.getAttribute('data-sa-object');
+        handleManageEditItem(itemController,itemId);   // this routine is in editFunctions
     });
 });
 
 
-// SAVE Assessment button , start to gather up data and save **20230926**
-var btnSaveAssessment = document.querySelector("#btn_assessments_save");  // this is an id
-if (btnSaveAssessment) {
-    btnSaveAssessment.addEventListener('click', function(event){
+// SAVE any Item button , start to gather up data and save **20230801**
+var btnSaveItem = document.querySelector("#btn_save");  // this is an id
+if (btnSaveItem) {
+    btnSaveItem.addEventListener('click', function(event){
         event.preventDefault();
 
-        const itemElement = btnSaveAssessment.closest('.saveButton');
+        const itemElement = btnSaveItem.closest('.saveButton');
         const itemId = itemElement.dataset.itemId;
+        const itemController = this.getAttribute('data-sa-object');
 
         // Get the item ID from the "data-item-id" attribute of the clicked list item
         // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
-        handleSaveAssessment(itemId);   // add itemID when save is edit (handleSaveContact(itemID)
+        handleSaveItem(itemController, itemId);   // add itemID when save is edit (handleSaveContact(itemID)
         // this routine is in editFunctions
     });
 }
+
+
 
 
 // CANCEL Contact button , start to gather up data and save **20230801**
@@ -145,24 +94,6 @@ if (btnPage1) {
 }
 
 
- // manage button example (manage careplan button, take user to specific carplan when clicked on
-var manageButtonItems = document.querySelectorAll('.manageCpButton');  //this is a class
-manageButtonItems.forEach(item => {
-    item.addEventListener('click', function() {
-        // Get the item ID from the "data-item-id" attribute of the clicked list item
-        const itemId = this.getAttribute('data-item-id');
-        handleManageItem(itemId);   // this routine is in editFunctions
-    });
-});
-// MANAGE/DISPLAY contact button
-var manageButtonItems = document.querySelectorAll('.manageConButton');  //this is a class
-manageButtonItems.forEach(item => {
-    item.addEventListener('click', function() {
-        // Get the item ID from the "data-item-id" attribute of the clicked list item
-        const itemId = this.getAttribute('data-item-id');
-        handleConManage(itemId);   // this routine is in editFunctions
-    });
-});
 
 // COPY contact button
 var copyButtonItems = document.querySelectorAll('.copyConButton');  //this is a class
