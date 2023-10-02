@@ -51,10 +51,17 @@ abstract class abstract_controller
     }
     public function manageItem($em,$id,$controllerClassName)
     {
-        $modelClassName = $this->namespace.'\\'.ucfirst($controllerClassName);
+        $modelClassName = $this->namespace . '\\' . ucfirst($controllerClassName);
 
         // getting main model data to display, set up array for TWIG
         $dataToDisplay = $this->em->getRepository($modelClassName)->find($id);
+
+        if ($controllerClassName === 'assessments') {
+            $formattedDate = $dataToDisplay->getDate()->format('Y-m-d H:i');
+
+            // Replace the 'assessment.date' property value with the formatted date string
+            $dataToDisplay->setDate($formattedDate);
+        }
         $arrayKey = $controllerClassName; // You can set this key dynamically
         $templateData = [$arrayKey => $dataToDisplay,];
 

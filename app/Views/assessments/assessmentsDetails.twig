@@ -24,6 +24,7 @@
                                             value="{{ assessment.participant }}" class="form-control">
                                 </div>
                             </div>
+                            {{ dump(assessments) }}
                             <div class="col-sm-4">
                                 <!-- Input Field 2: Date/Time -->
                                 <div class="form-group">
@@ -69,7 +70,7 @@
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="assessmentOuting" value="No Participation/Refused"
-                                   {% if assessments.outting == 'No Participation/Refused' %}checked{% endif %}> No
+                                   {% if assessments.outing == "No Participation/Refused" %}checked{% endif %}> No
                             Participation/Refused
                         </div>
 
@@ -87,7 +88,7 @@
                             </div>
                             <div class="form-check">
                                 <input type="radio" class="form-check-input" name="assessmentInHouseAct" value="No Participation/Refused"
-                                       {% if assessments.inHouseAct == 'No Participation/Refused' %}checked{% endif %}> No
+                                       {% if assessments.inHouseAct == "No Participation/Refused" %}checked{% endif %}> No
                                 Participation/Refused
                             </div>
                         </div>
@@ -95,17 +96,17 @@
                             <label>Independent Skill Development</label>
                             <div class="form-check">
                                 <input type="radio" class="form-check-input" name="assessmentIndySkilsDev" value="Actively Participates"
-                                       {% if assessments.indySkillsDevelop == 'Actively Participants' %}checked{% endif %}> Actively
+                                       {% if assessments.indyskilsdev == 'Actively Participates' %}checked{% endif %}> Actively
                                 Participates
                             </div>
                             <div class="form-check">
                                 <input type="radio" class="form-check-input" name="assessmentIndySkilsDev" value="Partially Participates"
-                                       {% if assessments.indySkillsDevelop == 'Partially Participants' %}checked{% endif %}> Partially
+                                       {% if assessments.indyskilsdev == 'Partially Participates' %}checked{% endif %}> Partially
                                 Participates
                             </div>
                             <div class="form-check">
                                 <input type="radio" class="form-check-input" name="assessmentIndySkilsDev" value="No Participation/Refused"
-                                       {% if assessments.indySkillsDevelop == 'No Participation/Refused' %}checked{% endif %}> No
+                                       {% if assessments.indyskilsdev == "No Participation/Refused" %}checked{% endif %}> No
                                 Participation/Refused
                             </div>
                         </div>
