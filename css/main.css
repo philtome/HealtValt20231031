@@ -134,8 +134,14 @@ body {
     color: #666;
     padding: 40px 0;
 }
-
-
+#footer {
+    position: sticky;
+    bottom: 0;
+ }
+#content {
+    /* Add a minimum height to ensure the content pushes the footer down when it's longer than the screen */
+    min-height: 0vh;
+}
 
 
 @media (max-width: 575.98px) {
