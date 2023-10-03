@@ -39,7 +39,7 @@ manageButtonItems.forEach(item => {
 });
 
 
-// SAVE any Item button , start to gather up data and save **20230801**
+// SAVE any Item button on individual edit/manage screens
 var btnSaveItem = document.querySelector("#btn_save");  // this is an id
 if (btnSaveItem) {
     btnSaveItem.addEventListener('click', function(event){
@@ -55,32 +55,10 @@ if (btnSaveItem) {
         // this routine is in editFunctions
     });
 }
-
-
-
-
-// CANCEL Contact button , start to gather up data and save **20230801**
-var btnCancelContact = document.getElementById("btn_contacts_cancel");  // this is an id
-if (btnCancelContact) {
-    btnCancelContact.addEventListener('click', function(event){
-        event.preventDefault();
-        returnUrlUpOne(window.location.href);
-    });
-}
-
-// CANCEL Participant button
-var btnCancelParticipant = document.getElementById("btn_participant_cancel");  // this is an id
-if (btnCancelParticipant) {
-    btnCancelParticipant.addEventListener('click', function(event){
-        event.preventDefault();
-        returnUrlUpOne(window.location.href);
-    });
-}
-
-// CANCEL Assessments button
-var btnCancelAssessment = document.getElementById("btn_assessments_cancel");  // this is an id
-if (btnCancelAssessment) {
-    btnCancelAssessment.addEventListener('click', function(event){
+// CANCEL Item button - cancel from individual edit/manage screens
+var btnCancelItem = document.getElementById("btn_cancel");  // this is an id
+if (btnCancelItem) {
+    btnCancelItem.addEventListener('click', function(event){
         event.preventDefault();
         returnUrlUpOne(window.location.href);
     });
@@ -93,8 +71,6 @@ if (btnPage1) {
     });
 }
 
-
-
 // COPY contact button
 var copyButtonItems = document.querySelectorAll('.copyConButton');  //this is a class
 copyButtonItems.forEach(item => {
@@ -104,7 +80,6 @@ copyButtonItems.forEach(item => {
         handleConCopy(itemId);   // this routine is in editFunctions
     });
 });
-
 
 // COPY Participant button  &&&&&&&&&&&&&  NEEED TO FINISH THIS ONE, only copied contact
 var copyButtonItems = document.querySelectorAll('.copyParticipantButton');  //this is a class
