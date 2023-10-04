@@ -4,6 +4,8 @@ namespace App\Models;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection; //needed?
+use Doctrine\Common\Collections\Collection;  //needed?
 
 #[ORM\Table(name: 'participants')]
 #[ORM\Entity]
@@ -11,10 +13,19 @@ use Doctrine\ORM\Mapping as ORM;
 
 class Participants
 {
+    public function __construct()
+    {
+        $this->assessments = new ArrayCollection();
+    }
+
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
     public int $id;
+
+    #[ORM\OneToMany(targetEntity: 'Assessments', mappedBy: 'participant')]
+    private $assessments;
+
 
     #[ORM\Column(name: 'lastName', type: 'string', nullable: false)] //may not be null, (required)
     protected string $lastName;
@@ -47,7 +58,7 @@ class Participants
     #[ORM\ManyToOne(targetEntity: 'Contacts', fetch: 'EAGER')]
     public $responsibleParty;
 
-    // ...
+
 
     /**
      * @return int
@@ -64,6 +75,24 @@ class Participants
     public function setId(int $id): Participants
     {
         $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getAssessments(): ArrayCollection
+    {
+        return $this->assessments;
+    }
+
+    /**
+     * @param ArrayCollection $assessments
+     * @return Participants
+     */
+    public function setAssessments(ArrayCollection $assessments): Participants
+    {
+        $this->assessments = $assessments;
         return $this;
     }
 

@@ -15,6 +15,11 @@ class Assessments
     #[ORM\GeneratedValue(strategy: 'AUTO')]
     protected int $id;
 
+    #[ORM\ManyToOne(targetEntity: 'Participants', inversedBy: 'assessments')]
+    #[ORM\JoinColumn(name: 'participant_id', referencedColumnName: 'id')]
+    private $participant;
+
+
     #[ORM\Column(name: 'date', type:'datetime', nullable: false)]
     protected $date;
 
@@ -71,6 +76,7 @@ class Assessments
     #[ORM\Column(name: 'socializing', type: 'string', length: 50, nullable: true)]
     protected string|null $socializing;
 
+
     public function getId(): int
     {
         return $this->id;
@@ -80,6 +86,27 @@ class Assessments
     {
         $this->id = $id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipant()
+    {
+        return $this->participant;
+    }
+
+    /**
+     * @param mixed $participant
+     * @return Assessments
+     */
+    public function setParticipant($participant)
+    {
+        $this->participant = $participant;
+        return $this;
+    }
+
+
+
 
     /**
      * @return mixed

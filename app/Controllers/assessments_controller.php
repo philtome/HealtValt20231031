@@ -45,8 +45,13 @@ class assessments_controller extends abstract_controller
 
     Public function getDropDowns()
     {
-        return null;
+        $participantsModelClassName = $this->namespace . '\\' . ucfirst('participants');
+        $participantRepository = $this->em->getRepository($participantsModelClassName);
+        $participants = $participantRepository->findAll();
+        //return $$participants;
+        return ['participantList' => $participants];
     }
+
     public function movePostDataToFields($dataToSave,$em)
     {
 
@@ -84,32 +89,11 @@ class assessments_controller extends abstract_controller
         $dataToSave->setMusic(isset($_POST['assessmentMusic']) ? filter_var($_POST['assessmentMusic'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setExercise(isset($_POST['assessmentExercise']) ? filter_var($_POST['assessmentExercise'], FILTER_SANITIZE_SPECIAL_CHARS) : null);        //    art*
         $dataToSave->setNotes(isset($_POST['assessmentNotes']) ? filter_var($_POST['assessmentNotes'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-//            crafts*
-//            dance*
-//            music*
-//            exercise*
-//            toliet*
-//            grooming*
-//            writing*
-//            eddevelopment*
-//            socializing*
-//            currentEvents*
-//            lunch*
-//            snack*
-//            notes*
-//
-//        $dataToSave->setstreetAddress1(isset($_POST['participantAddress']) ? filter_var($_POST['participantAddress'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-//        $dataToSave->setstreetAddress2(isset($_POST['participantAddress2']) ? filter_var($_POST['participantAddress2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-//        $dataToSave->setcity(isset($_POST['participantCity']) ? filter_var($_POST['participantCity'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-//        $dataToSave->setstate(isset($_POST['participantState']) ? filter_var($_POST['participantState'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-//        $dataToSave->setzip(isset($_POST['participantZip']) ? filter_var($_POST['participantZip'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-//        $dataToSave->setphone(isset($_POST['participantPhone']) ? filter_var($_POST['participantPhone'], FILTER_SANITIZE_NUMBER_INT) : null);
-//        $dataToSave->setnotes(null);
 
-//        $participantResponParty = isset($_POST['responsibleParty']) ? filter_var($_POST['responsibleParty'], FILTER_SANITIZE_NUMBER_INT) : null;
-//        $modelClassName = $this->namespace . '\\Assessments';
-//        $assessmentRepository = $em->getRepository($modelClassName); // Replace with your Contact entity class
-//        $dataToSave->setresponsibleParty($assessmentRepository->find($participantResponParty));
+        $assessmentParticipant = isset($_POST['assessmentParticipant']) ? filter_var($_POST['assessmentParticipant'], FILTER_SANITIZE_NUMBER_INT) : null;
+        $modelClassName = $this->namespace.'\\Participants';
+        $participantRepository = $em->getRepository($modelClassName); // Replace with your Contact entity class
+        $dataToSave->setParticipant($participantRepository->find($assessmentParticipant));
 
         return $dataToSave;
     }

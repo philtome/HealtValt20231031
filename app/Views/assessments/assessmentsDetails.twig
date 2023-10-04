@@ -19,14 +19,30 @@
                 <div class="col-sm-12">
                     <div class="border p-3">
                         <div class="row">
-                            <div class="col-sm-4">
-                                <!-- Input Field 1: Text -->
+
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="assessment-participant">Participant:</label>
-                                    <input type="text" name="assessmentParticipant" id="assessment-participant" placeholder="Enter value *not working...yet"
-                                            value="{{ assessment.participant }}" class="form-control">
+                                    <label for="assessment-participant" class="form-label">Participant</label>
+                                    <select name="assessmentParticipant" id="assessment-participant" class="form-control">
+                                        <option value="">Select a Participant</option>
+                                        {% for participant in participantList %}
+                                            <option value="{{ participant.id }}"
+                                                    {% if assessments.participant_id is not empty and participants.participant.id == participant.id %}
+                                                        selected
+                                                    {% endif %}
+                                            >
+                                                {{ participant.firstName }} {{ participant.lastName }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
                                 </div>
-                            </div>
+
+
+
+
+
+
+
                             <div class="col-sm-4">
                                 <!-- Input Field 2: Date/Time -->
                                 <div class="form-group">
