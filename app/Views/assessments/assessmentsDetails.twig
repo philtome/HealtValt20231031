@@ -22,12 +22,12 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="assessment-participant" class="form-label">Participant</label>
-                                    <select name="assessmentParticipant" id="assessment-participant" class="form-control">
+                                    <label for="assessmentParticipant" class="form-label">Participant</label>
+                                    <select name="assessmentParticipant" id="assessmentParticipant" class="form-control">
                                         <option value="">Select a Participant</option>
                                         {% for participant in participantList %}
                                             <option value="{{ participant.id }}"
-                                                    {% if assessments.participant_id is not empty and participants.participant.id == participant.id %}
+                                                    {% if assessments.participant.id is not empty and assessments.participant.id == participant.id %}
                                                         selected
                                                     {% endif %}
                                             >
