@@ -38,6 +38,17 @@ manageButtonItems.forEach(item => {
     });
 });
 
+// SUBList Display Buttons
+var subListButton = document.querySelectorAll('.listAssessments');  //this is a class
+subListButton.forEach(item => {
+    item.addEventListener('click', function() {
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        const itemId = this.getAttribute('data-item-id');
+        const itemController = this.getAttribute('data-sa-object');
+        handlesubListItem(itemController,itemId);   // this routine is in editFunctions
+    });
+});
+
 
 // SAVE any Item button on individual edit/manage screens
 var btnSaveItem = document.querySelector("#btn_save");  // this is an id

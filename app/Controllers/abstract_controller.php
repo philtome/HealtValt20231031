@@ -37,13 +37,28 @@ abstract class abstract_controller
         $this->entityManager->flush();
     }
 
-    public function mainDisplay($controllerClassName)
+    public function mainDisplay($controllerClassName, $subListId = null, $subListClass = null)
     {
-        $modelClassName = $this->namespace.'\\'.ucfirst($controllerClassName);
-            // namespace is from $namespace setting in abstract_controller
-        $dataToDisplay = $this->em->getRepository($modelClassName)->findAll();
-        $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
+        $modelClassName = $this->namespace . '\\' . ucfirst($controllerClassName);
+        // namespace is from $namespace setting in abstract_controller
 
+
+        if ($subListId !== null) {
+            // Fetch assessments for the specified participant
+            $subListClass = $this->namespace . '\\' . ucfirst($subListClass);
+            $subListItem = $this->em->getRepository($subListClass)->find($subListId);
+            if (!$subListItem) {
+                // Handle the case where the participant with the given ID doesn't exist
+                // You can return an error or display a message as needed
+                // Example: throw new NotFoundHttpException('Participant not found');
+            }
+            // Get the assessments associated with the participant
+            $dataToDisplay = $subListItem->getAssessments();
+        } else {
+            $dataToDisplay = $this->em->getRepository($modelClassName)->findAll();
+        }
+
+        $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
         $arrayKey = $controllerClassName; // You can set this key dynamically
         $templateData = [$arrayKey => $dataToDisplay];
             // example of this is: ['participants' => $dataToDisplay]

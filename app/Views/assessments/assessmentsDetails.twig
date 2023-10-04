@@ -20,7 +20,8 @@
                     <div class="border p-3">
                         <div class="row">
 
-                            <div class="col-md-4">
+                            <div class="col-sm-4">
+                                <!-- Input Field 1: Text -->
                                 <div class="form-group">
                                     <label for="assessmentParticipant" class="form-label">Participant</label>
                                     <select name="assessmentParticipant" id="assessmentParticipant" class="form-control">
@@ -36,21 +37,17 @@
                                         {% endfor %}
                                     </select>
                                 </div>
-
-
-
-
-
-
+                            </div>
 
                             <div class="col-sm-4">
                                 <!-- Input Field 2: Date/Time -->
                                 <div class="form-group">
-                                    <label for="dateTimeField">Assessment Date/Time:</label>
+                                    <label for="dateTimeField" class="form-label">Assessment Date/Time:</label>
                                     <input type="datetime-local" name="assessmentDate" id="assessment-date"
                                             value="{{  assessments.date }}" class="form-control">
                                 </div>
                             </div>
+
                             <div class="col-sm-4">
                                 <!-- Radio Buttons -->
                                 <div class="form-group">
@@ -64,8 +61,8 @@
                                                {% if assessments.seniorAdult == 'Senior Program' %}checked{% endif %}> Senior
                                     </div>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
                 </div>

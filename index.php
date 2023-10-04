@@ -179,7 +179,7 @@ switch ($controller) {
         } elseif ($param1 === 'delete') {
             $result = $assessments->deleteItem($entityManager, $controller, $param2);
         } elseif ($param1 === 'display') {
-            $result = $assessments->mainDisplay($controller);
+            $result = $assessments->mainDisplay($controller, $param2, $param3);  //parm2=participant   param3=6  example
         } elseif ($param1 === 'manage') {
             $result = $assessments->manageItem($entityManager,$param2,$controller);
         } elseif ($param1 === 'create') {

@@ -25,6 +25,17 @@ function handleXXXXXManageItem(itemId) {
     window.location.href = "../index.php/careplans_manage/1";
 }
 
+// ******* WORKING HERE ON assessment for participant diplay
+function handlesubListItem(itemController,itemId) {
+    // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
+    // In this example, we will just log the item ID to the console
+    //console.log("Edit item with ID:", itemId);
+    let fetchUrl = "index.php/assessments/display/" + itemController + "/" + itemId;
+    window.location.href = fetchUrl;
+//    window.location.href = "../index.php/careplans_manage/1";
+}
+
+
 
 function handleConCopy(id) {
     var fetchUrl = 'contacts/copy/'.concat(id);
