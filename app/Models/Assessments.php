@@ -105,9 +105,6 @@ class Assessments
         return $this;
     }
 
-
-
-
     /**
      * @return mixed
      */

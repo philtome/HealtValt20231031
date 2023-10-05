@@ -24,7 +24,7 @@ class Participants
     public int $id;
 
     #[ORM\OneToMany(targetEntity: 'Assessments', mappedBy: 'participant')]
-    private $assessments;
+    public $assessments;
 
 
     #[ORM\Column(name: 'lastName', type: 'string', nullable: false)] //may not be null, (required)
@@ -79,9 +79,9 @@ class Participants
     }
 
     /**
-     * @return ArrayCollection
+     * @return Collection
      */
-    public function getAssessments(): ArrayCollection
+    public function getAssessments(): Collection
     {
         return $this->assessments;
     }

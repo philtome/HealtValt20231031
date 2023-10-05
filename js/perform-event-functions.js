@@ -30,7 +30,7 @@ function handlesubListItem(itemController,itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
-    let fetchUrl = "index.php/assessments/display/" + itemController + "/" + itemId;
+    let fetchUrl = "index.php/assessments/display/" + itemId + "/" + itemController +"s";
     window.location.href = fetchUrl;
 //    window.location.href = "../index.php/careplans_manage/1";
 }
