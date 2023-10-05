@@ -38,8 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $param3 = '3';
     } else {
         //the else here is for full url
-        $uri = $_SERVER['REQUEST_URI'];
-        $uriParts = explode('/', $_SERVER['REQUEST_URI']);
+        $uriFull = $_SERVER['REQUEST_URI'];
+        $uri = preg_replace("~^/index\.php~", "", $uriFull);
+
+        $uriParts = explode('/', $uri);
 
         $controller = $uriParts[1];
 
@@ -67,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //check if this is change on a page, if not then else does full url
     $uri = $_SERVER['REQUEST_URI'];
-    $uriParts = explode('/', $_SERVER['REQUEST_URI']);
+    $uriParts = explode('/', $uri);
 
     $controller = $uriParts[1];
 
