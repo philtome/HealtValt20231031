@@ -56,6 +56,17 @@ abstract class abstract_controller
             $dataToDisplay = $subListItem->getAssessments();
         } else {
             $dataToDisplay = $this->em->getRepository($modelClassName)->findAll();
+            usort($dataToDisplay, function ($a, $b) {
+                // Compare by lastName first
+                $lastNameComparison = strcmp($a->getLastName(), $b->getLastName());
+
+                // If lastName is the same, compare by firstName
+                if ($lastNameComparison === 0) {
+                    return strcmp($a->getFirstName(), $b->getFirstName());
+                }
+
+                return $lastNameComparison;
+            });
         }
 
         $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
@@ -64,12 +75,15 @@ abstract class abstract_controller
             // example of this is: ['participants' => $dataToDisplay]
         return renderTemplate($templateToDisplay, $templateData);
     }
-    public function manageItem($em,$id,$controllerClassName)
+    public function manageItem($em,$id = null,$controllerClassName = null)
     {
+        $dataToDisplay = null;
         $modelClassName = $this->namespace . '\\' . ucfirst($controllerClassName);
 
         // getting main model data to display, set up array for TWIG
-        $dataToDisplay = $this->em->getRepository($modelClassName)->find($id);
+        if ($id !== null) {
+            $dataToDisplay = $this->em->getRepository($modelClassName)->find($id);
+        }
 
         if ($controllerClassName === 'assessments') {
             $formattedDate = $dataToDisplay->getDate()->format('Y-m-d H:i');

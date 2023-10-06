@@ -139,7 +139,7 @@ switch ($controller) {
         } elseif ($param1 === 'manage') {
             $result = $participants->manageItem($entityManager,$param2,$controller);
         } elseif ($param1 === 'create') {
-            $result = $participants->createParticipant();
+            $result = $participants->manageItem($entityManager,$param2,$controller);
         } elseif ($param1 === 'copy') {
             $result = $participants->copyItem($entityManager,$controller,$param2);
         } else {
@@ -185,7 +185,7 @@ switch ($controller) {
         } elseif ($param1 === 'manage') {
             $result = $assessments->manageItem($entityManager,$param2,$controller);
         } elseif ($param1 === 'create') {
-            $result = $assessments->createAssessment();
+            $result = $assessments->manageItem($entityManager,null,$controller);
         } elseif ($param1 === 'copy') {
             $result = $assessments->copyItem($entityManager, $controller,$param2);
         } else {

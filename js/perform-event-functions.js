@@ -8,14 +8,14 @@ function handleCreateItem(itemController,itemAction) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
-    let fetchUrl = "index.php/" + itemController + "s/create";
+    let fetchUrl = "/index.php/" + itemController + "s/create";
     window.location.href = fetchUrl;
 }
 function handleManageEditItem(itemController,itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
-    let fetchUrl = "index.php/" + itemController + "s/manage/" + itemId;
+    let fetchUrl = "/index.php/" + itemController + "s/manage/" + itemId;
     window.location.href = fetchUrl;
 }
 function handleXXXXXManageItem(itemId) {
@@ -30,7 +30,7 @@ function handlesubListItem(itemController,itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
-    let fetchUrl = "index.php/assessments/display/" + itemId + "/" + itemController +"s";
+    let fetchUrl = "/index.php/assessments/display/" + itemId + "/" + itemController +"s";
     window.location.href = fetchUrl;
 //    window.location.href = "../index.php/careplans_manage/1";
 }

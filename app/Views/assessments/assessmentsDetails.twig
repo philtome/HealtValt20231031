@@ -4,7 +4,10 @@
     - Assessment Details
 {% endblock %}
 {% block navtitle %}
+    {{ assessments.participant.firstName is null ? '' : assessments.participant.firstName }}
+    {{ assessments.participant.lastName is null ? '' : assessments.participant.lastName }}
     - Assessment Details
+
 {% endblock %}
 
 {% block body %}
