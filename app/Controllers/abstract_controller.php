@@ -56,17 +56,19 @@ abstract class abstract_controller
             $dataToDisplay = $subListItem->getAssessments();
         } else {
             $dataToDisplay = $this->em->getRepository($modelClassName)->findAll();
-            usort($dataToDisplay, function ($a, $b) {
-                // Compare by lastName first
-                $lastNameComparison = strcmp($a->getLastName(), $b->getLastName());
+            if ($controllerClassName == 'participants') {
+                usort($dataToDisplay, function ($a, $b) {
+                    // Compare by lastName first
+                    $lastNameComparison = strcmp($a->getLastName(), $b->getLastName());
 
-                // If lastName is the same, compare by firstName
-                if ($lastNameComparison === 0) {
-                    return strcmp($a->getFirstName(), $b->getFirstName());
-                }
+                    // If lastName is the same, compare by firstName
+                    if ($lastNameComparison === 0) {
+                        return strcmp($a->getFirstName(), $b->getFirstName());
+                    }
 
-                return $lastNameComparison;
-            });
+                    return $lastNameComparison;
+                });
+            }
         }
 
         $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
