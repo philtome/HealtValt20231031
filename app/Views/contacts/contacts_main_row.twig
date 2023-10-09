@@ -8,23 +8,23 @@
     <td id="contactphone_{{ contact.id }}">{{ contact.phone }}</td>
 
     <td  id="contactmanage_{{ contact.id }}" class="contact-manage">
-        <button class="manageEdit btn btn-primary" data-sa-object="contact" data-item-id="{{ contact.id }}">
-            <i class="fa-solid fa-pencil"></i> Edit</button>
+        <button class="manageEdit btn btn-primary" data-sa-object="contact" data-item-id="{{ contact.id }}" title="Edit/Display">
+            <i class="fa-solid fa-pencil"></i></button>
     </td>
 
     <td id="contactcopy_{{ contact.id }}" class="contact-copy">
-        <button class="copy btn btn-primary" data-sa-object="contact" data-item-id="{{ contact.id }}">
-            <i class="fa-solid fa-copy"></i> Copy</button>
+        <button class="copy btn btn-primary" data-sa-object="contact" data-item-id="{{ contact.id }}" title="Copy/Duplicate">
+            <i class="fa-solid fa-copy"></i></button>
     </td>
 
     <td  id="contactprint_{{ contact.id }}" class="contact-print">
-        <button class="print btn btn-primary" data-sa-object="contact" data-item-id="{{ contact.id }}">
+        <button class="print btn btn-primary" data-sa-object="contact" data-item-id="{{ contact.id }}" title="Print">
         <i class="fa-solid fa-print"></i></button>
     </td>
 
     <td id="contactdelete_{{ contact.id }}" class="contact-delete">
-        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="contact" data-item-id="{{ contact.id }}">
-            <i class="fa-solid fa-trash-can"></i> Delete </button>
+        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="contact" data-item-id="{{ contact.id }}"  title="Delete">
+            <i class="fa-solid fa-trash-can"></i></button>
     </td>
 {#    <td>#}
 {#    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Contacts</button>#}

@@ -138,6 +138,8 @@ switch ($controller) {
             $result = $participants->mainDisplay();
         } elseif ($param1 === 'manage') {
             $result = $participants->manageItem($entityManager,$param2,$controller);
+        } elseif ($param1 === 'print') {
+            $result = $participants->manageItem($entityManager,$param2,$controller,'PDF');
         } elseif ($param1 === 'create') {
             $result = $participants->manageItem($entityManager,$param2,$controller);
         } elseif ($param1 === 'copy') {
