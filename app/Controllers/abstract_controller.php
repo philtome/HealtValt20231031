@@ -55,20 +55,10 @@ abstract class abstract_controller
             // Get the assessments associated with the participant
             $dataToDisplay = $subListItem->getAssessments();
         } else {
-            $dataToDisplay = $this->em->getRepository($modelClassName)->findAll();
-            if ($controllerClassName == 'participants') {
-                usort($dataToDisplay, function ($a, $b) {
-                    // Compare by lastName first
-                    $lastNameComparison = strcmp($a->getLastName(), $b->getLastName());
-
-                    // If lastName is the same, compare by firstName
-                    if ($lastNameComparison === 0) {
-                        return strcmp($a->getFirstName(), $b->getFirstName());
-                    }
-
-                    return $lastNameComparison;
-                });
-            }
+            $dataToDisplay = $this->beforeDisplayExit($this->em->getRepository($modelClassName)->findAll());
+//            if ($controllerClassName == 'participants') {
+//
+//            }
         }
 
         $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
@@ -85,14 +75,15 @@ abstract class abstract_controller
         // getting main model data to display, set up array for TWIG
         if ($id !== null) {
             $dataToDisplay = $this->em->getRepository($modelClassName)->find($id);
+
+            if ($controllerClassName === 'assessments') {
+                $formattedDate = $dataToDisplay->getDate()->format('Y-m-d H:i');
+
+                // Replace the 'assessment.date' property value with the formatted date string
+                $dataToDisplay->setDate($formattedDate);
+            }
         }
 
-        if ($controllerClassName === 'assessments') {
-            $formattedDate = $dataToDisplay->getDate()->format('Y-m-d H:i');
-
-            // Replace the 'assessment.date' property value with the formatted date string
-            $dataToDisplay->setDate($formattedDate);
-        }
         $arrayKey = $controllerClassName; // You can set this key dynamically
         $templateData = [$arrayKey => $dataToDisplay,];
 
@@ -142,6 +133,14 @@ abstract class abstract_controller
         $dataSaver->deleteData($entityClassName,$id);
         $templateToDisplay = $controller.'\\'.$controller.'_main.twig';
         //return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
+    }
+
+    Public function getDropDowns()
+    {
+        return null;
+    }
+    public function beforeDisplayExit($dataToDisplay): array {
+        return $dataToDisplay;
     }
 
 }

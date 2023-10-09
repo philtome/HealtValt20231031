@@ -87,10 +87,10 @@ class Participants
     }
 
     /**
-     * @param ArrayCollection $assessments
+     * @param Collection $assessments
      * @return Participants
      */
-    public function setAssessments(ArrayCollection $assessments): Participants
+    public function setAssessments(Collection $assessments): Participants
     {
         $this->assessments = $assessments;
         return $this;

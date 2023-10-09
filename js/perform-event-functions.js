@@ -25,6 +25,24 @@ function handleXXXXXManageItem(itemId) {
     window.location.href = "../index.php/careplans_manage/1";
 }
 
+function handleCopyItem(itemController,itemId) {
+    const fetchUrl = "/index.php/" + itemController + "s/copy/" + itemId;
+    fetch(fetchUrl, {
+        method: 'POST',
+    })
+        .then(response => {
+            console.log('Data Copy set kup successfully');
+        })
+        .then(responseData => {
+            returnUrlUpOne(window.location.href);
+        })
+        .catch(error => {
+            // Handle any errors that occurred during the request
+            console.error('Error setting up copy data:', error);
+        });
+}
+
+
 // ******* WORKING HERE ON assessment for participant diplay
 function handlesubListItem(itemController,itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page

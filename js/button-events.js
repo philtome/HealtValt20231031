@@ -13,9 +13,18 @@ btnPage2Items.forEach(item => {
         loadNewPage(2);
     });
 });
-// document.getElementById("btnPage2").addEventListener("click", function() {
-//      loadNewPage(2);
-//  });
+
+// COPY Item buttont
+var copyButtonItems = document.querySelectorAll('.copy');  //this is a class ******
+copyButtonItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        const itemId = this.getAttribute('data-item-id');
+        const itemController = this.getAttribute('data-sa-object');
+        handleCopyItem(itemController,itemId);
+    });
+});
+
 
 var createButtonItems = document.querySelectorAll('.create');  //this is a class
 createButtonItems.forEach(item => {
@@ -81,26 +90,6 @@ if (btnPage1) {
         loadNewPage(1);
     });
 }
-
-// COPY contact button
-var copyButtonItems = document.querySelectorAll('.copyConButton');  //this is a class
-copyButtonItems.forEach(item => {
-    item.addEventListener('click', function() {
-        // Get the item ID from the "data-item-id" attribute of the clicked list item
-        const itemId = this.getAttribute('data-item-id');
-        handleConCopy(itemId);   // this routine is in editFunctions
-    });
-});
-
-// COPY Participant button  &&&&&&&&&&&&&  NEEED TO FINISH THIS ONE, only copied contact
-var copyButtonItems = document.querySelectorAll('.copyParticipantButton');  //this is a class
-copyButtonItems.forEach(item => {
-    item.addEventListener('click', function() {
-        // Get the item ID from the "data-item-id" attribute of the clicked list item
-        const itemId = this.getAttribute('data-item-id');
-        handleParticipantCopy(itemId);   // this routine is in editFunctions
-    });
-});
 
 // DELETE contact button it runs this then opens Confirm Delete Modal
 let itemIdToDelete = null;
