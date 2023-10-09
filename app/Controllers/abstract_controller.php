@@ -7,6 +7,8 @@ use App\Utils\DataSaver;
 use Doctrine\Persistence\ObjectManager;
 use App\Controllers\participants_controller;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 abstract class abstract_controller
 {
@@ -25,6 +27,27 @@ abstract class abstract_controller
         return null;
     }
     private $entityManager;
+
+    protected function generatePdf($htmlContent, $outputFilename)
+    {
+        // Create an instance of Dompdf
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isPhpEnabled', true);
+        $dompdf = new Dompdf($options);
+
+        // Load HTML content into Dompdf
+        $dompdf->loadHtml($htmlContent);
+
+        // Set paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the PDF (stream or save to file)
+        $dompdf->render();
+
+        // Output the PDF (e.g., save to a file or stream to the browser)
+        $dompdf->stream($outputFilename, ['Attachment' => 0]);
+    }
 
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -67,7 +90,7 @@ abstract class abstract_controller
             // example of this is: ['participants' => $dataToDisplay]
         return renderTemplate($templateToDisplay, $templateData);
     }
-    public function manageItem($em,$id = null,$controllerClassName = null)
+    public function manageItem($em,$id = null,$controllerClassName = null, $outputType = null)
     {
         $dataToDisplay = null;
         $modelClassName = $this->namespace . '\\' . ucfirst($controllerClassName);
@@ -84,8 +107,11 @@ abstract class abstract_controller
             }
         }
 
+        $includeSidebar = true;
         $arrayKey = $controllerClassName; // You can set this key dynamically
-        $templateData = [$arrayKey => $dataToDisplay,];
+        if ($outputType !== null & $outputType ==='PDF')
+            $includeSidebar = false;
+        $templateData = [$arrayKey => $dataToDisplay,'includeSidebar'=> $includeSidebar];
 
         //This returns any drop down lists this model needs in ['contactList' => $contacts] format
         // check out participants_controller example, it gets a list of contacts for responsible party
@@ -97,7 +123,10 @@ abstract class abstract_controller
         }
 
         $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'Details.twig';
-        return renderTemplate($templateToDisplay, $templateData);
+        $htmlContent = renderTemplate($templateToDisplay, $templateData, $outputType);
+        if ($outputType === "PDF") {
+            $this->generatePdf($htmlContent,'example.pdf');
+        }             //return renderTemplate($templateToDisplay, $templateData);
     }
     public function saveItem($em,$controllerClassName, $id = null)  //save new and existing
     {

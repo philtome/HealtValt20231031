@@ -24,9 +24,13 @@
 
 <div class="container-fluid">
     <div class="row flex-nowrap">
-        {% include "sideBarNav.twig" %}
+        {% if includeSidebar is not defined or includeSidebar %}
+            {% include "sideBarNav.twig" %}
+        {% endif %}
         <div class="col py-0 px-0">
-            {% include "upperNav.twig" %}
+            {%  if includeSidebar is not defined or includeSidebar %}
+                {% include "upperNav.twig" %}
+            {% endif %}
             {% block body %}{% endblock %}
         </div>
     </div>

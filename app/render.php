@@ -6,7 +6,7 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Twig\Extension\DebugExtension;
 
-function renderTemplate(string $templateName, array $contextData = []): void
+function renderTemplate(string $templateName, array $contextData = [], string $outPutType = null): string
 {
 
 
@@ -16,5 +16,9 @@ function renderTemplate(string $templateName, array $contextData = []): void
     $twig->addExtension(new DebugExtension());
 
 
-    echo $twig->render($templateName, $contextData);
+    $twigData = $twig->render($templateName, $contextData);
+    if ($outPutType === null) {
+        echo $twigData;
+    }
+    return $twigData;
 }

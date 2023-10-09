@@ -160,7 +160,7 @@ switch ($controller) {
         } elseif ($param1 === 'display') {
             $result = $contacts->mainDisplay($controller);
         } elseif ($param1 === 'manage') {
-            $result = $contacts->manageItem($entityManager,$param2,$controller);
+            $result = $contacts->manageItem($entityManager,$param2,$controller,'PDF');
         } elseif ($param1 === 'create') {
             $result = $contacts->createContact();
         } elseif ($param1 === 'copy') {
