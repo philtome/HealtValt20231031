@@ -160,6 +160,8 @@ switch ($controller) {
         } elseif ($param1 === 'display') {
             $result = $contacts->mainDisplay($controller);
         } elseif ($param1 === 'manage') {
+            $result = $contacts->manageItem($entityManager,$param2,$controller);
+        } elseif ($param1 === 'print') {
             $result = $contacts->manageItem($entityManager,$param2,$controller,'PDF');
         } elseif ($param1 === 'create') {
             $result = $contacts->createContact();
@@ -184,6 +186,8 @@ switch ($controller) {
             $result = $assessments->mainDisplay($controller, $param2, $param3);  //parm2=participant   param3=6  example
         } elseif ($param1 === 'manage') {
             $result = $assessments->manageItem($entityManager,$param2,$controller);
+        } elseif ($param1 === 'print') {
+            $result = $assessments->manageItem($entityManager,$param2,$controller,'PDF');
         } elseif ($param1 === 'create') {
             $result = $assessments->manageItem($entityManager,null,$controller);
         } elseif ($param1 === 'copy') {

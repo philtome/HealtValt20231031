@@ -42,6 +42,13 @@ function handleCopyItem(itemController,itemId) {
         });
 }
 
+function handlePrintItem(itemController,itemId) {
+    // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
+    // In this example, we will just log the item ID to the console
+    //console.log("Edit item with ID:", itemId);
+    let fetchUrl = "/index.php/" + itemController + "s/print/" + itemId;
+    window.location.href = fetchUrl;
+}
 
 // ******* WORKING HERE ON assessment for participant diplay
 function handlesubListItem(itemController,itemId) {
