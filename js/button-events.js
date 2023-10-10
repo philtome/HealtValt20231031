@@ -90,7 +90,8 @@ var btnCancelItem = document.getElementById("btn_cancel");  // this is an id
 if (btnCancelItem) {
     btnCancelItem.addEventListener('click', function(event){
         event.preventDefault();
-        returnUrlUpOne(window.location.href);
+        window.history.back();
+        //returnUrlUpOne(window.location.href);
     });
 }
 

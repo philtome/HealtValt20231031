@@ -60,68 +60,6 @@ function handlesubListItem(itemController,itemId) {
 //    window.location.href = "../index.php/careplans_manage/1";
 }
 
-
-
-function handleConCopy(id) {
-    var fetchUrl = 'contacts/copy/'.concat(id);
-    fetch(fetchUrl, {
-        method: 'POST',
-    })
-        .then(response => {
-            console.log('Data Copy set kup successfully');
-        })
-        .then(responseData => {
-            returnUrlUpOne(window.location.href);
-        })
-        .catch(error => {
-            // Handle any errors that occurred during the request
-            console.error('Error setting up copy data:', error);
-        });
-}
-
-function handleConDelete(id, type) {
-
-    var fetchUrl = type + 's/delete/' + id;
-//"I use the s here because my controller is looking for contacts or participants"
-    fetch(fetchUrl, {
-        method: 'POST',
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                // Handle server-side error
-                console.error('Server Error:', data.error);
-                // Display the error message to the user, e.g., in an alert or on the webpage
-                setErrorMessage(data.error);
-                var modal = new bootstrap.Modal(document.getElementById('display-error-modal'));
-                modal.show();
-            } else {
-                // Handle successful response, if needed
-                // for example purposes, I am leaving 'response' and 'messagge' here as examples
-                // in the future I may want to pop up a message, others I may want to act on response
-                //    like adding/removing or changing a line
-                if (data.response) {
-                    //console.log('Received response:', data.response); - for trouble shooting
-                    returnUrlUpOne(window.location.href);
-                    //I eventually want to just remove the line of code here
-                }
-                else if (data.message) {
-                    //console.log('Received response:', data.message);  - for trouble shooting
-                    returnUrlUpOne(window.location.href);
-                }
-            }
-        })
-        .catch(error => {
-            // Handle other errors (e.g., network errors or request issues)
-            console.error('Error deleting data:', error);
-
-            // Display an error message to the user
-            setErrorMessage('An error occurred while deleting data.');
-            var modal = new bootstrap.Modal(document.getElementById('display-error-modal'));
-            modal.show();
-        });
-}
-
 function setErrorMessage(message) {
     // Assuming you have an HTML element with the id "error-message" to display the error
     var errorMessageElement = document.getElementById('error-message');
@@ -148,16 +86,14 @@ function handleSaveItem(itemController,id =null) {
             console.log('Data Saved successfully');
         })
         .then(responseData => {
-            returnUrlUpOne(window.location.href);
+            window.history.back();
+            //returnUrlUpOne(window.location.href);
         })
         .catch(error => {
             // Handle any errors that occurred during the request
             console.error('Error saving data:', error);
         });
 }
-
-
-
     function handleParticipantCopy(id) {
         const fetchUrl = 'participants/copy/' + id;
         fetch(fetchUrl, {
