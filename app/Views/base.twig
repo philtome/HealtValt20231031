@@ -19,14 +19,14 @@
 
     {% block javascripts %}
     {% endblock %}
-
+    {#  {{ dump(navHeader) }}  #}
 </head>
 
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col py-0 px-0">
             {% if includeSidebar is not defined or includeSidebar %}
-                {% include "HeaderNav.twig" %}
+                {% include "headerNav.twig" %}
             {% endif %}
         </div>
     </div>

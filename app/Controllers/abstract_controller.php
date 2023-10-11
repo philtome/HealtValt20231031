@@ -86,7 +86,9 @@ abstract class abstract_controller
 
         $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
         $arrayKey = $controllerClassName; // You can set this key dynamically
-        $templateData = [$arrayKey => $dataToDisplay];
+        $navHeader = $controllerClassName." list";
+        //$navHeader = "dude!";
+        $templateData = [$arrayKey => $dataToDisplay, 'navHeader' => $navHeader];
             // example of this is: ['participants' => $dataToDisplay]
         return renderTemplate($templateToDisplay, $templateData);
     }
@@ -111,7 +113,9 @@ abstract class abstract_controller
         $arrayKey = $controllerClassName; // You can set this key dynamically
         if ($outputType !== null & $outputType ==='PDF')
             $includeSidebar = false;
-        $templateData = [$arrayKey => $dataToDisplay,'includeSidebar'=> $includeSidebar];
+        $navHeader = $controllerClassName." list";
+        //$navHeader = "dude!";
+        $templateData = [$arrayKey => $dataToDisplay,'includeSidebar'=> $includeSidebar, 'navHeader' => $navHeader];
 
         //This returns any drop down lists this model needs in ['contactList' => $contacts] format
         // check out participants_controller example, it gets a list of contacts for responsible party
