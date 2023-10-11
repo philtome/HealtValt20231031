@@ -78,10 +78,11 @@ if (btnSaveItem) {
         const itemElement = btnSaveItem.closest('.saveButton');
         const itemId = itemElement.dataset.itemId;
         const itemController = this.getAttribute('data-sa-object');
+        const returnToPrevious = document.referrer;
 
         // Get the item ID from the "data-item-id" attribute of the clicked list item
         // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
-        handleSaveItem(itemController, itemId);   // add itemID when save is edit (handleSaveContact(itemID)
+        handleSaveItem(itemController, itemId, returnToPrevious);   // add itemID when save is edit (handleSaveContact(itemID)
         // this routine is in editFunctions
     });
 }
@@ -120,7 +121,7 @@ var modalDeleteConButton = document.getElementById('modalDeleteButton');  // thi
 modalDeleteButton.addEventListener('click', function() {
     if (itemIdToDelete !== null) {
         console.log("deleteing item with id:", itemIdToDelete);
-        handleConDelete(itemIdToDelete, typeToDelete);
+        handleDeleteItem(typeToDelete, itemIdToDelete);
         itemIdToDelete = null;
     }
 })

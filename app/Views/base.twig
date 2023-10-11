@@ -24,32 +24,19 @@
 
 <div class="container-fluid">
     <div class="row flex-nowrap">
+        <div class="col py-0 px-0">
+            {% if includeSidebar is not defined or includeSidebar %}
+                {% include "HeaderNav.twig" %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="row flex-nowrap">
         {% if includeSidebar is not defined or includeSidebar %}
             {% include "sideBarNav.twig" %}
         {% endif %}
-        <div class="col py-0 px-0">
-            {%  if includeSidebar is not defined or includeSidebar %}
-                {% include "upperNav.twig" %}
-            {% endif %}
-            {% block body %}{% endblock %}
-        </div>
+        {% block body %}{% endblock %}
     </div>
 </div>
-
-
-
-
-<!-- Footer -->
-{#<footer class="page-footer font-small blue fixed-bottom">#}
-
-{#    <!-- Copyright -->#}
-{#    <div class="footer-copyright text-center py-1">© 2020 Copyright:#}
-{#        <a href="/"> tome.net</a>#}
-{#    </div>#}
-{#    <!-- Copyright -->#}
-
-{#</footer>#}
-
 {% include "footer.twig" %}
 
 <!-- Footer -->

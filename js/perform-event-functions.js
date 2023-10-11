@@ -2,22 +2,23 @@
 // the event detecing programs end info here to execute
 
 
-
 // this sends URL to index.php to load new page
-function handleCreateItem(itemController,itemAction) {
+function handleCreateItem(itemController, itemAction) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
     let fetchUrl = "/index.php/" + itemController + "s/create";
     window.location.href = fetchUrl;
 }
-function handleManageEditItem(itemController,itemId) {
+
+function handleManageEditItem(itemController, itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
     let fetchUrl = "/index.php/" + itemController + "s/manage/" + itemId;
     window.location.href = fetchUrl;
 }
+
 function handleXXXXXManageItem(itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
@@ -25,7 +26,7 @@ function handleXXXXXManageItem(itemId) {
     window.location.href = "../index.php/careplans_manage/1";
 }
 
-function handleCopyItem(itemController,itemId) {
+function handleCopyItem(itemController, itemId) {
     const fetchUrl = "/index.php/" + itemController + "s/copy/" + itemId;
     fetch(fetchUrl, {
         method: 'POST',
@@ -42,7 +43,7 @@ function handleCopyItem(itemController,itemId) {
         });
 }
 
-function handlePrintItem(itemController,itemId) {
+function handlePrintItem(itemController, itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
@@ -51,11 +52,11 @@ function handlePrintItem(itemController,itemId) {
 }
 
 // ******* WORKING HERE ON assessment for participant diplay
-function handlesubListItem(itemController,itemId) {
+function handlesubListItem(itemController, itemId) {
     // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
     // In this example, we will just log the item ID to the console
     //console.log("Edit item with ID:", itemId);
-    let fetchUrl = "/index.php/assessments/display/" + itemId + "/" + itemController +"s";
+    let fetchUrl = "/index.php/assessments/display/" + itemId + "/" + itemController + "s";
     window.location.href = fetchUrl;
 //    window.location.href = "../index.php/careplans_manage/1";
 }
@@ -69,7 +70,7 @@ function setErrorMessage(message) {
     }
 }
 
-function handleSaveItem(itemController,id =null) {
+function handleSaveItem(itemController, id = null, returnToPrevious = null) {
     const itemForm = document.getElementById(itemController + "_details_form");
     const itemFormData = new FormData(itemForm);
     var fetchUrl = 'create';
@@ -86,7 +87,10 @@ function handleSaveItem(itemController,id =null) {
             console.log('Data Saved successfully');
         })
         .then(responseData => {
-            window.history.back();
+            if (returnToPrevious === null) {
+                window.history.back();}
+            else { window.location.href = returnToPrevious }
+            //window.location.reload()
             //returnUrlUpOne(window.location.href);
         })
         .catch(error => {
@@ -94,24 +98,64 @@ function handleSaveItem(itemController,id =null) {
             console.error('Error saving data:', error);
         });
 }
-    function handleParticipantCopy(id) {
-        const fetchUrl = 'participants/copy/' + id;
-        fetch(fetchUrl, {
-            method: 'POST',
+function handleDeleteItem(itemController, itemId) {
+
+    var fetchUrl = itemController + 's/delete/' + itemId;
+//"I use the s here because my controller is looking for contacts or participants"
+    fetch(fetchUrl, {
+        method: 'POST',
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                // Handle server-side error
+                console.error('Server Error:', data.error);
+                // Display the error message to the user, e.g., in an alert or on the webpage
+                setErrorMessage(data.error);
+                var modal = new bootstrap.Modal(document.getElementById('display-error-modal'));
+                modal.show();
+            } else {
+                // Handle successful response, if needed
+                // for example purposes, I am leaving 'response' and 'messagge' here as examples
+                // in the future I may want to pop up a message, others I may want to act on response
+                //    like adding/removing or changing a line
+                if (data.response) {
+                    //console.log('Received response:', data.response); - for trouble shooting
+                    returnUrlUpOne(window.location.href);
+                    //I eventually want to just remove the line of code here
+                }
+                else if (data.message) {
+                    //console.log('Received response:', data.message);  - for trouble shooting
+                    returnUrlUpOne(window.location.href);
+                }
+            }
         })
-            .then(response => {
-                console.log('Data Copy set kup successfully');
-            })
-            .then(responseData => {
-                returnUrlUpOne(window.location.href);
-            })
-            .catch(error => {
-                // Handle any errors that occurred during the request
-                console.error('Error setting up copy data:', error);
-            });
-    }
+        .catch(error => {
+            // Handle other errors (e.g., network errors or request issues)
+            console.error('Error deleting data:', error);
 
-
+            // Display an error message to the user
+            setErrorMessage('An error occurred while deleting data.');
+            var modal = new bootstrap.Modal(document.getElementById('display-error-modal'));
+            modal.show();
+        });
+}
+function handleParticipantCopy(id) {
+    const fetchUrl = 'participants/copy/' + id;
+    fetch(fetchUrl, {
+        method: 'POST',
+    })
+        .then(response => {
+            console.log('Data Copy set kup successfully');
+        })
+        .then(responseData => {
+            returnUrlUpOne(window.location.href);
+        })
+        .catch(error => {
+            // Handle any errors that occurred during the request
+            console.error('Error setting up copy data:', error);
+        });
+}
 
 
 function displayitem(id) {
