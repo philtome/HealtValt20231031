@@ -86,7 +86,7 @@ abstract class abstract_controller
 
         $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
         $arrayKey = $controllerClassName; // You can set this key dynamically
-        $navHeader = $controllerClassName." list";
+        $navHeader = ucfirst($controllerClassName." list");
         //$navHeader = "dude!";
         $templateData = [$arrayKey => $dataToDisplay, 'navHeader' => $navHeader];
             // example of this is: ['participants' => $dataToDisplay]

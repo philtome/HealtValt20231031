@@ -34,7 +34,20 @@
         {% if includeSidebar is not defined or includeSidebar %}
             {% include "sideBarNav.twig" %}
         {% endif %}
-        {% block body %}{% endblock %}
+
+
+        <div class="container">
+            <div class="row">
+                {% include ('pageNav.twig') %}
+                <div style="max-width: calc(100% - (100% / 12 * 2)); height: calc(100vh - 200px); overflow-y: auto;">
+
+        {% block body %}
+
+        {% endblock %}
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 {% include "footer.twig" %}
