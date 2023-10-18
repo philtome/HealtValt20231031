@@ -7,11 +7,13 @@
 
     <link rel="stylesheet" type="text/css" href="/vendor/fortawesome/font-awesome/css/all.min.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="/css/main.css">
-
 
 
     {% block stylesheets %}
@@ -21,36 +23,30 @@
     {% endblock %}
     {#  {{ dump(navHeader) }}  #}
 </head>
-
+<body>
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col py-0 px-0">
-            {% if includeSidebar is not defined or includeSidebar %}
-                {% include "headerNav.twig" %}
-            {% endif %}
+            {% include "headerNav.twig" %}
         </div>
     </div>
     <div class="row flex-nowrap">
-        {% if includeSidebar is not defined or includeSidebar %}
-            {% include "sideBarNav.twig" %}
-        {% endif %}
-
-
+        {% include "sideBarNav.twig" %}
         <div class="container">
             <div class="row">
                 {% include ('pageNav.twig') %}
-                <div style="max-width: calc(100% - (100% / 12 * 2)); height: calc(100vh - 200px); overflow-y: auto;">
+                <div style="max-width: calc(100% - (100% / 12 * 2)); ">
 
-        {% block body %}
+                    {% block body %}
 
-        {% endblock %}
+                    {% endblock %}
                 </div>
             </div>
         </div>
 
     </div>
 </div>
-{% include "footer.twig" %}
+{#{% include "footer.twig" %}#}
 
 <!-- Footer -->
 
@@ -58,11 +54,10 @@
 {% block modal2 %} {% endblock %}
 {% block errorModal %} {% endblock %}
 
-
-</body>
-
-<script src="path/to/bootstrap.min.js"></script>  *******
+<script src="path/to/bootstrap.min.js"></script>
 <script src="/js/perform-event-functions.js"></script>
 <script src="/js/button-events.js"></script>
 <script src="/js/main.js"></script>
+
+</body>
 </html>
