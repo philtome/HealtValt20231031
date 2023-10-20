@@ -21,6 +21,8 @@ use App\Controllers\assessments_controller;
 
 // Define your routes and include the necessary controllers
 
+session_start();
+
 $controller = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -81,12 +83,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $param3 = null;
     }
 }
+
+if (!isset($_SESSION["userId"]) && $controller !== "sessions") {
+    renderTemplate('session/login.twig');
+}
+
+else {
 //$entityNameSpace = 'App\models\\';
 switch ($controller) {
 
 
     case '':
         //$controller = new Controller1();
+        renderTemplate('homePage.twig', [
+            'param1' => $param1,
+            'param2' => $param2,
+            'param3' => $param3
+        ]);
+        break;
+
+    case 'login_process.php':
+        $_SESSION["userId"] = "temp";
         renderTemplate('homePage.twig', [
             'param1' => $param1,
             'param2' => $param2,
@@ -128,22 +145,22 @@ switch ($controller) {
         //$entityClassName = 'App\Models\Participants';
         if (is_null($param1)) {
             $result = $participants->mainDisplay($controller);
-        } elseif ($param1==='') {
+        } elseif ($param1 === '') {
             $result = $participants->mainDisplay($controller);
         } elseif ($param2 === 'update') {
-            $result = $participants->saveItem($entityManager,$controller,$param3);
+            $result = $participants->saveItem($entityManager, $controller, $param3);
         } elseif ($param1 === 'delete') {
-            $result = $participants->deleteParticipant($entityManager,$controller,$param2);
+            $result = $participants->deleteParticipant($entityManager, $controller, $param2);
         } elseif ($param1 === 'display') {
             $result = $participants->mainDisplay();
         } elseif ($param1 === 'manage') {
-            $result = $participants->manageItem($entityManager,$param2,$controller);
+            $result = $participants->manageItem($entityManager, $param2, $controller);
         } elseif ($param1 === 'print') {
-            $result = $participants->manageItem($entityManager,$param2,$controller,'PDF');
+            $result = $participants->manageItem($entityManager, $param2, $controller, 'PDF');
         } elseif ($param1 === 'create') {
-            $result = $participants->manageItem($entityManager,$param2,$controller);
+            $result = $participants->manageItem($entityManager, $param2, $controller);
         } elseif ($param1 === 'copy') {
-            $result = $participants->copyItem($entityManager,$controller,$param2);
+            $result = $participants->copyItem($entityManager, $controller, $param2);
         } else {
             $result = $participants->action1($param1, $param2, $param3);
         }
@@ -153,22 +170,22 @@ switch ($controller) {
         $contacts = new contacts_controller($entityManager);
         if (is_null($param1)) {
             $result = $contacts->mainDisplay($controller);
-        } elseif ($param1==='') {
+        } elseif ($param1 === '') {
             $result = $contacts->mainDisplay($controller);
         } elseif ($param2 === 'update') {
-            $result = $contacts->saveItem($entityManager,$controller,$param3);
+            $result = $contacts->saveItem($entityManager, $controller, $param3);
         } elseif ($param1 === 'delete') {
             $result = $contacts->deleteItem($entityManager, $controller, $param2);
         } elseif ($param1 === 'display') {
             $result = $contacts->mainDisplay($controller);
         } elseif ($param1 === 'manage') {
-            $result = $contacts->manageItem($entityManager,$param2,$controller);
+            $result = $contacts->manageItem($entityManager, $param2, $controller);
         } elseif ($param1 === 'print') {
-            $result = $contacts->manageItem($entityManager,$param2,$controller,'PDF');
+            $result = $contacts->manageItem($entityManager, $param2, $controller, 'PDF');
         } elseif ($param1 === 'create') {
             $result = $contacts->createContact();
         } elseif ($param1 === 'copy') {
-            $result = $contacts->copyItem($entityManager, $controller,$param2);
+            $result = $contacts->copyItem($entityManager, $controller, $param2);
         } else {
             $result = $contacts->action1($param1, $param2, $param3);
         }
@@ -178,24 +195,47 @@ switch ($controller) {
         $assessments = new assessments_controller($entityManager);
         if (is_null($param1)) {
             $result = $assessments->mainDisplay($controller);
-        } elseif ($param1==='') {
+        } elseif ($param1 === '') {
             $result = $assessments->mainDisplay($controller);
         } elseif ($param2 === 'update') {
-            $result = $assessments->saveItem($entityManager,$controller,$param3);
+            $result = $assessments->saveItem($entityManager, $controller, $param3);
         } elseif ($param1 === 'delete') {
             $result = $assessments->deleteItem($entityManager, $controller, $param2);
         } elseif ($param1 === 'display') {
             $result = $assessments->mainDisplay($controller, $param2, $param3);  //parm2=participant   param3=6  example
         } elseif ($param1 === 'manage') {
-            $result = $assessments->manageItem($entityManager,$param2,$controller);
+            $result = $assessments->manageItem($entityManager, $param2, $controller);
         } elseif ($param1 === 'print') {
-            $result = $assessments->manageItem($entityManager,$param2,$controller,'PDF');
+            $result = $assessments->manageItem($entityManager, $param2, $controller, 'PDF');
         } elseif ($param1 === 'create') {
-            $result = $assessments->manageItem($entityManager,null,$controller);
+            $result = $assessments->manageItem($entityManager, null, $controller);
         } elseif ($param1 === 'copy') {
-            $result = $assessments->copyItem($entityManager, $controller,$param2);
+            $result = $assessments->copyItem($entityManager, $controller, $param2);
         } else {
             $result = $assessments->action1($param1, $param2, $param3);
+        }
+        break;
+
+    case 'sessions':
+        if (is_null($param1)) {
+            $errorMsg = '404 - Session Not Found';
+            renderTemplate('errorMessage.twig', [
+                'param1' => $errorMsg,]);
+        } elseif ($param1 === 'logout') {
+            session_unset();
+            session_destroy();
+            renderTemplate('session/login.twig');
+        } elseif ($param1 === 'login') {
+            $_SESSION["userId"] = "temp";
+            renderTemplate('homePage.twig', [
+                'param1' => $param1,
+                'param2' => $param2,
+                'param3' => $param3
+            ]);
+        } else {
+            $errorMsg = '404 - Session OTHER error, Not Found';
+        renderTemplate('errorMessage.twig', [
+            'param1' => $errorMsg,]);
         }
         break;
 
@@ -205,5 +245,5 @@ switch ($controller) {
             'param1' => $errorMsg,
         ]);
         break;
-
+}
 }

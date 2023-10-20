@@ -157,7 +157,15 @@ function handleParticipantCopy(id) {
         });
 }
 
+function handleLogoff() {
+    let fetchUrl = "/index.php/sessions/logout/";
+    window.location.href = fetchUrl;
+}
 
+function handleLogon() {
+    let fetchUrl = "/index.php/sessions/login/";
+    window.location.href = fetchUrl;
+}
 function displayitem(id) {
     // Send the ID to your server using AJAX (e.g., XMLHttpRequest or Fetch API)
     // Example using Fetch API:

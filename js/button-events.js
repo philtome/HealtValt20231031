@@ -97,6 +97,41 @@ if (btnCancelItem) {
 }
 
 
+
+// Loggoff selectesion
+var logoutItem = document.querySelector(".signout");  // this is a class
+if (logoutItem) {
+    logoutItem.addEventListener('click', function(event){
+        event.preventDefault();
+
+        // const itemElement = btnSaveItem.closest('.saveButton');
+        // const itemId = itemElement.dataset.itemId;
+        // const itemController = this.getAttribute('data-sa-object');
+        // const returnToPrevious = document.referrer;
+
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
+        handleLogoff();   // add itemID when save is edit (handleSaveContact(itemID)
+    });
+}
+
+// Logon selectesion
+var logoutItem = document.querySelector(".signin");  // this is a class
+if (logoutItem) {
+    logoutItem.addEventListener('click', function(event){
+        event.preventDefault();
+
+        // const itemElement = btnSaveItem.closest('.saveButton');
+        // const itemId = itemElement.dataset.itemId;
+        // const itemController = this.getAttribute('data-sa-object');
+        // const returnToPrevious = document.referrer;
+
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
+        handleLogon();   // add itemID when save is edit (handleSaveContact(itemID)
+    });
+}
+
 if (btnPage1) {
     btnPage1.addEventListener("click", function() {
         loadNewPage(1);
