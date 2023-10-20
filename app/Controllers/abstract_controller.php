@@ -79,15 +79,11 @@ abstract class abstract_controller
             $dataToDisplay = $subListItem->getAssessments();
         } else {
             $dataToDisplay = $this->beforeDisplayExit($this->em->getRepository($modelClassName)->findAll());
-//            if ($controllerClassName == 'participants') {
-//
-//            }
         }
 
         $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
         $arrayKey = $controllerClassName; // You can set this key dynamically
         $navHeader = ucfirst($controllerClassName." list");
-        //$navHeader = "dude!";
         $templateData = [$arrayKey => $dataToDisplay, 'navHeader' => $navHeader];
             // example of this is: ['participants' => $dataToDisplay]
         return renderTemplate($templateToDisplay, $templateData);
@@ -108,16 +104,10 @@ abstract class abstract_controller
                 $dataToDisplay->setDate($formattedDate);
             }
         }
-        $includeSidebar = true;
-        $includeHeaderNav = true;
         $arrayKey = $controllerClassName; // You can set this key dynamically
-        if ($outputType !== null & $outputType ==='PDF') {
-            $includeSidebar = false;
-            $includeHeaderNav = false;
-        }
         $navHeader = $controllerClassName." list";
-        //$navHeader = "dude!";
-        $templateData = [$arrayKey => $dataToDisplay,'includeSidebar'=> $includeSidebar, 'includeHeaderNav'=> $includeHeaderNav, 'navHeader' => $navHeader];
+
+        $templateData = [$arrayKey => $dataToDisplay,'outputType' => $outputType, 'navHeader' => $navHeader];
 
         //This returns any drop down lists this model needs in ['contactList' => $contacts] format
         // check out participants_controller example, it gets a list of contacts for responsible party

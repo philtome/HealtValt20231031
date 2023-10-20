@@ -1,3 +1,7 @@
+{# vairables passed:
+    $dataToDisplay data from controllers and models ex: contacts.firstname
+    outputType - not valued or valued to PDF indicating a print out
+#}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,13 +31,17 @@
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col py-0 px-0">
-            {% if includeHeaderNav is not defined or includeHeaderNav %}
+{#            {% if includeHeaderNav is not defined or includeHeaderNav %}#}
+{#                {% include "headerNav.twig" %}#}
+{#            {% endif %}#}
+            {% if outputType is not defined or outputType != 'PDF' %}
                 {% include "headerNav.twig" %}
             {% endif %}
+
         </div>
     </div>
     <div class="row flex-nowrap">
-        {% if includeSidebar is not defined or includeSidebar %}
+        {% if outputType is not defined or outputType != 'PDF' %}
             {% include "sideBarNav.twig" %}
         {% endif %}
         <div class="container">
@@ -58,8 +66,10 @@
 {% block modal2 %} {% endblock %}
 {% block errorModal %} {% endblock %}
 {#{% block modalLogoff %} {% endblock %}#}
-{% include "modal_logoff.twig" %}
-{% include "modal_confirm_delete.twig" %}
+{% if outputType is not defined or outputType != 'PDF' %}
+    {% include "modal_logoff.twig" %}
+    {% include "modal_confirm_delete.twig" %}
+{% endif %}
 
 <script src="path/to/bootstrap.min.js"></script>
 <script src="/js/perform-event-functions.js"></script>
