@@ -47,13 +47,45 @@ class DataSaver
         $entity = $this->em->getRepository($entityClassName)->find($id);
         // loop through the getters, not properties, get it then set it
         // Set entity properties based on the public getter methods
-        $methods = get_class_methods($data);
-        foreach($methods as $getterMethod) {
-            if (str_starts_with($getterMethod,"get")) {
-                $setterMethod = 's' . substr($getterMethod,1);
-                $entity->$setterMethod($data->$getterMethod());
+//        $methods = get_class_methods($data);
+//        foreach($methods as $getterMethod) {
+//            if (str_starts_with($getterMethod,"get")) {
+//                $setterMethod = 's' . substr($getterMethod,1);
+//                $entity->$setterMethod($data->$getterMethod());
+//            }
+//        }
+        // Loop through the updated fields and set them on the entity
+
+
+
+//        foreach ($data as $fieldName => $fieldValue) {
+//            $setterMethod = 'set' . ucfirst($fieldName);
+//            if (method_exists($entity, $setterMethod)) {
+//                $entity->$setterMethod($fieldValue);
+//            } else {
+//                // Handle the case where the setter method doesn't exist for the field.
+//                // You can log an error or throw an exception as needed.
+//            }
+//        }
+
+        $reflectionClass = new \ReflectionClass($data);
+        foreach ($reflectionClass->getProperties() as $property) {
+            $propertyName = $property->getName();
+
+            if (property_exists($data, $propertyName)) { //  but property exists!!!!
+                $getterMethod = 'get' . ucfirst($propertyName);
+
+                if (method_exists($data, $getterMethod)) {
+                    $setterMethod = 'set' . ucfirst($propertyName);
+
+                    if (method_exists($entity, $setterMethod)) {
+                        $newValue = $data->$getterMethod();
+                        $entity->$setterMethod($newValue);
+                    }
+                }
             }
         }
+
 
         // Persist and flush the entity
 
