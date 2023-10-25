@@ -158,13 +158,52 @@ function handleParticipantCopy(id) {
 }
 
 function handleLogoff() {
-    let fetchUrl = "/index.php/sessions/logout/";
-    window.location.href = fetchUrl;
+    let fetchUrl = "sessions/logout/";
+    fetch(fetchUrl, {
+        method: 'POST',
+        body: null
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text(); // Convert the response to text
+        })
+        .then(responseData => {
+//            document.body.innerHTML = responseData;
+            window.location.href = '/index.php';
+//            window.history.replaceState(null, '', window.location.origin);
+
+        })
+        .catch(error => {
+            // Handle any errors that occurred during the request
+            console.error('Error saving data:', error);
+        });
 }
 
-function handleLogon() {
-    let fetchUrl = "/index.php/sessions/login/";
-    window.location.href = fetchUrl;
+function handleLogon(itemController) {
+    const itemForm = document.getElementById(itemController + "_login_form");
+    const itemFormData = new FormData(itemForm);
+    const fetchUrl = "sessions/login/";
+
+    fetch(fetchUrl, {
+        method: 'POST',
+        body: itemFormData
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text(); // Convert the response to text
+        })
+        .then(responseData => {
+            document.body.innerHTML = responseData;
+
+        })
+        .catch(error => {
+            // Handle any errors that occurred during the request
+            console.error('Error saving data:', error);
+        });
 }
 function displayitem(id) {
     // Send the ID to your server using AJAX (e.g., XMLHttpRequest or Fetch API)

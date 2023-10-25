@@ -18,9 +18,10 @@ use App\Controllers\careplans_controller;
 use App\Controllers\participants_controller;
 use App\Controllers\contacts_controller;
 use App\Controllers\assessments_controller;
+use App\Controllers\users_controller;
 
 // Define your routes and include the necessary controllers
-
+ini_set('session.gc_maxlifetime', 60);
 session_start();
 
 $controller = null;
@@ -216,6 +217,32 @@ switch ($controller) {
         }
         break;
 
+
+    case 'users':
+        $users = new users_controller($entityManager);
+        if (is_null($param1)) {
+            $result = $users->mainDisplay($controller);
+        } elseif ($param1 === '') {
+            $result = $users->mainDisplay($controller);
+        } elseif ($param2 === 'update') {
+            $result = $users->saveItem($entityManager, $controller, $param3);
+        } elseif ($param1 === 'delete') {
+            $result = $users->deleteItem($entityManager, $controller, $param2);
+        } elseif ($param1 === 'display') {
+            $result = $users->mainDisplay($controller);
+        } elseif ($param1 === 'manage') {
+            $result = $users->manageItem($entityManager, $param2, $controller);
+        } elseif ($param1 === 'print') {
+            $result = $users->manageItem($entityManager, $param2, $controller, 'PDF');
+        } elseif ($param1 === 'create') {
+            $result = $users->createUser();
+        } elseif ($param1 === 'copy') {
+            $result = $users->copyItem($entityManager, $controller, $param2);
+        } else {
+            $result = $users->action1($param1, $param2, $param3);
+        }
+        break;
+
     case 'sessions':
         if (is_null($param1)) {
             $errorMsg = '404 - Session Not Found';
@@ -224,9 +251,13 @@ switch ($controller) {
         } elseif ($param1 === 'logout') {
             session_unset();
             session_destroy();
-            renderTemplate('session/login.twig');
+            //renderTemplate('session/login.twig');
         } elseif ($param1 === 'login') {
             $_SESSION["userId"] = "temp";
+            $users = new users_controller($entityManager);
+
+            $userExists = $users->usernameExists($entityManager, 'users', $_POST['username'],$_POST['pswd']);
+            //$passwordExists = $users->passwordExists($entityManager, 'users', $_POST['pwsd']);
             renderTemplate('homePage.twig', [
                 'param1' => $param1,
                 'param2' => $param2,

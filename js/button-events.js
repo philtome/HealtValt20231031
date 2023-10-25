@@ -116,19 +116,19 @@ if (logoutItem) {
 }
 
 // Logon selectesion
-var logoutItem = document.querySelector(".signin");  // this is a class
-if (logoutItem) {
-    logoutItem.addEventListener('click', function(event){
+var loginItem = document.querySelector("#btn_signin");  // this is aid
+if (loginItem) {
+    loginItem.addEventListener('click', function(event){
         event.preventDefault();
 
-        // const itemElement = btnSaveItem.closest('.saveButton');
+        const itemElement = loginItem.closest('#btn_signin');
         // const itemId = itemElement.dataset.itemId;
-        // const itemController = this.getAttribute('data-sa-object');
+        const itemController = this.getAttribute('data-sa-object');
         // const returnToPrevious = document.referrer;
 
         // Get the item ID from the "data-item-id" attribute of the clicked list item
         // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
-        handleLogon();   // add itemID when save is edit (handleSaveContact(itemID)
+        handleLogon(itemController);   // add itemID when save is edit (handleSaveContact(itemID)
     });
 }
 
@@ -150,29 +150,6 @@ deleteButtonItems.forEach(item => {
         //handleConDelete(itemId);   // this routine is in editFunctions
     });
 });
-
-// Modal DELETE contact button
-var modalDeleteConButton = document.getElementById('modalDeleteButton');  // this is id on model del
-modalDeleteButton.addEventListener('click', function() {
-    if (itemIdToDelete !== null) {
-        console.log("deleteing item with id:", itemIdToDelete);
-        handleDeleteItem(typeToDelete, itemIdToDelete);
-        itemIdToDelete = null;
-    }
-})
-
-// Modal DELETE PARTICIPANT  button  &&&&&&&&&  FINISH THIS UP, AND THE MODEL
-//  I MAY WANT TO MAKE THAT MODAL A :DO YOU AENT TO DELETE: TWIG ALL ITS ON
-var modalDeletePrticipantButton = document.getElementById('modalDeleteButton2222');  // this is id on model del
-modalDeleteButton.addEventListener('click', function() {
-    if (itemIdToDelete !== null) {
-        console.log("deleteing item with id:", itemIdToDelete);
-        handleConDelete(itemIdToDelete);
-        itemIdToDelete = null;
-    }
-})
-
-
 // Get the button element by its ID
 const manageButtons = document.querySelectorAll('.manageButton');
 manageButtons.forEach(function(button) {

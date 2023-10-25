@@ -1,0 +1,36 @@
+<tr id='Userrow_{{ user.id }}' data-sa-id="{{ user.id }}" data-user-id='{{ user.id }}' class="newlyAdded">
+    {# 20191015 changed productrow to Productrow - was not working in delete product #}
+    <td id="userlastname_{{ user.id }}">{{ user.lastName }}</td>
+    <td id="userfistname_{{ user.id }}">{{ user.firstName }}</td>
+    <td id="useruid_{{user.id}}">{{ user.uid }}</td>
+    <td id="userpwd_{{ user.id }}">{{ user.pwd }}</td>
+    <td id="useremail_{{user.id}}">{{ user.email }}</td>
+    <td id="useractive_{{ user.id }}">{{ user.active }}</td>
+    <td id="userlastSignon_{{ user.id }}">{{ user.lastSignon }}</td>
+
+    <td  id="usermanage_{{ user.id }}" class="user-manage">
+        <button class="manageEdit btn btn-primary" data-sa-object="user" data-item-id="{{ user.id }}" title="Edit/Display">
+            <i class="fa-solid fa-pencil"></i></button>
+    </td>
+
+    <td id="usercopy_{{ user.id }}" class="user-copy">
+        <button class="copy btn btn-primary" data-sa-object="user" data-item-id="{{ user.id }}" title="Copy/Duplicate">
+            <i class="fa-solid fa-copy"></i></button>
+    </td>
+
+    <td  id="userprint_{{ user.id }}" class="user-print">
+        <button class="print btn btn-primary" data-sa-object="user" data-item-id="{{ user.id }}" title="Print">
+        <i class="fa-solid fa-print"></i></button>
+    </td>
+
+    <td id="userdelete_{{ user.id }}" class="user-delete">
+        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="user" data-item-id="{{ user.id }}"  title="Delete">
+            <i class="fa-solid fa-trash-can"></i></button>
+    </td>
+{#    <td>#}
+{#    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Contacts</button>#}
+{#    </td>#}
+{#    <td>#}
+{#        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Care Plans</button>#}
+{#    </td>#}
+</tr>

@@ -19,7 +19,7 @@ class Users
     #[ORM\Column(type: 'string', length: 255)]
     protected string $uid;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 60)]
     protected string $pwd;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -85,10 +85,15 @@ class Users
      * @param string $pwd
      * @return Users
      */
-    public function setPwd(string $pwd): Users
+    public function setPwd(string $pwd, bool $hashIt = true): Users
     {
-        $hashedPassword = password_hash($pwd, PASSWORD_DEFAULT);
-        $this->pwd = $hashedPassword;
+        if ($hashIt) {
+            $hashedPassword = password_hash($pwd, PASSWORD_DEFAULT);
+            $this->pwd = $hashedPassword;
+        }
+        else {
+            $this->pwd = $pwd;
+        }
         return $this;
     }
 
@@ -113,7 +118,7 @@ class Users
     /**
      * @return bool
      */
-    public function isAdmin(): bool
+    public function getAdmin(): bool
     {
         return $this->admin;
     }
@@ -131,7 +136,7 @@ class Users
     /**
      * @return bool
      */
-    public function isActive(): bool
+    public function getActive(): bool
     {
         return $this->active;
     }

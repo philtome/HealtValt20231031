@@ -1,0 +1,245 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    - Contact Details
+{% endblock %}
+
+{% set navHeader = 'User Details -'  ~ users.firstName ~ ' ' ~ userss.lastName %}
+
+{% block body %}
+    <!-- Specific content for template1.twig -->
+
+    <div class="container mt-4">
+        <form id="user_details_form">
+            <div class="row">
+                <!-- First Column -->
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label for="userLastName" class="col-sm-4 col-form-label text-end">Last Name:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="userLastName" id="userLastName"
+                                   value="{{ users.lastname }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">First Name:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="userFirstName" id="userFirstName"
+                                   value="{{ users.firstname }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">User Name:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="useruid" id="user-uid"
+                                   value="{{ users.uid }}" class="form-control">
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <!-- second colun -->
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Email:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="useremail" id="user-email"
+                                   value="{{ users.email }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Password:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="userpwd" id="user-pwd"
+                                   value="{{ users.pwd }}" class="form-control">
+                        </div>
+                    </div>
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">Company/Practice:</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <textarea name="companypractice" id="company-practice"#}
+{#                                      class="form-control">{{ users.companypractice }}</textarea>#}
+{#                        </div>#}
+{#                    </div>#}
+
+                </div>
+
+            </div>
+
+
+
+
+            <!-- Checkboxes Section -->
+            <div class="row mt-4">
+                <div class="col-sm-12">
+                    <div class="border p-3">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input type="checkbox" name="useractive" id="isActiveCheckbox" {{ users.active ? 'checked' : '' }} class="mt-3">
+                                    <label class="form-check-label" for="isActiveCheckbox">Is Active</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-check">
+                                    <input type="checkbox" name="useradmin" id="isAdminCheckbox" {{ users.admin ? 'checked' : '' }} class="mt-3">
+                                    <label class="form-check-label" for="isAdminCheckbox">Is An Admin</label>
+                                </div>
+                            </div>
+{#                            <div class="col-sm-3">#}
+{#                                <div class="form-check">#}
+{#                                    <input type="checkbox" name="isCaregiver" id="isCaregiverCheckbox" {{ users.iscaregiver ? 'checked' : '' }} class="mt-3">#}
+{#                                    <label class="form-check-label" for="isCaregiverCheckbox">Nuttinr</label>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-sm-3">#}
+{#                                <div class="form-check">#}
+{#                                    <input type="checkbox" name="isCna" id="isCnaCheckbox" {{ users.iscna ? 'checked' : '' }} class="mt-3">#}
+{#                                    <label class="form-check-label" for="isCnaCheckbox">Nuttin</label>#}
+{#                                </div>#}
+{#                            </div>#}
+                        </div>
+{#                        <div class="row">#}
+{#                            <div class="col-sm-3">#}
+{#                                <div class="form-check">#}
+{#                                    <input type="checkbox" name="isRn" id="isRnCheckbox" {{ users.isrn ? 'checked' : '' }} class="mt-3">#}
+{#                                    <label class="form-check-label" for="isRnCheckbox">is a RN</label>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-sm-3">#}
+{#                                <div class="form-check">#}
+{#                                    <input type="checkbox" name="checkbox6" id="checkbox6" class="mt-3">#}
+{#                                    <label class="form-check-label" for="checkbox6">future</label>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-sm-3">#}
+{#                                <div class="form-check">#}
+{#                                    <input type="checkbox" name="checkbox7" id="checkbox7" class="mt-3">#}
+{#                                    <label class="form-check-label" for="checkbox7">future</label>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-sm-3">#}
+{#                                <div class="form-check">#}
+{#                                    <input type="checkbox" name="checkbox8" id="checkbox8" class="mt-3">#}
+{#                                    <label class="form-check-label" for="checkbox8">future</label>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+                    </div>
+                </div>
+            </div>
+
+
+
+
+{#            <div class="row">#}
+{#                <!-- First Column -->#}
+{#                <div class="col-sm-6">#}
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">Address 1</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="text" name="userAddress1" id="userAdress1"#}
+{#                                   value="{{ users.address1 }}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">Address2</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="text" name="userAddress2" id="userAdress2"#}
+{#                                   value="{{ users.address2 }}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">city</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="text" name="userCity" id="contacCity"#}
+{#                                   value="{{ users.city }}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">State</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="text" name="userState" id="userState"#}
+{#                                   value="{{ users.state}}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">zip</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="text" name="userZip" id="userZip"#}
+{#                                   value="{{ users.zip }}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+
+
+{#                </div>#}
+{#                <!-- second colun -->#}
+{#                <div class="col-sm-4">#}
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">phone cell</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="text" name="userPhone1" id="userPhone1"#}
+{#                                   value="{{ users.phone1 }}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">phone home</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="text" name="userPhone2" id="userPhone2"#}
+{#                                   value="{{ users.phone2 }}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">phone work</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="text" name="userPhone3" id="contctPhone3"#}
+{#                                   value="{{ users.phone3 }}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+
+{#                </div>#}
+
+{#                <!-- third column -->#}
+{#                <div class="col-sm-2">#}
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">ext</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="text" name="userPhone1x" id="userPhone1x"#}
+{#                                   value="{{ users.phone1x }}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">ext</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="text" name="userPhone2x" id="userPhone2x"#}
+{#                                   value="{{ users.phone2x }}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">ext</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="text" name="userPhone3x" id="userPhone3x"#}
+{#                                   value="{{ users.phone3x }}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+
+{#                </div>#}
+
+
+{#            </div>#}
+
+
+
+
+            <div class="form-group row mt-4 saveButton" data-item-id="{{ users.id }}">
+                <div class="col-sm-12 text-center">
+                    <button id="btn_save" data-sa-object="user" type="submit" class="btn btn-primary">Save</button>
+                    <button id="btn_cancel" type="button" class="btn btn-secondary btnCancel">Cancel</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}

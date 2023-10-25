@@ -11,7 +11,7 @@
                         {% if error %}
                             <div class="alert alert-danger">{{ error }}</div>
                         {% endif %}
-                        <form id="login_form">
+                        <form id="user_login_form">
                             <div class="form-group">
                                 <label for="username">Username:</label>
                                 <input type="text" class="form-control" id="username" name="username" required>
@@ -20,8 +20,8 @@
                                 <label for="password">Password:</label>
                                 <input type="password" class="form-control" id="password" name="pswd" required>
                             </div>
-                            <div class="form-group text-center signin">
-                                <button id="btn_save" data-sa-object="participant" type="submit" class="btn btn-primary">Login</button>
+                            <div class="form-group text-center signinButton">
+                                <button id="btn_signin" data-sa-object="user" type="submit" class="btn btn-primary">Login</button>
                             </div>
                         </form>
                     </div>
