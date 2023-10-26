@@ -41,7 +41,7 @@ class users_controller extends abstract_controller
     public function createUser()
     {
         $contacts = new Users();
-        return renderTemplate('users\usersDetails.twig');
+        return renderTemplate('users\usersDetailsCreate.twig');
     }
 
     public function deleteUser($em,$controller,$id)
@@ -89,7 +89,7 @@ class users_controller extends abstract_controller
         $dataToSave->setId(1);
         $dataToSave->setUid(isset($_POST['useruid']) ? filter_var($_POST['useruid'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
              //below - do not has the password right off the form, it gets hashed in the DataSaver, 'hashIt' = false
-        //$dataToSave->setPwd(isset($_POST['userpwd']) ? filter_var($_POST['userpwd'], FILTER_SANITIZE_SPECIAL_CHARS) : null,false);
+        $dataToSave->setPwd(isset($_POST['userpwd']) ? filter_var($_POST['userpwd'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setEmail(isset($_POST['useremail']) ? filter_var($_POST['useremail'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setAdmin(isset($_POST['useradmin']) && $_POST['useradmin'] === 'on' ? 1 : 0);
         $dataToSave->setActive(isset($_POST['useractive']) &&$_POST['useractive'] === 'on' ? 1 : 0);
