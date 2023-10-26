@@ -47,6 +47,11 @@ class DataSaver
         $entity = $this->em->getRepository($entityClassName)->find($id);
         // loop through the getters, not properties, get it then set it
         // Set entity properties based on the public getter methods
+
+
+        $propertiesList = $this->getPropertyNames($entity);
+        $dataPropertiesList = $this->getPropertyNames($data);
+
 //        $methods = get_class_methods($data);
 //        foreach($methods as $getterMethod) {
 //            if (str_starts_with($getterMethod,"get")) {
@@ -55,6 +60,21 @@ class DataSaver
 //            }
 //        }
         // Loop through the updated fields and set them on the entity
+        $methods = get_class_methods($data);
+        foreach ($methods as $getterMethod) {
+            if (str_starts_with($getterMethod, "get")) {
+                $setterMethod = 's' . substr($getterMethod, 1);
+                $propertyName = lcfirst(substr($getterMethod, 3));
+                if (property_exists($data, $propertyName)) {
+                    $propertyValue = $data->$getterMethod();
+
+                    // Check if the property value is not null before setting it in the entity
+                    if ($propertyValue !== null) {
+                        $entity->$setterMethod($propertyValue);
+                    }
+                }
+            }
+        }
 
 
 
@@ -68,29 +88,42 @@ class DataSaver
 //            }
 //        }
 
-        $reflectionClass = new \ReflectionClass($data);
-        foreach ($reflectionClass->getProperties() as $property) {
-            $propertyName = $property->getName();
-
-            if (property_exists($data, $propertyName)) { //  but property exists!!!!
-                $getterMethod = 'get' . ucfirst($propertyName);
-
-                if (method_exists($data, $getterMethod)) {
-                    $setterMethod = 'set' . ucfirst($propertyName);
-
-                    if (method_exists($entity, $setterMethod)) {
-                        $newValue = $data->$getterMethod();
-                        $entity->$setterMethod($newValue);
-                    }
-                }
-            }
-        }
-
+//        $reflectionClass = new \ReflectionClass($data);
+//        foreach ($reflectionClass->getProperties() as $property) {
+//            $propertyName = $property->getName();
+//
+//            if (property_exists($data, $propertyName)) {
+//                $getterMethod = 'get' . ucfirst($propertyName);
+//
+//                if (method_exists($data, $getterMethod)) {
+//                    $setterMethod = 'set' . ucfirst($propertyName);
+//                    $propertyValue = $data->$getterMethod();
+//
+//                    // Check if the property has a non-null value
+//                    if ($propertyValue !== null) {
+//                        if (method_exists($entity, $setterMethod)) {
+//                            $entity->$setterMethod($propertyValue);
+//                        }
+//                    }
+//                }
+//            }
+//        }
 
         // Persist and flush the entity
 
         $this->persistIt($entity);
     }
+
+
+    public function getPropertyNames($entity){
+        $reflectionClass = new \ReflectionClass($entity);
+        $propertyNames = array();
+        foreach ($reflectionClass->getProperties() as $property) {
+            $propertyNames[] = $property->getName();
+        }
+        return $propertyNames;
+    }
+
 
     public function deleteData($entityClassName, $id)
     {
