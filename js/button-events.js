@@ -80,12 +80,35 @@ if (btnSaveItem) {
         const itemController = this.getAttribute('data-sa-object');
         const returnToPrevious = document.referrer;
 
+        const passwordField = document.getElementById('user-pwd');
+        const verifyPasswordField = document.getElementById('verify-user-pwd');
+
+        if (passwordField !== null && typeof passwordField !== 'undefined') {
+
+            if (passwordField.value !== verifyPasswordField.value) {
+                // Passwords do not match, prevent form submission
+                //alert('Passwords do not match. Please verify the password.');
+
+                setErrorMessage('Passwords do not match. Please verify the password.');
+                var modal = new bootstrap.Modal(document.getElementById('display-error-modal'));
+                //event.preventDefault(); // Prevent the form from submitting
+                modal.show();
+                return false;
+            }
+        }
+
+
+
+
+
+
         // Get the item ID from the "data-item-id" attribute of the clicked list item
         // how to check for id, on edit...const itemId = this.getAttribute('data-item-id');
         handleSaveItem(itemController, itemId, returnToPrevious);   // add itemID when save is edit (handleSaveContact(itemID)
         // this routine is in editFunctions
     });
 }
+
 // CANCEL Item button - cancel from individual edit/manage screens
 var btnCancelItem = document.getElementById("btn_cancel");  // this is an id
 if (btnCancelItem) {
@@ -138,7 +161,7 @@ if (btnPage1) {
     });
 }
 
-// DELETE contact button it runs this then opens Confirm Delete Modal
+// DELETE button it runs this then opens Confirm Delete Modal
 let itemIdToDelete = null;
 let typeToDelete = null;
 var deleteButtonItems = document.querySelectorAll('.deleteItemButton');  //this is a class
@@ -150,6 +173,17 @@ deleteButtonItems.forEach(item => {
         //handleConDelete(itemId);   // this routine is in editFunctions
     });
 });
+
+// Modal DELETE item button
+var modalDeleteConButton = document.getElementById('modalDeleteButton');  // this is id on model del
+modalDeleteButton.addEventListener('click', function() {
+    if (itemIdToDelete !== null) {
+        console.log("deleteing item with id:", itemIdToDelete);
+        handleDeleteItem(typeToDelete, itemIdToDelete);
+        itemIdToDelete = null;
+    }
+})
+
 // Get the button element by its ID
 const manageButtons = document.querySelectorAll('.manageButton');
 manageButtons.forEach(function(button) {

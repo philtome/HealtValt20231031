@@ -21,7 +21,7 @@ use App\Controllers\assessments_controller;
 use App\Controllers\users_controller;
 
 // Define your routes and include the necessary controllers
-ini_set('session.gc_maxlifetime', 60);
+//ini_set('session.gc_maxlifetime', 60);
 session_start();
 
 $controller = null;
@@ -244,6 +244,7 @@ switch ($controller) {
         break;
 
     case 'sessions':
+        $users = new users_controller($entityManager);
         if (is_null($param1)) {
             $errorMsg = '404 - Session Not Found';
             renderTemplate('errorMessage.twig', [
@@ -252,20 +253,11 @@ switch ($controller) {
             session_unset();
             session_destroy();
             //renderTemplate('session/login.twig');
-        } elseif ($param1 === 'login') {
-            $_SESSION["userId"] = "temp";
-            $users = new users_controller($entityManager);
-
-            $userExists = $users->usernameExists($entityManager, 'users', $_POST['username'],$_POST['pswd']);
-            //$passwordExists = $users->passwordExists($entityManager, 'users', $_POST['pwsd']);
-            renderTemplate('homePage.twig', [
-                'param1' => $param1,
-                'param2' => $param2,
-                'param3' => $param3
-            ]);
+        } elseif ($param1 === 'login') {    //shoudl this really be in the users block?
+            $result = $users->userLogin($entityManager, 'users', $_POST['username'],$_POST['pswd']);
         } else {
             $errorMsg = '404 - Session OTHER error, Not Found';
-        renderTemplate('errorMessage.twig', [
+            renderTemplate('errorMessage.twig', [
             'param1' => $errorMsg,]);
         }
         break;

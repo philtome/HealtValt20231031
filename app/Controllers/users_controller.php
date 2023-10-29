@@ -55,6 +55,21 @@ class users_controller extends abstract_controller
         //return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
     }
 
+    public function userLogin($em,$controller,$username, $password) {
+        $userExists = $this->usernameExists($em, $controller, $username, $password);
+        //$passwordExists = $users->passwordExists($entityManager, 'users', $_POST['pwsd']);
+        if ($userExists) {
+            $_SESSION["userId"] = "temp";
+            $response = ['redirect' => 'index.php']; // Modify 'index.php' to your desired URL
+            echo json_encode($response);
+        } else {
+            $errorMessage = "Invalid username or password.";
+            header('Content-Type: application/json');
+            //http_response_code(401); // Use 401 Unauthorized
+            echo json_encode(['error' => $errorMessage]);
+        }
+    }
+
     public function usernameExists($em,$controller,$username,$password) {
         $namespace = $this->namespace;
         $entityClassName = $namespace.'\\'.$controller;
@@ -62,13 +77,6 @@ class users_controller extends abstract_controller
             $user = $this->em->getRepository($entityClassName)->findOneBy(['uid' => $username]);
         }
         if ($user !== null) {
-            $tryPass = $user->getPwd();
-            $testPassword = $user->getEmail();
-            $anothertest = password_verify($testPassword,$tryPass);
-            // this is ignored for now...
-            //$hashedEntered = password_hash($password, PASSWORD_DEFAULT);
-            //$tryPass = password_hash($hash, PASSWORD_DEFAULT);
-            $whatisit = (password_verify($password, $tryPass));
             if (password_verify($password, $user->getPwd())) {
                 return true;
             }
@@ -88,9 +96,15 @@ class users_controller extends abstract_controller
     public function movePostDataToFields($dataToSave, $em = null) {
         $dataToSave->setId(1);
         $dataToSave->setUid(isset($_POST['useruid']) ? filter_var($_POST['useruid'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-             //below - do not has the password right off the form, it gets hashed in the DataSaver, 'hashIt' = false
-        $dataToSave->setPwd(isset($_POST['userpwd']) ? filter_var($_POST['userpwd'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+             //below - do not hash the password right off the form, it gets hashed in the DataSaver, 'hashIt' = false
+        if (isset($_POST['userpwd'])) {
+            $dataToSave->setPwd(filter_var($_POST['userpwd'], FILTER_SANITIZE_SPECIAL_CHARS),false);
+        }
+        //$dataToSave->setPwd(isset($_POST['userpwd']) ? filter_var($_POST['userpwd'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setEmail(isset($_POST['useremail']) ? filter_var($_POST['useremail'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setFirstName(isset($_POST['userfirstname']) ? filter_var($_POST['userfirstname'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setLastName(isset($_POST['userlastname']) ? filter_var($_POST['userlastname'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setPwdHint(isset($_POST['userpwdhint']) ? filter_var($_POST['userpwdhint'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setAdmin(isset($_POST['useradmin']) && $_POST['useradmin'] === 'on' ? 1 : 0);
         $dataToSave->setActive(isset($_POST['useractive']) &&$_POST['useractive'] === 'on' ? 1 : 0);
         $dataToSave->setLastSignon(isset($_POST['userlastSignon']) ? filter_var($_POST['userlastSignon'], FILTER_SANITIZE_SPECIAL_CHARS) : null);

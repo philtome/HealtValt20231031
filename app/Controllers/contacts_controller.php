@@ -38,14 +38,6 @@ class contacts_controller extends abstract_controller
         return renderTemplate('contacts\contacts_main.twig', ['param1' => $listItems]);
     }
 
-    public function deleteContact($id)
-    {
-        $contacts = new Contacts_Model();
-        $sucessful = $contacts->delete_contact($id);
-        return renderTemplate('contacts\contacts_main.twig', ['contacts' => $contacts->getContactssList()]);
-        //return renderTemplate('contacts\contactsDetails.twig', ['contact' => $contactDetails]);
-    }
-
     public function createContact()
     {
         $contacts = new Contacts_Model();

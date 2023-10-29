@@ -7,7 +7,7 @@
                 <!-- Login Box -->
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="card-title text-center">Login - any username/psw works</h2>
+                        <h2 class="card-title text-center">Login - try user:ptome pswd:freddy, that works</h2>
                         {% if error %}
                             <div class="alert alert-danger">{{ error }}</div>
                         {% endif %}
@@ -65,3 +65,26 @@
 
 {% endblock %}
 
+
+{% block errorModal %}
+    <div class="modal fade" tabindex="-1" id="display-error-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-white">
+                    <h5 class="modal-title">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Warning
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p id="error-message"></p> <span id="item-type"></span>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -22,6 +22,15 @@ class Users
     #[ORM\Column(type: 'string', length: 60)]
     protected string $pwd;
 
+    #[ORM\Column(name: 'lastName', type: 'string', nullable: true)]
+    protected string|null $lastName;
+
+    #[ORM\Column(name: 'firstName', type: 'string', nullable: true)]
+    protected string|null $firstName;
+
+    #[ORM\Column(name: 'pwdHint', type: 'string', nullable: true)]
+    protected string|null $pwdHint;
+
     #[ORM\Column(type: 'string', length: 255)]
     protected string $email;
 
@@ -168,4 +177,56 @@ class Users
         $this->lastSignon = $lastSignon;
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string|null $lastName
+     */
+    public function setLastName(?string $lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string|null $firstName
+     */
+    public function setFirstName(?string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPwdHint(): ?string
+    {
+        return $this->pwdHint;
+    }
+
+    /**
+     * @param string|null $pwdHint
+     */
+    public function setPwdHint(?string $pwdHint): void
+    {
+        $this->pwdHint = $pwdHint;
+    }
+
+
+
+
 }

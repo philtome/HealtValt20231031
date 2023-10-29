@@ -65,7 +65,7 @@ class DataSaver
             if (str_starts_with($getterMethod, "get")) {
                 $setterMethod = 's' . substr($getterMethod, 1);
                 $propertyName = lcfirst(substr($getterMethod, 3));
-                if (property_exists($data, $propertyName)) {
+                if (in_array($propertyName, $dataPropertiesList)) {
                     $propertyValue = $data->$getterMethod();
 
                     // Check if the property value is not null before setting it in the entity
@@ -115,15 +115,42 @@ class DataSaver
     }
 
 
-    public function getPropertyNames($entity){
-        $reflectionClass = new \ReflectionClass($entity);
+//    public function getPropertyNames($entity){
+//        $reflectionClass = new \ReflectionClass($entity);
+//        $propertyNames = array();
+//        foreach ($reflectionClass->getProperties() as $property) {
+//            $propertyNames[] = $property->getName();
+//        }
+//        return $propertyNames;
+//    }
+
+
+    public function getPropertyNames($dataToSave)
+    {
+        $reflectionClass = new \ReflectionClass($dataToSave);
         $propertyNames = array();
         foreach ($reflectionClass->getProperties() as $property) {
-            $propertyNames[] = $property->getName();
+            $propertyName = $property->getName();
+
+            if ($propertyName !== 'pwd') {
+            // Form the getter and setter method names
+            $getterMethod = 'get' . ucfirst($propertyName);
+            $setterMethod = 'set' . ucfirst($propertyName);
+
+            // Check if the getter and setter methods exist
+            if (method_exists($dataToSave, $getterMethod) && method_exists($dataToSave, $setterMethod)) {
+                // Use the getter to access the value
+                $propertyValue = $dataToSave->$getterMethod();
+
+                // Check if the value is not null
+                if ($propertyValue !== null) {
+                    // Use the setter to insert the value into the database
+                    $propertyNames[] = $property->getName();
+                }}
+            }
         }
         return $propertyNames;
     }
-
 
     public function deleteData($entityClassName, $id)
     {

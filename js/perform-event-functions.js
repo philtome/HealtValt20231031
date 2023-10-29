@@ -102,7 +102,7 @@ function handleDeleteItem(itemController, itemId) {
 
     var fetchUrl = itemController + 's/delete/' + itemId;
 //"I use the s here because my controller is looking for contacts or participants"
-    fetch(fetchUrl, {
+    fetch(fetchUrl, {  // NOTE This is Data Contact expected I will call fetch type 1
         method: 'POST',
     })
         .then(response => response.json())
@@ -186,7 +186,7 @@ function handleLogon(itemController) {
     const itemFormData = new FormData(itemForm);
     const fetchUrl = "sessions/login/";
 
-    fetch(fetchUrl, {
+    fetch(fetchUrl, {    //NOTE this is HTML context expected I will call fetch type 2
         method: 'POST',
         body: itemFormData
     })
@@ -194,17 +194,55 @@ function handleLogon(itemController) {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.text(); // Convert the response to text
+            return response.json();
         })
-        .then(responseData => {
-            document.body.innerHTML = responseData;
-
+        .then(data => {
+            if (data.error) {
+                // Handle server-side errors
+                console.error('Server Error:', data.error);
+                // Display the error message to the user, e.g., in an alert or on the webpage
+                setErrorMessage(data.error);
+                var modal = new bootstrap.Modal(document.getElementById('display-error-modal'));
+                modal.show();
+            } else if (data.redirect) {
+                // Handle redirection provided by the server
+                window.location.href = data.redirect; // Redirect to the provided URL
+            } else {
+                // Handle other successful response data
+            }
         })
         .catch(error => {
-            // Handle any errors that occurred during the request
+            // Handle network-related errors
             console.error('Error saving data:', error);
         });
 }
+// function handleLogon(itemController) {
+//     const itemForm = document.getElementById(itemController + "_login_form");
+//     const itemFormData = new FormData(itemForm);
+//     const fetchUrl = "sessions/login/";
+//
+//     fetch(fetchUrl, {    //NOTE this is HTML context expected I will call fetch type 2
+//         method: 'POST',
+//         body: itemFormData
+//     })
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Network response was not ok');
+//             }
+//             return response.text(); // Convert the response to text
+//         })
+//         .then(responseData => {
+//             document.body.innerHTML = responseData;
+//
+//         })
+//         .catch(error => {
+//             // Handle any errors that occurred during the request
+//                  //console.error('Error saving data:', error);
+//             setErrorMessage(data.error);
+//             var modal = new bootstrap.Modal(document.getElementById('display-error-modal'));
+//             modal.show();
+//         });
+// }
 function displayitem(id) {
     // Send the ID to your server using AJAX (e.g., XMLHttpRequest or Fetch API)
     // Example using Fetch API:
