@@ -176,7 +176,7 @@ deleteButtonItems.forEach(item => {
 
 // Modal DELETE item button
 var modalDeleteConButton = document.getElementById('modalDeleteButton');  // this is id on model del
-modalDeleteButton2222.addEventListener('click', function() {
+modalDeleteButton.addEventListener('click', function() {
     if (itemIdToDelete !== null) {
         console.log("deleteing item with id:", itemIdToDelete);
         handleDeleteItem(typeToDelete, itemIdToDelete);
