@@ -62,9 +62,20 @@
 
 <!-- Footer -->
 
+{# this section I copied from Sierra's base #}
+
+    {#{% block forms %}#}
+    {#{% endblock %}#}
+    {#{% include "confirmDelete.twig" %}#}
+
+    {% include "base_modals.twig" %}
+
+{# end of the copy #}
+
 {% block modal %} {% endblock %}
 {% block modal2 %} {% endblock %}
 {% block errorModal %} {% endblock %}
+
 {#{% block modalLogoff %} {% endblock %}#}
 {% if outputType is not defined or outputType != 'PDF' %}
     {% include "modal_logoff.twig" %}

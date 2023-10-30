@@ -1,0 +1,23 @@
+{#{% include "user/logout.twig" %}#}
+{#{% include "alert/form.twig" %}#}
+{#{% include "alert/display.twig" %}#}
+{#{% include "alert/centerContainer.twig" %}#}
+
+{#{% if hasPermission("modifyOrg") %}#}
+{#    {% include "account/invite.twig" %}#}
+{#{% endif %}#}
+{#{% if hasPermission("changePassword") %}#}
+{#    {% include "account/changepassword.twig" %}#}
+{#{% endif %}#}
+{#{% if hasPermission("viewProduct") %}#}
+{#    {{ include("pbi/movePbiDialog.twig") }}#}
+{#    {{ include("pbi/clonePbiDialog.twig") }}#}
+{#{% endif %}#}
+{#{% if current_user.organizations.count > 1 or hasPermission("adminSystem") %}#}
+{#    {% include "organization/switch.twig" %}#}
+{#{% endif %}#}
+{#{% if hasPermission("adminSystem") %}#}
+{#    {% include "plan/form.twig" %}#}
+{#{% endif %}#}
+{#{% include "alert/alertsOffCanvas.twig" %}#}
+{% include "main/offcanvas.twig" %}
