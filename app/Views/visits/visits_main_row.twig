@@ -1,0 +1,33 @@
+<tr id='visitrow_{{ visit.id }}' data-sa-id="{{ visit.id }}" data-visit-id='{{ visit.id }}' class="newlyAdded">
+    {# 20191015 changed productrow to Productrow - was not working in delete product #}
+    <td id="visitdate_{{ visit.id }}">{{ visit.lastName }}</td>
+    <td id="visittype_{{ visit.id }}">{{ visit.firstName }}</td>
+    <td id="visitwith_{{visit.id}}">{{ visit.visitType }}</td>
+    <td id="visitnotes_{{ visit.id }}">{{ visit.companyPractice }}</td>
+
+    <td  id="visitmanage_{{ visit.id }}" class="visit-manage">
+        <button class="manageEdit btn btn-primary" data-sa-object="visit" data-item-id="{{ visit.id }}" title="Edit/Display">
+            <i class="fa-solid fa-pencil"></i></button>
+    </td>
+
+    <td id="visitcopy_{{ visit.id }}" class="visit-copy">
+        <button class="copy btn btn-primary" data-sa-object="visit" data-item-id="{{ visit.id }}" title="Copy/Duplicate">
+            <i class="fa-solid fa-copy"></i></button>
+    </td>
+
+    <td  id="visitprint_{{ visit.id }}" class="visit-print">
+        <button class="print btn btn-primary" data-sa-object="visit" data-item-id="{{ visit.id }}" title="Print">
+        <i class="fa-solid fa-print"></i></button>
+    </td>
+
+    <td id="visitdelete_{{ visit.id }}" class="visit-delete">
+        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="visit" data-item-id="{{ visit.id }}"  title="Delete">
+            <i class="fa-solid fa-trash-can"></i></button>
+    </td>
+{#    <td>#}
+{#    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">visits</button>#}
+{#    </td>#}
+{#    <td>#}
+{#        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Care Plans</button>#}
+{#    </td>#}
+</tr>

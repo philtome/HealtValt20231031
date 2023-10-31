@@ -19,6 +19,8 @@ use App\Controllers\participants_controller;
 use App\Controllers\contacts_controller;
 use App\Controllers\assessments_controller;
 use App\Controllers\users_controller;
+use App\Controllers\visits_controller;
+
 
 // Define your routes and include the necessary controllers
 //ini_set('session.gc_maxlifetime', 60);
@@ -141,29 +143,29 @@ switch ($controller) {
         }
         break;
 
-    case 'participants':
-        $participants = new participants_controller($entityManager);
+    case 'visits':
+        $visits = new visits_controller($entityManager);
         //$entityClassName = 'App\Models\Participants';
         if (is_null($param1)) {
-            $result = $participants->mainDisplay($controller);
+            $result = $visits->mainDisplay($controller);
         } elseif ($param1 === '') {
-            $result = $participants->mainDisplay($controller);
+            $result = $visits->mainDisplay($controller);
         } elseif ($param2 === 'update') {
-            $result = $participants->saveItem($entityManager, $controller, $param3);
+            $result = $visits->saveItem($entityManager, $controller, $param3);
         } elseif ($param1 === 'delete') {
-            $result = $participants->deleteParticipant($entityManager, $controller, $param2);
+            $result = $visits->deleteVisit($entityManager, $controller, $param2);
         } elseif ($param1 === 'display') {
-            $result = $participants->mainDisplay();
+            $result = $visits->mainDisplay();
         } elseif ($param1 === 'manage') {
-            $result = $participants->manageItem($entityManager, $param2, $controller);
+            $result = $visits->manageItem($entityManager, $param2, $controller);
         } elseif ($param1 === 'print') {
-            $result = $participants->manageItem($entityManager, $param2, $controller, 'PDF');
+            $result = $visits->manageItem($entityManager, $param2, $controller, 'PDF');
         } elseif ($param1 === 'create') {
-            $result = $participants->manageItem($entityManager, $param2, $controller);
+            $result = $visits->manageItem($entityManager, $param2, $controller);
         } elseif ($param1 === 'copy') {
-            $result = $participants->copyItem($entityManager, $controller, $param2);
+            $result = $visits->copyItem($entityManager, $controller, $param2);
         } else {
-            $result = $participants->action1($param1, $param2, $param3);
+            $result = $visits->action1($param1, $param2, $param3);
         }
         break;
 
