@@ -20,16 +20,14 @@ class Settings
     protected string $uid;
 
     #[ORM\Column(type: 'string', length: 255,nullable: true)]
-    protected string $doc1Desc;
+    protected string $visitDesc;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    protected string $doc2Desc;
+    protected string $patientDesc;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     protected string $contactsDesc;
 
-    #[ORM\Column(name: 'lastName', type: 'string', nullable: true)]
-    protected string|null $participantDesc;
 
     /**
      * @return int
@@ -37,14 +35,6 @@ class Settings
     public function getId(): int
     {
         return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
     }
 
     /**
@@ -66,33 +56,33 @@ class Settings
     /**
      * @return string
      */
-    public function getDoc11Desc(): string
+    public function getVisitDesc(): string
     {
-        return $this->doc11Desc;
+        return $this->visitDesc;
     }
 
     /**
-     * @param string $doc11Desc
+     * @param string $visitDesc
      */
-    public function setDoc11Desc(string $doc11Desc): void
+    public function setVisitDesc(string $visitDesc): void
     {
-        $this->doc11Desc = $doc11Desc;
+        $this->visitDesc = $visitDesc;
     }
 
     /**
      * @return string
      */
-    public function getDoc2Desc(): string
+    public function getPatientDesc(): string
     {
-        return $this->doc12Desc;
+        return $this->patientDesc;
     }
 
     /**
-     * @param string $doc12Desc
+     * @param string $patientDesc
      */
-    public function setDoc2Desc(string $doc12Desc): void
+    public function setPatientDesc(string $patientDesc): void
     {
-        $this->doc12Desc = $doc12Desc;
+        $this->patientDesc = $patientDesc;
     }
 
     /**
@@ -109,22 +99,6 @@ class Settings
     public function setContactsDesc(string $contactsDesc): void
     {
         $this->contactsDesc = $contactsDesc;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getParticipantDesc(): ?string
-    {
-        return $this->participantDesc;
-    }
-
-    /**
-     * @param string|null $participantDesc
-     */
-    public function setParticipantDesc(?string $participantDesc): void
-    {
-        $this->participantDesc = $participantDesc;
     }
 
 }
