@@ -18,8 +18,8 @@ class visits_controller extends abstract_controller
     public function movePostDataToFields($dataToSave,$em) {
 
         $dataToSave->setId(1);
-        if (isset($_POST['visitDate'])) {
-            $datetimeValue = $_POST['visitDate'];
+        if (isset($_POST['visitdate'])) {
+            $datetimeValue = $_POST['visitdate'];
             $datetime = \DateTime::createFromFormat('Y-m-d\TH:i', $datetimeValue);
             if ($datetime !== false) {
                 $dataToSave->setDate($datetime); // Assuming 'setDatetime' is the method to set the datetime property
@@ -29,6 +29,10 @@ class visits_controller extends abstract_controller
                 // For example, $dataToSave->setDatetime(null) or throw an exception
             }
         }
+        $dataToSave->setType(isset($_POST['visittype']) ? filter_var($_POST['visittype'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setWith(isset($_POST['visitwith']) ? filter_var($_POST['visitwith'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setNotes(isset($_POST['visitnotes']) ? filter_var($_POST['visitnotes'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+//        $dataToSave->SetParticipant(isset($_POST['assessmentParticipant']) ? filter_var($_POST['assessmentParticipant'], FILTER_SANITIZE_SPECIAL_CHARS)
         return $dataToSave;
     }
 }
