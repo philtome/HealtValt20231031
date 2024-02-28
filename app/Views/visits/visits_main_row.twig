@@ -1,9 +1,9 @@
 <tr id='visitrow_{{ visit.id }}' data-sa-id="{{ visit.id }}" data-visit-id='{{ visit.id }}' class="newlyAdded">
     {# 20191015 changed productrow to Productrow - was not working in delete product #}
-    <td id="visitdate_{{ visit.id }}">{{ visit.lastName }}</td>
-    <td id="visittype_{{ visit.id }}">{{ visit.firstName }}</td>
-    <td id="visitwith_{{visit.id}}">{{ visit.visitType }}</td>
-    <td id="visitnotes_{{ visit.id }}">{{ visit.companyPractice }}</td>
+    <td id="visitdate_{{ visit.id }}">{{ visit.date|date('Y-m-d H:i') }}</td>
+    <td id="visittype_{{ visit.id }}">{{ visit.typeVisit }}</td>
+    <td id="visitwith_{{visit.id}}">{{ visit.withWho }}</td>
+    <td id="visitnotes_{{ visit.id }}">{{ visit.notes }}</td>
 
     <td  id="visitmanage_{{ visit.id }}" class="visit-manage">
         <button class="manageEdit btn btn-primary" data-sa-object="visit" data-item-id="{{ visit.id }}" title="Edit/Display">

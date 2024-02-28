@@ -59,7 +59,7 @@ class users_controller extends abstract_controller
         $userExists = $this->usernameExists($em, $controller, $username, $password);
         //$passwordExists = $users->passwordExists($entityManager, 'users', $_POST['pwsd']);
         if ($userExists) {
-            $_SESSION["userId"] = "temp";
+            $_SESSION["userId"] = $userExists;
             $response = ['redirect' => 'index.php']; // Modify 'index.php' to your desired URL
             echo json_encode($response);
         } else {
@@ -78,7 +78,7 @@ class users_controller extends abstract_controller
         }
         if ($user !== null) {
             if (password_verify($password, $user->getPwd())) {
-                return true;
+                return $user->getId(); //true;
             }
             else {
                 return false;

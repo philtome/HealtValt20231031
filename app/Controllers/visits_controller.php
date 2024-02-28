@@ -15,7 +15,7 @@ class visits_controller extends abstract_controller
         $this->em = $em;
     }
 
-    public function movePostDataToFields($dataToSave,$em) {
+    public function movePostDataToFields($dataToSave,$userId, $em) {
 
         $dataToSave->setId(1);
         if (isset($_POST['visitdate'])) {
@@ -29,9 +29,10 @@ class visits_controller extends abstract_controller
                 // For example, $dataToSave->setDatetime(null) or throw an exception
             }
         }
-        $dataToSave->setType(isset($_POST['visittype']) ? filter_var($_POST['visittype'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setWith(isset($_POST['visitwith']) ? filter_var($_POST['visitwith'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setTypeVisit(isset($_POST['visittype']) ? filter_var($_POST['visittype'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setWithWho(isset($_POST['visitwith']) ? filter_var($_POST['visitwith'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setNotes(isset($_POST['visitnotes']) ? filter_var($_POST['visitnotes'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setUserID($userId);
 //        $dataToSave->SetParticipant(isset($_POST['assessmentParticipant']) ? filter_var($_POST['assessmentParticipant'], FILTER_SANITIZE_SPECIAL_CHARS)
         return $dataToSave;
     }

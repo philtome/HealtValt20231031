@@ -60,7 +60,7 @@ abstract class abstract_controller
         $this->entityManager->flush();
     }
 
-    public function mainDisplay($controllerClassName, $subListId = null, $subListClass = null)
+    public function mainDisplay($controllerClassName, $userId, $subListId = null, $subListClass = null)
     {
         $modelClassName = $this->namespace . '\\' . ucfirst($controllerClassName);
         // namespace is from $namespace setting in abstract_controller
@@ -78,7 +78,11 @@ abstract class abstract_controller
             // Get the assessments associated with the participant
             $dataToDisplay = $subListItem->getAssessments();
         } else {
-            $dataToDisplay = $this->beforeDisplayExit($this->em->getRepository($modelClassName)->findAll());
+            if (!$userId) {
+                $dataToDisplay = $this->beforeDisplayExit($this->em->getRepository($modelClassName)->findAll());}
+            else {
+            $dataToDisplay = $this->beforeDisplayExit($this->em->getRepository($modelClassName)
+                ->findBy(['userID' => $userId]));}
         }
 
         $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
@@ -97,7 +101,7 @@ abstract class abstract_controller
         if ($id !== null) {
             $dataToDisplay = $this->em->getRepository($modelClassName)->find($id);
 
-            if ($controllerClassName === 'assessments') {
+            if ($controllerClassName === 'visits') {
                 $formattedDate = $dataToDisplay->getDate()->format('Y-m-d H:i');
 
                 // Replace the 'assessment.date' property value with the formatted date string
@@ -124,12 +128,12 @@ abstract class abstract_controller
             $this->generatePdf($htmlContent,'example.pdf');
         }             //return renderTemplate($templateToDisplay, $templateData);
     }
-    public function saveItem($em,$controllerClassName, $id = null)  //save new and existing
+    public function saveItem($em,$controllerClassName, $userId, $id = null)  //save new and existing
     {
         $modelClassName = $this->namespace.'\\'.$controllerClassName;
         $dataToSave = new $modelClassName;
         $dataSaver = new DataSaver($em);
-        $dataToSave = $this->movePostDataToFields($dataToSave,$em);
+        $dataToSave = $this->movePostDataToFields($dataToSave, $userId, $em);
         //$templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
         if ($id !== null & $id !== "") {
             $dataSaver->updateData($modelClassName,$dataToSave, $id);

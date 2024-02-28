@@ -19,13 +19,16 @@ class Visits
     protected $date;
 
     #[ORM\Column(type: 'string', length: 255,nullable: true)]
-    protected  string|null $type; //with & notes
+    protected  string|null $typeVisit; //with & notes
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
-    protected string|null $with; //dont neeed name
+    protected string|null $withWho; //dont neeed name
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     protected string|null $notes; //dont neeed name
+
+    #[ORM\Column(type: "integer", nullable: false)] // Adjusted for mandatory user
+    protected int $userID; // Added property for user ID
 
     /**
      * @return int
@@ -75,6 +78,26 @@ class Visits
         $this->type = $type;
     }
 
+    public function getTypeVisit(): ?string
+    {
+        return $this->typeVisit;
+    }
+
+    public function setTypeVisit(?string $typeVisit): void
+    {
+        $this->typeVisit = $typeVisit;
+    }
+
+    public function getWithWho(): ?string
+    {
+        return $this->withWho;
+    }
+
+    public function setWithWho(?string $withWho): void
+    {
+        $this->withWho = $withWho;
+    }
+
     /**
      * @return string|null
      */
@@ -105,6 +128,16 @@ class Visits
     public function setNotes(?string $notes): void
     {
         $this->notes = $notes;
+    }
+
+    public function getUserID(): int
+    {
+        return $this->userID;
+    }
+
+    public function setUserID(int $userID): void
+    {
+        $this->userID = $userID;
     }
 
 

@@ -92,7 +92,12 @@ if (!isset($_SESSION["userId"]) && $controller !== "sessions") {
 }
 
 else {
-//$entityNameSpace = 'App\models\\';
+
+if (isset($_SESSION['userId'])) {
+    $userId = $_SESSION['userId'];
+    // You can now use the $userId variable for further processing
+}
+
 switch ($controller) {
 
 
@@ -147,11 +152,11 @@ switch ($controller) {
         $visits = new visits_controller($entityManager);
         //$entityClassName = 'App\Models\Participants';
         if (is_null($param1)) {
-            $result = $visits->mainDisplay($controller);
+            $result = $visits->mainDisplay($controller, $userId);
         } elseif ($param1 === '') {
-            $result = $visits->mainDisplay($controller);
+            $result = $visits->mainDisplay($controller, $userId);
         } elseif ($param2 === 'update') {
-            $result = $visits->saveItem($entityManager, $controller, $param3);
+            $result = $visits->saveItem($entityManager, $controller, $userId, $param3);
         } elseif ($param1 === 'delete') {
             $result = $visits->deleteVisit($entityManager, $controller, $param2);
         } elseif ($param1 === 'display') {
@@ -223,15 +228,15 @@ switch ($controller) {
     case 'users':
         $users = new users_controller($entityManager);
         if (is_null($param1)) {
-            $result = $users->mainDisplay($controller);
+            $result = $users->mainDisplay($controller, null);
         } elseif ($param1 === '') {
-            $result = $users->mainDisplay($controller);
+            $result = $users->mainDisplay($controller, null);
         } elseif ($param2 === 'update') {
-            $result = $users->saveItem($entityManager, $controller, $param3);
+            $result = $users->saveItem($entityManager, null, $controller, $param3);
         } elseif ($param1 === 'delete') {
             $result = $users->deleteItem($entityManager, $controller, $param2);
         } elseif ($param1 === 'display') {
-            $result = $users->mainDisplay($controller);
+            $result = $users->mainDisplay($controller, null);
         } elseif ($param1 === 'manage') {
             $result = $users->manageItem($entityManager, $param2, $controller);
         } elseif ($param1 === 'print') {
