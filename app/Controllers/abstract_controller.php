@@ -98,7 +98,7 @@ abstract class abstract_controller
         $modelClassName = $this->namespace . '\\' . ucfirst($controllerClassName);
 
         // getting main model data to display, set up array for TWIG
-        if ($id !== null) {
+        if ($id !== null & $id !== '') {
             $dataToDisplay = $this->em->getRepository($modelClassName)->find($id);
 
             if ($controllerClassName === 'visits') {
