@@ -15,6 +15,7 @@ use App\Controllers\Controller1;
 use App\Controllers\careplans_controller;
 
 // Add the correct namespace for Controller2
+use App\Controllers\medications_controller;
 use App\Controllers\participants_controller;
 use App\Controllers\contacts_controller;
 use App\Controllers\assessments_controller;
@@ -171,6 +172,32 @@ switch ($controller) {
             $result = $visits->copyItem($entityManager, $controller, $param2);
         } else {
             $result = $visits->action1($param1, $param2, $param3);
+        }
+        break;
+
+    case 'medications':
+        $medications = new medications_controller($entityManager);
+        //$entityClassName = 'App\Models\Participants';
+        if (is_null($param1)) {
+            $result = $medications->mainDisplay($controller, $userId);
+        } elseif ($param1 === '') {
+            $result = $medications->mainDisplay($controller, $userId);
+        } elseif ($param2 === 'update') {
+            $result = $medications->saveItem($entityManager, $controller, $userId, $param3);
+        } elseif ($param1 === 'delete') {
+            $result = $medications->deleteItem($entityManager, $controller, $param2);
+        } elseif ($param1 === 'display') {
+            $result = $medications->mainDisplay();
+        } elseif ($param1 === 'manage') {
+            $result = $medications->manageItem($entityManager, $param2, $controller);
+        } elseif ($param1 === 'print') {
+            $result = $medications->manageItem($entityManager, $param2, $controller, 'PDF');
+        } elseif ($param1 === 'create') {
+            $result = $medications->manageItem($entityManager, $param2, $controller);
+        } elseif ($param1 === 'copy') {
+            $result = $medications->copyItem($entityManager, $controller, $param2);
+        } else {
+            $result = $medications->action1($param1, $param2, $param3);
         }
         break;
 

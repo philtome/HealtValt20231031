@@ -19,7 +19,7 @@ class users_controller extends abstract_controller
 //    {
 //        $contacts = new Contacts_Model();
 //        $listItems = $contacts->getContactsList();
-//        return renderTemplate('contacts\visits_main.twig', ['param1' => $listItems]);
+//        return renderTemplate('contacts\medications_main.twig', ['param1' => $listItems]);
 //    }
     public function saveUser($em,$controllerClassName, $id = null)  //save new and existing
     {
