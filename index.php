@@ -158,7 +158,7 @@ switch ($controller) {
         } elseif ($param2 === 'update') {
             $result = $visits->saveItem($entityManager, $controller, $userId, $param3);
         } elseif ($param1 === 'delete') {
-            $result = $visits->deleteVisit($entityManager, $controller, $param2);
+            $result = $visits->deleteItem($entityManager, $controller, $param2);
         } elseif ($param1 === 'display') {
             $result = $visits->mainDisplay();
         } elseif ($param1 === 'manage') {
