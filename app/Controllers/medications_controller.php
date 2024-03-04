@@ -43,7 +43,7 @@ class medications_controller extends abstract_controller
         $dataToSave->setHowTaken(isset($_POST['howtaken']) ? filter_var($_POST['howtaken'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setHowOften(isset($_POST['howoften']) ? filter_var($_POST['howoften'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setReason(isset($_POST['reason']) ? filter_var($_POST['reason'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setNotes(isset($_POST['notes']) ? filter_var($_POST['notes'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setNotes(isset($_POST['medicationnotes']) ? filter_var($_POST['medicationnotes'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setUserID($userId);
 //        $dataToSave->SetParticipant(isset($_POST['assessmentParticipant']) ? filter_var($_POST['assessmentParticipant'], FILTER_SANITIZE_SPECIAL_CHARS)
         return $dataToSave;

@@ -21,10 +21,10 @@ class Medications
     #[ORM\Column(name: 'dateStarted', type:'datetime', nullable: false)]
     protected $dateStarted;
 
-    #[ORM\Column(name: 'dateStopped', type:'datetime', nullable: false)]
+    #[ORM\Column(name: 'dateStopped', type:'datetime', nullable: true)]
     protected $dateStopped;
 
-    #[ORM\Column(type: 'string', length: 255,nullable: true)]
+    #[ORM\Column(type: 'string', length: 255,nullable: false)]
     protected  string|null $medicationName; //with & notes
 
     #[ORM\Column(type: 'string', length: 255,nullable: true)]

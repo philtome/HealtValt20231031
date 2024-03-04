@@ -1,38 +1,38 @@
 {% extends 'base.twig' %}
 
 {% block title %}
-    - Visit Details
+    - Medication Details
 {% endblock %}
 
-{% set navHeader = 'visit Details -'  ~ visits.firstName ~ ' ' ~ visits.lastName %}
+{% set navHeader = 'Med Details -'  ~ visits.firstName ~ ' ' ~ visits.lastName %}
 
 {% block body %}
     <!-- Specific content for template1.twig -->
 
     <div class="container mt-4">
-        <form id="visit_details_form">
+        <form id="medication_details_form">
             <div class="row">
                 <!-- First Column -->
                 <div class="col-sm-6">
 
                     <div class="form-group">
-                        <label for="dateTimeField" class="form-label">Visit Date/Time:</label>
-                        <input type="datetime-local" name="visitdate" id="visitdate"
-                               value="{{  visits.date }}" class="form-control">
+                        <label for="dateTimeField" class="form-label">Start Date:</label>
+                        <input type="datetime-local" name="datestarted" id="datestarted"
+                               value="{{ nedications.dateStarted }}" class="form-control">
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label text-end">Visit Type:</label>
+                        <label class="col-sm-4 col-form-label text-end">Medication:</label>
                         <div class="col-sm-8">
-                            <input type="text" name="visittype" id="visittype"
-                                   value="{{ visits.typeVisit }}" class="form-control">
+                            <input type="text" name="medicationname" id="medicationname"
+                                   value="{{ medications.medicationName }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label text-end">Visit With:</label>
+                        <label class="col-sm-4 col-form-label text-end">Strength:</label>
                         <div class="col-sm-8">
-                            <input type="text" name="visitwith" id="visitwith"
-                                   value="{{ visits.withWho }}" class="form-control">
+                            <input type="text" name="strength" id="strength"
+                                   value="{{ medicationss.strength }}" class="form-control">
                         </div>
 
                     </div>
@@ -44,8 +44,8 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">Notes:</label>
                         <div class="col-sm-8">
-                            <input type="text" name="visitnotes" id="visitnotes"
-                                   value="{{ visits.notes }}" class="form-control">
+                            <input type="text" name="medicationnotes" id="medicationnotes"
+                                   value="{{ medications.notes }}" class="form-control">
                         </div>
                     </div>
 
@@ -55,9 +55,9 @@
 
 
 
-            <div class="form-group row mt-4 saveButton" data-item-id="{{ visits.id }}">
+            <div class="form-group row mt-4 saveButton" data-item-id="{{ medications.id }}">
                 <div class="col-sm-12 text-center">
-                    <button id="btn_save" data-sa-object="visit" type="submit" class="btn btn-primary">Save</button>
+                    <button id="btn_save" data-sa-object="medication" type="submit" class="btn btn-primary">Save</button>
                     <button id="btn_cancel" type="button" class="btn btn-secondary btnCancel">Cancel</button>
                 </div>
             </div>
