@@ -1,9 +1,9 @@
 <tr id='medicationrow_{{ medication.id }}' data-sa-id="{{ medication.id }}" data-visit-id='{{ medication.id }}' class="newlyAdded">
     {# 20191015 changed productrow to Productrow - was not working in delete product #}
-    <td id="medicationname_{{ medication.id }}">{{ medication.medicationname }}</td>
-    <td id="reason_{{ medication.id }}">{{ medication.reason }}</td>
-    <td id="datestarted_{{ medication.id }}">{{ medication.datestarted|date('Y-m-d H:i') }}</td>
-    <td id="datestopped_{{ medication.id }}">{{ medication.datestopped|date('Y-m-d H:i') }}</td>
+    <td id="medicationname_{{ medication.id }}">{{ medication.medicationName }}</td>
+    <td id="dose_{{ medication.id }}">{{ medication.dose }}</td>
+    <td id="datestarted_{{ medication.id }}">{{ medication.dateStarted|date('Y-m-d') }}</td>
+    <td id="strength_{{ medication.id }}">{{ medication.strength }}</td>
 
     <td id="notes_{{ medication.id }}">{{ medication.notes }}</td>
 

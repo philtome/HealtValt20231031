@@ -19,19 +19,19 @@ class medications_controller extends abstract_controller
 
         $dataToSave->setId(1);
         if (isset($_POST['datestarted'])) {
-            $datetimeValue = $_POST['datestarted'];
-            $datetime = \DateTime::createFromFormat('Y-m-d\TH:i', $datetimeValue);
-            if ($datetime !== false) {
-                $dataToSave->setDateStarted($datetime);
+            $dateValue = $_POST['datestarted'];
+            $date = \DateTime::createFromFormat('Y-m-d', $dateValue);
+            if ($date !== false) {
+                $dataToSave->setDateStarted($date);
             } else {
                 // Handle invalid datetime input
             }
         }
         if (isset($_POST['datestopped'])) {
-            $datetimeValue = $_POST['datestopped'];
-            $datetime = \DateTime::createFromFormat('Y-m-d\TH:i', $datetimeValue);
-            if ($datetime !== false) {
-                $dataToSave->setDateStopped($datetime);
+            $dateValue = $_POST['datestopped'];
+            $date = \DateTime::createFromFormat('Y-m-d', $dateValue);
+            if ($date !== false) {
+                $dataToSave->setDateStopped($date);
             } else {
                 // Handle invalid datetime input
             }

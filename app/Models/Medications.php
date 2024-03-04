@@ -18,10 +18,10 @@ class Medications
     #[ORM\Column(type: "integer", nullable: false)] // Adjusted for mandatory user
     protected int $userID; // Added property for user ID
 
-    #[ORM\Column(name: 'dateStarted', type:'datetime', nullable: false)]
+    #[ORM\Column(name: 'dateStarted', type:'date', nullable: false)]
     protected $dateStarted;
 
-    #[ORM\Column(name: 'dateStopped', type:'datetime', nullable: true)]
+    #[ORM\Column(name: 'dateStopped', type:'date', nullable: true)]
     protected $dateStopped;
 
     #[ORM\Column(type: 'string', length: 255,nullable: false)]
