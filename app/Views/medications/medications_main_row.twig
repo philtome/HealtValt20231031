@@ -2,8 +2,9 @@
     {# 20191015 changed productrow to Productrow - was not working in delete product #}
     <td id="medicationname_{{ medication.id }}">{{ medication.medicationName }}</td>
     <td id="dose_{{ medication.id }}">{{ medication.dose }}</td>
-    <td id="datestarted_{{ medication.id }}">{{ medication.dateStarted|date('Y-m-d') }}</td>
-    <td id="strength_{{ medication.id }}">{{ medication.strength }}</td>
+    <td id="reason_{{ medication.id }}">{{ medication.reason }}</td>
+{#    <td id="datestarted_{{ medication.id }}">{{ medication.dateStarted|date('Y-m-d') }}</td>#}
+{#    <td id="strength_{{ medication.id }}">{{ medication.strength }}</td>#}
 
     <td id="notes_{{ medication.id }}">{{ medication.notes }}</td>
 
