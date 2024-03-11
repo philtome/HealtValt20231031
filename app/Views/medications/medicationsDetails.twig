@@ -59,19 +59,20 @@
 
 
 
-                </div>
+
                 <!-- second colun -->
-                <div class="col-sm-6">
+{#                <div class="col-sm-6">#}
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">Notes:</label>
                         <div class="col-sm-8">
-                            <input type="text" name="medicationnotes" id="medicationnotes"
-                                   value="{{ medications.notes }}" class="form-control">
+            <textarea name="medicationnotes" id="medicationnotes"
+                      class="form-control h-auto pt-3"
+                      aria-describedby="medicationnotesHelp">{{ medications.notes }}</textarea>
                         </div>
                     </div>
 
+{#                </div>#}
                 </div>
-
             </div>
 
 
