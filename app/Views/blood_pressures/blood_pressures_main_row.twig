@@ -1,0 +1,36 @@
+<tr id='blood_pressurerow_{{ blood_pressure.id }}' data-sa-id="{{ blood_pressure.id }}" data-visit-id='{{ blood_pressure.id }}' class="newlyAdded">
+    {# 20191015 changed productrow to Productrow - was not working in delete product #}
+    <td id="blood_pressure_systolicpressure_{{ blood_pressure.id }}">{{ blood_pressure.bloodPressureDate|date('Y-m-d H:i') }}</td>
+    <td id="blood_pressure_systolicpressure_{{ blood_pressure.id }}">{{ blood_pressure.systolicPressure }} mm[Hg]</td>
+    <td id="blood_pressure_diastolicpressure_{{ blood_pressure.id }}">{{ blood_pressure.diastolicPressure }}</td>
+    {#    <td id="datestarted_{{ blood_pressure.id }}">{{ blood_pressure.dateStarted|date('Y-m-d') }}</td>#}
+    {#    <td id="strength_{{ blood_pressure.id }}">{{ blood_pressure.strength }}</td>#}
+
+    <td id="blood_pressure_notes_{{ blood_pressure.id }}">{{ blood_pressure.bloodPressureNotes }}</td>
+
+    <td  id="blood_pressuremanage_{{ blood_pressure.id }}" class="blood_pressure-manage">
+        <button class="manageEdit btn btn-primary" data-sa-object="blood_pressure" data-item-id="{{ blood_pressure.id }}" title="Edit/Display">
+            <i class="fa-solid fa-pencil"></i></button>
+    </td>
+
+    <td id="blood_pressurecopy_{{ blood_pressure.id }}" class="blood_pressure-copy">
+        <button class="copy btn btn-primary" data-sa-object="blood_pressure" data-item-id="{{ blood_pressure.id }}" title="Copy/Duplicate">
+            <i class="fa-solid fa-copy"></i></button>
+    </td>
+
+    <td  id="blood_pressureprint_{{ blood_pressure.id }}" class="blood_pressure-print">
+        <button class="print btn btn-primary" data-sa-object="blood_pressure" data-item-id="{{ blood_pressure.id }}" title="Print">
+            <i class="fa-solid fa-print"></i></button>
+    </td>
+
+    <td id="blood_pressuredelete_{{ blood_pressure.id }}" class="blood_pressure-delete">
+        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="blood_pressure" data-item-id="{{ blood_pressure.id }}"  title="Delete">
+            <i class="fa-solid fa-trash-can"></i></button>
+    </td>
+    {#    <td>#}
+    {#    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">visits</button>#}
+    {#    </td>#}
+    {#    <td>#}
+    {#        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Care Plans</button>#}
+    {#    </td>#}
+</tr>

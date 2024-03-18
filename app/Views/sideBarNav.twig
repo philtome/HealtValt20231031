@@ -13,38 +13,53 @@
             <li>
 
             <a href="/allergies" class="nav-link px-0 align-middle">
-                    <i class="fa-solid fa-hand-dots"></i> <span class="ms-1 d-none d-sm-inline">Allergies</span></a>
+                    <i class="fa-solid fa-hand-dots"></i> <span class="ms-1 d-none d-sm-inline">Allergies - future</span></a>
             </li>
             <a href="/diagnoses" class="nav-link px-0 align-middle">
-                <i class="fa-solid fa-id-card-clip"></i> <span class="ms-1 d-none d-sm-inline">Diagnoses</span></a>
+                <i class="fa-solid fa-id-card-clip"></i> <span class="ms-1 d-none d-sm-inline">Diagnoses - future</span></a>
             </li>
             <a href="/medications" class="nav-link px-0 align-middle">
                 <i class="fa-solid fa-prescription-bottle"></i> <span class="ms-1 d-none d-sm-inline">Medications</span></a>
             </li>
             <a href="/immunizations" class="nav-link px-0 align-middle">
-                <i class="fa-solid fa-syringe"></i> <span class="ms-1 d-none d-sm-inline">Immunizations</span></a>
+                <i class="fa-solid fa-syringe"></i> <span class="ms-1 d-none d-sm-inline">Immunizations - future</span></a>
             </li>
             <a href="/visits" class="nav-link px-0 align-middle">
                 <i class="fa-solid fa-people-group"></i> <span class="ms-1 d-none d-sm-inline">Visits/Encounters</span></a>
             </li>
-            <a href="/surgeries" class="nav-link px-0 align-middle">
-                <i class="fa-solid fa-mask-face"></i> <span class="ms-1 d-none d-sm-inline">Surgeries/Studies</span></a>
+            <a href="/procedures" class="nav-link px-0 align-middle">
+                <i class="fa-solid fa-mask-face"></i> <span class="ms-1 d-none d-sm-inline">Surgeries/Procedures/Studies</span></a>
             </li>
             <a href="/labs" class="nav-link px-0 align-middle">
-                <i class="fa-solid fa-vial"></i> <span class="ms-1 d-none d-sm-inline">Labs</span></a>
+                <i class="fa-solid fa-vial"></i> <span class="ms-1 d-none d-sm-inline">Labs - future</span></a>
             </li>
-            <a href="/vitals" class="nav-link px-0 align-middle">
-                <i class="fa-solid fa-heart-pulse"></i> <span class="ms-1 d-none d-sm-inline">Vital Signs</span></a>
+
+
+            <li>
+                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">
+                        <i class="fa-solid fa-gear"></i></i>Vitals</span> </a>
+                {# NOTE Open menuse: this code would show the list upon page load (note the 'show'):#}
+                {#     <ul class="collapse show nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">#}
+                <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                    <li class="w-100 ms-2">
+                        <a href="/blood_pressures" class="nav-link px-0">
+                            <i class="fa-solid fa-stethoscope"></i><span class="ms-1 d-none d-sm-inline">Blood Pressure</span></a>
+                    </li>
+                    <li class="ms-2">
+                        <a href="/heightweight" class="nav-link px-0">
+                            <i class="fa-solid fa-weight-scale"></i><span class="ms-1 d-none d-sm-inline">Height Weight - future</span></a>
+                    </li>
+                    <li class="ms-2">
+                        <a href="/heartrate" class="nav-link px-0">
+                            <i class="fa-solid fa-heart-pulse"></i><span class="ms-1 d-none d-sm-inline">Heart Rate - future</span></a>
+                    </li>
+                </ul>
             </li>
 
             <li>
                 <a href="/contacts" class="nav-link px-0 align-middle">
-                    <i class="fa-solid fa-address-card"></i> <span class="ms-1 d-none d-sm-inline">Contacts</span></a>
-            </li>
-
-            <li>
-                <a href="/assessments" class="nav-link px-0 align-middle">
-                    <i class="fa-solid fa-file"></i> <span class="ms-1 d-none d-sm-inline">Assessments</span></a>
+                    <i class="fa-solid fa-address-card"></i> <span class="ms-1 d-none d-sm-inline">Contacts - future</span></a>
             </li>
 
             <li class="nav-item">

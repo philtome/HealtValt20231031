@@ -21,6 +21,8 @@ use App\Controllers\contacts_controller;
 use App\Controllers\assessments_controller;
 use App\Controllers\users_controller;
 use App\Controllers\visits_controller;
+use App\Controllers\blood_pressures_controller;
+use App\Controllers\procedures_controller;
 
 
 // Define your routes and include the necessary controllers
@@ -198,6 +200,58 @@ switch ($controller) {
             $result = $medications->copyItem($entityManager, $controller, $param2);
         } else {
             $result = $medications->action1($param1, $param2, $param3);
+        }
+        break;
+
+    case 'blood_pressures':
+        $blood_pressures = new blood_pressures_controller($entityManager);
+        //$entityClassName = 'App\Models\Participants';
+        if (is_null($param1)) {
+            $result = $blood_pressures->mainDisplay($controller, $userId);
+        } elseif ($param1 === '') {
+            $result = $blood_pressures->mainDisplay($controller, $userId);
+        } elseif ($param2 === 'update') {
+            $result = $blood_pressures->saveItem($entityManager, $controller, $userId, $param3);
+        } elseif ($param1 === 'delete') {
+            $result = $blood_pressures->deleteItem($entityManager, $controller, $param2);
+        } elseif ($param1 === 'display') {
+            $result = $blood_pressures->mainDisplay();
+        } elseif ($param1 === 'manage') {
+            $result = $blood_pressures->manageItem($entityManager, $param2, $controller);
+        } elseif ($param1 === 'print') {
+            $result = $blood_pressures->manageItem($entityManager, $param2, $controller, 'PDF');
+        } elseif ($param1 === 'create') {
+            $result = $blood_pressures->manageItem($entityManager, $param2, $controller);
+        } elseif ($param1 === 'copy') {
+            $result = $blood_pressures->copyItem($entityManager, $controller, $param2);
+        } else {
+            $result = $blood_pressures->action1($param1, $param2, $param3);
+        }
+        break;
+
+    case 'procedures':
+        $procedures = new procedures_controller($entityManager);
+        //$entityClassName = 'App\Models\Participants';
+        if (is_null($param1)) {
+            $result = $procedures->mainDisplay($controller, $userId);
+        } elseif ($param1 === '') {
+            $result = $procedures->mainDisplay($controller, $userId);
+        } elseif ($param2 === 'update') {
+            $result = $procedures->saveItem($entityManager, $controller, $userId, $param3);
+        } elseif ($param1 === 'delete') {
+            $result = $procedures->deleteItem($entityManager, $controller, $param2);
+        } elseif ($param1 === 'display') {
+            $result = $procedures->mainDisplay();
+        } elseif ($param1 === 'manage') {
+            $result = $procedures->manageItem($entityManager, $param2, $controller);
+        } elseif ($param1 === 'print') {
+            $result = $procedures->manageItem($entityManager, $param2, $controller, 'PDF');
+        } elseif ($param1 === 'create') {
+            $result = $procedures->manageItem($entityManager, $param2, $controller);
+        } elseif ($param1 === 'copy') {
+            $result = $procedures->copyItem($entityManager, $controller, $param2);
+        } else {
+            $result = $procedures->action1($param1, $param2, $param3);
         }
         break;
 

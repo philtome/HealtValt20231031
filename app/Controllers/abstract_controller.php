@@ -87,7 +87,9 @@ abstract class abstract_controller
 
         $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
         $arrayKey = $controllerClassName; // You can set this key dynamically
-        $navHeader = ucfirst($controllerClassName." list");
+        //$navHeader = ucfirst($controllerClassName." list");
+        $navHeader = ucwords(str_replace('_', ' ', $controllerClassName)." list");
+
         $templateData = [$arrayKey => $dataToDisplay, 'navHeader' => $navHeader];
             // example of this is: ['participants' => $dataToDisplay]
         return renderTemplate($templateToDisplay, $templateData);
@@ -107,6 +109,21 @@ abstract class abstract_controller
                 // Replace the 'assessment.date' property value with the formatted date string
                 $dataToDisplay->setDate($formattedDate);
             }
+
+            if ($controllerClassName === 'blood_pressures') {
+                $formattedDate = $dataToDisplay->getBloodPressureDate()->format('Y-m-d H:i');
+
+                // Replace the 'assessment.date' property value with the formatted date string
+                $dataToDisplay->setBloodPressureDate($formattedDate);
+            }
+
+            if ($controllerClassName === 'procedures') {
+                $formattedDate = $dataToDisplay->getProcedureDate()->format('Y-m-d');
+
+                // Replace the 'assessment.date' property value with the formatted date string
+                $dataToDisplay->setProcedureDate($formattedDate);
+            }
+
         }
         $arrayKey = $controllerClassName; // You can set this key dynamically
         $navHeader = $controllerClassName." list";

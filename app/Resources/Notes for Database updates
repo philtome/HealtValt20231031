@@ -1,0 +1,17 @@
+when updating/changing database structure for this project
+I must change bootstrap.php.
+
+First I have uncomment the end:
+
+   ConsoleRunner::run(
+       new SingleManagerProvider($entityManager)
+   );
+
+Then after the update recomment it out:
+
+    //ConsoleRunner::run(
+    //    new SingleManagerProvider($entityManager)
+    //);
+
+
+I am not sure why, but that is how it works, and so I am noteing it now
