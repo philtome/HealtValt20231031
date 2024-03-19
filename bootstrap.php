@@ -29,6 +29,11 @@ require_once "vendor/autoload.php";
         'dbname' => 'health_history',
         'user' => 'root',
         'password' => 'root',
+        // for hostgator 20240319
+        //        'host' => 'localhost:3306',
+        //        'dbname' => 'tomefily_health_history',
+        //        'user' => 'tomefily_healthvault',
+        //        'password' => 'U59P1Oiq6a2C',
     ], $config);
 
 // obtaining the entity manager
