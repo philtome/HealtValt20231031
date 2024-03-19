@@ -342,7 +342,7 @@ switch ($controller) {
             session_destroy();
             //renderTemplate('session/login.twig');
         } elseif ($param1 === 'login') {    //shoudl this really be in the users block?
-            $result = $users->userLogin($entityManager, 'users', $_POST['username'],$_POST['pswd']);
+            $result = $users->userLogin($entityManager, 'Users', $_POST['username'],$_POST['pswd']);
         } else {
             $errorMsg = '404 - Session OTHER error, Not Found';
             renderTemplate('errorMessage.twig', [

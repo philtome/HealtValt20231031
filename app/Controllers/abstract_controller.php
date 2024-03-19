@@ -147,7 +147,7 @@ abstract class abstract_controller
     }
     public function saveItem($em,$controllerClassName, $userId, $id = null)  //save new and existing
     {
-        $modelClassName = $this->namespace.'\\'.$controllerClassName;
+        $modelClassName = $this->namespace.'\\'.ucfirst($controllerClassName);
         $dataToSave = new $modelClassName;
         $dataSaver = new DataSaver($em);
         $dataToSave = $this->movePostDataToFields($dataToSave, $userId, $em);
@@ -162,7 +162,7 @@ abstract class abstract_controller
     public function copyItem($em,$controller,$id)
     {
         $namespace = $this->namespace;
-        $entityClassName = $namespace.'\\'.$controller;
+        $entityClassName = $namespace.'\\'.ucfirst($controller);
         $dataSaver = new DataSaver($em);
         $CopyFromItem = $this->em->find($entityClassName,$id);
         $testVariable = $CopyFromItem::class;
@@ -173,7 +173,7 @@ abstract class abstract_controller
     public function deleteItem($em,$controller,$id)
     {
         $namespace = $this->namespace;
-        $entityClassName = $namespace.'\\'.$controller;
+        $entityClassName = $namespace.'\\'.ucfirst($controller);
         $dataSaver = new DataSaver($em);
         //$deleteItem = $this->em->find($entityClassName,$id);
         $dataSaver->deleteData($entityClassName,$id);
