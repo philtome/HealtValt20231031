@@ -40,6 +40,9 @@ class Procedures
     protected string|null $procedureInstructions; // followup or discharge instructions
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    protected string|null $procedureMode; // followup or discharge instructions
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     protected string|null $notes;
 
 
@@ -144,6 +147,16 @@ class Procedures
     public function getNotes(): ?string
     {
         return $this->notes;
+    }
+
+    public function getProcedureMode(): ?string
+    {
+        return $this->procedureMode;
+    }
+
+    public function setProcedureMode(?string $procedureMode): void
+    {
+        $this->procedureMode = $procedureMode;
     }
 
     public function setNotes(?string $notes): void

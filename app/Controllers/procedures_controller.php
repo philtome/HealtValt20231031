@@ -35,6 +35,7 @@ class procedures_controller extends abstract_controller
         $dataToSave->setProcedureDescription(isset($_POST['proceduredescription']) ? filter_var($_POST['proceduredescription'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setProcedureResults(isset($_POST['procedureresults']) ? filter_var($_POST['procedureresults'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setProcedureInstructions(isset($_POST['procedureinstructions']) ? filter_var($_POST['procedureinstructions'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setProcedureMode(isset($_POST['procedureMode']) ? filter_var($_POST['procedureMode'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setNotes(isset($_POST['procedurenotes']) ? filter_var($_POST['procedurenotes'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setUserID($userId);
 //        $dataToSave->SetParticipant(isset($_POST['assessmentParticipant']) ? filter_var($_POST['assessmentParticipant'], FILTER_SANITIZE_SPECIAL_CHARS)

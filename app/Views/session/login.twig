@@ -7,7 +7,7 @@
                 <!-- Login Box -->
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="card-title text-center">Login - try user:ptome pswd:freddy, that works</h2>
+                        <h2 class="card-title text-center">Login</h2>
                         {% if error %}
                             <div class="alert alert-danger">{{ error }}</div>
                         {% endif %}
@@ -29,37 +29,37 @@
             </div>
         </div>
 
-        <div class="row mt-4">
-            <div class="col-md-6 offset-md-3">
-                <!-- Registration Box -->
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title text-center">Sign Up</h2>
-                        <form id="signup_form">
-                            <div class="form-group">
-                                <label for="new_username">Username:</label>
-                                <input type="text" class="form-control" id="new_username" name="new_username" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="new_password">Password:</label>
-                                <input type="password" class="form-control" id="new_password" name="new_password" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="confirm_password">Retype Password:</label>
-                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address:</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <div class="form-group text-center">
-                                <button id="btn_signup" data-sa-object="participant" type="submit" class="btn btn-primary">Sign Up</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+{#        <div class="row mt-4">#}
+{#            <div class="col-md-6 offset-md-3">#}
+{#                <!-- Registration Box -->#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+{#                        <h2 class="card-title text-center">Sign Up</h2>#}
+{#                        <form id="signup_form">#}
+{#                            <div class="form-group">#}
+{#                                <label for="new_username">Username:</label>#}
+{#                                <input type="text" class="form-control" id="new_username" name="new_username" required>#}
+{#                            </div>#}
+{#                            <div class="form-group">#}
+{#                                <label for="new_password">Password:</label>#}
+{#                                <input type="password" class="form-control" id="new_password" name="new_password" required>#}
+{#                            </div>#}
+{#                            <div class="form-group">#}
+{#                                <label for="confirm_password">Retype Password:</label>#}
+{#                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>#}
+{#                            </div>#}
+{#                            <div class="form-group">#}
+{#                                <label for="email">Email Address:</label>#}
+{#                                <input type="email" class="form-control" id="email" name="email" required>#}
+{#                            </div>#}
+{#                            <div class="form-group text-center">#}
+{#                                <button id="btn_signup" data-sa-object="participant" type="submit" class="btn btn-primary">Sign Up</button>#}
+{#                            </div>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
     </div>
 
 

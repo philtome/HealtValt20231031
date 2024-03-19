@@ -79,17 +79,54 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">Notes:</label>
                         <div class="col-sm-8">
-            <textarea name="procedurenotes" id="procedurenotes"
-                      class="form-control h-auto pt-3"
-                      aria-describedby="procedureNotesHelp">{{ procedures.notes }}</textarea>
+                            <textarea name="procedurenotes" id="procedurenotes"
+                                      class="form-control h-auto pt-3"
+                                      aria-describedby="procedureNotesHelp">{{ procedures.notes }}</textarea>
                         </div>
                     </div>
 
                     {#                </div>#}
+
+                    {# radio buttons for selecting Procedure Type #}
+                    <div class="row mt-4">
+                        <div class="col-sm-12">
+                            <div class="border p-3">
+                                <div class="row">
+                                    <div class="col-sm-6 pr-0">
+                                        <div class="form-check">
+                                            <input type="radio" name="procedureMode" id="procedureSurgeryRadio" value="surgery" {{ procedures.procedureMode is same as('surgery') ? 'checked' : '' }} class="mt-3">
+                                            <label class="form-check-label" for="procedureSurgeryRadio">Surgery</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 pl-0">
+                                        <div class="form-check">
+                                            <input type="radio" name="procedureMode" id="procedureProcedureRadio" value="procedure" {{ procedures.procedureMode is same as('procedure') ? 'checked' : '' }} class="mt-3">
+                                            <label class="form-check-label" for="procedureProcedureRadio">Procedure</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 pr-0">
+                                        <div class="form-check">
+                                            <input type="radio" name="procedureMode" id="procedureTestRadio" value="test" {{ procedures.procedureMode is same as ('test') ? 'checked' : '' }} class="mt-3">
+                                            <label class="form-check-label" for="procedureTestRadio">Test/Study</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 pl-0">
+                                        <div class="form-check">
+                                            <input type="radio" name="procedureMode" id="procedureNoneRadio" value="none" {{ procedures.procedureMode is same as ('none') ? 'checked' : '' }} class="mt-3">
+                                            <label class="form-check-label" for="procedureNoneRadio">None</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
-
-
 
             <div class="form-group row mt-4 saveButton" data-item-id="{{ procedures.id }}">
                 <div class="col-sm-12 text-center">
