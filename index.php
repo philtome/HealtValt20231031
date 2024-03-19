@@ -181,9 +181,9 @@ switch ($controller) {
         $medications = new medications_controller($entityManager);
         //$entityClassName = 'App\Models\Participants';
         if (is_null($param1)) {
-            $result = $medications->mainDisplay($controller, $userId);
+            $result = $medications->mainDisplay($controller, $userId, null, null, 'medicationName', 'asc');
         } elseif ($param1 === '') {
-            $result = $medications->mainDisplay($controller, $userId);
+            $result = $medications->mainDisplay($controller, $userId, null, null, 'medicationName', 'asc');
         } elseif ($param2 === 'update') {
             $result = $medications->saveItem($entityManager, $controller, $userId, $param3);
         } elseif ($param1 === 'delete') {
@@ -207,9 +207,9 @@ switch ($controller) {
         $blood_pressures = new blood_pressures_controller($entityManager);
         //$entityClassName = 'App\Models\Participants';
         if (is_null($param1)) {
-            $result = $blood_pressures->mainDisplay($controller, $userId);
+            $result = $blood_pressures->mainDisplay($controller, $userId, null, null, 'bloodPressureDate', 'desc');
         } elseif ($param1 === '') {
-            $result = $blood_pressures->mainDisplay($controller, $userId);
+            $result = $blood_pressures->mainDisplay($controller, $userId, null, null, 'bloodPressureDate', 'desc');
         } elseif ($param2 === 'update') {
             $result = $blood_pressures->saveItem($entityManager, $controller, $userId, $param3);
         } elseif ($param1 === 'delete') {
@@ -233,9 +233,9 @@ switch ($controller) {
         $procedures = new procedures_controller($entityManager);
         //$entityClassName = 'App\Models\Participants';
         if (is_null($param1)) {
-            $result = $procedures->mainDisplay($controller, $userId);
+            $result = $procedures->mainDisplay($controller, $userId, null, null, 'procedureDate', 'desc');
         } elseif ($param1 === '') {
-            $result = $procedures->mainDisplay($controller, $userId);
+            $result = $procedures->mainDisplay($controller, $userId, null, null, 'procedureDate', 'desc');
         } elseif ($param2 === 'update') {
             $result = $procedures->saveItem($entityManager, $controller, $userId, $param3);
         } elseif ($param1 === 'delete') {

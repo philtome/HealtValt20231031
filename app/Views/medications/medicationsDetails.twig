@@ -19,7 +19,7 @@
                         <label class="col-sm-4 col-form-label text-end">Start Date:</label>
                         <div class="col-sm-8">
                         <input type="date" name="datestarted" id="datestarted"
-                               value="{{ nedications.dateStarted }}" class="form-control">
+                               value="{{ medications.dateStarted|date('Y-m-d')  }}" class="form-control">
                         </div>
                     </div>
 

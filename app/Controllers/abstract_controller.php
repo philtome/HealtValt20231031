@@ -60,7 +60,7 @@ abstract class abstract_controller
         $this->entityManager->flush();
     }
 
-    public function mainDisplay($controllerClassName, $userId, $subListId = null, $subListClass = null)
+    public function mainDisplay($controllerClassName, $userId, $subListId = null, $subListClass = null, $sortBy = null, $sortOrder = null)
     {
         $modelClassName = $this->namespace . '\\' . ucfirst($controllerClassName);
         // namespace is from $namespace setting in abstract_controller
@@ -82,7 +82,7 @@ abstract class abstract_controller
                 $dataToDisplay = $this->beforeDisplayExit($this->em->getRepository($modelClassName)->findAll());}
             else {
             $dataToDisplay = $this->beforeDisplayExit($this->em->getRepository($modelClassName)
-                ->findBy(['userID' => $userId]));}
+                ->findBy(['userID' => $userId], $sortBy ? [$sortBy => $sortOrder] : []));}
         }
 
         $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
