@@ -1,8 +1,10 @@
 <tr id='blood_pressurerow_{{ blood_pressure.id }}' data-sa-id="{{ blood_pressure.id }}" data-visit-id='{{ blood_pressure.id }}' class="newlyAdded">
     {# 20191015 changed productrow to Productrow - was not working in delete product #}
     <td id="blood_pressure_systolicpressure_{{ blood_pressure.id }}">{{ blood_pressure.bloodPressureDate|date('Y-m-d H:i') }}</td>
-    <td id="blood_pressure_systolicpressure_{{ blood_pressure.id }}">{{ blood_pressure.systolicPressure }} mm[Hg]</td>
-    <td id="blood_pressure_diastolicpressure_{{ blood_pressure.id }}">{{ blood_pressure.diastolicPressure }}</td>
+    <td id="blood_pressure_combinedpressure_{{ blood_pressure.id }}">
+        {{ blood_pressure.systolicPressure }} /
+        {{ blood_pressure.diastolicPressure }} mm[Hg]
+    </td>
     {#    <td id="datestarted_{{ blood_pressure.id }}">{{ blood_pressure.dateStarted|date('Y-m-d') }}</td>#}
     {#    <td id="strength_{{ blood_pressure.id }}">{{ blood_pressure.strength }}</td>#}
 

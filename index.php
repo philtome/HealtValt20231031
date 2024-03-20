@@ -23,6 +23,7 @@ use App\Controllers\users_controller;
 use App\Controllers\visits_controller;
 use App\Controllers\blood_pressures_controller;
 use App\Controllers\procedures_controller;
+use App\Controllers\creatinines_controller;
 
 
 // Define your routes and include the necessary controllers
@@ -229,6 +230,32 @@ switch ($controller) {
         }
         break;
 
+    case 'creatinines':
+        $creatinines = new creatinines_controller($entityManager);
+        //$entityClassName = 'App\Models\Participants';
+        if (is_null($param1)) {
+            $result = $creatinines->mainDisplay($controller, $userId, null, null, 'creatinineDate', 'desc');
+        } elseif ($param1 === '') {
+            $result = $creatinines->mainDisplay($controller, $userId, null, null, 'creatinineDate', 'desc');
+        } elseif ($param2 === 'update') {
+            $result = $creatinines->saveItem($entityManager, $controller, $userId, $param3);
+        } elseif ($param1 === 'delete') {
+            $result = $creatinines->deleteItem($entityManager, $controller, $param2);
+        } elseif ($param1 === 'display') {
+            $result = $creatinines->mainDisplay();
+        } elseif ($param1 === 'manage') {
+            $result = $creatinines->manageItem($entityManager, $param2, $controller);
+        } elseif ($param1 === 'print') {
+            $result = $creatinines->manageItem($entityManager, $param2, $controller, 'PDF');
+        } elseif ($param1 === 'create') {
+            $result = $creatinines->manageItem($entityManager, $param2, $controller);
+        } elseif ($param1 === 'copy') {
+            $result = $creatinines->copyItem($entityManager, $controller, $param2);
+        } else {
+            $result = $creatinines->action1($param1, $param2, $param3);
+        }
+        break;
+        
     case 'procedures':
         $procedures = new procedures_controller($entityManager);
         //$entityClassName = 'App\Models\Participants';

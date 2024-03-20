@@ -30,15 +30,35 @@
             <a href="/procedures" class="nav-link px-0 align-middle">
                 <i class="fa-solid fa-mask-face"></i> <span class="ms-1 d-none d-sm-inline">Surgeries/Procedures/Studies</span></a>
             </li>
-            <a href="/labs" class="nav-link px-0 align-middle">
-                <i class="fa-solid fa-vial"></i> <span class="ms-1 d-none d-sm-inline">Labs - future</span></a>
-            </li>
 
+
+
+            <li>
+                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">
+                        <i class="fa-solid fa-vials"></i>Lab Results</span> </a>
+                {# NOTE Open menuse: this code would show the list upon page load (note the 'show'):#}
+                {#     <ul class="collapse show nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">#}
+                <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                    <li class="w-100 ms-2">
+                        <a href="/creatinines" class="nav-link px-0">
+                            <i class="fa-solid fa-syringe"></i></i><span class="ms-1 d-none d-sm-inline">Creatinine</span></a>
+                    </li>
+                    <li class="ms-2">
+                        <a href="/hemoglobin" class="nav-link px-0">
+                            <i class="fa-regular fa-syringe"></i><span class="ms-1 d-none d-sm-inline">Hemoglobin A1c</span></a>
+                    </li>
+                    <li class="ms-2">
+                        <a href="/cholesterol" class="nav-link px-0">
+                            <i class="fa-duotone fa-syringe"></i><span class="ms-1 d-none d-sm-inline">Cholesterol/Lipids - future</span></a>
+                    </li>
+                </ul>
+            </li>
 
             <li>
                 <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">
-                        <i class="fa-solid fa-gear"></i></i>Vitals</span> </a>
+                        <i class="fa-solid fa-heart-pulse"></i>Vital Signs</span> </a>
                 {# NOTE Open menuse: this code would show the list upon page load (note the 'show'):#}
                 {#     <ul class="collapse show nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">#}
                 <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">

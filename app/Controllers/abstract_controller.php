@@ -117,6 +117,13 @@ abstract class abstract_controller
                 $dataToDisplay->setBloodPressureDate($formattedDate);
             }
 
+            if ($controllerClassName === 'creatinines') {
+                $formattedDate = $dataToDisplay->getCreatinineDate()->format('Y-m-d H:i');
+
+                // Replace the 'assessment.date' property value with the formatted date string
+                $dataToDisplay->setCreatinineDate($formattedDate);
+            }
+
             if ($controllerClassName === 'procedures') {
                 $formattedDate = $dataToDisplay->getProcedureDate()->format('Y-m-d');
 

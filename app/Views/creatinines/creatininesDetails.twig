@@ -1,0 +1,63 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    - Creatinine Details
+{% endblock %}
+
+{% set navHeader = 'Creatinine Details -'  ~ visits.firstName ~ ' ' ~ visits.lastName %}
+
+{% block body %}
+    <!-- Specific content for template1.twig -->
+
+    <div class="container mt-4">
+        <form id="creatinine_details_form">
+            <div class="row">
+                <!-- First Column -->
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+                        <label for="dateTimeField" class="form-label">Creatinine Date/Time:</label>
+                        <input type="datetime-local" name="creatininedate" id="creatininedate"
+                               value="{{  creatinines.creatinineDate }}" class="form-control">
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="creatininevalue" class="col-sm-4 col-form-label text-end">Creatinine Value:</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" name="creatininevalue" id="creatininevalue"
+                                       value="{{ creatinines.creatinineValue }}" class="form-control">
+                                <span class="input-group-text">mg/dL</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- second colun -->
+                    {#                <div class="col-sm-6">#}
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Notes:</label>
+                        <div class="col-sm-8">
+            <textarea name="creatininenotes" id="creatininenotes"
+                      class="form-control h-auto pt-3"
+                      aria-describedby="creatininenotesHelp">{{ creatinines.creatinineNotes }}</textarea>
+                        </div>
+                    </div>
+
+                    {#                </div>#}
+                </div>
+            </div>
+
+
+
+            <div class="form-group row mt-4 saveButton" data-item-id="{{ creatinines.id }}">
+                <div class="col-sm-12 text-center">
+                    <button id="btn_save" data-sa-object="creatinine" type="submit" class="btn btn-primary">Save</button>
+                    <button id="btn_cancel" type="button" class="btn btn-secondary btnCancel">Cancel</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}

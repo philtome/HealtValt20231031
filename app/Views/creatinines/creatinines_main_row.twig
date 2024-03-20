@@ -1,0 +1,37 @@
+<tr id='creatininerow_{{ creatinine.id }}' data-sa-id="{{ creatinine.id }}" data-visit-id='{{ creatinine.id }}' class="newlyAdded">
+    {# 20191015 changed productrow to Productrow - was not working in delete product #}
+    <td id="creatinine_systolicpressure_{{ creatinine.id }}">{{ creatinine.creatinineDate|date('Y-m-d H:i') }}</td>
+    <td id="creatinine_combinedpressure_{{ creatinine.id }}">
+        {{ creatinine.creatinineValue }} mg/dL
+    </td>
+    {#    <td id="datestarted_{{ creatinine.id }}">{{ blood_pressure.dateStarted|date('Y-m-d') }}</td>#}
+    {#    <td id="strength_{{ creatinine.id }}">{{ blood_pressure.strength }}</td>#}
+
+    <td id="creatinine_notes_{{ creatinine.id }}">{{ creatinine.creatinineNotes }}</td>
+
+    <td  id="creatine_manage_{{ creatinine.id }}" class="creatinine_manage">
+        <button class="manageEdit btn btn-primary" data-sa-object="creatinine" data-item-id="{{ creatinine.id }}" title="Edit/Display">
+            <i class="fa-solid fa-pencil"></i></button>
+    </td>
+
+    <td id="creatininecopy_{{ creatinine.id }}" class="creatinine_copy">
+        <button class="copy btn btn-primary" data-sa-object="creatinine" data-item-id="{{ creatinine.id }}" title="Copy/Duplicate">
+            <i class="fa-solid fa-copy"></i></button>
+    </td>
+
+    <td  id="creatinineprint_{{ creatinine.id }}" class="creatinine_print">
+        <button class="print btn btn-primary" data-sa-object="creatinine" data-item-id="{{ creatinine.id }}" title="Print">
+            <i class="fa-solid fa-print"></i></button>
+    </td>
+
+    <td id="creatininedelete_{{ creatinine.id }}" class="creatinine_delete">
+        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="creatinine" data-item-id="{{ creatinine.id }}"  title="Delete">
+            <i class="fa-solid fa-trash-can"></i></button>
+    </td>
+    {#    <td>#}
+    {#    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">visits</button>#}
+    {#    </td>#}
+    {#    <td>#}
+    {#        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Care Plans</button>#}
+    {#    </td>#}
+</tr>
