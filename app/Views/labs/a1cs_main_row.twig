@@ -1,0 +1,37 @@
+<tr id='a1crow_{{ a1c.id }}' data-sa-id="{{ a1c.id }}" data-visit-id='{{ a1c.id }}' class="newlyAdded">
+    {# 20191015 changed productrow to Productrow - was not working in delete product #}
+    <td id="a1c_systolicpressure_{{ a1c.id }}">{{ a1c.a1cDate|date('Y-m-d H:i') }}</td>
+    <td id="a1c_combinedpressure_{{ a1c.id }}">
+        {{ a1c.a1cValue }} %
+    </td>
+    {#    <td id="datestarted_{{ a1c.id }}">{{ blood_pressure.dateStarted|date('Y-m-d') }}</td>#}
+    {#    <td id="strength_{{ a1c.id }}">{{ blood_pressure.strength }}</td>#}
+
+    <td id="a1c_notes_{{ a1c.id }}">{{ a1c.a1cNotes }}</td>
+
+    <td  id="creatine_manage_{{ a1c.id }}" class="a1c_manage">
+        <button class="manageEdit btn btn-primary" data-sa-object="a1c" data-item-id="{{ a1c.id }}" title="Edit/Display">
+            <i class="fa-solid fa-pencil"></i></button>
+    </td>
+
+    <td id="a1ccopy_{{ a1c.id }}" class="a1c_copy">
+        <button class="copy btn btn-primary" data-sa-object="a1c" data-item-id="{{ a1c.id }}" title="Copy/Duplicate">
+            <i class="fa-solid fa-copy"></i></button>
+    </td>
+
+    <td  id="a1cprint_{{ a1c.id }}" class="a1c_print">
+        <button class="print btn btn-primary" data-sa-object="a1c" data-item-id="{{ a1c.id }}" title="Print">
+            <i class="fa-solid fa-print"></i></button>
+    </td>
+
+    <td id="a1cdelete_{{ a1c.id }}" class="a1c_delete">
+        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="a1c" data-item-id="{{ a1c.id }}"  title="Delete">
+            <i class="fa-solid fa-trash-can"></i></button>
+    </td>
+    {#    <td>#}
+    {#    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">visits</button>#}
+    {#    </td>#}
+    {#    <td>#}
+    {#        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Care Plans</button>#}
+    {#    </td>#}
+</tr>

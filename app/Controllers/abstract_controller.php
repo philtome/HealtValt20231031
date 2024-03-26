@@ -60,7 +60,7 @@ abstract class abstract_controller
         $this->entityManager->flush();
     }
 
-    public function mainDisplay($controllerClassName, $userId, $subListId = null, $subListClass = null, $sortBy = null, $sortOrder = null)
+    public function mainDisplay($controllerClassName, $userId, $subListId = null, $subListClass = null, $sortBy = null, $sortOrder = null, $templateDir = null)
     {
         $modelClassName = $this->namespace . '\\' . ucfirst($controllerClassName);
         // namespace is from $namespace setting in abstract_controller
@@ -85,7 +85,12 @@ abstract class abstract_controller
                 ->findBy(['userID' => $userId], $sortBy ? [$sortBy => $sortOrder] : []));}
         }
 
-        $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'_main.twig';
+        // set the template directory to classname, or what was passed
+        if (is_null($templateDir)) {
+            // If null, set it to $controllerClassName
+            $templateDir = $controllerClassName;
+        }
+        $templateToDisplay = $templateDir.'\\'.$controllerClassName.'_main.twig';
         $arrayKey = $controllerClassName; // You can set this key dynamically
         //$navHeader = ucfirst($controllerClassName." list");
         $navHeader = ucwords(str_replace('_', ' ', $controllerClassName)." list");
@@ -94,7 +99,7 @@ abstract class abstract_controller
             // example of this is: ['participants' => $dataToDisplay]
         return renderTemplate($templateToDisplay, $templateData);
     }
-    public function manageItem($em,$id = null,$controllerClassName = null, $outputType = null)
+    public function manageItem($em,$id = null,$controllerClassName = null, $outputType = null, $templateDir = null)
     {
         $dataToDisplay = null;
         $modelClassName = $this->namespace . '\\' . ucfirst($controllerClassName);
@@ -124,11 +129,31 @@ abstract class abstract_controller
                 $dataToDisplay->setCreatinineDate($formattedDate);
             }
 
+            if ($controllerClassName === 'a1cs') {
+                $formattedDate = $dataToDisplay->getA1cDate()->format('Y-m-d H:i');
+
+                // Replace the 'assessment.date' property value with the formatted date string
+                $dataToDisplay->setA1cDate($formattedDate);
+            }
+
+            if ($controllerClassName === 'cholesterols') {
+                $formattedDate = $dataToDisplay->getCholesterolDate()->format('Y-m-d H:i');
+
+                // Replace the 'assessment.date' property value with the formatted date string
+                $dataToDisplay->setCholesterolDate($formattedDate);
+            }
+
             if ($controllerClassName === 'procedures') {
                 $formattedDate = $dataToDisplay->getProcedureDate()->format('Y-m-d');
 
                 // Replace the 'assessment.date' property value with the formatted date string
                 $dataToDisplay->setProcedureDate($formattedDate);
+            }
+            if ($controllerClassName === 'weights') {
+                $formattedDate = $dataToDisplay->getWeightDate()->format('Y-m-d');
+
+                // Replace the 'assessment.date' property value with the formatted date string
+                $dataToDisplay->setWeightDate($formattedDate);
             }
 
         }
@@ -146,7 +171,12 @@ abstract class abstract_controller
             $templateData = array_merge($templateData, $dropDownLists);
         }
 
-        $templateToDisplay = $controllerClassName.'\\'.$controllerClassName.'Details.twig';
+        // set the template directory to classname, or what was passed
+        if (is_null($templateDir)) {
+            // If null, set it to $controllerClassName
+            $templateDir = $controllerClassName;
+        }
+        $templateToDisplay = $templateDir.'\\'.$controllerClassName.'Details.twig';
         $htmlContent = renderTemplate($templateToDisplay, $templateData, $outputType);
         if ($outputType === "PDF") {
             $this->generatePdf($htmlContent,'example.pdf');
@@ -177,14 +207,19 @@ abstract class abstract_controller
         $dataSaver->saveData($entityClassName,$CopyFromItem);
     }
 
-    public function deleteItem($em,$controller,$id)
+    public function deleteItem($em,$controller,$id, $templateDir = null)
     {
         $namespace = $this->namespace;
         $entityClassName = $namespace.'\\'.ucfirst($controller);
         $dataSaver = new DataSaver($em);
         //$deleteItem = $this->em->find($entityClassName,$id);
         $dataSaver->deleteData($entityClassName,$id);
-        $templateToDisplay = $controller.'\\'.$controller.'_main.twig';
+        // set the template directory to classname, or what was passed
+        if (is_null($templateDir)) {
+            // If null, set it to $controllerClassName
+            $templateDir = $controller;
+        }
+        $templateToDisplay = $templateDir.'\\'.$controller.'_main.twig';
         //return renderTemplate($templateToDisplay, ['participantsController' => $participants->getParticipantsList()]);
     }
 

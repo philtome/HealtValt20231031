@@ -24,6 +24,9 @@ use App\Controllers\visits_controller;
 use App\Controllers\blood_pressures_controller;
 use App\Controllers\procedures_controller;
 use App\Controllers\creatinines_controller;
+use App\Controllers\a1cs_controller;
+use App\Controllers\cholesterols_controller;
+use App\Controllers\weights_controller;
 
 
 // Define your routes and include the necessary controllers
@@ -230,6 +233,33 @@ switch ($controller) {
         }
         break;
 
+    case 'weights':
+        $weights = new weights_controller($entityManager);
+        $templateDir = 'vitals';
+        //$entityClassName = 'App\Models\Participants';
+        if (is_null($param1)) {
+            $result = $weights->mainDisplay($controller, $userId, null, null, 'weightDate', 'desc', $templateDir);
+        } elseif ($param1 === '') {
+            $result = $weights->mainDisplay($controller, $userId, null, null, 'weightDate', 'desc', $templateDir);
+        } elseif ($param2 === 'update') {
+            $result = $weights->saveItem($entityManager, $controller, $userId, $param3);
+        } elseif ($param1 === 'delete') {
+            $result = $weights->deleteItem($entityManager, $controller, $param2, $templateDir);
+        } elseif ($param1 === 'display') {
+            $result = $weights->mainDisplay();
+        } elseif ($param1 === 'manage') {
+            $result = $weights->manageItem($entityManager, $param2, $controller, null, $templateDir);
+        } elseif ($param1 === 'print') {
+            $result = $weights->manageItem($entityManager, $param2, $controller, 'PDF', $templateDir);
+        } elseif ($param1 === 'create') {
+            $result = $weights->manageItem($entityManager, $param2, $controller, null, $templateDir);
+        } elseif ($param1 === 'copy') {
+            $result = $weights->copyItem($entityManager, $controller, $param2);
+        } else {
+            $result = $weights->action1($param1, $param2, $param3);
+        }
+        break;
+
     case 'creatinines':
         $creatinines = new creatinines_controller($entityManager);
         //$entityClassName = 'App\Models\Participants';
@@ -255,7 +285,61 @@ switch ($controller) {
             $result = $creatinines->action1($param1, $param2, $param3);
         }
         break;
+
+    case 'a1cs':
+        $a1cs = new a1cs_controller($entityManager);
+        $templateDir = 'labs';
+        //$entityClassName = 'App\Models\Participants';
+        if (is_null($param1)) {
+            $result = $a1cs->mainDisplay($controller, $userId, null, null, 'a1cDate', 'desc', $templateDir);
+        } elseif ($param1 === '') {
+            $result = $a1cs->mainDisplay($controller, $userId, null, null, 'a1cDate', 'desc', $templateDir);
+        } elseif ($param2 === 'update') {
+            $result = $a1cs->saveItem($entityManager, $controller, $userId, $param3);
+        } elseif ($param1 === 'delete') {
+            $result = $a1cs->deleteItem($entityManager, $controller, $param2, $templateDir);
+        } elseif ($param1 === 'display') {
+            $result = $a1cs->mainDisplay();
+        } elseif ($param1 === 'manage') {
+            $result = $a1cs->manageItem($entityManager, $param2, $controller, null, $templateDir);
+        } elseif ($param1 === 'print') {
+            $result = $a1cs->manageItem($entityManager, $param2, $controller, 'PDF', $templateDir);
+        } elseif ($param1 === 'create') {
+            $result = $a1cs->manageItem($entityManager, $param2, $controller, null, $templateDir);
+        } elseif ($param1 === 'copy') {
+            $result = $a1cs->copyItem($entityManager, $controller, $param2);
+        } else {
+            $result = $a1cs->action1($param1, $param2, $param3);
+        }
+        break;
         
+    case 'cholesterols':
+        $cholesterols = new cholesterols_controller($entityManager);
+        $templateDir = 'labs';
+        //$entityClassName = 'App\Models\Participants';
+        if (is_null($param1)) {
+            $result = $cholesterols->mainDisplay($controller, $userId, null, null, 'cholesterolDate', 'desc', $templateDir);
+        } elseif ($param1 === '') {
+            $result = $cholesterols->mainDisplay($controller, $userId, null, null, 'cholesterolDate', 'desc', $templateDir);
+        } elseif ($param2 === 'update') {
+            $result = $cholesterols->saveItem($entityManager, $controller, $userId, $param3);
+        } elseif ($param1 === 'delete') {
+            $result = $cholesterols->deleteItem($entityManager, $controller, $param2, $templateDir);
+        } elseif ($param1 === 'display') {
+            $result = $cholesterols->mainDisplay();
+        } elseif ($param1 === 'manage') {
+            $result = $cholesterols->manageItem($entityManager, $param2, $controller, null, $templateDir);
+        } elseif ($param1 === 'print') {
+            $result = $cholesterols->manageItem($entityManager, $param2, $controller, 'PDF', $templateDir);
+        } elseif ($param1 === 'create') {
+            $result = $cholesterols->manageItem($entityManager, $param2, $controller, null, $templateDir);
+        } elseif ($param1 === 'copy') {
+            $result = $cholesterols->copyItem($entityManager, $controller, $param2);
+        } else {
+            $result = $cholesterols->action1($param1, $param2, $param3);
+        }
+        break;
+
     case 'procedures':
         $procedures = new procedures_controller($entityManager);
         //$entityClassName = 'App\Models\Participants';

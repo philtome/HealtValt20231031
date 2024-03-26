@@ -1,0 +1,37 @@
+<tr id='weightrow_{{ weight.id }}' data-sa-id="{{ weight.id }}" data-visit-id='{{ weight.id }}' class="newlyAdded">
+    {# 20191015 changed productrow to Productrow - was not working in delete product #}
+    <td id="weight_systolicpressure_{{ weight.id }}">{{ weight.weightDate|date('Y-m-d') }}</td>
+    <td id="weight_combinedpressure_{{ weight.id }}">
+        {{ weight.weightValue }} %
+    </td>
+    {#    <td id="datestarted_{{ weight.id }}">{{ blood_pressure.dateStarted|date('Y-m-d') }}</td>#}
+    {#    <td id="strength_{{ weight.id }}">{{ blood_pressure.strength }}</td>#}
+
+    <td id="weight_notes_{{ weight.id }}">{{ weight.weightNotes }}</td>
+
+    <td  id="weight_manage_{{ weight.id }}" class="weight_manage">
+        <button class="manageEdit btn btn-primary" data-sa-object="weight" data-item-id="{{ weight.id }}" title="Edit/Display">
+            <i class="fa-solid fa-pencil"></i></button>
+    </td>
+
+    <td id="weightcopy_{{ weight.id }}" class="weight_copy">
+        <button class="copy btn btn-primary" data-sa-object="weight" data-item-id="{{ weight.id }}" title="Copy/Duplicate">
+            <i class="fa-solid fa-copy"></i></button>
+    </td>
+
+    <td  id="weightprint_{{ weight.id }}" class="weight_print">
+        <button class="print btn btn-primary" data-sa-object="weight" data-item-id="{{ weight.id }}" title="Print">
+            <i class="fa-solid fa-print"></i></button>
+    </td>
+
+    <td id="weightdelete_{{ weight.id }}" class="weight_delete">
+        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="weight" data-item-id="{{ weight.id }}"  title="Delete">
+            <i class="fa-solid fa-trash-can"></i></button>
+    </td>
+    {#    <td>#}
+    {#    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">visits</button>#}
+    {#    </td>#}
+    {#    <td>#}
+    {#        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Care Plans</button>#}
+    {#    </td>#}
+</tr>

@@ -1,0 +1,68 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    - Creatinine Details
+{% endblock %}
+
+{% set navHeader = 'Hemoglobin A1c Details -'  ~ visits.firstName ~ ' ' ~ visits.lastName %}
+
+{% block body %}
+    <!-- Specific content for template1.twig -->
+
+    <div class="container mt-4">
+        <form id="a1c_details_form">
+            <div class="row">
+                <!-- First Column -->
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+                        <label for="dateTimeField" class="form-label">Creatinine Date/Time:</label>
+                        <input type="datetime-local" name="a1cdate" id="a1cdate"
+                                {% if a1cs.a1cDate is null %}
+                                    value="{{ now|date('Y-m-d H:i') }}"
+                                {% else %}
+                                    value="{{ a1cs.a1cDate }}"
+                                {% endif %}
+                               class="form-control">
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="a1cvalue" class="col-sm-4 col-form-label text-end">Hemoglobin A1c Value:</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" name="a1cvalue" id="a1cvalue"
+                                       value="{{ a1cs.a1cValue }}" class="form-control">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- second colun -->
+                    {#                <div class="col-sm-6">#}
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Notes:</label>
+                        <div class="col-sm-8">
+            <textarea name="a1cnotes" id="a1cnotes"
+                      class="form-control h-auto pt-3"
+                      aria-describedby="a1cnotesHelp">{{ a1cs.a1cNotes }}</textarea>
+                        </div>
+                    </div>
+
+                    {#                </div>#}
+                </div>
+            </div>
+
+
+
+            <div class="form-group row mt-4 saveButton" data-item-id="{{ a1cs.id }}">
+                <div class="col-sm-12 text-center">
+                    <button id="btn_save" data-sa-object="a1c" type="submit" class="btn btn-primary">Save</button>
+                    <button id="btn_cancel" type="button" class="btn btn-secondary btnCancel">Cancel</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+<tr id='cholesterolrow_{{ cholesterol.id }}' data-sa-id="{{ cholesterol.id }}" data-visit-id='{{ cholesterol.id }}' class="newlyAdded">
+    {# 20191015 changed productrow to Productrow - was not working in delete product #}
+    <td id="cholesterol_cholesteroldate_{{ cholesterol.id }}">{{ cholesterol.cholesterolDate|date('Y-m-d H:i') }}</td>
+    <td id="cholesterol_cholesteroltotalvalue_{{ cholesterol.id }}">
+        {{ cholesterol.cholesterolTotalValue }} %
+    </td>
+    {#    <td id="datestarted_{{ cholesterol.id }}">{{ blood_pressure.dateStarted|date('Y-m-d') }}</td>#}
+    {#    <td id="strength_{{ cholesterol.id }}">{{ blood_pressure.strength }}</td>#}
+
+    <td id="cholesterolhdlvalue_{{ cholesterol.id }}">{{ cholesterol.cholesterolHdlValue }}</td>
+    <td id="cholesterolldlvalue_{{ cholesterol.id }}">{{ cholesterol.cholesterolldlValue }}</td>
+    <td id="triglyceridesTotalValue_{{ cholesterol.id }}">{{ cholesterol.triglyceridesTotalValue }}</td>
+
+    <td  id="cholesterol_manage_{{ cholesterol.id }}" class="cholesterol_manage">
+        <button class="manageEdit btn btn-primary" data-sa-object="cholesterol" data-item-id="{{ cholesterol.id }}" title="Edit/Display">
+            <i class="fa-solid fa-pencil"></i></button>
+    </td>
+
+    <td id="cholesterolcopy_{{ cholesterol.id }}" class="cholesterol_copy">
+        <button class="copy btn btn-primary" data-sa-object="cholesterol" data-item-id="{{ cholesterol.id }}" title="Copy/Duplicate">
+            <i class="fa-solid fa-copy"></i></button>
+    </td>
+
+    <td  id="cholesterolprint_{{ cholesterol.id }}" class="cholesterol_print">
+        <button class="print btn btn-primary" data-sa-object="cholesterol" data-item-id="{{ cholesterol.id }}" title="Print">
+            <i class="fa-solid fa-print"></i></button>
+    </td>
+
+    <td id="cholesteroldelete_{{ cholesterol.id }}" class="cholesterol_delete">
+        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="cholesterol" data-item-id="{{ cholesterol.id }}"  title="Delete">
+            <i class="fa-solid fa-trash-can"></i></button>
+    </td>
+    {#    <td>#}
+    {#    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">visits</button>#}
+    {#    </td>#}
+    {#    <td>#}
+    {#        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Care Plans</button>#}
+    {#    </td>#}
+</tr>
