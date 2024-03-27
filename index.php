@@ -109,7 +109,7 @@ if (isset($_SESSION['userId'])) {
     $userController = new users_controller($entityManager);
 
     $initials = $userController->getFirstInitialsByUserUid($userId);
-
+    $_SESSION["initials"] = $initials;
 
 
 

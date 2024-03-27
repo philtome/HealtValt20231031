@@ -9,7 +9,9 @@ use Twig\Extension\DebugExtension;
 function renderTemplate(string $templateName, array $contextData = [], string $outPutType = null): string
 {
 
-
+    if (isset($_SESSION['initials'])) {
+        $contextData['initials'] = $_SESSION['initials'];
+    }
     $loader = new FilesystemLoader(__DIR__ . '/Views');
     $twig = new Environment($loader, ['debug' => true, 'cache' => __DIR__ . '/twig_cache',]);
 
