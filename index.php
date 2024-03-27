@@ -102,6 +102,19 @@ else {
 
 if (isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];
+
+
+
+
+    $userController = new users_controller($entityManager);
+
+    $initials = $userController->getFirstInitialsByUserUid($userId);
+
+
+
+
+
+
     // You can now use the $userId variable for further processing
 }
 

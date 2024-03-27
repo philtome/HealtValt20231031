@@ -89,6 +89,29 @@ class users_controller extends abstract_controller
         }
 
     }
+
+
+    public function getFirstInitialsByUserUid($useruid)
+    {
+        $user = $this->em->getRepository(Users::class)->findOneBy(['id' => $useruid]);
+
+        if ($user) {
+            $firstName = $user->getFirstName();
+            $lastName = $user->getLastName();
+
+            if ($firstName && $lastName) {
+                return substr($firstName, 0, 1) . substr($lastName, 0, 1);
+            } else {
+                // Handle case where firstName or lastName is null (optional)
+                return '';  // Example of returning empty string
+            }
+        } else {
+            // Handle case where user with the provided useruid is not found (optional)
+            return null;  // Example of returning null
+        }
+    }
+
+
     public function isPasswordValid(User $user, string $enteredPassword): bool {
         return password_verify($enteredPassword, $user->getPassword());
     }
