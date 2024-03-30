@@ -56,8 +56,13 @@
                         </div>
                     </div>
 
-
-
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Stop Date:</label>
+                        <div class="col-sm-8">
+                            <input type="date" name="datestopped" id="datestopped"
+                                   value="{{ medications.dateStopped ? medications.dateStopped|date('Y-m-d') : '' }}" class="form-control">
+                        </div>
+                    </div>
 
 
                 <!-- second colun -->
@@ -65,13 +70,23 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-end">Notes:</label>
                         <div class="col-sm-8">
-            <textarea name="medicationnotes" id="medicationnotes"
-                      class="form-control h-auto pt-3"
-                      aria-describedby="medicationnotesHelp">{{ medications.notes }}</textarea>
+        <textarea name="medicationnotes" id="medicationnotes"
+                  class="form-control h-auto pt-3"
+                  aria-describedby="medicationnotesHelp">{{ medications.notes }}</textarea>
                         </div>
                     </div>
 
-{#                </div>#}
+                    <div class="form-group row">
+                        <div class="col-sm-4"></div>  <div class="col-sm-8">
+                            <div class="form-check form-check-inline">  <input type="checkbox" name="medicationinactive" id="inactiveCheckbox" {{ medications.inactive == 'on' ? 'checked' : '' }} class="mt-3">
+                                <label class="form-check-label" for="inactiveCheckbox">Mark as Inactive</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                 </div>
             </div>
 

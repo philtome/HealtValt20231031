@@ -69,9 +69,9 @@ class DataSaver
                     $propertyValue = $data->$getterMethod();
 
                     // Check if the property value is not null before setting it in the entity
-                    if ($propertyValue !== null) {
+//                    if ($propertyValue !== null) {
                         $entity->$setterMethod($propertyValue);
-                    }
+//                    }
                 }
             }
         }
@@ -143,10 +143,10 @@ class DataSaver
                 $propertyValue = $dataToSave->$getterMethod();
 
                 // Check if the value is not null
-                if ($propertyValue !== null) {
+//                if ($propertyValue !== null) {
                     // Use the setter to insert the value into the database
                     $propertyNames[] = $property->getName();
-                }}
+                } //}
             }
         }
         return $propertyNames;

@@ -36,6 +36,22 @@ createButtonItems.forEach(item => {
     });
 });
 
+
+var showInactives = document.querySelectorAll('#showInactive');  //this is an id
+showInactives.forEach(item => {
+    item.addEventListener('click', function() {
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        var itemController = this.getAttribute('data-sa-object');
+        var itemAction = this.getAttribute('data-sa-action')
+        var isChecked = this.checked;  //what it changed to t/f
+
+        handleInactivesList(itemController, itemAction,isChecked);
+        //handleCreateItem(itemController,itemAction, isChecked);   // this routine is in editFunctions
+    });
+});
+
+
+
 // MANAGE or EDIT Buttons
 var manageButtonItems = document.querySelectorAll('.manageEdit');  //this is a class
 manageButtonItems.forEach(item => {

@@ -42,6 +42,9 @@ class Medications
     #[ORM\Column(type: 'string', length: 255,nullable: true)]
     protected  string|null $reason;
 
+    #[ORM\Column(type: 'string', length: 59,nullable: true)]
+    protected  string|null $inactive;
+
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     protected string|null $notes;
 
@@ -86,6 +89,7 @@ class Medications
      */
     public function getDateStopped()
     {
+
         return $this->dateStopped;
     }
 
@@ -94,6 +98,9 @@ class Medications
      */
     public function setDateStopped($dateStopped): void
     {
+        if ($dateStopped === "") {
+            $dateStopped = null;
+        }
         $this->dateStopped = $dateStopped;
     }
 
@@ -155,6 +162,16 @@ class Medications
     public function setReason(?string $reason): void
     {
         $this->reason = $reason;
+    }
+
+    public function getInactive(): ?string
+    {
+        return $this->inactive;
+    }
+
+    public function setInactive(?string $inactive): void
+    {
+        $this->inactive = $inactive;
     }
 
     public function getNotes(): ?string

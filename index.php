@@ -201,12 +201,13 @@ switch ($controller) {
             $result = $medications->mainDisplay($controller, $userId, null, null, 'medicationName', 'asc');
         } elseif ($param1 === '') {
             $result = $medications->mainDisplay($controller, $userId, null, null, 'medicationName', 'asc');
+        } elseif ($param1 === 'display') {
+            $result = $medications->mainDisplay($controller, $userId, null, null, 'medicationName', 'asc', null, $param3);
         } elseif ($param2 === 'update') {
             $result = $medications->saveItem($entityManager, $controller, $userId, $param3);
         } elseif ($param1 === 'delete') {
             $result = $medications->deleteItem($entityManager, $controller, $param2);
-        } elseif ($param1 === 'display') {
-            $result = $medications->mainDisplay();
+
         } elseif ($param1 === 'manage') {
             $result = $medications->manageItem($entityManager, $param2, $controller);
         } elseif ($param1 === 'print') {

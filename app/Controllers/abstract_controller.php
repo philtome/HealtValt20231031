@@ -60,11 +60,13 @@ abstract class abstract_controller
         $this->entityManager->flush();
     }
 
-    public function mainDisplay($controllerClassName, $userId, $subListId = null, $subListClass = null, $sortBy = null, $sortOrder = null, $templateDir = null)
+    public function mainDisplay($controllerClassName, $userId, $subListId = null, $subListClass = null, $sortBy = null, $sortOrder = null, $templateDir = null, $showInactive = 'false')
     {
         $modelClassName = $this->namespace . '\\' . ucfirst($controllerClassName);
         // namespace is from $namespace setting in abstract_controller
 
+        $metadata = $this->em->getClassMetadata($modelClassName);
+        $hasInactiveFlagField = $metadata->hasField('inactive');
 
         if ($subListId !== null) {
             // Fetch assessments for the specified participant
@@ -79,10 +81,48 @@ abstract class abstract_controller
             $dataToDisplay = $subListItem->getAssessments();
         } else {
             if (!$userId) {
-                $dataToDisplay = $this->beforeDisplayExit($this->em->getRepository($modelClassName)->findAll());}
+                $dataToDisplay = $this->beforeDisplayExit($this->em->getRepository($modelClassName)->findAll());
+            }
             else {
-            $dataToDisplay = $this->beforeDisplayExit($this->em->getRepository($modelClassName)
-                ->findBy(['userID' => $userId], $sortBy ? [$sortBy => $sortOrder] : []));}
+
+                // next: check for inactive flag, if has one check for that
+
+                if ($hasInactiveFlagField) { // This has inactive flag field
+
+
+
+
+                    // Construct the filter array conditionally
+                    $filter = ['userID' => $userId];
+                    if ($showInactive === 'true') {
+                        $filter['inactive'] = ['on', null];
+                    } else {
+                        $filter['inactive'] = null;
+                    }
+
+
+
+
+
+
+                    // show only actives, if 'showinactive' is false (by default) do not show if 'inactive' is 'ON'
+                    $dataToDisplay = $this->beforeDisplayExit(
+                        $this->em->getRepository($modelClassName)
+                            ->findBy(
+                                $filter,
+                                $sortBy ? [$sortBy => $sortOrder] : []
+                            )
+                    );
+                }
+                else { // this has no inacive flag fields
+                $dataToDisplay = $this->beforeDisplayExit(
+                    $this->em->getRepository($modelClassName)
+                        ->findBy([
+                            'userID' => $userId,
+                        ],
+                            $sortBy ? [$sortBy => $sortOrder] : []));
+                }
+            }
         }
 
         // set the template directory to classname, or what was passed
@@ -95,7 +135,7 @@ abstract class abstract_controller
         //$navHeader = ucfirst($controllerClassName." list");
         $navHeader = ucwords(str_replace('_', ' ', $controllerClassName)." list");
 
-        $templateData = [$arrayKey => $dataToDisplay, 'navHeader' => $navHeader];
+        $templateData = [$arrayKey => $dataToDisplay, 'navHeader' => $navHeader, 'inactives' => $showInactive];
             // example of this is: ['participants' => $dataToDisplay]
         return renderTemplate($templateToDisplay, $templateData);
     }
