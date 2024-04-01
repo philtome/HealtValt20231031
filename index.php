@@ -438,7 +438,7 @@ switch ($controller) {
         } elseif ($param1 === '') {
             $result = $users->mainDisplay($controller, null);
         } elseif ($param2 === 'update') {
-            $result = $users->saveItem($entityManager, null, $controller, $param3);
+            $result = $users->saveItem($entityManager, $controller, $param3);
         } elseif ($param1 === 'delete') {
             $result = $users->deleteItem($entityManager, $controller, $param2);
         } elseif ($param1 === 'display') {
