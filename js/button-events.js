@@ -50,7 +50,15 @@ showInactives.forEach(item => {
     });
 });
 
-
+var printListItems = document.querySelectorAll('.printlist');  //this is a class
+printListItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Get the item ID from the "data-item-id" attribute of the clicked list item
+        var itemController = this.getAttribute('data-sa-object');
+        var itemAction = this.getAttribute('data-sa-action')
+        handleList(itemController,itemAction);
+    });
+});
 
 // MANAGE or EDIT Buttons
 var manageButtonItems = document.querySelectorAll('.manageEdit');  //this is a class

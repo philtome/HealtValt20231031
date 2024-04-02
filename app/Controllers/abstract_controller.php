@@ -60,7 +60,7 @@ abstract class abstract_controller
         $this->entityManager->flush();
     }
 
-    public function mainDisplay($controllerClassName, $userId, $subListId = null, $subListClass = null, $sortBy = null, $sortOrder = null, $templateDir = null, $showInactive = 'false')
+    public function mainDisplay($controllerClassName, $userId, $subListId = null, $subListClass = null, $sortBy = null, $sortOrder = null, $outputType = null, $templateDir = null, $showInactive = 'false')
     {
         $modelClassName = $this->namespace . '\\' . ucfirst($controllerClassName);
         // namespace is from $namespace setting in abstract_controller
@@ -135,9 +135,15 @@ abstract class abstract_controller
         //$navHeader = ucfirst($controllerClassName." list");
         $navHeader = ucwords(str_replace('_', ' ', $controllerClassName)." list");
 
-        $templateData = [$arrayKey => $dataToDisplay, 'navHeader' => $navHeader, 'inactives' => $showInactive];
+        $templateData = [$arrayKey => $dataToDisplay, 'outputType' => $outputType,'navHeader' => $navHeader, 'inactives' => $showInactive];
             // example of this is: ['participants' => $dataToDisplay]
-        return renderTemplate($templateToDisplay, $templateData);
+
+        $htmlContent = renderTemplate($templateToDisplay, $templateData, $outputType);
+        if ($outputType === "PDF") {
+            $this->generatePdf($htmlContent,'example.pdf');
+        }
+
+        //return renderTemplate($templateToDisplay, $templateData);
     }
     public function manageItem($em,$id = null,$controllerClassName = null, $outputType = null, $templateDir = null)
     {

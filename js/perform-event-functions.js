@@ -74,6 +74,15 @@ function handleInactivesList(itemController, itemAction, isChecked) {
 }
 
 
+function handleList(itemController, itemAction, isChecked = null) {
+    // Perform any actions needed for the edit, such as opening a modal or navigating to an edit page
+    // In this example, we will just log the item ID to the console
+    //console.log("Edit item with ID:", itemId);
+    let fetchUrl = "/index.php/" + itemController + "s/" + itemAction + "/" + isChecked;
+    window.location.href = fetchUrl;
+//    window.location.href = "../index.php/careplans_manage/1";
+}
+
 
 function setErrorMessage(message) {
     // Assuming you have an HTML element with the id "error-message" to display the error

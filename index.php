@@ -202,7 +202,9 @@ switch ($controller) {
         } elseif ($param1 === '') {
             $result = $medications->mainDisplay($controller, $userId, null, null, 'medicationName', 'asc');
         } elseif ($param1 === 'display') {
-            $result = $medications->mainDisplay($controller, $userId, null, null, 'medicationName', 'asc', null, $param3);
+            $result = $medications->mainDisplay($controller, $userId, null, null, 'medicationName', 'asc', null, null, $param3);
+        } elseif ($param1 === 'printlist') {
+            $result = $medications->mainDisplay($controller, $userId, null, null, 'medicationName', 'asc', 'PDF', null, $param3);
         } elseif ($param2 === 'update') {
             $result = $medications->saveItem($entityManager, $controller, $userId, $param3);
         } elseif ($param1 === 'delete') {

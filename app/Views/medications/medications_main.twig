@@ -20,6 +20,12 @@
                         <label class="form-check-label" for="showInactive">Include Inactive Medications</label>
                     </div>
                 </div>
+                <div class="col">
+                    <button class="btn btn-primary printlist m-2" data-sa-action="printlist" data-sa-object="medication">Print Med List
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+                </div>
             </div>
     {% if inactives == 'true' %}* = inactive med{% endif %}
             <div class="table-responsive">
