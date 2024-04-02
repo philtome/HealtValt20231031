@@ -13,6 +13,11 @@
 {#    <td id="strength_{{ medication.id }}">{{ medication.strength }}</td>#}
 
     <td id="datestarted_{{ medication.id }}">{{ medication.dateStarted|date('Y-m-d') }}</td>
+
+
+    {% if outputType is not defined or outputType != 'PDF' %}
+        {# do not include this section if PDF #}
+
     <td id="datestopped_{{ medication.id }}">{{ medication.dateStopped|date('Y-m-d') }}</td>
 
 
@@ -35,10 +40,8 @@
         <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="medication" data-item-id="{{ medication.id }}"  title="Delete">
             <i class="fa-solid fa-trash-can"></i></button>
     </td>
-{#    <td>#}
-{#    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">visits</button>#}
-{#    </td>#}
-{#    <td>#}
-{#        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Care Plans</button>#}
-{#    </td>#}
+
+    {% endif %}
+
+
 </tr>
