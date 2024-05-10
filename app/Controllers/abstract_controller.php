@@ -84,14 +84,8 @@ abstract class abstract_controller
                 $dataToDisplay = $this->beforeDisplayExit($this->em->getRepository($modelClassName)->findAll());
             }
             else {
-
                 // next: check for inactive flag, if has one check for that
-
                 if ($hasInactiveFlagField) { // This has inactive flag field
-
-
-
-
                     // Construct the filter array conditionally
                     $filter = ['userID' => $userId];
                     if ($showInactive === 'true') {
@@ -99,12 +93,6 @@ abstract class abstract_controller
                     } else {
                         $filter['inactive'] = null;
                     }
-
-
-
-
-
-
                     // show only actives, if 'showinactive' is false (by default) do not show if 'inactive' is 'ON'
                     $dataToDisplay = $this->beforeDisplayExit(
                         $this->em->getRepository($modelClassName)
@@ -137,12 +125,10 @@ abstract class abstract_controller
 
         $templateData = [$arrayKey => $dataToDisplay, 'outputType' => $outputType,'navHeader' => $navHeader, 'inactives' => $showInactive];
             // example of this is: ['participants' => $dataToDisplay]
-
         $htmlContent = renderTemplate($templateToDisplay, $templateData, $outputType);
         if ($outputType === "PDF") {
             $this->generatePdf($htmlContent,'example.pdf');
         }
-
         //return renderTemplate($templateToDisplay, $templateData);
     }
     public function manageItem($em,$id = null,$controllerClassName = null, $outputType = null, $templateDir = null)
