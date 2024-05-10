@@ -163,9 +163,9 @@ else {
             $visits = new visits_controller($entityManager);
             //$entityClassName = 'App\Models\Participants';
             if (is_null($param1)) {
-                $result = $visits->mainDisplay($controller, $userId);
+                $result = $visits->mainDisplay($controller, $userId, null, null, 'date', 'desc');
             } elseif ($param1 === '') {
-                $result = $visits->mainDisplay($controller, $userId);
+                $result = $visits->mainDisplay($controller, $userId, null, null, 'date', 'desc');
             } elseif ($param2 === 'update') {
                 $result = $visits->saveItem($entityManager, $controller, $userId, $param3);
             } elseif ($param1 === 'delete') {
