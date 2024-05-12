@@ -244,6 +244,7 @@ else {
             $weights = new weights_controller($entityManager);
             $templateDir = 'vitals';
             //$entityClassName = 'App\Models\Participants';
+            // add comment here for get upload
             if (is_null($param1)) {
                 $result = $weights->mainDisplay($controller, $userId, null, null, 'weightDate', 'desc', null, $templateDir);
             } elseif ($param1 === '') {
