@@ -245,9 +245,9 @@ else {
             $templateDir = 'vitals';
             //$entityClassName = 'App\Models\Participants';
             if (is_null($param1)) {
-                $result = $weights->mainDisplay($controller, $userId, null, null, 'weightDate', 'desc', $templateDir);
+                $result = $weights->mainDisplay($controller, $userId, null, null, 'weightDate', 'desc', null, $templateDir);
             } elseif ($param1 === '') {
-                $result = $weights->mainDisplay($controller, $userId, null, null, 'weightDate', 'desc', $templateDir);
+                $result = $weights->mainDisplay($controller, $userId, null, null, 'weightDate', 'desc', null, $templateDir);
             } elseif ($param2 === 'update') {
                 $result = $weights->saveItem($entityManager, $controller, $userId, $param3);
             } elseif ($param1 === 'delete') {
