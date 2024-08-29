@@ -25,6 +25,7 @@ use App\Controllers\blood_pressures_controller;
 use App\Controllers\procedures_controller;
 use App\Controllers\creatinines_controller;
 use App\Controllers\a1cs_controller;
+use App\Controllers\sirolimuss_controller;
 use App\Controllers\cholesterols_controller;
 use App\Controllers\weights_controller;
 
@@ -298,9 +299,9 @@ else {
             $templateDir = 'labs';
             //$entityClassName = 'App\Models\Participants';
             if (is_null($param1)) {
-                $result = $a1cs->mainDisplay($controller, $userId, null, null, 'a1cDate', 'desc', $templateDir);
+                $result = $a1cs->mainDisplay($controller, $userId, null, null, 'a1cDate', 'desc', null, $templateDir);
             } elseif ($param1 === '') {
-                $result = $a1cs->mainDisplay($controller, $userId, null, null, 'a1cDate', 'desc', $templateDir);
+                $result = $a1cs->mainDisplay($controller, $userId, null, null, 'a1cDate', 'desc', null, $templateDir);
             } elseif ($param2 === 'update') {
                 $result = $a1cs->saveItem($entityManager, $controller, $userId, $param3);
             } elseif ($param1 === 'delete') {
@@ -320,14 +321,41 @@ else {
             }
             break;
 
+        case 'sirolimuss':
+            $sirolimuss = new sirolimuss_controller($entityManager);
+            $templateDir = 'labs';
+            //$entityClassName = 'App\Models\Participants';
+            if (is_null($param1)) {
+                $result = $sirolimuss->mainDisplay($controller, $userId, null, null, 'sirolimusDate', 'desc', null, $templateDir);
+            } elseif ($param1 === '') {
+                $result = $sirolimuss->mainDisplay($controller, $userId, null, null, 'sirolimusDate', 'desc', null, $templateDir);
+            } elseif ($param2 === 'update') {
+                $result = $sirolimuss->saveItem($entityManager, $controller, $userId, $param3);
+            } elseif ($param1 === 'delete') {
+                $result = $sirolimuss->deleteItem($entityManager, $controller, $param2, $templateDir);
+            } elseif ($param1 === 'display') {
+                $result = $sirolimuss->mainDisplay();
+            } elseif ($param1 === 'manage') {
+                $result = $sirolimuss->manageItem($entityManager, $param2, $controller, null, $templateDir);
+            } elseif ($param1 === 'print') {
+                $result = $sirolimuss->manageItem($entityManager, $param2, $controller, 'PDF', $templateDir);
+            } elseif ($param1 === 'create') {
+                $result = $sirolimuss->manageItem($entityManager, $param2, $controller, null, $templateDir);
+            } elseif ($param1 === 'copy') {
+                $result = $sirolimuss->copyItem($entityManager, $controller, $param2);
+            } else {
+                $result = $sirolimuss->action1($param1, $param2, $param3);
+            }
+            break;
+
         case 'cholesterols':
             $cholesterols = new cholesterols_controller($entityManager);
             $templateDir = 'labs';
             //$entityClassName = 'App\Models\Participants';
             if (is_null($param1)) {
-                $result = $cholesterols->mainDisplay($controller, $userId, null, null, 'cholesterolDate', 'desc', $templateDir);
+                $result = $cholesterols->mainDisplay($controller, $userId, null, null, 'cholesterolDate', 'desc', null, $templateDir);
             } elseif ($param1 === '') {
-                $result = $cholesterols->mainDisplay($controller, $userId, null, null, 'cholesterolDate', 'desc', $templateDir);
+                $result = $cholesterols->mainDisplay($controller, $userId, null, null, 'cholesterolDate', 'desc', null, $templateDir);
             } elseif ($param2 === 'update') {
                 $result = $cholesterols->saveItem($entityManager, $controller, $userId, $param3);
             } elseif ($param1 === 'delete') {

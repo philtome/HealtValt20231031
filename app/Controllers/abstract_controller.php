@@ -174,6 +174,12 @@ abstract class abstract_controller
                 // Replace the 'assessment.date' property value with the formatted date string
                 $dataToDisplay->setCholesterolDate($formattedDate);
             }
+            if ($controllerClassName === 'sirolimuss') {
+                $formattedDate = $dataToDisplay->getSirolimusDate()->format('Y-m-d H:i');
+
+                // Replace the 'assessment.date' property value with the formatted date string
+                $dataToDisplay->setSirolimusDate($formattedDate);
+            }
 
             if ($controllerClassName === 'procedures') {
                 $formattedDate = $dataToDisplay->getProcedureDate()->format('Y-m-d');
