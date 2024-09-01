@@ -21,7 +21,7 @@ class Sirolimuss {
     #[ORM\Column(name: 'date', type:'datetime', nullable: false)]
     protected mixed $sirolimusDate;
 
-    #[ORM\Column(type: 'decimal', precision: 3, scale: 2, nullable: false)]
+    #[ORM\Column(type: 'decimal', precision: 4, scale: 2, nullable: false)]
     protected float $sirolimusValue;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
