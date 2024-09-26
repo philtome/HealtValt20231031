@@ -18,7 +18,7 @@ class Labresults
     #[ORM\Column(type: "integer", nullable: false)] // Adjusted for mandatory user
     protected int $userID; // Added property for user ID
 
-    #[ORM\ManyToOne(targetEntity: 'Labs', fetch: 'Eager')]
+    #[ORM\ManyToOne(targetEntity: 'Labmasters', fetch: 'Eager')]
     public $labresultsName;
 
     #[ORM\Column(name: 'date', type:'datetime', nullable: false)]

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: 'labs')]
 #[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
-class Labs
+class Labmasters
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
