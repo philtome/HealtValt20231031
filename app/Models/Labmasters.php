@@ -5,7 +5,7 @@ namespace App\Models;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Table(name: 'labs')]
+#[ORM\Table(name: 'Labmasters')]
 #[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
 class Labmasters
@@ -21,7 +21,7 @@ class Labmasters
     #[ORM\Column(type: 'text', nullable: false)]
     protected string $labsName;
 
-    #[ORM\Column(name: 'date', type:'datetime', nullable: false)]
+    #[ORM\Column(type:'datetime', nullable: false)]
     protected mixed $labsDate;
 
     #[ORM\Column(type: 'text', nullable: false)]
@@ -39,10 +39,10 @@ class Labmasters
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     protected string|null $labsNotes;
 
-    #[ORM\Column(name: 'date', type:'datetime', nullable: false)]
+    #[ORM\Column(type:'datetime', nullable: false)]
     protected mixed $labsCreateDate;
 
-    #[ORM\Column(name: 'date', type:'datetime', nullable: true)]
+    #[ORM\Column(type:'datetime', nullable: true)]
     protected mixed $labsModifiedDate;
 
 

@@ -19,9 +19,10 @@ class Labresults
     protected int $userID; // Added property for user ID
 
     #[ORM\ManyToOne(targetEntity: 'Labmasters', fetch: 'Eager')]
+    #[ORM\JoinColumn(name: 'labmasters_id', referencedColumnName: 'id', nullable: false)]
     public $labresultsName;
 
-    #[ORM\Column(name: 'date', type:'datetime', nullable: false)]
+    #[ORM\Column(type:'datetime', nullable: false)]
     protected mixed $labresultsDate;
 
     #[ORM\Column(type: 'decimal', precision: 3, scale: 2, nullable: false)]
@@ -36,10 +37,10 @@ class Labresults
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     protected string|null $labresultsNotes;
 
-    #[ORM\Column(name: 'date', type:'datetime', nullable: false)]
+    #[ORM\Column(type:'datetime', nullable: false)]
     protected mixed $labresultsCreateDate;
 
-    #[ORM\Column(name: 'date', type:'datetime', nullable: false)]
+    #[ORM\Column(type:'datetime', nullable: false)]
     protected mixed $labresultsModifiedDate;
 
 }
