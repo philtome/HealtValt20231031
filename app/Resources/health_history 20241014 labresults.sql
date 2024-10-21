@@ -1,0 +1,6 @@
+CREATE TABLE labresults (id INT AUTO_INCREMENT NOT NULL, userID INT NOT NULL, labresultsDate DATETIME NOT NULL, labresultsFloatValue NUMERIC(3, 2) NOT NULL, labresultsTextValue LONGTEXT NOT NULL, labresultsNotes VARCHAR(255) DEFAULT NULL, labresultsCreateDate DATETIME NOT NULL, labresultsModifiedDate DATETIME NOT NULL, labmasters_id INT NOT NULL, INDEX IDX_F34885C34E2A6CC3 (labmasters_id), PRIMARY KEY(id));
+CREATE TABLE Labmasters (id INT AUTO_INCREMENT NOT NULL, userID INT NOT NULL, labsName LONGTEXT NOT NULL, labsDate DATETIME NOT NULL, labsValueType LONGTEXT NOT NULL, labsLowValue NUMERIC(6, 2) DEFAULT NULL, labsHighValue NUMERIC(6, 2) DEFAULT NULL, labsUnits LONGTEXT NOT NULL, labsNotes VARCHAR(255) DEFAULT NULL, labsCreateDate DATETIME NOT NULL, labsModifiedDate DATETIME DEFAULT NULL, PRIMARY KEY(id));
+ALTER TABLE labresults ADD CONSTRAINT FK_F34885C34E2A6CC3 FOREIGN KEY (labmasters_id) REFERENCES Labmasters (id);
+ALTER TABLE Labmasters ADD labsSubtype LONGTEXT NOT NULL;
+RENAME TABLE Labmasters TO temp_labmasters;
+RENAME TABLE temp_labmasters TO labmasters;

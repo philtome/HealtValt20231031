@@ -1,0 +1,154 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    - Lab Master Details
+{% endblock %}
+
+{% set navHeader = 'Lab Master Details -'  ~ labmaster.labsname %}
+
+
+{% block body %}
+    <!-- Specific content for template1.twig -->
+
+    <div class="container mt-4">
+        <form id="labmasters_details_form">
+            <div class="row">
+                <!-- First Column -->
+                <div class="col-sm-6">
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Lab Name:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="labmasterlabsname" id="labmasterlabsname"
+                                   value="{{ labmaster.labmasterlabasname }}" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Lab Type:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="labmasterlabstype" id="labmasterlabstype"
+                                   value="{{ labmasterlabs.labstype }}" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Lab Value Type (text/number):</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="labsvaluetype" id="labsvaluetype"
+                                   value="{{ labmasterlabs.labsvaluetype }}" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Lab Units:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="labsunits" id="labsunits"
+                                   value="{{ labmasterlabs.labsunits }}" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Lab Low Value:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="labslowvalue" id="labslowvalue"
+                                   value="{{ labmasterlabs.labslowvalue }}" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Lab High Value:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="labshighvalue" id="labshighvalue"
+                                   value="{{ labmasterlabs.labshighvalue }}" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Lab Value Type 2:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="labsvalue2type" id="labsvalue2type"
+                                   value="{{ labmasterlabs.labsvalue2type }}" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Lab Units 2:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="labsunits2" id="labsunits2"
+                                   value="{{ labmasterlabs.labsunits2 }}" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Lab Low Value 2:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="labslowvalue2" id="labslowvalue2"
+                                   value="{{ labmasterlabs.labslowvalue2 }}" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-end">Lab High Value2:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="labshighvalue2" id="labshighvalue2"
+                                   value="{{ labmasterlabs.labshighvalue2 }}" class="form-control">
+                        </div>
+                    </div>
+
+
+                    {#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">Reason for Taking:</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="text" name="reason" id="reason"#}
+{#                                   value="{{ medications.reason }}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">Stop Date:</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <input type="date" name="datestopped" id="datestopped"#}
+{#                                   value="{{ medications.dateStopped ? medications.dateStopped|date('Y-m-d') : '' }}" class="form-control">#}
+{#                        </div>#}
+{#                    </div>#}
+
+
+{#                    <!-- second colun -->#}
+{#                    #}{##}{#                <div class="col-sm-6">#}
+{#                    <div class="form-group row">#}
+{#                        <label class="col-sm-4 col-form-label text-end">Notes:</label>#}
+{#                        <div class="col-sm-8">#}
+{#        <textarea name="medicationnotes" id="medicationnotes"#}
+{#                  class="form-control h-auto pt-3"#}
+{#                  aria-describedby="medicationnotesHelp">{{ medications.notes }}</textarea>#}
+{#                        </div>#}
+{#                    </div>#}
+
+{#                    <div class="form-group row">#}
+{#                        <div class="col-sm-4"></div>  <div class="col-sm-8">#}
+{#                            <div class="form-check form-check-inline">  <input type="checkbox" name="medicationinactive" id="inactiveCheckbox" {{ medications.inactive == 'on' ? 'checked' : '' }} class="mt-3">#}
+{#                                <label class="form-check-label" for="inactiveCheckbox">Mark as Inactive</label>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+
+
+
+
+{#                </div>#}
+{#            </div>#}
+
+
+
+            <div class="form-group row mt-4 saveButton" data-item-id="{{ labmaster.id }}">
+                <div class="col-sm-12 text-center">
+                    <button id="btn_save" data-sa-object="labmasters" type="submit" class="btn btn-primary">Save</button>
+                    <button id="btn_cancel" type="button" class="btn btn-secondary btnCancel">Cancel</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}

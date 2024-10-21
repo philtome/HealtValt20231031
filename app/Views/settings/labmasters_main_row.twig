@@ -1,0 +1,37 @@
+<tr id='labmastercrow_{{ labmaster.id }}' data-sa-id="{{ labmaster.id }}" data-visit-id='{{ labmaster.id }}' class="newlyAdded">
+    {# 20191015 changed productrow to Productrow - was not working in delete product #}
+    <td id="labmaster_labsname_{{ labmaster.id }}"> {{ labmaster.labsname}}</td>    {#  {{ labmaster.a1cDate|date('Y-m-d H:i') }}</td> #}
+    <td id="labmaster_labssubtype_{{ labmaster.id }}">
+        {{ labmaster.labssubtype }} %
+    </td>
+    {#    <td id="datestarted_{{ a1c.id }}">{{ blood_pressure.dateStarted|date('Y-m-d') }}</td>#}
+    {#    <td id="strength_{{ a1c.id }}">{{ blood_pressure.strength }}</td>#}
+
+    <td id="labmaster_notes_{{ labmaster.id }}">{{ labmaster.labsnotes }}</td>
+
+    <td  id="labmaster_manage_{{ labmaster.id }}" class="labmaster_manage">
+        <button class="manageEdit btn btn-primary" data-sa-object="labmaster" data-item-id="{{ labmaster.id }}" title="Edit/Display">
+            <i class="fa-solid fa-pencil"></i></button>
+    </td>
+
+    <td id="labmastercopy_{{ labmaster.id }}" class="labmaster_copy">
+        <button class="copy btn btn-primary" data-sa-object="labmaster" data-item-id="{{ labmaster.id }}" title="Copy/Duplicate">
+            <i class="fa-solid fa-copy"></i></button>
+    </td>
+
+    <td  id="labmasterprint_{{ labmaster.id }}" class="labmaster_print">
+        <button class="print btn btn-primary" data-sa-object="labmaster" data-item-id="{{ labmaster.id }}" title="Print">
+            <i class="fa-solid fa-print"></i></button>
+    </td>
+
+    <td id="labmasterdelete_{{ labmaster.id }}" class="labmaster_delete">
+        <button class="deleteItemButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-item-type="labmaster" data-item-id="{{ labmaster.id }}"  title="Delete">
+            <i class="fa-solid fa-trash-can"></i></button>
+    </td>
+    {#    <td>#}
+    {#    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">visits</button>#}
+    {#    </td>#}
+    {#    <td>#}
+    {#        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Care Plans</button>#}
+    {#    </td>#}
+</tr>

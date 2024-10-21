@@ -28,6 +28,7 @@ use App\Controllers\a1cs_controller;
 use App\Controllers\sirolimuss_controller;
 use App\Controllers\cholesterols_controller;
 use App\Controllers\weights_controller;
+use App\Controllers\labmasters_controller;
 
 
 // Define your routes and include the necessary controllers
@@ -476,6 +477,32 @@ else {
                 $result = $users->action1($param1, $param2, $param3);
             }
             break;
+
+        case 'labmasters':
+            $labmasters = new labmasters_controller($entityManager);
+            $templateDir = 'settings';
+            if (is_null($param1)) {
+                $result = $labmasters->mainDisplay($controller, null, null, null, null, null, null, $templateDir);
+            } elseif ($param1 === '') {
+                $result = $labmasters->mainDisplay($controller, null, null, null, null, null, null, $templateDir);
+            } elseif ($param2 === 'update') {
+                $result = $labmasters->saveItem($entityManager, $controller, $param2, $templateDir);
+            } elseif ($param1 === 'delete') {
+                $result = $labmasters->deleteItem($entityManager, $controller, $param2, $templateDir);
+            } elseif ($param1 === 'display') {
+                $result = $labmasters->mainDisplay();
+            } elseif ($param1 === 'manage') {
+                $result = $labmasters->manageItem($entityManager, $param2, $controller, null, $templateDir);
+            } elseif ($param1 === 'print') {
+                $result = $labmasters->manageItem($entityManager, $param2, $controller, 'PDF', $templateDir);
+            } elseif ($param1 === 'create') {
+                $result = $labmasters->manageItem($entityManager, $param2, $controller, null, $templateDir);
+            } elseif ($param1 === 'copy') {
+                $result = $labmasters->copyItem($entityManager, $controller, $param2);
+            } else {
+                $result = $labmasters->action1($param1, $param2, $param3);
+            }
+            break;    
 
         case 'sessions':
             $users = new users_controller($entityManager);
