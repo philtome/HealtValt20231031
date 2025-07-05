@@ -31,8 +31,8 @@ class labmasters_controller extends abstract_controller
             }
         }
 
-        $dataToSave->setA1cValue(isset($_POST['a1cvalue']) ? filter_var($_POST['a1cvalue'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setA1cNotes(isset($_POST['a1cnotes']) ? filter_var($_POST['a1cnotes'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setLabsName(isset($_POST['labmasterlabsname']) ? filter_var($_POST['labmasterlabsname'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $dataToSave->setLabsSubtype(isset($_POST['labmasterlabstype']) ? filter_var($_POST['labmasterlabstype'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setUserID($userId);
 
 //        $dataToSave->SetParticipant(isset($_POST['assessmentParticipant']) ? filter_var($_POST['assessmentParticipant'], FILTER_SANITIZE_SPECIAL_CHARS)
