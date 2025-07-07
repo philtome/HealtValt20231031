@@ -482,9 +482,9 @@ else {
             $labmasters = new labmasters_controller($entityManager);
             $templateDir = 'settings';
             if (is_null($param1)) {
-                $result = $labmasters->mainDisplay($controller, null, null, null, null, null, null, $templateDir);
+                $result = $labmasters->mainDisplay($controller, $userId, null, null, null, null, null, $templateDir);
             } elseif ($param1 === '') {
-                $result = $labmasters->mainDisplay($controller, null, null, null, null, null, null, $templateDir);
+                $result = $labmasters->mainDisplay($controller, $userId, null, null, null, null, null, $templateDir);
             } elseif ($param2 === 'update') {
                 $result = $labmasters->saveItem($entityManager, $controller, $userId, $param3);
             } elseif ($param1 === 'delete') {

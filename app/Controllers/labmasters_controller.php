@@ -47,8 +47,32 @@ class labmasters_controller extends abstract_controller
         $dataToSave->setLabsHighValue(isset($_POST['labshighvalue']) ? filter_var($_POST['labshighvalue'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setLabsValue2Type(isset($_POST['labsvalue2type']) ? filter_var($_POST['labsvalue2type'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
         $dataToSave->setLabsUnits2(isset($_POST['labsunits2']) ? filter_var($_POST['labsunits2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setLabsLowValue2(isset($_POST['labslowvalue2']) ? filter_var($_POST['labslowvalue2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
-        $dataToSave->setLabsHighValue2(isset($_POST['labshighvalue2']) ? filter_var($_POST['labshighvalue2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+
+        //$dataToSave->setLabsLowValue2(isset($_POST['labslowvalue2']) ? filter_var($_POST['labslowvalue2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $rawValue = $_POST['labslowvalue2'] ?? null;
+
+        if ($rawValue === '' || $rawValue === null) {
+            $dataToSave->setLabsLowValue2(null);
+        } elseif (is_numeric($rawValue)) {
+            $dataToSave->setLabsLowValue2((float)$rawValue);
+        } else {
+            $dataToSave->setLabsLowValue2(null); // or handle as needed
+        }
+
+
+
+        //$dataToSave->setLabsHighValue2(isset($_POST['labshighvalue2']) ? filter_var($_POST['labshighvalue2'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
+        $rawValue = $_POST['labshighvalue2'] ?? null;
+
+        if ($rawValue === '' || $rawValue === null) {
+            $dataToSave->setLabsHighValue2(null);
+        } elseif (is_numeric($rawValue)) {
+            $dataToSave->setLabsHighValue2((float)$rawValue);
+        } else {
+            $dataToSave->setLabsHighValue2(null); // or handle as needed
+        }
+
+
         $dataToSave->setLabsNotes(isset($_POST['labsnotes']) ? filter_var($_POST['labsnotes'], FILTER_SANITIZE_SPECIAL_CHARS) : null);
 //        $dataToSave->SetParticipant(isset($_POST['assessmentParticipant']) ? filter_var($_POST['assessmentParticipant'], FILTER_SANITIZE_SPECIAL_CHARS)
         return $dataToSave;

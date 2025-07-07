@@ -48,10 +48,10 @@ class Labmasters
     protected string $labsValue2Type;
 
     #[ORM\Column(type: 'decimal', precision: 6, scale: 2, nullable: true)]
-    protected float $labsLowValue2;
+    protected ?float $labsLowValue2 = null;
 
     #[ORM\Column(type: 'decimal', precision: 6, scale: 2, nullable: true)]
-    protected float $labsHighValue2;
+    protected ?float $labsHighValue2 = null;
 
     #[ORM\Column(type: 'text', nullable: false)]
     protected string $labsUnits2;
@@ -167,22 +167,22 @@ class Labmasters
         $this->labsValue2Type = $labsValue2Type;
     }
 
-    public function getLabsLowValue2(): float
+    public function getLabsLowValue2(): ?float
     {
         return $this->labsLowValue2;
     }
 
-    public function setLabsLowValue2(float $labsLowValue2): void
+    public function setLabsLowValue2(?float $labsLowValue2): void
     {
         $this->labsLowValue2 = $labsLowValue2;
     }
 
-    public function getLabsHighValue2(): float
+    public function getLabsHighValue2(): ?float
     {
         return $this->labsHighValue2;
     }
 
-    public function setLabsHighValue2(float $labsHighValue2): void
+    public function setLabsHighValue2(?float $labsHighValue2): void
     {
         $this->labsHighValue2 = $labsHighValue2;
     }

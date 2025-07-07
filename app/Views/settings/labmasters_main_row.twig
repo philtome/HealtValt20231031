@@ -1,8 +1,9 @@
 <tr id='labmastercrow_{{ labmaster.id }}' data-sa-id="{{ labmaster.id }}" data-visit-id='{{ labmaster.id }}' class="newlyAdded">
     {# 20191015 changed productrow to Productrow - was not working in delete product #}
+    <td id="labmaster_labsname_{{ labmaster.id }}"> {{ labmaster.labsDate|date('Y-m-d H:i')}}</td>
     <td id="labmaster_labsname_{{ labmaster.id }}"> {{ labmaster.labsname}}</td>    {#  {{ labmaster.a1cDate|date('Y-m-d H:i') }}</td> #}
     <td id="labmaster_labssubtype_{{ labmaster.id }}">
-        {{ labmaster.labssubtype }} %
+        {{ labmaster.labssubtype }}
     </td>
     {#    <td id="datestarted_{{ a1c.id }}">{{ blood_pressure.dateStarted|date('Y-m-d') }}</td>#}
     {#    <td id="strength_{{ a1c.id }}">{{ blood_pressure.strength }}</td>#}

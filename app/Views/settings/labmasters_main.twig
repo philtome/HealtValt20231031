@@ -16,7 +16,7 @@
             <tr>
                 <th>Date</th>
                 <th>Lab Master Name</th>
-                <th>Lab Master SubType</th>
+                <th>Lab Master Type</th>
                 <th>Create Date</th>
                 <th>Modify Date</th>
                 <th></th>
@@ -29,7 +29,7 @@
 
             <tbody id="a1cs">
 
-            {% for labmaster in labmasterss %}
+            {% for labmaster in labmasters %}
                 {{ include('settings/labmasters_main_row.twig') }}
             {% endfor %}
             </tbody>
