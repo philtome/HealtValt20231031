@@ -27,6 +27,9 @@ class Labmasters
     #[ORM\Column(type:'datetime', nullable: false)]
     protected mixed $labsDate;
 
+//    #[ORM\Column(name: 'date', type:'datetime', nullable: false)]
+//    protected mixed $bloodPressureDate;
+
     #[ORM\Column(type: 'text', nullable: false)]
     protected string $labsValueType;
 

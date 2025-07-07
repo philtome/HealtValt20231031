@@ -486,7 +486,7 @@ else {
             } elseif ($param1 === '') {
                 $result = $labmasters->mainDisplay($controller, null, null, null, null, null, null, $templateDir);
             } elseif ($param2 === 'update') {
-                $result = $labmasters->saveItem($entityManager, $controller, $param2, $templateDir);
+                $result = $labmasters->saveItem($entityManager, $controller, $userId, $param3);
             } elseif ($param1 === 'delete') {
                 $result = $labmasters->deleteItem($entityManager, $controller, $param2, $templateDir);
             } elseif ($param1 === 'display') {
